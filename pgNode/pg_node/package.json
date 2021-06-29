@@ -1,16 +1,17 @@
 {
-  "name":"playground_node",
+  "name": "playground_node",
   "version": "1.0.0",
   "scripts": {
-    "client":"cd client && yarn start",
-    "server":"nodemon server.js",
-    "dev":"concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+    "client": "cd client && yarn start",
+    "server": "nodemon server.js",
+    "private": true,
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "express":"^4.16.1"
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
   },
   "devDependencies": {
-    "concurrently": "^6.2.0" 
+    "concurrently": "^6.2.0"
   }
 }
