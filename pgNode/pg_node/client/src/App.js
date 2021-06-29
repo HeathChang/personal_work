@@ -24,7 +24,7 @@ class App extends Component {
   render() {
     return(
       <div>
-        {member.map(index=>{
+        {member.map(index=>{ //map을 사용해서 뽑기
           return (
             <Member
             key={index.name} 
