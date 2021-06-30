@@ -41,6 +41,7 @@ class App extends Component {
           )
           })
         :""
+        
         //첫 시작 공백시, 디버깅
         }
       </div>
