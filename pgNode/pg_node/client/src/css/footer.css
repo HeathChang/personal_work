@@ -1,0 +1,9 @@
+footer {
+  background: rgb(171, 219, 252);
+  text-align: center;
+  padding: 26px 0;
+}
+
+footer p {
+  font-size: 0.875rem;
+}

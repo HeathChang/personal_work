@@ -3,7 +3,7 @@ import React from 'react';
 const MainPageTop= () => {
     return (
         <div> 
-            		<div class="searchBox">
+            <div class="searchBox">
 			<input type="text" id="searchText" placeholder="게임검색"/>
 			<button id="search">
 				검색
