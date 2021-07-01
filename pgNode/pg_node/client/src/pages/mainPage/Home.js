@@ -6,11 +6,6 @@ import MainPageMid from '../mainPage/mainPageMid';
 import Footer from '../common/footer';
 
 
-import '../../css/Main.css';
-import '../../css/header.css';
-import '../../css/footer.css';
-
-
 const Home = () => {
     return (
     <>
