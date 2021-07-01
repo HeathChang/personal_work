@@ -21,6 +21,7 @@ class App extends Component {
 
   callApi =async()=>{
     const response = await fetch('api/member'); //api/member의 데이터
+    console.log("response 데이터: "+ response.status);
     const body = await response.json();
     return body;
   }
@@ -29,24 +30,26 @@ class App extends Component {
     return(
       <div>
         {this.state.member 
-        ? this.state.member.map(index=>{ //map을 사용해서 뽑기
+        ? this.state.member.map(member=>{ //map을 사용해서 뽑기
           return (
             <Member
-            key={index.name} 
-            name={index.name}
-            birthday={index.birthday}
-            gender={index.gender}
-            job={index.job}
+            key={member.mbrId} 
+            mbrId={member.mbrId}
+            mbrPw={member.mbrPw}
+            mbrName={member.mbrName}
+            mbrEmail={member.mbrEmail}
+            mbrGenre={member.mbrGenre}
+            mbrRegdate={member.mbrRegdate}
             /> 
           )
           })
         :""
-        
+
         //첫 시작 공백시, 디버깅
         }
       </div>
     )
-    }
-}
+    } //end render
+} //end app
 
 export default App;
