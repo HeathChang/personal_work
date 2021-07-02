@@ -1,6 +1,7 @@
 //import Users from './pages/Users';
 //import User from './pages/User';
 import Home from './pages/mainPage/Home';
+import DetailPage from './pages/detailPage/detailGamePage';
 //import Movies from './pages/Movies';
 
 export default [
@@ -16,8 +17,8 @@ export default [
     //     path: '/users',
     //     component: Users
     // },
-    // {
-    //     path: '/users/:id',
-    //     component: User
-    // }
+    {
+        path: '/detailPage/:gameNo',
+        component: DetailPage
+    }
 ];

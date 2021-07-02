@@ -22,4 +22,17 @@ app.get('/api/member',(req,res)=>{
     })
 });
 
+app.get('/detailPage/',(req,res)=>{
+      var gameNo=req.params.gameNo
+      var sql ='select * from game where gameNo = ?'
+      db.query(sql,gameNo, (error, result, fields)=> { // 쿼리문을 이용해 데이터를 가져온다.
+        if(!error) { // 에러가 없다면
+          res.send(result); // rows 를 보내주자
+        } else { // 에러가 있다면?
+          console.log("error가 발생했습니다>> 에러정보: " + error);
+          res.send(error); // console 창에 에러를 띄워주고, 에러를 보내준다.
+        }
+    })
+});
+
 app.listen(port,()=> console.log(`Listening on port ${port}`));
