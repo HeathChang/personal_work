@@ -3,6 +3,7 @@ const bodyParser =require('body-parser');
 const app = express();
 var router = express.Router();
 const db=require('./maria')
+var url = require('url');
 
 const port = process.env.PORT || 5000;
 
@@ -22,15 +23,18 @@ app.get('/member',(req,res)=>{
     })
 });
 
-app.get('/detailPage/',(req,res)=>{
-      var gameNo=req.params.gameNo
+app.get('/detailpage',(req,res)=>{
+      var urlParse = url.parse(req.url,true);
+      var queryString = urlParse.query;
+      res.send(queryString);
       var sql ='select * from game where gameNo = ?'
+      console.log("gameNo: "+gameNo);
       db.query(sql,gameNo, (error, result, fields)=> { // 쿼리문을 이용해 데이터를 가져온다.
         if(!error) { // 에러가 없다면
-          res.send(result); // rows 를 보내주자
+          res.send(result); 
         } else { // 에러가 있다면?
           console.log("error가 발생했습니다>> 에러정보: " + error);
-          res.send(error); // console 창에 에러를 띄워주고, 에러를 보내준다.
+          res.send(error);
         }
     })
 });

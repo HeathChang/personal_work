@@ -8,7 +8,8 @@ import memberPage from './pages/mainPage/newPage';
 export default [
     {
         path: '/',
-        component: Home
+        component: Home,
+        exact:true
     },
     {
         path: '/member',

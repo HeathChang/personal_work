@@ -1,14 +1,18 @@
 import React from 'react';
 import '../../css/DetailPage.css';
+import Header from '../common/header';
 import DetailGamePageContext from './detailGamePageContext';
+import Footer from '../common/footer';
+
 
 const DetailPage= () => {
     return (
     <>
         <div>
-            <h1> This is Header of DetailPage </h1>
+            <script src="../../JS/main.js"/>
+            <Header/>
             <DetailGamePageContext/>
-            <h1> This is Ending of DetailPage </h1>
+            <Footer/>
         </div>
     </>
     );
