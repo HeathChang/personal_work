@@ -6,8 +6,8 @@ const MainPageTop= () => {
     return (
         <>
         
-        <div class="wrapper"> 
-            <div class="searchBox">
+        <div className="wrapper"> 
+            <div className="searchBox">
                 <input type="text" id="searchText" placeholder="게임검색"/>
                 <button id="search">
                 <img className="search" src={require('../../Image/search.png').default} alt="검색"/>

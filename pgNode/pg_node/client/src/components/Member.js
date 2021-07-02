@@ -4,32 +4,16 @@ class Member extends React.Component {
   render(){
     return(
     <div>
-        <MemberProfile name={this.props.name} birthday={this.props.birthday}/>
-        <MemberInfo gender={this.props.gender} job={this.props.job}/>
+        <h2>{this.props.mbrId}</h2>
+        <h2>{this.props.mbrPw}</h2>
+        <h2>{this.props.mbrName}</h2>
+        <h2>{this.props.mbrEmail}</h2>
+        <h2>{this.props.mbrGenre}</h2>
+        <h2>{this.props.mbrRegdate}</h2>
+        <h2>======================</h2>
     </div>
     )
   }
 }
-class MemberProfile extends React.Component{
-  render(){
-    return(
-    <div>
-      <h2>{this.props.name}</h2>
-      <p>{this.props.birthday}</p>
-    </div>
-    )
-  }
-}
-class MemberInfo extends React.Component{
-  render(){
-    return(
-    <div>
-      <p>{this.props.gender}</p>
-      <p>{this.props.job}</p>
-    </div>
-    )
-  }
-}
-
 
 export default Member;

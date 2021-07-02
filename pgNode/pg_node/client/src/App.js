@@ -1,7 +1,7 @@
 //main 자바스크립트 관리 (body 태그) →client 부분
 import React, {Component} from 'react';
 import './App.css';
-//import Member from './components/Member';
+import Member from './components/Member';
 
 //import Navbar from './components/Navbar';
 import routes from './routes';

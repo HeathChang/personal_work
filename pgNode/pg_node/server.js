@@ -9,7 +9,7 @@ const port = process.env.PORT || 5000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
-app.get('/api/member',(req,res)=>{
+app.get('/member',(req,res)=>{
     //client>App.js>const member내에 있는 데이터 가져오기
     //해당 데이터를 json 형식으로 반환
       db.query('select * from member', (error, result, fields)=> { // 쿼리문을 이용해 데이터를 가져온다.
