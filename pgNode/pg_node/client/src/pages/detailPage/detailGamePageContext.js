@@ -22,7 +22,7 @@ const DetailGamePageContext= () => {
     return (
         <>
             <h1> 게임 정보</h1>
-            {/* <div>{game.gameNo}</div>
+            {/* {game.gameNo}
             <div>{game.gameName}</div>
             <div>{game.gameImage}</div>
             <div>{game.gamePrice}</div>

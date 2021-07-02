@@ -17,7 +17,7 @@ export default [
     },
     
     {
-        path: '/detailPage/:gameNo',
+        path: '/detailpage/:gameNo',
         component: DetailPage
     }
 ];

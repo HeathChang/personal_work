@@ -26,8 +26,7 @@ app.get('/member',(req,res)=>{
 app.get('/detailpage',(req,res)=>{
       var urlParse = url.parse(req.url,true);
       var queryString = urlParse.query;
-      res.send(queryString);
-      var sql ='select * from game where gameNo = ?'
+      var sql ='select * from game '
       console.log("gameNo: "+gameNo);
       db.query(sql,gameNo, (error, result, fields)=> { // 쿼리문을 이용해 데이터를 가져온다.
         if(!error) { // 에러가 없다면
