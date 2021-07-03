@@ -5,7 +5,6 @@ import axios from 'axios';
 
 
 const DetailGamePageContext= () => {
-
    // const [game, setGameNo] = useState([]);
     const {game} = useParams();
     //console.log(gameNo);
@@ -18,7 +17,6 @@ const DetailGamePageContext= () => {
   //         });
   // }, []);
 
-  
     return (
         <>
             <h1> 게임 정보</h1>
