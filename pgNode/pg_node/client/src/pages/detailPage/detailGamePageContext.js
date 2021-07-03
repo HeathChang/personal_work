@@ -6,9 +6,9 @@ import axios from 'axios';
 
 const DetailGamePageContext= () => {
 
-  // const [game, setGameNo] = useState([]);
-  // const {gameNo} = useParams();
-  // console.log(gameNo);
+   // const [game, setGameNo] = useState([]);
+    const {game} = useParams();
+    //console.log(gameNo);
 
   // useEffect(() => {
   //     axios.get('http://10.0.2.2:3000/detailPage/' + gameNo)
@@ -22,7 +22,7 @@ const DetailGamePageContext= () => {
     return (
         <>
             <h1> 게임 정보</h1>
-            {/* {game.gameNo}
+            {game.gameNo}
             <div>{game.gameName}</div>
             <div>{game.gameImage}</div>
             <div>{game.gamePrice}</div>
@@ -30,7 +30,7 @@ const DetailGamePageContext= () => {
             <div>{game.gameCategory}</div>
             <div>{game.gameGenre}</div>
             <div>{game.gameReleasedDate}</div>
-            <div>{game.discountRate}</div> */}
+            <div>{game.discountRate}</div>
         </>
     );
 };
