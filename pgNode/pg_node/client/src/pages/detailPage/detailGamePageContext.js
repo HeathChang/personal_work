@@ -9,6 +9,7 @@ const DetailGamePageContext= () => {
     const {game} = useParams();
     //console.log(gameNo);
 
+
   // useEffect(() => {
   //     axios.get('http://10.0.2.2:3000/detailPage/' + gameNo)
   //         .then(response => {
@@ -16,6 +17,7 @@ const DetailGamePageContext= () => {
             
   //         });
   // }, []);
+
 
     return (
         <>
