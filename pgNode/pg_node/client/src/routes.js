@@ -2,7 +2,6 @@
 //import User from './pages/User';
 import Home from './pages/mainPage/Home';
 import DetailPage from './pages/detailPage/detailGamePage';
-//import Movies from './pages/Movies';
 import memberPage from './pages/mainPage/newPage';
 
 export default [
@@ -12,7 +11,7 @@ export default [
         exact:true
     },
     {
-        path: '/member',
+        path: '/member',   
         component: memberPage
     },
     

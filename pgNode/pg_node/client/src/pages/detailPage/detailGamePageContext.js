@@ -1,25 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { Component } from 'react';
 import '../../css/Main.css';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 
-const DetailGamePageContext= () => {
-   // const [game, setGameNo] = useState([]);
-    const {game} = useParams();
-    //console.log(gameNo);
+const DetailGamePageContext = () => {
+    state = { username: null };
+    const [game, setGameNo] = useState([]);
 
-    
 
-  // useEffect(() => {
-  //     axios.get('http://10.0.2.2:3000/detailPage/' + gameNo)
-  //         .then(response => {
-  //           console.log(response);
-  //         });
-  // }, []);
+    componentDidMount() {
+        fetch('/')
+            .then(res => res.json())
+            .then(user => this.setState({ username: user.username }));
+    }
+
 
 
     return (
+        const { username } = this.state;
         <>
             <h1> 게임 정보</h1>
             {game.gameNo}
