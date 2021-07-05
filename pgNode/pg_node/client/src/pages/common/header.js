@@ -1,6 +1,9 @@
 import React from 'react';
 import '../../css/header.css';
 
+import News from '../news/NewsPage';
+
+import {Route,Link,Switch } from 'react-router-dom';
 
 const Header= () => {
   return (
@@ -10,10 +13,10 @@ const Header= () => {
           <nav>
               <div className="empty"></div>
               <ul className="nav">
-                <li><a href="${request.getContextPath()}/app/board/list">게시판</a></li>
-                <li><a href="${request.getContextPath()}/app/news/list">뉴스 및 소식</a></li>
-                <li><a href="${request.getContextPath()}/app/LoginForm">로그인</a></li>
-                <li><a href="${request.getContextPath()}/app/MemberForm">회원가입</a></li>
+                <li><Link to="/board"> 게 시 판 </Link></li>
+                <li><Link to="/news"> 뉴스 및 소식 </Link></li>
+                <li><Link to="/login"> 로 그 인 </Link></li>
+                <li><Link to="/register"> 회원가입 </Link></li>
               </ul>
           </nav>
         </header>

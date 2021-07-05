@@ -11,7 +11,7 @@ const DetailPage= () => {
         <div>
             <script src="../../JS/main.js"/>
             <Header/>
-            <DetailGamePageContext/>
+            <DetailGamePageContext />
             <Footer/>
         </div>
     </>
