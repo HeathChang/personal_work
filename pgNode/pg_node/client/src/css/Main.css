@@ -29,9 +29,9 @@ img {
 
 /* MAIN
 ------------------------------- */
-
-
-
+div{
+  background-color: white;
+}
 .main-contents {
   clear: both;
   margin: 100px auto;
