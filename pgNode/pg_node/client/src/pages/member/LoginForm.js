@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../css/Login.css';
+import {Link} from 'react-router-dom';
 
 
 const LoginForm = () => {
@@ -7,7 +8,7 @@ const LoginForm = () => {
     <>  
         <script src="../../JS/main.js"/>
         <form action="login" method="post" class="loginForm">
-            <img className="logo" src={require('../../Image/logo.png').default} />
+        <Link to="/"><img className="logo" src={require('../../Image/logo.png').default} /></Link> 
             <a href="${request.getContextPath()}/app"> </a>
             <p>" 자신을 알아야 평화를 찾을 수 있는 법 "</p>
             <div class="idForm">

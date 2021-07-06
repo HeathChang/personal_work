@@ -7,7 +7,7 @@ header {
 }
 
 .logo {
-  width: 210px;
+  width: 100px;
   margin-top: 14px;
 }
 
@@ -23,4 +23,8 @@ nav {
 
 .nav li {
   margin-left: 36px;
+}
+
+a{
+  font-size: 20px;
 }

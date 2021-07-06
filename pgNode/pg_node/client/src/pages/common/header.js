@@ -3,13 +3,13 @@ import '../../css/header.css';
 
 import News from '../news/NewsPage';
 
-import {Route,Link,Switch } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 const Header= () => {
   return (
       <> 
         <header>
-              <img className="logo" src={require('../../Image/logo.png').default} />
+              <Link to="/"><img className="logo" src={require('../../Image/logo.png').default} /></Link> 
           <nav>
               <div className="empty"></div>
               <ul className="nav">

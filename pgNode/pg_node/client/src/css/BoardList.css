@@ -19,11 +19,13 @@ a {
 
 img {
   max-width: 100%;
+  max-height: 100%;
+
 }
 
 .wrapper {
   max-width: 1100px;
-  margin: 0 auto;
+  margin: 0 ;
   padding: 0 4%;
 }
 
@@ -73,12 +75,18 @@ td {
   display: flex;
 }
 
-img {
+button img {
   width: 25px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
+#searchCategory {
+  height: 30px;
+}
 #boardCategory {
   height: 30px;
+  margin-left: 1000px;
 }
 
 #write {
@@ -89,6 +97,7 @@ img {
   height: 30px;
   border-radius: 10%;
   border: none;
+  margin-right: 170px;
 }
 
 #write:hover {

@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../common/header';
 import Footer from '../common/footer';
 import '../../css/MemberAdd.css';
+import {Link} from 'react-router-dom';
 
 const RegisterPage = () => {
     return (
@@ -9,7 +10,7 @@ const RegisterPage = () => {
         <body>
         <div>
                 <form action="memberAdd" method="post" className="addForm" id="addForm">
-                <img className="logo" src={require('../../Image/logo.png').default}/>
+                <Link to="/"><img className="logo" src={require('../../Image/logo.png').default} /></Link> 
                     <h2>회원가입</h2>
 
                     <div className="contentform">
