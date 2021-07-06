@@ -4,7 +4,8 @@ import '../../css/Login.css';
 
 const LoginForm = () => {
     return (
-    <>
+    <>  
+        <script src="../../JS/main.js"/>
         <form action="login" method="post" class="loginForm">
             <img className="logo" src={require('../../Image/logo.png').default} />
             <a href="${request.getContextPath()}/app"> </a>

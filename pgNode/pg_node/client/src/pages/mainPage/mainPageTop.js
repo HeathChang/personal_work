@@ -1,11 +1,9 @@
 import React from 'react';
-import '../../css/Main.css';
 
 
 const MainPageTop= () => {
     return (
         <>
-        
         <div className="wrapper"> 
             <div className="searchBox">
                 <input type="text" id="searchText" placeholder="게임검색"/>

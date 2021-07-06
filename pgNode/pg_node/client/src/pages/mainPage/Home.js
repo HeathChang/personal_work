@@ -4,6 +4,8 @@ import MainPageTop from '../mainPage/mainPageTop';
 import MainPageMid from '../mainPage/mainPageMid';
 import MainPageBottom from '../mainPage/mainPageBot';
 import Footer from '../common/footer';
+import '../../css/Main.css';
+
 
 
 const Home = () => {
