@@ -7,6 +7,7 @@ const Home = () => {
     return (
     <>
     <div>  <Header/> </div>
+    <div>
     <div class="wrapper contents">
         <h1>게시판</h1>
 
@@ -46,6 +47,7 @@ const Home = () => {
         <button id="write">글 작성</button>
         <div id="paging"></div>
       </div>
+    </div>
 
     <div>  <Footer/> </div>
 

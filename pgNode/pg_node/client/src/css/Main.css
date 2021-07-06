@@ -43,9 +43,10 @@ div{
 
 .searchBox {
   float: right;
-  margin-top: 20px;
   display: flex;
+  background-color: white;
 }
+
 
 button img {
   width: 20px;

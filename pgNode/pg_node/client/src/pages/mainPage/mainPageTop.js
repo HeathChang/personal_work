@@ -5,13 +5,6 @@ const MainPageTop= () => {
     return (
         <>
         <div class="wrapper">
-            <div class="searchBox">
-			    <input type="text" id="searchText" placeholder="게임검색"/>
-			    <button id="search" placeholder="검색">
-                <img src={require('../../Image/search.png').default} />
-                </button>
-
-		    </div>
 
             <section class="main-contents">
 			    <button id="newGame" class="gamesBtn">최신게임</button>
