@@ -45,7 +45,6 @@ const Home = () => {
 
         <button id="write">글 작성</button>
         <div id="paging"></div>
-
       </div>
 
     <div>  <Footer/> </div>

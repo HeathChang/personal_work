@@ -9,8 +9,8 @@ const Header= () => {
   return (
       <> 
         <header>
+        <nav>
               <Link to="/"><img className="logo" src={require('../../Image/logo.png').default} /></Link> 
-          <nav>
               <div className="empty"></div>
               <ul className="nav">
                 <li><Link to="/board"> 게 시 판 </Link></li>

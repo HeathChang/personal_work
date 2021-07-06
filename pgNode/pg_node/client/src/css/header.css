@@ -6,9 +6,9 @@ header {
   background: rgb(171, 219, 252);
 }
 
-.logo {
-  width: 100px;
-  margin-top: 14px;
+img.logo {
+  width: 150px;
+
 }
 
 nav {
@@ -22,7 +22,8 @@ nav {
 }
 
 .nav li {
-  margin-left: 36px;
+  margin-top: 36px;
+  margin-right: 10px;
 }
 
 a{

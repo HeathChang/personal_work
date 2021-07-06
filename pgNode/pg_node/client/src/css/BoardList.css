@@ -73,6 +73,7 @@ td {
 
 .searchBox {
   display: flex;
+  background: rgb(171, 219, 252);
 }
 
 button img {
