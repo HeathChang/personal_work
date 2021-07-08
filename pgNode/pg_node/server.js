@@ -37,5 +37,41 @@ app.get('/detailpage/:gameNo',(req,res)=>{
         }
     })
 });
+app.post('/register',(req,res)=>{
+
+  const mbrId = req.body.mbrId;
+  const mbrPw = req.body.mbrPw;
+  const mbrName = req.body.mbrName;
+  const mbrEmail = req.body.mbrEmail;
+  const mbrGenre = req.body.mbrGenre;
+
+  db.query("INSERT INTO `member` (mbrId,mbrPw,mbrName,mbrEmail,mbrGenre) values (?,?,?,?,?)", [mbrId,mbrPw,mbrName,mbrEmail,mbrGenre],(error,result)=>{
+    if(!error) { // 에러가 없다면
+      res.send(result); 
+    } else { // 에러가 있다면?
+      console.log("error가 발생했습니다>> 에러정보: " + error);
+      res.send(error);
+    }
+  })
+})
+
+//로그인
+app.post('/login',(req,res)=>{
+
+  const mbrId = req.body.mbrId;
+  const mbrPw = req.body.mbrPw;
+
+  db.query("SELECT *  FROM `member` WHERE mbrId='?' AND password = '?'", [mbrId,mbrPw],(error,result)=>{
+    if(!error) { // 에러가 없다면
+      console.log("결과값: "+result);
+      res.send(result); 
+    } else { // 에러가 있다면?
+      console.log("error가 발생했습니다>> 에러정보: " + error);
+      res.send(error);
+    }
+  })
+})
+
+
 
 app.listen(port,()=> console.log(`Listening on port ${port}`));
