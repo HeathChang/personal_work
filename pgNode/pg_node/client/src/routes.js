@@ -43,6 +43,6 @@ export default [
     {
         path: '/register',
         component: RegisterPage
-    },
+    }
 
 ];
