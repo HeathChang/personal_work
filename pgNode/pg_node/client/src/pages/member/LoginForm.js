@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 //JS part
 import React,{useState} from 'react';
 import axios from 'axios';
+=======
+import React,{useState} from 'react';
+import '../../css/Login.css';
+>>>>>>> ff1d4a9bd8facf25c412747e9126b19a9fe329f4
 import {Link} from 'react-router-dom';
 
 //design part
@@ -12,6 +17,7 @@ import '../../css/MemberAdd.css';
 
 const LoginForm = () => {
 
+<<<<<<< HEAD
         //set
         const [usernameReg,setUsernameReg] = useState("");
         const [passwordReg,setPasswordReg] = useState("");
@@ -30,6 +36,17 @@ const LoginForm = () => {
             })
         }//end login
     
+=======
+    const [usernameReg,setUsernameReg] = useState("");
+    const [passwordReg,setPasswordReg] = useState("");
+
+
+
+
+
+
+
+>>>>>>> ff1d4a9bd8facf25c412747e9126b19a9fe329f4
 
     return (
     <>  
@@ -39,6 +56,7 @@ const LoginForm = () => {
             <p>" 자신을 알아야 평화를 찾을 수 있는 법 "</p>
             <div class="idForm">
                 <input type="text" name="mbrId" id="mbrId" placeholder="ID" onChange={(e)=> {
+<<<<<<< HEAD
                             setUsername(e.target.value);    
                             }}/>
             </div>
@@ -46,6 +64,15 @@ const LoginForm = () => {
                 <input type="text" name="mbrPw" id="mbrPw" placeholder="PassWord" onChange={(e)=> {
                             setPassword(e.target.value);    
                             }}/>
+=======
+                    setUsernameReg(e.target.value);    
+                }}/>
+            </div>
+            <div class="pwForm">
+                <input type="text" name="mbrPw" id="mbrPw" placeholder="PassWord" onChange={(e)=> {
+                    setPasswordReg(e.target.value);    
+                }}/>
+>>>>>>> ff1d4a9bd8facf25c412747e9126b19a9fe329f4
             </div>
             <div class="button">
                 <button name="login" id="login" onClick={login}>L O G I N</button>
