@@ -39,7 +39,6 @@ export default [
         path: '/login',
         component: LoginPage
     },
-
     {
         path: '/register',
         component: RegisterPage
