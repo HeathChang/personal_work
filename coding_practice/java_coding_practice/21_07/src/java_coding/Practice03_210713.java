@@ -6,11 +6,8 @@ public class Practice03_210713 {
 
 	public static void main(String[] args) {
 		//¹ÙµÏÆÇ
-
-		
 		////¹ÙµÏÆÇ
 		int [][] arr1= new int[20][20];
-		
 		
 		////¹ÙµÏ¾Ë³õ±â
 		Scanner scan1 = new Scanner(System.in);
