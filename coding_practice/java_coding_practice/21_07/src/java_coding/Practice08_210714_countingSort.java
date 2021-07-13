@@ -9,7 +9,7 @@ import java.util.Collections;
 
 
 //배열 입력받고, 정렬하기 → 카운팅 정렬
-public class Practice08_210714 {
+public class Practice08_210714_countingSort {
 	public static void main(String[] args) throws IOException{
 		BufferedReader bf= new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("배열의 크기 입력: ");
@@ -42,9 +42,9 @@ public class Practice08_210714 {
 		
 		//과정 3: i번째를 idx로 하는 counting 배열 1감소후, counting 배열의 값을 인덱스로해 result에 저장
 		for (int i = arr.length-1; i >=0; i--) {
-			int value = arr[i];
-			counting[value]-=1;
-			result[counting[value]] = value;
+			int value = arr[i];//마지막 idx의 value 값이 counting의 idx
+			counting[value]=counting[value]-1;//-1
+			result[counting[value]] = value; //counting value -1 한 값을 결과 []위치에 삽입
 		}
 		
 		System.out.println("array[]");

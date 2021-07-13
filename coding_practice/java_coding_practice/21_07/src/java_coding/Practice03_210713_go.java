@@ -2,7 +2,7 @@ package java_coding;
 
 import java.util.Scanner;
 
-public class Practice03_210713 {
+public class Practice03_210713_go {
 
 	public static void main(String[] args) {
 		//¹ÙµÏÆÇ

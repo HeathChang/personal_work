@@ -3,7 +3,7 @@ package java_coding;
 import java.util.Scanner;
 
 //피보나치 수열
-public class Practice04_210713 {
+public class Practice04_210713_fibonacci {
 	
 	public static int fibonacci(int nth) {
 		if (nth==0) {return 0;}

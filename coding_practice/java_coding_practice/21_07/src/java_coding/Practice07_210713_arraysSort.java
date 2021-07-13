@@ -9,7 +9,7 @@ import java.util.Collections;
 
 
 //배열 입력받고, 정렬하기 → Arrays.sort();
-public class Practice07_210713 {
+public class Practice07_210713_arraysSort {
 	public static void main(String[] args) throws IOException{
 		BufferedReader bf= new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("배열의 크기 입력: ");

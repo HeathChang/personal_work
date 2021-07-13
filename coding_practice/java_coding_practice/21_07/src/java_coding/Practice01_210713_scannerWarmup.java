@@ -2,7 +2,7 @@ package java_coding;
 
 import java.util.Scanner;
 
-public class Practice01_210713 {
+public class Practice01_210713_scannerWarmup {
 
 	public static void main(String[] args) {
 		//scanner ¿¹Á¦ 

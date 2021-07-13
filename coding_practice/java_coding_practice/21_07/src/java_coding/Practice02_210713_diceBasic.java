@@ -2,7 +2,7 @@ package java_coding;
 
 import java.util.Scanner;
 
-public class Practice02_210713 {
+public class Practice02_210713_diceBasic {
 
 	public static void main(String[] args) {
 		//주사위 2개 던지기

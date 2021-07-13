@@ -3,7 +3,7 @@ package java_coding;
 import java.util.Scanner;
 
 //지정한 숫자만 대문자로 바꾸기
-public class Practice05_210713 {
+public class Practice06_210713_upperCase {
 	public static void main(String[] args) {
 
 		String sentence = "hello world";
