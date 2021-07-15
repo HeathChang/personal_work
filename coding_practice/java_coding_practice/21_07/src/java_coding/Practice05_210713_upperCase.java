@@ -4,22 +4,24 @@ import java.util.Scanner;
 
 //지정한 숫자만 대문자로 바꾸기
 public class Practice05_210713_upperCase {
+	int fiboData[100] = {0,};
+	public static int fibonacci(int nth) {
+		  fibodata[0] = 0;
+		  fiboData[1] = 1;
+		  for (int i=2; i<=nth; i++)
+		    fiboData[i] = fiboData[i - 1] + fiboData[i - 2];
+		  return fiboData[nth];
+		
+	}
+
 	public static void main(String[] args) {
 
-		String sentence = "hello world";
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("대문자로 변경을 원하는 글자가 몇번째 입니까?: ");
-		int num1=scanner.nextInt();		
-		char [] cha=sentence.toCharArray();
-		
-		for (int i = 0; i < cha.length; i++) {
-			if(i==num1-1) {
-				System.out.print(cha[i]-=32);
-			}else {
-				System.out.print(cha[i]);
-			}
-			
-		}
+		Scanner scan = new Scanner(System.in);
+		System.out.println("몇번째 숫자를 알고 싶으신가요? : ");
+		int nth = scan.nextInt();
+		int result = fibonacci(nth);
+		System.out.println(nth + " 번째 피보나치 수열 값은 " + result);
+
 	}
 
 }
