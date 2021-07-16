@@ -2,8 +2,8 @@ package java_coding;
 
 import java.util.*;
 
-//bfs(너비 우선 탐색)
-public class AA00_test {
+//https://programmers.co.kr/learn/courses/30/lessons/76501 
+public class Practice13_210716_absolutes {
     public int solution(int[] absolutes, boolean[] signs) {
         int answer = 0;
         int [] result = new int [absolutes.length];
@@ -27,7 +27,7 @@ public class AA00_test {
 	public static void main(String[] args) {
 		int[] a = {4,7,12 };
 		boolean [] b = {true,false,true};
-		AA00_test test = new AA00_test();
+		Practice13_210716_absolutes test = new Practice13_210716_absolutes();
 		int ans = test.solution(a,b);
 		System.out.println("답: " + ans);
 	}
