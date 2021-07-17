@@ -3,7 +3,7 @@ package java_coding;
 import java.util.*;
 
 //소수 갯수 구하기
-public class AA00_test {
+public class Practice14_210717_prime {
     	    public int solution(int[] nums) {
     	        int answer = 0;
     	        
@@ -29,8 +29,8 @@ public class AA00_test {
     	    }
     	
 	public static void main(String[] args) {
-		int[] a = {1,2,3,4,5,6,7,8};
-		AA00_test test = new AA00_test();
+		int[] a = {1,2,3,4,5,6};
+		Practice14_210717_prime test = new Practice14_210717_prime();
 		int ans = test.solution(a);
 		System.out.println("답: " + ans);
 	}
