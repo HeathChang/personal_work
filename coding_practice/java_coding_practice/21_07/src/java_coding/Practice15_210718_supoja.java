@@ -3,7 +3,7 @@ package java_coding;
 import java.util.*;
 
 //수포자 문제: https://programmers.co.kr/learn/courses/30/lessons/42840
-public class AA00_test {
+public class Practice15_210718_supoja {
 	 public int[] solution(int[] answers) {
 	        int[] answer = {};
 	        int[] person1 = {1,2,3,4,5}; //이만큼씩 반복
@@ -32,7 +32,7 @@ public class AA00_test {
 	    }
 	public static void main(String[] args) {
 		int[] a = {1,2,3,4,5};
-		AA00_test test = new AA00_test();
+		Practice15_210718_supoja test = new Practice15_210718_supoja();
 		int[] ans = test.solution(a);
 		for(int i =0; i<ans.length; i++) {
 			System.out.println(ans[i]);
