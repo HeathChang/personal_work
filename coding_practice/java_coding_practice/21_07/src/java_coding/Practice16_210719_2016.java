@@ -3,7 +3,7 @@ package java_coding;
 import java.util.*;
 
 //수포자 문제: https://programmers.co.kr/learn/courses/30/lessons/42840
-public class AA00_test {
+public class Practice16_210719_2016 {
 	public String solution(int a, int b) {
 		 String answer = "";
          
@@ -31,7 +31,7 @@ public class AA00_test {
 	public static void main(String[] args) {
 		int a = 5;
 		int b = 24;
-		AA00_test test = new AA00_test();
+		Practice16_210719_2016 test = new Practice16_210719_2016();
 		String ans = test.solution(a,b);
 		System.out.println("답안: "+ans);
 	}
