@@ -2,7 +2,7 @@ package java_coding;
 
 import java.util.*;
 
-//수포자 문제: https://programmers.co.kr/learn/courses/30/lessons/42840
+//2016 x월 x일 찾기: https://programmers.co.kr/learn/courses/30/lessons/12901 && 어려워서 못풀었음. 
 public class Practice16_210719_2016 {
 	public String solution(int a, int b) {
 		 String answer = "";
