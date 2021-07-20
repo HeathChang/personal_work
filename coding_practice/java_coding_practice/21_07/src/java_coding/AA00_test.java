@@ -10,7 +10,7 @@ public class AA00_test {
 			if (seoul[i].equals("Kim")) {
 				System.out.println(i);
 				 place = i;
-				 break;
+				 break; 
 			}//end if
 		}//end for
 		String answer = "김서방은 " + place + "에 있다";
