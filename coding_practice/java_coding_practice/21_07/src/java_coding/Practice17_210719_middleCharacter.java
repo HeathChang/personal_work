@@ -12,9 +12,7 @@ public class Practice17_210719_middleCharacter {
 			answer = strArray[strArray.length / 2];
 		} else {
 			answer = strArray[(strArray.length / 2) - 1] + strArray[(strArray.length / 2)];
-
 		}
-
 		return answer;
 	}
 

@@ -3,7 +3,7 @@ package java_coding;
 import java.util.*;
 
 //특정 문자 찾기: https://programmers.co.kr/learn/courses/30/lessons/12919 
-public class AA00_test {
+public class Practice18_210720_findingKim {
 	public String solution(String[] seoul) {
 		int place =0;
 		for (int i = 0; i < seoul.length; i++) {
@@ -20,7 +20,7 @@ public class AA00_test {
 
 	public static void main(String[] args) {
 		String[] seoul = { "Jane", "Kim" };
-		AA00_test test = new AA00_test();
+		Practice18_210720_findingKim test = new Practice18_210720_findingKim();
 		String ans = test.solution(seoul);
 		System.out.println("답안: " + ans);
 	}
