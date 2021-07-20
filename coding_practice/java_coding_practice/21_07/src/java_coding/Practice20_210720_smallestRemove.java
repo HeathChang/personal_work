@@ -3,7 +3,7 @@ package java_coding;
 import java.util.*;
 
 //가장 작은수 제거:  https://programmers.co.kr/learn/courses/30/lessons/12935 
-public class AA00_test {
+public class Practice20_210720_smallestRemove {
 	public int[] solution(int[] arr) {
 		if(arr.length <= 1) {
 			int [] answer= {-1};
@@ -27,7 +27,7 @@ public class AA00_test {
 
 	public static void main(String[] args) {
 		int [] seoul = {1,2,3,4,5};
-		AA00_test test = new AA00_test();
+		Practice20_210720_smallestRemove test = new Practice20_210720_smallestRemove();
 		int [] ans = test.solution(seoul);
 		System.out.println("답안: " + ans);
 		for (int i = 0; i < ans.length; i++) {
