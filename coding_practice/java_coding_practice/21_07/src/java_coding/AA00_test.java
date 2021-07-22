@@ -7,10 +7,18 @@ public class AA00_test {
     public int solution(String numbers) {
         int answer = 0;
         String[] arr=numbers.split("");
-        int [] arr2= new int [arr.length];
+        int [] arrInt= new int [arr.length];
+ 
+        
+       
+        
         for (int i = 0; i < arr.length; i++) {
-        	arr2[i]=Integer.parseInt(arr[i]);
+        	arrInt[i]=Integer.parseInt(arr[i]);
         }
+        
+        for (int i = 0; i < arrInt.length; i++) {
+			
+		}
         
         
         
