@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(cors());
 
-app.get('/member',(req,res)=>{
+app.get('/member',(req,res)=>{ 
     //client>App.js>const member내에 있는 데이터 가져오기(4000번 포트에서 작동하며 app.get("/member")부분이 해당 URL로 들어오는 요청에 대한 처리를 담당
     //해당 데이터를 json 형식으로 반환
       db.query('select * from member', (error, result, fields)=> { // 쿼리문을 이용해 데이터를 가져온다.
