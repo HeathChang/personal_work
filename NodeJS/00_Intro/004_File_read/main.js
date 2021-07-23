@@ -1,3 +1,4 @@
+//queryString에 따라 다른 내용 보여주기
 var http = require('http');
 var fs = require('fs');
 var url = require('url');
