@@ -1,18 +1,41 @@
-//queryString에 따라 다르게 동작하는  Node.js 
 var http = require('http');
 var fs = require('fs');
 var url = require('url');
 
 var app = http.createServer(function(request,response){
     var _url = request.url;
-    console.log(_url);
-    var queryData = url.parse(_url , true).query;
-    //parse: 웹브라우저를 통해 요청한 URL을 나타내는 변수에서 쿼리스트링 문자열만 추출
-
+    var queryData = url.parse(_url, true).query;
+    var title = queryData.id;
+    if(_url == '/'){
+      title = 'Welcome';
+    }
+    if(_url == '/favicon.ico'){
+      return response.writeHead(404);
+    }
     response.writeHead(200);
-    response.end(fs.readFile('sample.txt',{encoding: 'utf-8'},function(err,data){
-      console.log(data);
-    })); 
-    //↑ 위의 명령을 통해 웹서버가 웹 브라우저의 요청에 응답
-  });
-  app.listen(3000); 
+    fs.readFile(`data/${queryData.id}`, 'utf8', function(err, description){
+      //첫번째 인자의 파일을 읽고, 해당 내용을 description 변수에 저장한다.
+      var template = `
+      <!doctype html>
+      <html>
+      <head>
+        <title>WEB1 - ${title}</title>
+        <meta charset="utf-8">
+      </head>
+      <body>
+        <h1><a href="/">WEB</a></h1>
+        <ul>
+          <li><a href="/?id=HTML">HTML</a></li>
+          <li><a href="/?id=CSS">CSS</a></li>
+          <li><a href="/?id=JavaScript">JavaScript</a></li>
+        </ul>
+        <h2>${title}</h2>
+        <p>${description}</p>
+        //사용자가 요청한 쿼리 스트링에 따라 읽어온 파일 내용을 본문으로 표시한다.
+      </body>
+      </html>
+      `;
+      response.end(template);
+    }) 
+});
+app.listen(3000);
