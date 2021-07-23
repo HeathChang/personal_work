@@ -14,6 +14,7 @@ var app = http.createServer(function(request,response){
       return response.writeHead(404);
     }
     response.writeHead(200);
+    //response 객체의 메소드에서 헤더 정보를 응답에 작성해서 내보내는 것
     fs.readFile(`data/${queryData.id}`, 'utf8', function(err, description){
       //첫번째 인자의 파일을 읽고, 해당 내용을 description 변수에 저장한다.
       var template = `
