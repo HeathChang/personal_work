@@ -1,3 +1,4 @@
+//글목록 출력
 var testFolder = './data';
 var fs = require('fs');
 
