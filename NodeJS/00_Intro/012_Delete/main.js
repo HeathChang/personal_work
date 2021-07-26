@@ -71,7 +71,7 @@ var app = http.createServer(function (request, response) {
               <a href='/update?id=${title}'>update</a>
               <form action= "delete_process" method = "post" onsubmit= "return confirm('ARE YOU SURE?')">
                 <input type ="hidden" name="id" value="${title}">
-                <!-- placeholder 사용 시, value의 값이 지정되어 있지 않음을 명시--!>
+                <!-- 주의: placeholder 사용 시, value의 값이 지정되어 있지 않음--!>
                 <input type ="submit" value= "delete">
               </form>
               `
