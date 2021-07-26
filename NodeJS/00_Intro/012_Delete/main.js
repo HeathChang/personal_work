@@ -70,7 +70,8 @@ var app = http.createServer(function (request, response) {
               `<a href='/create'>create</a>
               <a href='/update?id=${title}'>update</a>
               <form action= "delete_process" method = "post" onsubmit= "return confirm('ARE YOU SURE?')">
-                <input type ="hidden" name="id" placeholder="${title}">
+                <input type ="hidden" name="id" value="${title}">
+                <!-- placeholder 사용 시, value의 값이 지정되어 있지 않음을 명시--!>
                 <input type ="submit" value= "delete">
               </form>
               `
@@ -177,11 +178,9 @@ var app = http.createServer(function (request, response) {
     var body = '';
     request.on('data', function (data) {
       body += data;
-      console.log(body);
     });
     request.on('end', function () {
       var post = qs.parse(body);
-      console.log(post);
       var id = post.id;
       //unlink → 삭제: 1번째: 삭제 파일 && 2번째: 삭제 완료 후 처리할 내용 콜백  
       fs.unlink(`data/${id}`, function () {
@@ -189,7 +188,6 @@ var app = http.createServer(function (request, response) {
         response.end();
       })
     });
-
   } else {
     //4. 루트가 아닐 때의 처리 (404)
     console.log(url.parse(_url, true));
