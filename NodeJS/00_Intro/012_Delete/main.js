@@ -69,6 +69,10 @@ var app = http.createServer(function (request, response) {
               `<h2>${title}</h2><p>${description}</p>`,
               `<a href='/create'>create</a>
               <a href='/update?id=${title}'>update</a>
+              <form action= "delete_process" method = "post" onsubmit= "return confirm('ARE YOU SURE?')">
+                <input type ="hidden" name="id" placeholder="${title}">
+                <input type ="submit" value= "delete">
+              </form>
               `
             );
             response.writeHead(200);
@@ -167,8 +171,25 @@ var app = http.createServer(function (request, response) {
           response.end();
         })
       })
-
     });
+    //>>>>>삭제
+  } else if (pathname == '/delete_process') {
+    var body = '';
+    request.on('data', function (data) {
+      body += data;
+      console.log(body);
+    });
+    request.on('end', function () {
+      var post = qs.parse(body);
+      console.log(post);
+      var id = post.id;
+      //unlink → 삭제: 1번째: 삭제 파일 && 2번째: 삭제 완료 후 처리할 내용 콜백  
+      fs.unlink(`data/${id}`, function () {
+        response.writeHead(302, { Location: '/' });
+        response.end();
+      })
+    });
+
   } else {
     //4. 루트가 아닐 때의 처리 (404)
     console.log(url.parse(_url, true));
