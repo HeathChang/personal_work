@@ -18,8 +18,7 @@ var app = http.createServer(function (request, response) {
     if (queryData.id == undefined) {
       db.query('SELECT * FROM topic', function (error, topics) {
         var title = "Welcome";
-        var description =
-          "This is Main Page. Click list to move to other pages";
+        var description = 'Hello, Node.js';
         var list = template.list(topics);
         var html = template.HTML(
           title,
@@ -45,9 +44,9 @@ var app = http.createServer(function (request, response) {
           list,
           `<h2>${title}</h2><p>${description}</p>`,
           `<a href='/create'>create</a>
-          <a href='/update?id=${title}'>update</a>
+          <a href='/update?id=${queryData.id}'>update</a>
           <form action= "delete_process" method = "post" onsubmit= "return confirm('ARE YOU SURE?')">
-            <input type ="hidden" name="id" value="${title}">
+            <input type ="hidden" name="id" value="${queryData.id}">
             <input type ="submit" value= "delete">
           </form>
           `
@@ -59,9 +58,8 @@ var app = http.createServer(function (request, response) {
     /////생성 >>>> 새로운 내용
   } else if (pathname == '/create') {
     db.query('SELECT * FROM topic', function (error, topics) {
-      var title = "Welcome";
-      var description =
-        "This is Main Page. Click list to move to other pages";
+      var title = "CREATE PAGE";
+
       var list = template.list(topics);
       var html = template.HTML(title, list, `
       <form action = "http://localhost:3000/create_process" method= "post">
@@ -73,7 +71,7 @@ var app = http.createServer(function (request, response) {
           <input type ="submit">
         </p>
       </form>
-    `, '');
+    `, `<a href="/create">create</a>`);
       response.writeHead(200);
       response.end(html);
     });
@@ -95,34 +93,32 @@ var app = http.createServer(function (request, response) {
 
     //>>>>>수정  
   } else if (pathname == '/update') {
-    fs.readdir("./data", function (err, fileList) {
-      var filteredId = path.parse(queryData.id).base;
-      fs.readFile(
-        `data/${filteredId}`,
-        "utf8",
-        function (err, description) {
-          var title = queryData.id;
-          var list = template.list(fileList);
-          var html = template.HTML(
-            title,
-            list,
-            `<form action = "/update_process" method= "post">
-              <input type = "hidden" name = "id" value = "${title}">
-              <p> <input type ="text" name="title" placeholder="title" value="${title}"></p>
-              <p>
-                <textarea name ="description" placeholder="description">${description}</textarea>
-              </p>
-              <p>
-                <input type ="submit">
-              </p>
-            </form>`,
-            `<a href='/create'>create</a> <a href='/update?id=${title}'>update</a>`
-          );
-          response.writeHead(200);
-          response.end(html);
-        }
+    console.log(">>>>>>>>>", queryData);
+    db.query(`SELECT * FROM topic WHERE id = ?`, [queryData.id], function (error, topic) {
+      if (error) {
+        throw error;
+      }
+      console.log(">>>>>>>", topic);
+      var list = template.list(topic);
+      var html = template.HTML(
+        topic[0].title,
+        list,
+        `<form action = "/update_process" method= "post">
+        <input type = "hidden" name = "id" value = "${topic[0].id}">
+        <p> <input type ="text" name="title" placeholder="title" value="${topic[0].title}"></p>
+        <p>
+          <textarea name ="description" placeholder="description">${topic[0].description}</textarea>
+        </p>
+        <p>
+          <input type ="submit">
+        </p>
+      </form>`,
+        `<a href='/create'>create</a> <a href='/update?id=${topic[0].id}'>update</a>`
       );
+      response.writeHead(200);
+      response.end(html);
     });
+
   } else if (pathname == '/update_process') {
     var body = '';
     request.on('data', function (data) {
@@ -130,16 +126,13 @@ var app = http.createServer(function (request, response) {
     });
     request.on('end', function () {
       var post = qs.parse(body);
-      var id = post.id;
-      var title = post.title;
-      var description = post.description;
-      //rename: 1번째: 기존파일명 & 2번째: 수정파일명 & 3번째 에러발생시, 콜백
-      fs.rename(`data/${id}`, `data/${title}`, function (err) {
-        fs.writeFile(`data/${title}`, description, 'utf8', function (err) {
-          response.writeHead(302, { Location: `/?id=${title}` });
-          response.end();
-        })
-      })
+      db.query('UPDATE topic SET title=?,description=?,author_id=1 WHERE id= ?', [post.title, post.description, post.id], function (error, result) {
+        if (error) {
+          throw error;
+        }
+        response.writeHead(302, { Location: `/?id=${post.id}` });
+        response.end();
+      });
     });
     //>>>>>삭제
   } else if (pathname == '/delete_process') {
@@ -150,7 +143,6 @@ var app = http.createServer(function (request, response) {
     request.on('end', function () {
       var post = qs.parse(body);
       var id = post.id;
-      //unlink → 삭제: 1번째: 삭제 파일 && 2번째: 삭제 완료 후 처리할 내용 콜백 
       var filteredId = path.parse(id).base;
       fs.unlink(`data/${filteredId}`, function () {
         response.writeHead(302, { Location: '/' });
