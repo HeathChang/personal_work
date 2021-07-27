@@ -58,45 +58,39 @@ var app = http.createServer(function (request, response) {
     }
     /////생성 >>>> 새로운 내용
   } else if (pathname == '/create') {
-    fs.readdir("./data", function (err, fileList) {
-      var title = 'WEB_CREATE';
-      var list = template.list(fileList);
+    db.query('SELECT * FROM topic', function (error, topics) {
+      var title = "Welcome";
+      var description =
+        "This is Main Page. Click list to move to other pages";
+      var list = template.list(topics);
       var html = template.HTML(title, list, `
-        <form action = "http://localhost:3000/create_process" method= "post">
-          <p> <input type ="text" name="title" placeholder="title"></p>
-          <p>
-            <textarea name ="description" placeholder="description"></textarea>
-          </p>
-          <p>
-            <input type ="submit">
-          </p>
-        </form>
-      `, '');
+      <form action = "http://localhost:3000/create_process" method= "post">
+        <p> <input type ="text" name="title" placeholder="title"></p>
+        <p>
+          <textarea name ="description" placeholder="description"></textarea>
+        </p>
+        <p>
+          <input type ="submit">
+        </p>
+      </form>
+    `, '');
       response.writeHead(200);
       response.end(html);
     });
   } else if (pathname == '/create_process') {
     var body = '';
-    //data 이벤트에서 데이터를 수신할 때마다 발생, 콜백에 데이터 처리 기능 정의
-    //조각조각 나눠서 데이터를 수신할 때마다 호출되는 콜백함수 (BUFFER)
     request.on('data', function (data) {
       body += data;
-      //콜백으로 전달받은 인자 data에 담긴 내용을 변수 body에 누적하여 합침
     });
-    //end 이벤트는 데이터 수신 완료시 발생하므로, 콜백에 데이터 처리를 마무리
-    //조각 조각 정보가 들어오다가, 더이상 정보가 없으면, end 뒤에있는 콜백 함수를 호출
     request.on('end', function () {
       var post = qs.parse(body);
-      //qs 모듈의 parse기능을 이용해  body에 누적 내용을 post에 담기
-      var title = post.title;
-      var description = post.description;
-      console.log("title: ", title, "\n", "des: ", description);
-
-      //fs.writeFile('파일이름','데이터',callback)
-      fs.writeFile(`data/${title}`, description, 'utf8', function (err) {
-        response.writeHead(302, { Location: `/?id=${title}` });
+      db.query('INSERT INTO topic (title,description,created,author_id) VALUES (?,?, NOW(),?)', [post.title, post.description, 1], function (error, result) {
+        if (error) {
+          throw error;
+        }
+        response.writeHead(302, { Location: `/?id=${result.insertId}` });
         response.end();
-      })
+      });
     });
 
     //>>>>>수정  
