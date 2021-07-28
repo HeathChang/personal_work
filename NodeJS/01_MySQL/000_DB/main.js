@@ -1,4 +1,4 @@
-//글 생성 구현 
+//저자 생성 기능 (create)
 var http = require("http");
 var qs = require('querystring');
 var url = require("url");
@@ -34,7 +34,7 @@ var app = http.createServer(function (request, response) {
   } else if (pathname == '/author') {
     author.home(request, response);
   } else if (pathname == '/author/create_process') {
-
+    author.create_process(request, response);
   } else if (pathname == '/author/update') {
 
   } else if (pathname == '/author/update_process') {
