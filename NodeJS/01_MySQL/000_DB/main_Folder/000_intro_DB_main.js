@@ -3,9 +3,9 @@ var http = require("http");
 var qs = require('querystring');
 var fs = require("fs");
 var url = require("url");
-var template = require('./lib/template');
+var template = require('../lib/template');
 //DB 설정
-var db = require('./database/database');
+var db = require('../database/database');
 
 
 var app = http.createServer(function (request, response) {
