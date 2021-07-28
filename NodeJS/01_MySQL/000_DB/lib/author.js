@@ -57,8 +57,49 @@ exports.create_process = function (request, response) {
     })
   })
 }
-exports.update = function (request, response) {
 
+
+exports.update = function (request, response) {
+  var _url = request.url;
+  var queryData = url.parse(_url, true).query;
+  db.query(`SELECT * FROM topic`, function (error, topics) {
+    if (error) {
+      throw error;
+    }
+    db.query('SELECT * FROM author WHERE id =?', [queryData.id], function (error2, author) {
+      var title = 'author';
+      var list = template.list(topics);
+      var html = template.HTML(
+        title,
+        list,
+        `
+        ${template.authorTable(author)}
+        <style>
+            table {
+                border-collapse: collapse;
+            }
+            td {
+                border: 1px solid black;
+            }
+        </style>
+        
+        <form action = "/update_process" method= "post">
+        <p><input type = "hidden" name = "id" value = "${queryData.id}"></p>
+        <p> <input type ="text" name="title" placeholder="title" value="${author[0].name}"></p>
+        <p>
+          <textarea name ="description" placeholder="description">${author[0].profile}</textarea>
+        </p>
+
+        <p>
+          <input type ="submit" value = "update">
+        </p>
+      </form>`,
+        ''
+      );
+      response.writeHead(200);
+      response.end(html);
+    });
+  });
 }
 exports.update_process = function (request, response) {
 
