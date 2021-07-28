@@ -5,6 +5,7 @@ var url = require("url");
 //export
 var template = require('./lib/template');
 var topic = require('./lib/topic');
+var author = require('./lib/author');
 //DB 설정
 var db = require('./database/database');
 
@@ -30,6 +31,16 @@ var app = http.createServer(function (request, response) {
     topic.update_process(request, response);
   } else if (pathname == '/delete_process') {
     topic.delete(request, response);
+  } else if (pathname == '/author') {
+    author.home(request, response);
+  } else if (pathname == '/author/create_process') {
+
+  } else if (pathname == '/author/update') {
+
+  } else if (pathname == '/author/update_process') {
+
+  } else if (pathname == '/author/delete_process') {
+
   } else {
     console.log(url.parse(_url, true));
     response.writeHead(404);
