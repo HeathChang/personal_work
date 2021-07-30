@@ -41,7 +41,7 @@ app.get('/page/:pageId', function (request, response) {
         `<h2>${sanitizedTitle}</h2><p>${sanitizedDescription}</p>`,
         `<a href='/create'>create</a>
         <a href='/update/${sanitizedTitle}'>update</a>
-        <form action= "delete_process" method = "post" onsubmit= "return confirm('ARE YOU SURE?')">
+        <form action= "/delete_process" method = "post" onsubmit= "return confirm('ARE YOU SURE?')">
           <input type ="hidden" name="id" value="${sanitizedTitle}">
           <input type ="submit" value= "delete">
         </form>
@@ -128,9 +128,23 @@ app.post('/update_process', (request, response) => {
     var description = post.description;
     fs.rename(`data/${id}`, description, function (err1) {
       fs.writeFile(`data/${title}`, description, 'utf8', function (err2) {
-        response.writeHead(302, { Location: `/page/${title}` });
+        response.redirect(`/page/${title}`);
         response.end();
       })
+    })
+  })
+})
+app.post('/delete_process', (request, response) => {
+  var body = '';
+  request.on('data', function (data) {
+    body += data;
+  });
+  request.on('end', function () {
+    var post = qs.parse(body);
+    var id = post.id;
+    var filteredId = path.parse(id).base;
+    fs.unlink(`data/${filteredId}`, function () {
+      response.redirect('/');
     })
   })
 })
