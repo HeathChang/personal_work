@@ -9,11 +9,15 @@ var path = require('path');
 var sanitizeHtml = require('sanitize-html');
 const { response } = require('express');
 var bodyParser = require('body-parser');
+var compression = require('compression');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 //해당 미들웨어가 실행되고 결과를 리턴. (→main.js 실행마다 미들웨어 실행 )
 //사용자가 post 방식으로 전송한 데이터를  _process에서의 동작을 통해 결과를 전달 
-
+app.use(compression());
+//웹 브라우저에 응답할 때 해당 데이터를 압축해서 보내는 기술
+//용량 측면에서 줄어들음. 
+//gzip을 통해서 압축
 app.get('/', function (request, response) {
   fs.readdir("./data", function (err, fileList) {
     var title = "Welcome";
