@@ -93,7 +93,7 @@ app.get('/update/:pageId', (request, response) => {
   var filteredId = path.parse(request.params.pageId).base;
   fs.readFile(`data/${filteredId}`, 'utf8', function (err, description) {
     var title = request.params.pageId;
-    var list = template.list(filelist);
+    var list = template.list(request.list);
     var html = template.HTML(title, list,
       `
             <form action="/update_process" method="post">
