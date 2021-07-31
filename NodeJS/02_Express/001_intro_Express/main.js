@@ -1,3 +1,4 @@
+//p461 에러 처리하는 방법
 const express = require('express');
 const app = express(); //반환하는 값: Express App에서 제공하는 Application 객체 (get,listen 포함)
 var qs = require('querystring');
@@ -35,28 +36,32 @@ app.get('/', function (request, response) {
   response.send(html);
 });
 
-app.get('/page/:pageId', function (request, response) {
+app.get('/page/:pageId', function (request, response, next) {
   var filteredId = path.parse(request.params.pageId).base;
   fs.readFile(`data/${filteredId}`, 'utf8', function (err, description) {
-    var title = request.params.pageId;
-    var sanitizedTitle = sanitizeHtml(title);
-    var sanitizedDescription = sanitizeHtml(description, {
-      allowedTags: ['h1']
-    });
-    var list = template.list(request.list);
-    var html = template.HTML(
-      sanitizedTitle,
-      list,
-      `<h2>${sanitizedTitle}</h2><p>${sanitizedDescription}</p>`,
-      `<a href='/create'>create</a>
+    if (err) {
+      next(err); //에러 전달
+    } else {
+      var title = request.params.pageId;
+      var sanitizedTitle = sanitizeHtml(title);
+      var sanitizedDescription = sanitizeHtml(description, {
+        allowedTags: ['h1']
+      });
+      var list = template.list(request.list);
+      var html = template.HTML(
+        sanitizedTitle,
+        list,
+        `<h2>${sanitizedTitle}</h2><p>${sanitizedDescription}</p>`,
+        `<a href='/create'>create</a>
         <a href='/update/${sanitizedTitle}'>update</a>
         <form action= "/delete_process" method = "post" onsubmit= "return confirm('ARE YOU SURE?')">
           <input type ="hidden" name="id" value="${sanitizedTitle}">
           <input type ="submit" value= "delete">
         </form>
         `
-    );
-    response.send(html);
+      );
+      response.send(html);
+    }
   });
 });
 
@@ -134,6 +139,15 @@ app.post('/delete_process', (request, response) => {
     response.redirect('/');
   })
 })
+
+app.use(function (req, res, next) {
+  res.status(404).send("Sorry 404 Error.")
+})
+app.use(function (err, req, res, next) {
+  console.log(err.stack);
+  res.status(500).send("Something Break")
+})
+
 
 app.listen(3000, function () {
   console.log("Example app listening");
