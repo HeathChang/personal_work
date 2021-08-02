@@ -2,21 +2,22 @@ var http = require('http');
 var cookie = require('cookie');
 
 http.createServer(function (request, response) {
-  response.writeHead(200, {
-    'set-Cookie': [
-      'yummy_cookie=choco',
-      'tasty_cookie=strawberry',
-      //한달동안 유효
-      `Permanent = cookies; Max-Age = ${60 * 60 * 24 * 30}`,
-      'Secure = Secure; Secure',
-      //웹 브라우저와 웹 서버가 HTTP 프로토콜로 통신하는 경우, 쿠키를 전송하지만, JS는 쿠키값을 가져올 수 없음
-      'HttpOnly = HttpOnly; HttpOnly'
-    ]
-  });
+  console.log(request.headers.cookie);
   var cookies = {};
-  if (request.headers.cookie != undefined) {
+  if (request.headers.cookie !== undefined) {
     cookies = cookie.parse(request.headers.cookie);
   }
-  console.log("쿠키정보:", cookies);
-  response.end("Hello World");
+  console.log(cookies.yummy_cookie);
+  // response.writeHead(200, {
+  //   'Set-Cookie': [
+  //     'yummy_cookie=choco',
+  //     'tasty_cookie=strawberry',
+  //     `Permanent=cookies; Max-Age=${60 * 60 * 24 * 30}`, //한달쿠키
+  //     'Secure=Secure; Secure',
+  //     'HttpOnly=HttpOnly; HttpOnly',
+  //     'Path=Path; Path=/cookie', //특정 경로에서만 보임
+  //     'Domain=Domain; Domain=o2.org' //서브도메인에서도 생성되는 쿠키를 만듬
+  //   ]
+  // });
+  response.end('Cookie!!');
 }).listen(3000);
