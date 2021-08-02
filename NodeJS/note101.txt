@@ -27,4 +27,9 @@
   미들웨어 종류(5가지): application-lvl && Router-lvl && Error-handling && Built-in && Third-Party
 14.
   request.Params 관련 내용: https://medium.com/@bouncewind0105/request-param-query-body-%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%A0%90-2e7e4fddd8b9
+15.
+  HTTPS : 웹서어와 웹 브라우저가 통신할 때 서로 암호화 해 중간에 누가 가로채더라도, 데이터를 알수 없고,
+          웹사이트의 도메인을 변조하는 피싱을 하더라도 인증서를 통해 알아채릴 수 있음. 
+16. HTTP Cookie :
+  서버가 사용자의 웹 브라우저에 전송하는 작은 데이터 조각으로, 브라우저는 이를 저장했다가, 동일한 서버가 재 요청 시 저장된 데이터와 함께 전송.
   
