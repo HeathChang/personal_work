@@ -56,8 +56,8 @@ router.get('/update/:pageId', (request, response) => {
                     <input type="submit">
                 </p>
             </form>
-            `,
-      `<a href="/topic/create">create</a> <a href="/topic/update/${title}">update</a>`
+      `,
+      `<a href="/topic/create">create</a>`
     );
     response.send(html);
   });
@@ -79,7 +79,7 @@ router.post('/update_process', (request, response) => {
 router.get('/login', (request, response) => {
   fs.readdir('./data', function (error, filelist) {
     var title = 'Login';
-    var list = template.list(filelist);
+    var list = template.list(request.list);
     var html = template.HTML(title, list,
       `
             <form action="login_process" method="post">
@@ -92,6 +92,7 @@ router.get('/login', (request, response) => {
       `,
       `<a href="/topic/create">create</a>`
     );
+    response.end(html);
   })
 })
 
