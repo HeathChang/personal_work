@@ -76,8 +76,24 @@ router.post('/update_process', (request, response) => {
   })
 })
 
-
-
+router.get('/login', (request, response) => {
+  fs.readdir('./data', function (error, filelist) {
+    var title = 'Login';
+    var list = template.list(filelist);
+    var html = template.HTML(title, list,
+      `
+            <form action="login_process" method="post">
+                <p><input type="text" name="email" placeholder="email"></p>
+                <p><input type="password" name="password" placeholder="password"></p>
+                <p>
+                    <input type="submit">
+                </p>
+            </form>
+      `,
+      `<a href="/topic/create">create</a>`
+    );
+  })
+})
 
 router.post('/delete_process', (request, response) => {
   var post = request.body;
@@ -87,6 +103,7 @@ router.post('/delete_process', (request, response) => {
     response.redirect('/');
   })
 })
+
 
 
 router.get('/:pageId', function (request, response, next) {
@@ -117,5 +134,7 @@ router.get('/:pageId', function (request, response, next) {
     }
   });
 });
+
+
 
 module.exports = router;

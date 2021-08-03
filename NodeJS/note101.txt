@@ -24,7 +24,7 @@
 12. 
   compression: 웹 브라우저에 응답할 때 해당 데이터를 압축해서 보내는 기술 (gzip 형태)
 13. 
-  미들웨어 종류(5가지): application-lvl && Router-lvl && Error-handling && Built-in && Third-Party
+  미들웨어 종류(5가지): application-lvl(app) && Router-lvl && Error-handling && Built-in && Third-Party (compression, body-parser)
 14.
   request.Params 관련 내용: https://medium.com/@bouncewind0105/request-param-query-body-%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%A0%90-2e7e4fddd8b9
 15.
