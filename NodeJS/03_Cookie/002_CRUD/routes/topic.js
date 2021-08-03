@@ -96,6 +96,25 @@ router.get('/login', (request, response) => {
   })
 })
 
+router.post('/login_process', (request, response) => {
+  var post = request.body;
+  var email = post.email;
+  var pw = post.pw;
+  if (email == 'egoing@gmail.com' && pw == '1111') {
+    response.writeHead(200, {
+      'Set-Cookie': [
+        `email=${email}`,
+        `password=${pw}`,
+        `nickname=egoing`
+      ],
+      Location: `/`
+    });
+    response.end();
+  } else {
+    response.end(email, pw, 'WHO?');
+  }
+})
+
 router.post('/delete_process', (request, response) => {
   var post = request.body;
   var id = post.id;
