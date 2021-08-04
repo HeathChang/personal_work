@@ -98,20 +98,21 @@ router.get('/login', (request, response) => {
 
 router.post('/login_process', (request, response) => {
   var post = request.body;
+  console.log(post.email, post.password);
   var email = post.email;
-  var pw = post.pw;
-  if (email == 'egoing@gmail.com' && pw == '1111') {
+  var password = post.password;
+  if (email === 'egoing@gmail.com' && password === '1111') {
     response.writeHead(200, {
       'Set-Cookie': [
         `email=${email}`,
-        `password=${pw}`,
+        `password=${password}`,
         `nickname=egoing`
       ],
       Location: `/`
     });
     response.end();
   } else {
-    response.end(email, pw, 'WHO?');
+    response.end('WHO?');
   }
 })
 
