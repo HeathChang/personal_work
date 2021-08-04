@@ -102,8 +102,8 @@ router.post('/login_process', (request, response) => {
   var email = post.email;
   var password = post.password;
   if (email === 'egoing@gmail.com' && password === '1111') {
-    response.writeHead(200, {
-      'Set-Cookie': [
+    response.writeHead(302, {
+      'Set-cookie': [
         `email=${email}`,
         `password=${password}`,
         `nickname=egoing`
