@@ -8,7 +8,6 @@ var template = {
         <meta charset="utf-8">
       </head>
       <body>
-        <a href="http://localhost:3000/topic/login">login</a>
         <h1><a href="/">WEB</a></h1>
         ${list}
         ${control}
@@ -20,7 +19,7 @@ var template = {
   list: function (fileList) {
     var list = "<ul>";
     for (var i = 0; i < fileList.length; i++) {
-      list += `<li><a href="/topic/${fileList[i]}">${fileList[i]}</a></li>`;
+      list += `<li><a href="/?id=${fileList[i]}">${fileList[i]}</a></li>`;
     }
     list += "</ul>";
     return list;

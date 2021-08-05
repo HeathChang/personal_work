@@ -1,6 +1,0 @@
-1. 
-  Router.use() requires a middleware function but got a Object  → 아래쪽 module.exports = router 추가 
-2.
-  찾을 수 없는 파일: 파일 경로 에러 
-3.
-  path is not defined = main.js 에서 사용중인 module 임포트
