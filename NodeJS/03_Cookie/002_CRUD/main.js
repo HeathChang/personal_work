@@ -10,12 +10,13 @@ const { response } = require('express');
 var bodyParser = require('body-parser');
 var compression = require('compression');
 var qs = require('querystring');
-
+var cookie = require('cookie');
 //라우터 정의
 var topicRouter = require('./routes/topic');
 var indexRouter = require('./routes/index');
 //외부 템플릿
 var template = require('./lib/template');
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 //원하는 요청이 왔을 경우에만 실행되는 미들웨어 (use  → get으로 변경) 
@@ -29,6 +30,21 @@ app.use(compression());
 
 app.use('/', indexRouter)
 app.use('/topic', topicRouter);
+app.use(function (request, response) {
+  var isOwner = false;
+  var cookies = {};
+  console.log("hi: ");
+  console.log("hi: ", request.headers.cookie);
+  if (request.headers.cookie) {
+    cookies = cookie.parse(request.headers.cookie);
+    console.log("cookie: ", cookies);
+  }
+  if (cookies.email === 'egoing@gmail.com' && cookies.password === '1111') {
+    isOwner = true;
+    console.log("Wellllll");
+  }
+  console.log(isOwner);
+})
 
 app.use(function (req, res, next) {
   res.status(404).send("Sorry 404 Error.")
