@@ -1,30 +1,30 @@
-var template = {
-  HTML: function (title, list, body, control) {
+module.exports = {
+  HTML: function (title, list, body, control, authStatusUI = '<a href="/login">login</a>') {
     return `
-    <!doctype html>
-    <html>
-      <head>
-        <title>WEB1 - ${title} </title>
-        <meta charset="utf-8">
-      </head>
-      <body>
-        <a href ="/login">Login</a> 
-        <h1><a href="/">WEB</a></h1>
-        ${list}
-        ${control}
-        ${body}
-      </body>
-    </html>
-    `;
+      <!doctype html>
+      <html>
+          <head>
+              <title>WEB1 - ${title}</title>
+              <meta charset="utf-8">
+          </head>
+          <body>
+              ${authStatusUI}
+              <h1><a href="/">WEB</a></h1>
+              ${list}
+              ${control}
+              ${body}
+          </body>
+      </html>
+      `;
   },
-  list: function (fileList) {
-    var list = "<ul>";
-    for (var i = 0; i < fileList.length; i++) {
-      list += `<li><a href="/?id=${fileList[i]}">${fileList[i]}</a></li>`;
+  list: function (filelist) {
+    var list = '<ul>';
+    var i = 0;
+    while (i < filelist.length) {
+      list = list + `<li><a href="/?id=${filelist[i]}">${filelist[i]}</a></li>`;
+      i = i + 1;
     }
-    list += "</ul>";
+    list = list + '</ul>';
     return list;
   }
 }
-
-module.exports = template;
