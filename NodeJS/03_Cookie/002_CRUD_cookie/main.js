@@ -5,11 +5,22 @@ var qs = require('querystring');
 var template = require('./lib/template.js');
 var path = require('path');
 var sanitizeHtml = require('sanitize-html');
-
+var cookie = require('cookie');
 var app = http.createServer(function (request, response) {
   var _url = request.url;
   var queryData = url.parse(_url, true).query;
   var pathname = url.parse(_url, true).pathname;
+  var isOwner = false;
+  var cookies = {};
+  console.log("11: ", request.headers.cookie);
+  if (request.headers.cookie) {
+    cookies = cookie.parse(request.headers.cookie);
+    //parse 매서드를 사용해 객체화된 결과를 cookies에 담기. 
+  }
+  if (cookies.email === 'egoing777@gmail.com' && cookies.password === '111111') {
+    isOwner = true;
+  }
+  console.log("결과값: ", isOwner);
 
   if (pathname === '/') {
     if (queryData.id === undefined) {
