@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express-session": "^1.17.2",
     "sanitize-html": "^2.4.0"
   }
 }
