@@ -23,6 +23,15 @@ var authData = {
 
 var passport = require('passport')
     , LocalStrategy = require('passport-local').Strategy;
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser(function (user, done) {
+
+})
+passport.deserializeUser(function (id, done) {
+
+})
 
 passport.use(new LocalStrategy(
     {
