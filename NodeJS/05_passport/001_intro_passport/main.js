@@ -3,23 +3,45 @@ var app = express();
 var fs = require('fs');
 var sanitizeHtml = require('sanitize-html');
 var bodyParser = require('body-parser');
-var compression = require('compression');
-var helmet = require('helmet');
-app.use(helmet());
 var session = require('express-session');
 var FileStore = require('session-file-store')(session);
 
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(compression());
 app.use(express.static('public'));
 app.use(session({
     secret: 'asadlfkj!@#!@#dfgasdg',
     resave: false,
     saveUninitialized: true,
-    store:new FileStore()
+    store: new FileStore()
 }));
-app.get('*', function(request, response, next) {
-    fs.readdir('./data', function(error, filelist) {
+
+var passport = require('passport')
+    , LocalStrategy = require('passport-local').Strategy;
+
+passport.use(new LocalStrategy(
+    function (username, password, done) {
+        /*
+        User.findOne({ username: username }, function (err, user) {
+            if (err) { return done(err); }
+            if (!user) {
+                return done(null, false, { message: 'Incorrect username.' });
+            }
+            if (!user.validPassword(password)) {
+                return done(null, false, { message: 'Incorrect password.' });
+            }
+            return done(null, user);
+        });
+        */
+    }
+));
+
+app.post('/auth/login_process', passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/auth/login'
+}));
+
+app.get('*', function (request, response, next) {
+    fs.readdir('./data', function (error, filelist) {
         request.list = filelist;
         next();
     });
@@ -33,7 +55,7 @@ app.use('/', indexRouter);
 app.use('/topic', topicRouter);
 app.use('/auth', authRouter);
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     res.status(404).send('Sorry cant find that!');
 });
 
@@ -42,6 +64,6 @@ app.use(function (err, req, res, next) {
     res.status(500).send('Something broke!')
 });
 
-app.listen(3000, function() {
+app.listen(3000, function () {
     console.log('Example app listening on port 3000!')
 });
