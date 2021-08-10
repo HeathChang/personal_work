@@ -15,23 +15,52 @@ app.use(session({
     store: new FileStore()
 }));
 
+var authData = {
+    email: 'egoing777@gmail.com',
+    password: '111111',
+    nickname: 'egoing'
+};
+
 var passport = require('passport')
     , LocalStrategy = require('passport-local').Strategy;
 
 passport.use(new LocalStrategy(
+    {
+        usernameField: 'email',
+        passwordField: 'pwd'
+    },
     function (username, password, done) {
-        /*
-        User.findOne({ username: username }, function (err, user) {
-            if (err) { return done(err); }
-            if (!user) {
-                return done(null, false, { message: 'Incorrect username.' });
+        console.log('LocalStrategy', username, password);
+        if (username === authData.email) {
+            console.log("Correct Username");
+            if (password === authData.password) {
+                console.log("Correct Password");
+                return done(null, authData, {
+                    message: "Welcome. "
+                })
+            } else {
+                console.log("Incorrect Password. ");
+                return done(null, false, { message: 'Incorrect  Password. ' })
             }
-            if (!user.validPassword(password)) {
-                return done(null, false, { message: 'Incorrect password.' });
-            }
-            return done(null, user);
-        });
-        */
+        } else {
+            console.log("Incorrect email. ");
+            return done(null, false, { message: 'Incorrect email. ' })
+        }
+        // //p624
+        // //1. username 값이 저장소에 있는지 확인하는 코드
+        // User.findOne({ username: username }, function (err, user) {
+        //     //2. 인증을 검증하는 과정에서 오류가 발생하면 다음 함수의 세 번째 파라미터인 done을 호출하면서 첫 번째 인자로 에러(err)를 전달
+        //     if (err) { return done(err); }
+        //     //3. user가 없다면, 즉 로그인 폼에서 전달받은 아이디가 저장소에 없으면 done 함수의 두 번째 인자로 false를 전달
+        //     if (!user) {
+        //         return done(null, false, { message: 'Incorrect username.' });
+        //     }
+        //     if (!user.validPassword(password)) {
+        //         return done(null, false, { message: 'Incorrect password.' });
+        //     }
+        //     return done(null, user);
+        // });
+
     }
 ));
 
