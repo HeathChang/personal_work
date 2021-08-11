@@ -25,14 +25,20 @@ var passport = require('passport')
     , LocalStrategy = require('passport-local').Strategy;
 app.use(passport.initialize());
 app.use(passport.session());
-
+// 세션을 처리
+//1. 로그인에 성공했을 때 전달한 authData 객체를 콜백 함수의 첫 번째 인자로 전달
 passport.serializeUser(function (user, done) {
-
+    console.log('serializeUser', user);
+    done(null, user.email);
+    //세션에 기록하는 일은 done 함수가 수행, 
+    //done 함수의 첫 번째 인자로는 null, 두 번째는 사용자를 구분하는 식별자를 전달
 })
 passport.deserializeUser(function (id, done) {
-
-})
-
+    console.log('deserializeUser: authData>>', authData);
+    console.log('deserializeUser: id>>', id);
+    done(null, authData);
+});
+// 로그인을 시도할 때, 로그인에 성공했는지 실패했는지를 결정
 passport.use(new LocalStrategy(
     {
         usernameField: 'email',
@@ -72,7 +78,7 @@ passport.use(new LocalStrategy(
 
     }
 ));
-
+//사용자가 로그인을 전송했을 때 Passport.js가 로그인 데이터를 처리
 app.post('/auth/login_process', passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/auth/login'
