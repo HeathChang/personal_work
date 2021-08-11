@@ -26,7 +26,7 @@ var passport = require('passport')
 app.use(passport.initialize());
 app.use(passport.session());
 // 세션을 처리
-//1. 로그인에 성공했을 때 전달한 authData 객체를 콜백 함수의 첫 번째 인자로 전달
+//1. 로그인에 성공했을 때 전달한 authData 객체를 콜백 함수의 첫 번째 인자로 전달(로그인에 성공했을 때 사용자 정보를 세션에 기록)
 passport.serializeUser(function (user, done) {
     console.log('serializeUser', user);
     done(null, user.email);
