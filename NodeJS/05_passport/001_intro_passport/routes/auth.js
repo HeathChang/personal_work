@@ -43,9 +43,9 @@ router.get('/login', function (request, response) {
 // });
 
 router.get('/logout', function (request, response) {
-    request.session.destroy(function (err) {
-        response.redirect('/');
-    });
+    //request.session.destroy(function (err) {
+    //    response.redirect('/');
+    //});
 });
 
 /*
