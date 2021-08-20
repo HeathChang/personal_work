@@ -43,9 +43,11 @@ router.get('/login', function (request, response) {
 // });
 
 router.get('/logout', function (request, response) {
-    //request.session.destroy(function (err) {
-    //    response.redirect('/');
-    //});
+    request.logout();
+    //이 save는 현재 세션 상태를 세션 스토어에 저장하고, 저장 작업이 끝나면 리다이렉트시키는 코드
+    request.session.save(function (err) {
+        response.redirect('/');
+    })
 });
 
 /*
