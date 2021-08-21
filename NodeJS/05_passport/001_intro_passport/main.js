@@ -8,6 +8,7 @@ var helmet = require('helmet');
 app.use(helmet());
 var session = require('express-session');
 var FileStore = require('session-file-store')(session);
+var flash = require('connect-flash');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(compression());
@@ -18,7 +19,17 @@ app.use(session({
   saveUninitialized: true,
   store: new FileStore()
 }));
-
+app.use(flash());
+app.get('/flash', function (req, res) {
+  //info에 Flash is back 이라는 플래시 메시지 추가.
+  req.flash('info', 'Flash is back! ');
+  res.send('flash');
+})
+app.get('/flash-display', function (req, res) {
+  var fmsg = req.flash(); //리퀘스트 flash 매서드 호출
+  console.log(fmsg);
+  res.send(fmsg);
+})
 var authData = {
   email: 'egoing777@gmail.com',
   password: '111111',
