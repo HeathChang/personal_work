@@ -10,11 +10,16 @@ var authData = {
     password: '111111',
     nickname: 'egoing'
 }
-
 router.get('/login', function (request, response) {
+    var fmsg = request.flash();
+    var feedback = '';
+    if (fmsg.error) {
+        feedback = fmsg.error[0];
+    }
     var title = 'WEB - login';
     var list = template.list(request.list);
     var html = template.HTML(title, list, `
+        <div style="color:red;">${feedback}</div>
         <form action="/auth/login_process" method="post">
             <p><input type="text" name="email" placeholder="email"></p>
             <p><input type="password" name="pwd" placeholder="password"></p>
@@ -25,6 +30,7 @@ router.get('/login', function (request, response) {
     `, '');
     response.send(html);
 });
+
 
 // router.post('/login_process', function (request, response) {
 //     var post = request.body;

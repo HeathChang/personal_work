@@ -20,8 +20,16 @@ app.use(session({
   store: new FileStore()
 }));
 app.use(flash());
-
-
+app.get('/flash', function (req, res) {
+  //info에 Flash is back 이라는 플래시 메시지 추가.
+  req.flash('info', 'Flash is back! ');
+  res.send('flash');
+})
+app.get('/flash-display', function (req, res) {
+  var fmsg = req.flash(); //리퀘스트 flash 매서드 호출
+  console.log(fmsg);
+  res.send(fmsg);
+})
 var authData = {
   email: 'egoing777@gmail.com',
   password: '111111',
@@ -72,13 +80,11 @@ passport.use(new LocalStrategy(
     }
   }
 ));
+
 app.post('/auth/login_process', passport.authenticate('local', {
   successRedirect: '/',
-  failureRedirect: '/auth/login',
-  failureFlash: true, //실패시 플레시 메시지
-  successFlash: true //성공시 플레시 메시지
+  failureRedirect: '/auth/login'
 }));
-
 
 app.get('*', function (request, response, next) {
   fs.readdir('./data', function (error, filelist) {
