@@ -21,7 +21,6 @@ app.use(session({
 }));
 app.use(flash());
 
-
 var authData = {
   email: 'egoing777@gmail.com',
   password: '111111',
@@ -72,13 +71,13 @@ passport.use(new LocalStrategy(
     }
   }
 ));
+
 app.post('/auth/login_process', passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/auth/login',
-  failureFlash: true, //실패시 플레시 메시지
-  successFlash: true //성공시 플레시 메시지
+  failureFlash: true,
+  successFlash: true
 }));
-
 
 app.get('*', function (request, response, next) {
   fs.readdir('./data', function (error, filelist) {
