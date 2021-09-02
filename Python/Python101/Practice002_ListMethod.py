@@ -28,4 +28,9 @@ print("값이 3인 데이터 개수: ",a.count(3));
 a.remove(2);
 print("값이 2인 데이터 삭제: ",a)
 
+#특정값 제거 원할시, 
+a = [1,2,3,4,5];
+remove_set=[3,5];
 
+result = [i for i in a if i not in remove_set]
+print(result)
