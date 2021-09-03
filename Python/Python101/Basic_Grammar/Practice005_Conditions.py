@@ -28,6 +28,6 @@ print(result)
 
 #기본 for문
 result = 0
-for i in range(5): #0~4까지 더하기
+for i in range(1,5): #0~4까지 더하기 (지정 숫자-1까지)
   result += i
 print(result)
