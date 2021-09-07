@@ -45,8 +45,6 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     console.log(result.ops);
   })
 
-  db.collection('users').deleteMany();
-
 })
 
 
