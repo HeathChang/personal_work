@@ -1,4 +1,4 @@
-// CRUD create read update delete
+w // CRUD create read update delete
 
 const mongodb = require('mongodb')
 const MongoClient = mongodb.MongoClient
@@ -15,6 +15,6 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
 
     db.collection('users').insertOne({
         name: 'Andrew',
-        age: 27     ``
+        age: 27
     })
 })
