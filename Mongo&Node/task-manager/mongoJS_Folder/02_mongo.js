@@ -16,7 +16,19 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     return console.log('Unable to connect to database!')
   }
   const db = client.db(databaseName);
+  //console.log("DB>>", db);
 
+  //##Can Generate ObjectID
+  // db.collection('users').insertOne({
+  //   _id: id,
+  //   name: 'Nate',
+  //   age: 21
+  // }, (error, result) => {
+  //   if (error) {
+  //     return console.log('Unable to Insert to database!');
+  //   }
+  //   console.log(result.ops);
+  // })
 
 
 })
