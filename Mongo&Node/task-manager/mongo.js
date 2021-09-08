@@ -1,19 +1,28 @@
 const mongodb = require('mongodb')
-const MongoClient = mongodb.MongoClient
+// const MongoClient = mongodb.MongoClient
+// const ObjectID = mongodb.ObjectID
+const { MongoClient, ObjectID } = require('mongodb')
 
 const connectionURL = 'mongodb://127.0.0.1:27017'
 const databaseName = 'task-manager'
+
+const id = new ObjectID()
+console.log("id>>", id)
+console.log(id.getTimestamp());
+
 
 MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) => {
   if (error) {
     return console.log('Unable to connect to database!')
   }
   const db = client.db(databaseName);
-  console.log(db);
+  //console.log("DB>>", db);
 
+  //##Can Generate ObjectID
   // db.collection('users').insertOne({
-  //   name: 'Heath',
-  //   age: 27
+  //   _id: id,
+  //   name: 'Nate',
+  //   age: 21
   // }, (error, result) => {
   //   if (error) {
   //     return console.log('Unable to Insert to database!');
@@ -21,31 +30,6 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
   //   console.log(result.ops);
   // })
 
-  db.collection('users').insertMany([
-    {
-      name: 'Jann',
-      Age: 27
-    },
-
-    {
-      name: 'Jenny',
-      Age: 28,
-      Occupation: "Teacher"
-    },
-    {
-      name: 'June',
-      Age: 29,
-      Hobby: "Soccer"
-    },
-
-  ], (error, result) => {
-    if (error) {
-      return console.log('Unable to Insert to database!');
-    }
-    console.log(result.ops);
-  })
-
-  db.collection('users').deleteMany();
 
 })
 
