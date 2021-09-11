@@ -6,26 +6,24 @@ mongoose.connect('mongodb://127.0.0.1:27017/task-manager-api', {
 })
 
 
-const User = mongoose.model('User', {
-
-  name: {
+const Task = mongoose.model('Task', {
+  description: {
     type: String
   },
-  age: {
-    type: Number
+  completed: {
+    type: Boolean
   }
 })
 
-const me = new User({
-  name: "Heath",
-  age: "Hello World"
-  //_message: 'User validation failed';
+const task = new Task({
+  description: 'Learn the Mongoose Library',
+  completed: false
 })
 
 
 
-me.save().then(() => {
-  console.log("Saved: ", me);
+task.save().then(() => {
+  console.log("Saved: ", task);
 }).catch((error) => {
   console.log("Error: ", error);
 })
