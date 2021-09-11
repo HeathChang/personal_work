@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "validate": "^5.1.0",
+    "validator": "^13.6.0"
+  }
+}
