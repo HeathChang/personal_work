@@ -43,3 +43,8 @@
   ODM (Object Document Mapper): NoSQL에서 Document Database를 지원하기 위해 데이터를 변환하는 프로그래밍 기법
 21.
   ORM (Object Relational Mapper):객체(클래스)와 관계(관계형 데이터 베이스)와의 설정을 의미한다.
+22.
+  API:  
+    프로그램에서 사용할 수 있도록, 운영 체제나 프로그래밍 언어가 제공하는 기능을 제어할 수 있게 만든 인터페이스
+23. 
+  Rest API (Representational State Transfer):  Client 가 access& manipulate resources using pre-defined methods.
