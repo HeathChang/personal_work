@@ -8,12 +8,22 @@ const port = process.env.PORT || 3000
 //parse incoming JSON to Object
 app.use(express.json())
 
-
 app.get("/users", (req, res) => {
     User.find({}).then((users) => {
         res.send(users)
     }).catch((error) => {
-        res.status(404).send(error)
+        res.status(500).send(error)
+    })
+})
+app.get("/users/:id", (req, res) => {
+    const _id = req.params.id
+    User.findById(_id).then((user) => {
+        if (!user) {
+            return res.status(404).send()
+        }
+        res.send(user)
+    }).catch((error) => {
+        res.status(500).send(error)
     })
 })
 
@@ -22,7 +32,7 @@ app.post('/users', (req, res) => {
     user.save().then(() => {
         res.send(user)
     }).catch((error) => {
-        res.status(404).send(error)
+        res.status(500).send(error)
     })
 })
 
