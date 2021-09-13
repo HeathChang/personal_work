@@ -8,6 +8,15 @@ const port = process.env.PORT || 3000
 //parse incoming JSON to Object
 app.use(express.json())
 
+
+app.get("/users", (req, res) => {
+    User.find({}).then((users) => {
+        res.send(users)
+    }).catch((error) => {
+        res.status(404).send(error)
+    })
+})
+
 app.post('/users', (req, res) => {
     const user = new User(req.body)
     user.save().then(() => {
