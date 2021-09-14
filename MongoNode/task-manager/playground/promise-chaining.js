@@ -1,9 +1,9 @@
 require('../src/db/mongoose')
 const User = require('../src/models/user')
 
-//613c5e57731b366474dccdba
+//6140617e276358c92a7d55e2
 
-User.findByIdAndUpdate('613c5e57731b366474dccdba', { age: 1 }).then((user) => {
+User.findByIdAndUpdate('6140617e276358c92a7d55e2', { age: 1 }).then((user) => {
   console.log(user);
   return User.countDocuments({ age: 1 }) //age가 x인 애들 찾아줘
 }).then((result) => {
@@ -20,7 +20,7 @@ const updateAgeandCount = async (id, age) => {
   return count
 }
 
-updateAgeandCount('613c5e57731b366474dccdba', 2)
+updateAgeandCount('66140617e276358c92a7d55e2', 2)
   .then((count) => {
     console.log("x살인 사람 수: ", count);
   }).catch((e) => {

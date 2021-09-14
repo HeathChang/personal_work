@@ -17,7 +17,7 @@ const User = mongoose.model('User', {
 
 const me = new User({
   name: "Heath",
-  age: "Hello World"
+  age: 20
   //_message: 'User validation failed';
 })
 
@@ -26,5 +26,5 @@ const me = new User({
 me.save().then(() => {
   console.log("Saved: ", me);
 }).catch((error) => {
-  console.log("Error: ", error);
+  console.log("Error: ", error);s
 })
