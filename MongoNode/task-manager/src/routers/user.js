@@ -1,86 +1,76 @@
-const express = require ('express')
+const express = require('express')
+const Task = require('../models/task')
 const router = new express.Router()
 
-const User = require('../models/user')
+router.post('/tasks', async (req, res) => {
+    const task = new Task(req.body)
 
-// //라우터 사용법
-// //1. 라우터 객체 
-// const router = new express.Router()
-// //2. api 설정
-// router.get('/test',(req,res)=>{
-//     res.send("Testing Router")
-// })
-// //3. 라우터 등록
-// app.use(router)
-
-
-
-
-router.get("/users", async (req, res) => {
-    try{
-        const users = await User.find({})
-        res.status(201).send(users)
-    }catch(e){
-        res.status(500).send(e)
+    try {
+        await task.save()
+        res.status(201).send(task)
+    } catch (e) {
+        res.status(400).send(e)
     }
 })
-router.get("/users/:id", async (req, res) => {
+
+router.get('/tasks', async (req, res) => {
+    try {
+        const tasks = await Task.find({})
+        res.send(tasks)
+    } catch (e) {
+        res.status(500).send()
+    }
+})
+
+router.get('/tasks/:id', async (req, res) => {
     const _id = req.params.id
-    try{
-        const user = await User.findById({_id})
-        if(!user){
+
+    try {
+        const task = await Task.findById(_id)
+
+        if (!task) {
             return res.status(404).send()
         }
-        res.send(user)
-    }catch(e){
-        res.status(500).send(e)
+
+        res.send(task)
+    } catch (e) {
+        res.status(500).send()
     }
-    
 })
 
-router.post('/users', async (req, res) => {
-    const user = new User(req.body)
-    try{
-        await user.save()
-        res.status(201).send(user)
-    }catch(e){
+router.patch('/tasks/:id', async (req, res) => {
+    const updates = Object.keys(req.body)
+    const allowedUpdates = ['description', 'completed']
+    const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
+
+    if (!isValidOperation) {
+        return res.status(400).send({ error: 'Invalid updates!' })
+    }
+
+    try {
+        const task = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
+
+        if (!task) {
+            return res.status(404).send()
+        }
+
+        res.send(task)
+    } catch (e) {
         res.status(400).send(e)
     }
-    
 })
 
-router.patch('/users/:id',async(req,res)=>{
-    //update할 내용
-    const updates = Object.keys(req.body)
-    //해당만 변경 가능함
-    const allowedUpdates = ['name','email','password','age']
-    //변경가능한 요소안에 update 내용이 포함되는지 체크 
-    const isValidOperation = updates.every((update)=>{
-        return allowedUpdates.includes(update)
-    })
-    if(!isValidOperation){
-        return res.status(404).send({error:"invalid update"})
-    }
-    try{
-        const user = await User.findByIdAndUpdate(req.params.id,req.body,{new: true,runValidators:true})
-        if(!user){
+router.delete('/tasks/:id', async (req, res) => {
+    try {
+        const task = await Task.findByIdAndDelete(req.params.id)
+
+        if (!task) {
             res.status(404).send()
         }
-        res.send(user)
-    }catch(e){
-        res.status(400).send(e)
-    }
-})
 
-router.delete('/users/:id',async(req,res)=>{
-    try{
-    const user= await User.findByIdAndDelete(req.params.id)
-    if(!user){
-        res.status(404).send({error:"cannot find user"});
-    }
-    res.send(user);
-    }catch(e){
-        res.status(500).send(e)
+        res.send(task)
+    } catch (e) {
+        res.status(500).send()
     }
 })
 

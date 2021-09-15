@@ -1,6 +1,7 @@
 const express = require('express')
 require('./db/mongoose')
 const User = require('./models/user')
+const Task = require('./models/task')
 const userRouter = require ('./routers/user')
 const taskRouter = require ('./routers/task')
 
@@ -11,7 +12,7 @@ const port = process.env.PORT || 3000
 app.use(express.json())
 //라우터 사용
 app.use(userRouter)
-app.user(taskRouter)
+app.use(taskRouter)
 
 
 app.listen(port, () => {
