@@ -15,9 +15,6 @@ const User = require('../models/user')
 
 
 
-router.get('/test', (req,res)=>{
-    res.send('Coming from new file')
-})
 
 router.get("/users", async (req, res) => {
     try{
