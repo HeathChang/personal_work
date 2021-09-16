@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
-
-const User = mongoose.model('User', {
+const bcrypt = require('bcryptjs')
+const userSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -34,10 +34,23 @@ const User = mongoose.model('User', {
         default: 0,
         validate(value) {
             if (value < 0) {
-                throw new Error('Age must be a postive number')
+                throw new Error('Age must be a positive number')
             }
         }
     }
 })
+//pre: doing sth before && post: doing sth after
+//'save': name of the event
+userSchema.pre('save',async function (next){
+    //this: documents being saved -> individual users
+    const user = this 
+    if(user.isModified('password')){
+        user.password = await bcrypt.hash(user.password,8)
+    }
+    //next(): run code before event happens
+    next()
+
+})
+const User = mongoose.model('User', userSchema)
 
 module.exports = User
