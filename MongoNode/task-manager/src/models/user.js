@@ -39,6 +39,7 @@ const userSchema = new mongoose.Schema({
         }
     }
 })
+//Encryption 때문에 save직전에 사용 (interceptor와 비슷)
 //pre: doing sth before && post: doing sth after
 //'save': name of the event
 userSchema.pre('save',async function (next){
