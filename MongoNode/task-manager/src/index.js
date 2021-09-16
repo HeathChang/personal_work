@@ -10,9 +10,10 @@ const port = process.env.PORT || 3000
 
 //parse incoming JSON to Object
 app.use(express.json())
-//라우터 사용
+//라우터 사용(2개)
 app.use(userRouter)
 app.use(taskRouter)
+
 
 
 app.listen(port, () => {

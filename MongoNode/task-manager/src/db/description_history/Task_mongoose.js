@@ -15,10 +15,13 @@ const Task = mongoose.model("Task", {
     type: Boolean,
     default: false,
   },
+  note:{
+    type:String
+  }
 });
 
 const task = new Task({
-  description: "  Eat lunch",
+  description: " Eat lunch",
 });
 
 task
