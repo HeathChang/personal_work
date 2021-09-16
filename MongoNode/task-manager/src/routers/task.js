@@ -4,7 +4,6 @@ const router = new express.Router()
 
 router.post('/tasks', async (req, res) => {
     const task = new Task(req.body)
-
     try {
         await task.save()
         res.status(201).send(task)
@@ -18,7 +17,7 @@ router.get('/tasks', async (req, res) => {
         const tasks = await Task.find({})
         res.send(tasks)
     } catch (e) {
-        res.status(500).send()
+        res.status(500).send(e)
     }
 })
 
