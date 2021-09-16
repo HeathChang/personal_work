@@ -39,12 +39,13 @@ const userSchema = new mongoose.Schema({
         }
     }
 })
-//Encryption 때문에 save직전에 사용 (interceptor와 비슷)
+//middleware(Encryption)는 가끔 지속적으로 사용이 안되기에 이벤트(save)직전에 사용 (interceptor와 비슷)
 //pre: doing sth before && post: doing sth after
 //'save': name of the event
 userSchema.pre('save',async function (next){
     //this: documents being saved -> individual users
     const user = this 
+    console.log("changes will be made >>",this)
     if(user.isModified('password')){
         user.password = await bcrypt.hash(user.password,8)
     }
