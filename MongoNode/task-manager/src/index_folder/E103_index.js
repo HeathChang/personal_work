@@ -30,10 +30,10 @@ const myFunction = async() =>{
     console.log(password);
     console.log(hashPassword);
 
+    //하지만, 이런식으로 compare가능함
     const isMatch = await bcrypt.compare(password,hashPassword);
     console.log(isMatch);
+
+
 }
 myFunction();
-
-//
-
