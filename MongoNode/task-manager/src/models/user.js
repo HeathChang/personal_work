@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema({
     },
     email: {
         type: String,
+        unique: true,
         required: true,
         trim: true,
         lowercase: true,
@@ -39,6 +40,20 @@ const userSchema = new mongoose.Schema({
         }
     }
 })
+//Hash
+userSchema.statics.findByCredentials = async(email,password) =>{
+    const user = await User.findOne({email: email})
+    if(!user){
+        throw new Error('Unable to login-in.')
+    }
+    const isMatch = await bcrypt.compare(password , user.password)
+    if(!isMatch){
+        throw new Error('Operation failed. ')
+    }
+    return user
+}
+
+
 //middleware(Encryption)는 가끔 지속적으로 사용이 안되기에 이벤트(save)직전에 사용 (interceptor와 비슷)
 //pre: doing sth before && post: doing sth after
 //'save': name of the event
