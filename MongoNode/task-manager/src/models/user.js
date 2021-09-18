@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -40,7 +41,16 @@ const userSchema = new mongoose.Schema({
         }
     }
 })
-//Hash
+
+//instance method
+userSchema.methods.generateAuthToken = async function(){
+    const user = this
+    const token = jwt.sign({_id: user._id.toString()},'thisismynewcourse')
+    return token
+}
+
+
+//model method
 userSchema.statics.findByCredentials = async(email,password) =>{
     const user = await User.findOne({email: email})
     if(!user){
@@ -52,7 +62,6 @@ userSchema.statics.findByCredentials = async(email,password) =>{
     }
     return user
 }
-
 
 //middleware(Encryption)는 가끔 지속적으로 사용이 안되기에 이벤트(save)직전에 사용 (interceptor와 비슷)
 //pre: doing sth before && post: doing sth after
