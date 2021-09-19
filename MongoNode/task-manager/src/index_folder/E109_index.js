@@ -3,6 +3,7 @@ require('./db/mongoose')
 const User = require('./models/user')
 const Task = require('./models/task')
 const jwt = require('jsonwebtoken')
+
 const userRouter = require ('./routers/user')
 const taskRouter = require ('./routers/task')
 
@@ -21,9 +22,9 @@ const port = process.env.PORT || 3000
 //     }
 // })
 
-// app.use((req,res,next)=>{
-//     res.status(503).send("site is currently down. come back soon")
-// })
+app.use((req,res,next)=>{
+    res.status(503).send("site is currently down. come back soon")
+})
 
 //parse incoming JSON to Object
 app.use(express.json())
