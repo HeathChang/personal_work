@@ -38,15 +38,15 @@ app.listen(port, () => {
 })
 
 
-const myFunction = async() =>{
-    //object: data that will be embedded
-    //creating token
-    const token = jwt.sign({_id: "abc123"},'thisismynewcourse',{expiresIn: '7 days'})
-    console.log("token>>",token)
+// const myFunction = async() =>{
+//     //object: data that will be embedded
+//     //creating token
+//     const token = jwt.sign({_id: "abc123"},'thisismynewcourse',{expiresIn: '7 days'})
+//     console.log("token>>",token)
 
-    //verify
-    const data = jwt.verify(token, 'thisismynewcourse')
-    console.log("data>>",data);
-}
-myFunction();
+//     //verify
+//     const data = jwt.verify(token, 'thisismynewcourse')
+//     console.log("data>>",data);
+// }
+// myFunction();
 

@@ -9,8 +9,8 @@ const auth = async (req,res,next) =>{
         
         const decoded = jwt.verify(token , 'thisismynewcourse')
         console.log("checking decoded>>",decoded);
-        //decoded>> { _id: '614595b660e789b978d3bdf6', iat: 1631952871 }
-        
+        //decoded>> { _id: '614595b660e789b978d3bdf6', iat: 1631952871 } => Object_id && time
+
         const user = await User.findOne({_id: decoded._id,'tokens.token':token})
         console.log("checking user>>",user);
         //정보
