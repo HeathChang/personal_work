@@ -14,7 +14,8 @@ app.use(express.json())
 //라우터 사용(2개)
 app.use(userRouter)
 app.use(taskRouter)
-
+// without middleware : new request -> run route handler
+// with    middleware: new request -> do sth -> run route handler
 
 
 app.listen(port, () => {
