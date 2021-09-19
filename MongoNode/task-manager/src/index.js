@@ -3,6 +3,7 @@ require('./db/mongoose')
 const User = require('./models/user')
 const Task = require('./models/task')
 const jwt = require('jsonwebtoken')
+const auth = require ('./middleware/auth')
 const userRouter = require ('./routers/user')
 const taskRouter = require ('./routers/task')
 
@@ -37,7 +38,6 @@ app.listen(port, () => {
 })
 
 
-//JWT
 const myFunction = async() =>{
     //object: data that will be embedded
     //creating token
