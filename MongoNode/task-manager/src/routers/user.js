@@ -67,16 +67,28 @@ router.post('/users/login', async (req, res) => {
 
 router.post('/users/logout', auth, async(req,res)=>{
     try{
+        //specific user
         req.user.tokens = req.user.tokens.filter((token)=>{
             console.log("req.token>>",req.token);
             console.log("token.token>>",token.token);
             console.log("return>> ",token.token !== req.token);
+            //같을시, return false (return false,즉 로그인된 정보와 req 정보가 일치해야지만, 옳바른 로그아웃 가능. 이 라인이 빠지면, 무조건 log-out msg 출력)
             return token.token !== req.token
         })
         await req.user.save()
         res.send("successfully log-out")
     }catch(e){
         res.status(500).send(e)
+    }
+})
+
+router.post('/users/logoutAll',auth, async(req,res)=>{
+    try{
+        req.user.tokens = []
+        await req.user.save()
+        res.send("successfully log-out all")
+    }catch (e) {
+        res.status(500).send()
     }
 })
 
