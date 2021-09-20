@@ -68,10 +68,13 @@ router.post('/users/login', async (req, res) => {
 router.post('/users/logout', auth, async(req,res)=>{
     try{
         req.user.tokens = req.user.tokens.filter((token)=>{
+            console.log("req.token>>",req.token);
+            console.log("token.token>>",token.token);
+            console.log("return>> ",token.token !== req.token);
             return token.token !== req.token
         })
         await req.user.save()
-        res.send()
+        res.send("successfully log-out")
     }catch(e){
         res.status(500).send(e)
     }
