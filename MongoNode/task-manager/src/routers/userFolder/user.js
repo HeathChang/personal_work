@@ -121,14 +121,13 @@ router.patch('/users/:id',async(req,res)=>{
     }
 })
 
-router.delete('/users/me',auth,async(req,res)=>{
+router.delete('/users/:id',async(req,res)=>{
     try{
-    //const user= await User.findByIdAndDelete(req.user._id)
-    // if(!user){
-    //     res.status(404).send({error:"cannot find user"});
-    // }
-    await req.user.remove()
-    res.send(req.user);
+    const user= await User.findByIdAndDelete(req.params.id)
+    if(!user){
+        res.status(404).send({error:"cannot find user"});
+    }
+    res.send(user);
     }catch(e){
         res.status(500).send(e)
     }

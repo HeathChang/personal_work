@@ -49,3 +49,7 @@
     프로그램에서 사용할 수 있도록, 운영 체제나 프로그래밍 언어가 제공하는 기능을 제어할 수 있게 만든 인터페이스
 23. 
   Rest API (Representational State Transfer):  Client 가 access& manipulate resources using pre-defined methods.
+24.
+  JWT:  각 객체 사이에서 속성 정보 (Claim)을 JSON 데이터 구조로 표현하고 암호화를 통해 정보를 전달하는 Token
+  Claim: 사용자에 대한 프로퍼티나 속성
+
