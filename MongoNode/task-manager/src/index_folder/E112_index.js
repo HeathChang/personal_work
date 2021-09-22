@@ -37,3 +37,24 @@ app.listen(port, () => {
     console.log('Server is up on port ' + port)
 })
 
+const pet = {
+    name: "halth"
+}
+pet.toJSON = function () {
+    console.log(this);
+    return {}
+}
+console.log(JSON.stringify(pet));
+
+// const myFunction = async() =>{
+//     //object: data that will be embedded
+//     //creating token
+//     const token = jwt.sign({_id: "abc123"},'thisismynewcourse',{expiresIn: '7 days'})
+//     console.log("token>>",token)
+
+//     //verify
+//     const data = jwt.verify(token, 'thisismynewcourse')
+//     console.log("data>>",data);
+// }
+// myFunction();
+
