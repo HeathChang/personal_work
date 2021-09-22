@@ -92,7 +92,7 @@ router.post('/users/logoutAll',auth, async(req,res)=>{
     }
 })
 
-router.patch('/users/:id',async(req,res)=>{
+router.patch('/users/me',auth,async(req,res)=>{
     //update할 내용
     const updates = Object.keys(req.body)
     //해당만 변경 가능함
@@ -105,17 +105,13 @@ router.patch('/users/:id',async(req,res)=>{
         return res.status(404).send({error:"invalid update"})
     }
     try{
-        const user = await User.findById(req.params.id)
        //iteration 
         updates.forEach((update) => {
-            user[update] = req.body[update]
+            req.user[update] = req.body[update]
         });
-        await user.save()
-        //const user = await User.findByIdAndUpdate(req.params.id,req.body,{new: true,runValidators:true})
-        if(!user){
-            res.status(404).send()
-        }
-        res.send(user)
+        await req.user.save()
+        
+        res.send(req.user)
     }catch(e){
         res.status(400).send(e)
     }
