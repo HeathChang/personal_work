@@ -37,3 +37,11 @@ app.listen(port, () => {
     console.log('Server is up on port ' + port)
 })
 
+//populate를 통해 조인 && 여기서 _id는 해당 컬렉션 id && owner는 로그인되어 있는 유저
+const main = async ()=>{
+    const task = await Task.findById('614c32b63a1b47caec14b728')
+    console.log("task owner(which user create): ",task.owner);
+    await task.populate('owner')
+    console.log("collectionID: ",task);
+}
+main()
