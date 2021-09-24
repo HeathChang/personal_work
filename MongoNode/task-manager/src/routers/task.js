@@ -39,7 +39,6 @@ router.get('/tasks/:id', auth, async (req, res) => {
         if (!task) {
             return res.status(404).send()
         }
-
         res.send(task)
     } catch (e) {
         res.status(500).send()
@@ -58,7 +57,7 @@ router.patch('/tasks/:id', auth ,async (req, res) => {
     try {
         const task = await Task.findOne({_id: req.params.id, owner: req.user._id})     
         if (!task) {
-            return res.status(404).send("error occured")
+            return res.status(404).send("error occurred")
         }
         updates.forEach((update) =>{
             task[update] = req.body[update]
