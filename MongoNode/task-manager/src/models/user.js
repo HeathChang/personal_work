@@ -3,6 +3,7 @@ const validator = require('validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const Task = require('./task')
+
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -47,7 +48,10 @@ const userSchema = new mongoose.Schema({
             required:true
         }
     }]
+},{
+    timestamps: true
 })
+
 userSchema.virtual('tasks',{
     ref: 'Task',
     localField: '_id',
@@ -62,7 +66,7 @@ userSchema.methods.toJSON = function(){
     return userObject
 }
 
-//instance method
+//instance method (methods: 데이터 인스턴스)
 userSchema.methods.generateAuthToken = async function(){
     const user = this
     const token = jwt.sign({_id: user._id.toString()},'thisismynewcourse')
@@ -71,8 +75,7 @@ userSchema.methods.generateAuthToken = async function(){
     return token
 }
 
-
-//model method
+//model method (statics: this가 모델 자체)
 userSchema.statics.findByCredentials = async(email,password) =>{
     const user = await User.findOne({email: email})
     if(!user){
