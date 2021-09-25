@@ -24,6 +24,7 @@ router.get('/tasks',auth, async (req, res) => {
         
     }
 
+    
     try {
         // //1.
         // const tasks = await Task.find({owner: req.user._id})
