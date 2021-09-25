@@ -38,7 +38,8 @@ router.get('/tasks',auth, async (req, res) => {
             //     completed: false
             // }
             options:{
-                limit: parseInt(req.query.limit)
+                limit: parseInt(req.query.limit),
+                skip: parseInt(req.query.skip)
             }
         })
         res.send(req.user.tasks)
