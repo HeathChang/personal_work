@@ -18,6 +18,7 @@ router.post('/tasks', auth, async (req, res) => {
 })
 //Get /tasks?completed= false || true
 //Get /tasks?limit=10&skip=0 
+//Get /tasks?sortBy
 router.get('/tasks',auth, async (req, res) => {
     const match = {}
     if (req.query.completed){
