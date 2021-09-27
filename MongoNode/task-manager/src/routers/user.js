@@ -128,6 +128,7 @@ router.delete('/users/me',auth,async(req,res)=>{
 })
 
 const upload = multer({
+    //저장될 위치
     dest:'avatars'
 })
 router.post('/users/me/avatar',upload.single('avatar'),(req,res)=>{
