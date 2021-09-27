@@ -26,8 +26,6 @@ const port = process.env.PORT || 3000
 //     res.status(503).send("site is currently down. come back soon")
 // })
 
-const multer = require('multer')
-
 //parse incoming JSON to Object
 app.use(express.json())
 //라우터 사용(2개)
