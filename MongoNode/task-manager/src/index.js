@@ -38,7 +38,6 @@ const upload = multer({
         }
 
         callback(undefined, true)
-        // callback(undefined, false)
     }
 })
 app.post('/upload',upload.single('upload'),(req,res)=>{

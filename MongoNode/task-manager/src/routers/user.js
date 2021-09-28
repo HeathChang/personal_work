@@ -129,7 +129,17 @@ router.delete('/users/me',auth,async(req,res)=>{
 
 const upload = multer({
     //저장될 위치
-    dest:'avatars'
+    dest:'avatars',
+    limits:{
+        fileSize:1000000
+    },
+    fileFilter (req,file,callback){
+        if(!file.originalname.match(/\.(jpg|jpeg|png)$/)){
+            return callback(new Error('Please upload proper images'))
+        }
+        callback(undefined,true)
+    }
+
 })
 router.post('/users/me/avatar',upload.single('avatar'),(req,res)=>{
     res.send()
