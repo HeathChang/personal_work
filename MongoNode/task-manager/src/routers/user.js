@@ -151,10 +151,22 @@ router.post('/users/me/avatar',auth,upload.single('avatar'),async (req,res)=>{
 })
 
 router.delete('/users/me/avatar',auth, async (req,res)=>{
-
         req.user.avatar = undefined
         await req.user.save()
         res.send()    
+})
+router.get('/users/:id/avatar',async (req,res)=>{
+    try {
+        const user = await User.findById(req.params.id)
+        if(!user || !user.avatar){
+            throw new Error({error:" Cannot find user or avatar"})
+        }
+        res.set('Content-Type','image/jpg')
+        res.send(user.avatar)
+    } catch (error) {
+        res.status(404).send(error.message)
+    }
+    
 })
 
 module.exports = router
