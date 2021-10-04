@@ -3,17 +3,18 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 //2. create a react component
-
+function getButtonText(){
+    return 'Click from App'
+}
 const App = () => {
-  const buttonText = {text: 'This is a text'}
-  const labelText = 'Enter Name'
+  const buttonText = 'Click Me !'  
 
   return(
   <div>
-    <label className="label" for="name">{labelText}</label>
+    <label className="label" for="name">Enter name:</label>
     <input id="name" type="text" />
-    <button style={{ backgroundColor: "blue", color: "white" }}>{buttonText.text}</button>
-    {/* can use JS objects as long as not trying to print them as text -> 객체를 텍스트로만 사용하지 않음 사용가능  */}
+    <button style={{ backgroundColor: "blue", color: "white" }}>{getButtonText()}</button>
+    <button style={{ backgroundColor: "blue", color: "white" }}>{buttonText}</button>
 
   </div>
   )

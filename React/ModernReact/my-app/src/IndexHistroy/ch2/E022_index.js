@@ -6,13 +6,14 @@ import ReactDOM from "react-dom";
 
 const App = () => {
   const buttonText = {text: 'This is a text'}
+  const style = { backgroundColor: "blue", color: "white" };
   const labelText = 'Enter Name'
 
   return(
   <div>
     <label className="label" for="name">{labelText}</label>
     <input id="name" type="text" />
-    <button style={{ backgroundColor: "blue", color: "white" }}>{buttonText.text}</button>
+    <button style={style}>{buttonText.text}</button>
     {/* can use JS objects as long as not trying to print them as text -> 객체를 텍스트로만 사용하지 않음 사용가능  */}
 
   </div>
