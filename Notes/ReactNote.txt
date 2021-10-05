@@ -1,0 +1,7 @@
+1. 
+    Component: props를 input으로 하고 UI가 어떻게 보여야 하는지 정의하는 React Element를 output으로 하는 함수
+             : accept arbitrary inputs (called “props”) and return React elements describing what should appear on the screen.
+             :  합성을 이용하여 “UI를 재사용할 수 있고 독립적인 단위로 쪼개어 생각”할 수 있게 합니다
+2. 
+    Props: System for passing data from a parent component to a child component
+         : Goal is to customize of configure a child component
