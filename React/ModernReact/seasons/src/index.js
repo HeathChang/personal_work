@@ -31,8 +31,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div>
+        <div >
           Latitude: {this.state.lat}
+          <div/>
           Longitude: {this.state.long}
         </div>
         <div>Error: {this.state.errorMessage}</div>
