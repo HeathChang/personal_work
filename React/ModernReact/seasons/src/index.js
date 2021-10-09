@@ -7,8 +7,7 @@ class App extends React.Component {
     // super reference to the parents
     super(props);
     //this is the only time to do direct assignment
-    this.state = { lat: null }; //because we dnt know what latitude value is
-    this.state = { long: null };
+    this.state = { lat: null, long: null }; //because we dnt know what latitude value is
 
     window.navigator.geolocation.getCurrentPosition(
       (position) => {
