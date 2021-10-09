@@ -29,16 +29,24 @@ class App extends React.Component {
 
   //React says we have to define render.
   render() {
-    return (
-      <div>
-        <div >
-          Latitude: {this.state.lat}
-          <div/>
-          Longitude: {this.state.long}
+    if (this.state.errorMessage && !this.state.lat && !this.state.long) {
+      return (
+        <div>
+          <div>Error: {this.state.errorMessage}</div>
         </div>
-        <div>Error: {this.state.errorMessage}</div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div>
+          <div>
+            Latitude: {this.state.lat}
+            <br />
+            Longitude: {this.state.long}
+          </div>
+        </div>
+      );
+    }
+    return <div> LOADING... </div>;
   }
 }
 ReactDOM.render(<App />, document.querySelector("#root"));
