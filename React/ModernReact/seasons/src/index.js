@@ -26,20 +26,16 @@ class App extends React.Component {
       }
     );
   }
-  
   //set up initial data
-  componentDidMount(){
-
+  componentDidMount() {
+    console.log("My component was rendered");
   }
   //to update
-  componentDidUpdate(){
-
+  componentDidUpdate() {
+    console.log("My component was updated -- rerendered");
   }
-  //destroy 
-  componentWillUnmount(){
-      
-  }
-
+  //destroy
+  componentWillUnmount() {}
 
   //React says we have to define render.
   render() {
