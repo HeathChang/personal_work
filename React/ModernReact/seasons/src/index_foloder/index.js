@@ -29,11 +29,11 @@ class App extends React.Component {
   
   //set up initial data
   componentDidMount(){
-
+    console.log('My component was rendered');
   }
   //to update
   componentDidUpdate(){
-
+    console.log('My component was updated -- rerendered');
   }
   //destroy 
   componentWillUnmount(){
