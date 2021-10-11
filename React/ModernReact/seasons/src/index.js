@@ -3,27 +3,32 @@ import ReactDOM from "react-dom";
 
 class App extends React.Component {
   //기본값
-  constructor(props) {
-    // super reference to the parents
-    super(props);
-    //this is the only time to do direct assignment
-    this.state = {
-      lat: null,
-      long: null,
-      errorMessage: "",
-    }; //because we dnt know what latitude value is
-  }
+//   constructor(props) {
+//     // super reference to the parents
+//     super(props);
+//     //this is the only time to do direct assignment
+//     this.state = {
+//       lat: null,
+//       long: null,
+//       errorMessage: "",
+//     }; //because we dnt know what latitude value is
+//   }
+
+  //same as constructor -> this.state
+  state ={lat: null, long: null, errorMessage: ''}
+
   //set up initial data
   componentDidMount() {
-    console.log('Component Did Mount');
+    console.log("Component Did Mount");
     window.navigator.geolocation.getCurrentPosition(
-        (position) => this.setState({
-            lat: position.coords.latitude,
-            long: position.coords.longitude,
-          }),
-        (error) => this.setState({ errorMessage: error.message })
-      );
-      }
+      (position) =>
+        this.setState({
+          lat: position.coords.latitude,
+          long: position.coords.longitude,
+        }),
+      (error) => this.setState({ errorMessage: error.message })
+    );
+  }
   //to update
   componentDidUpdate() {
     console.log("My component was updated -- rerendered");
