@@ -12,24 +12,18 @@ class App extends React.Component {
       long: null,
       errorMessage: "",
     }; //because we dnt know what latitude value is
-
-    window.navigator.geolocation.getCurrentPosition(
-      (position) => {
-        //setState is  to update state.
-        this.setState({
-          lat: position.coords.latitude,
-          long: position.coords.longitude,
-        });
-      },
-      (error) => {
-        this.setState({ errorMessage: error.message });
-      }
-    );
   }
   //set up initial data
   componentDidMount() {
-    console.log("My component was rendered");
-  }
+    console.log('Component Did Mount');
+    window.navigator.geolocation.getCurrentPosition(
+        (position) => this.setState({
+            lat: position.coords.latitude,
+            long: position.coords.longitude,
+          }),
+        (error) => this.setState({ errorMessage: error.message })
+      );
+      }
   //to update
   componentDidUpdate() {
     console.log("My component was updated -- rerendered");
