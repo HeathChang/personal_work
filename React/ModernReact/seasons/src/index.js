@@ -1,25 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import SeasonDisplay from "./SeasonDisplay";
 
 class App extends React.Component {
-  //기본값
-//   constructor(props) {
-//     // super reference to the parents
-//     super(props);
-//     //this is the only time to do direct assignment
-//     this.state = {
-//       lat: null,
-//       long: null,
-//       errorMessage: "",
-//     }; //because we dnt know what latitude value is
-//   }
-
   //same as constructor -> this.state
-  state ={lat: null, long: null, errorMessage: ''}
+  state ={lat: null, long: null, errorMessage: ""}
 
   //set up initial data
   componentDidMount() {
-    console.log("Component Did Mount");
     window.navigator.geolocation.getCurrentPosition(
       (position) =>
         this.setState({
@@ -29,12 +17,6 @@ class App extends React.Component {
       (error) => this.setState({ errorMessage: error.message })
     );
   }
-  //to update
-  componentDidUpdate() {
-    console.log("My component was updated -- rerendered");
-  }
-  //destroy
-  componentWillUnmount() {}
 
   //React says we have to define render.
   render() {
@@ -44,17 +26,11 @@ class App extends React.Component {
           <div>Error: {this.state.errorMessage}</div>
         </div>
       );
-    } else {
-      return (
-        <div>
-          <div>
-            Latitude: {this.state.lat}
-            <br />
-            Longitude: {this.state.long}
-          </div>
-        </div>
-      );
+    }  
+    if (!this.state.errorMessage && this.state.lat && this.state.long) {
+      return <SeasonDisplay lat={this.state.lat} long={this.state.long}/>;
     }
+
     return <div> LOADING... </div>;
   }
 }
