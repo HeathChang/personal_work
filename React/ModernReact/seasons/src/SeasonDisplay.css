@@ -22,10 +22,10 @@
 }
 
 .season-display.summer i{
-    color: red
+    color: darkorange
 }
 
-.winter { 
+.season-display.winter { 
     background-color: aliceblue;
 }
 
