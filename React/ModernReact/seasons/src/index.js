@@ -18,9 +18,7 @@ class App extends React.Component {
       (error) => this.setState({ errorMessage: error.message })
     );
   }
-
-  //React says we have to define render.
-  render() {
+  renderContent(){
     if (this.state.errorMessage && !this.state.lat && !this.state.long) {
       return (
           <div>Error: {this.state.errorMessage}</div>
@@ -30,6 +28,15 @@ class App extends React.Component {
       return <SeasonDisplay lat={this.state.lat}  long={this.state.long}/>;
     }
     return <Spinner />;
+  }
+  
+  //React says we have to define render.
+  render() {
+    return(
+      <div className="border red">
+        {this.renderContent()}
+      </div>
+    )
   }
 }
 ReactDOM.render(<App />, document.querySelector("#root"));
