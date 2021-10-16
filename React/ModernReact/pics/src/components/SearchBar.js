@@ -17,6 +17,8 @@ class SearchBar extends React.Component {
         event.preventDefault();
         console.log("this.state.term in searchbar>> ", this.state.term);
         this.props.onSubmit(this.state.term)
+        //class component -> this.props
+        //method component -> props
     }
 
   render() {
