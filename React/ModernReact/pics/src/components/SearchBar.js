@@ -2,8 +2,6 @@
 import React from "react";
 
 class SearchBar extends React.Component {
-
-
     state = {term : ''};
 
     // onFormSubmit(event){
@@ -16,23 +14,27 @@ class SearchBar extends React.Component {
     onFormSubmit=(event)=>{
         event.preventDefault();
         console.log("this.state.term in searchbar>> ", this.state.term);
-        this.props.onSubmit(this.state.term)
+        this.props.onSubmit(this.state.term);
         //class component -> this.props
         //method component -> props
     }
 
-  render() {
-    return (
-      <div className="ui segment">
-        <form className="ui form" onSubmit={(e)=>{this.onFormSubmit(e)}}>
-          <div className="field">
-            <label> Image Search </label> 
-            <input type="text" value={this.state.term} onChange={(e)=> {this.setState({term: e.target.value})}}/>                
-          </div>
-        </form>
-      </div>
-    );
+    render() {
+      return (
+        <div className="ui segment">
+          <form onSubmit={this.onFormSubmit} className="ui form">
+            <div className="field">
+              <label>Image Search</label>
+              <input
+                type="text"
+                value={this.state.term}
+                onChange={e => this.setState({ term: e.target.value })}
+              />
+            </div>
+          </form>
+        </div>
+      );
+    }
   }
-}
 
 export default SearchBar;

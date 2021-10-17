@@ -7,7 +7,7 @@ class App extends React.Component {
     axios.get('https://api.unsplash.com/search/photos', {
       params: { query: term },
       headers: {
-        Authorization: 'Client_ID NiTif1HhcgTVaT4CvHQW114LHUO_GqaJCmQRuCGU9yI' 
+        Authorization: 'Client-ID NiTif1HhcgTVaT4CvHQW114LHUO_GqaJCmQRuCGU9yI', 
       }
     });
   }
