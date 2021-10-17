@@ -8,7 +8,7 @@ class App extends React.Component {
       params: { query: term },
       headers: {
         Authorization: 'Client_ID NiTif1HhcgTVaT4CvHQW114LHUO_GqaJCmQRuCGU9yI' 
-      },
+      }
     });
   }
 
