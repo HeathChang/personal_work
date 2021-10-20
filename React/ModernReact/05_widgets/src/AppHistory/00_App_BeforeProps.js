@@ -23,7 +23,7 @@ const items = [
 export default () => {
   return (
     <div>
-      <Accordion itemsFromApp={items}/>
+      <Accordion />
     </div>
   );
 };
