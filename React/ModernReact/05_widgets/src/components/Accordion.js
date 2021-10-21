@@ -1,8 +1,13 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 
 const Accordion = ({ itemsFromApp }) => {
+  const [activeIndex, setActiveIndex] = useState(null);
+  //activeIndex: Piece of state (will be reference)
+  //setActivceIndex: function to change this piece of state
+  //null: Initial value for the state
+
   const onTitleClick = (index) => {
-    console.log("Title Clicked", index);
+    setActiveIndex(index);
   };
 
   const renderedItems = itemsFromApp.map((item, index) => {
@@ -21,7 +26,12 @@ const Accordion = ({ itemsFromApp }) => {
     );
   }); //end renderedItems function
 
-  return <div className="ui styled accordion">{renderedItems}</div>;
+  return (
+    <div className="ui styled accordion">
+      {renderedItems}
+      <h1>{activeIndex}</h1>
+    </div>
+  );
 }; //end Accordion
 
 export default Accordion;
