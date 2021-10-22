@@ -2,7 +2,13 @@ import React, { useState, useEffect } from "react";
 
 const Search = () => {
   const [term, setTerm] = useState("");
-  useEffect(() => {console.log("ansdasd");}); //end useEffect
+
+  console.log('I run with Every Render');
+
+  useEffect(() => {
+    console.log("I run every render");
+  },[]); //all of the second variable
+  
   return (
     <div>
       <div>
