@@ -3,7 +3,7 @@ import React from "react";
 
 //components
 import Accordion from "./components/Accordion";
-//import Accordion from "./components/Accordion";
+import Search from "./components/Search";
 
 const items = [
     {
@@ -12,7 +12,7 @@ const items = [
     },
     {
         title: 'Why use React',
-        content: 'React is a famous JS library among engs'
+        content: 'React is a famous JS library among us'
     },
     {
         title: 'How do you use React?',
@@ -23,7 +23,7 @@ const items = [
 export default () => {
   return (
     <div>
-      <Accordion itemsFromApp={items}/>
+      <Search/>
     </div>
   );
 };
