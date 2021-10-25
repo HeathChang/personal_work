@@ -36,8 +36,11 @@ const Search = () => {
       }
     })
       .then((response) => {
+        if(term){
         setResults(response.data.query.search)
+        }
       })
+
   }, [term]);
 
   const renderedResults = results.map((result) => {
