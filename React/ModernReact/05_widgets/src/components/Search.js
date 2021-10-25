@@ -1,18 +1,33 @@
 import React, { useState, useEffect } from "react";
+import axios from 'axios'
 
 const Search = () => {
   const [term, setTerm] = useState("");
 
-  console.log('I run with Every Render');
 
   //useEffect의 params 의미
-  // []: Run at initial render
-  // ..nothing: Run after every re-render (+a)
-  // [data]: Run after every re-render if data has changed since last re-render
-  
+  // []: Run at initial render (eg: [])
+  // ..nothing: Run after every re-render (eg:  )
+  // [data]: Run after every re-render if data has changed since last re-render && if two params: || 로 둘중 하나(eg: [term])
   useEffect(() => {
-    console.log("useEffect");
-  },[]); 
+    console.log("useEffect occurred");
+    //1. ways to use async (1/3): recommended
+      // const search = async () => {
+      //   await axios.get('asdasd')
+      // }
+
+    //2. ways to use async (2/3): define function & invoke it
+    // (async () => {
+    //   await axios.get('asdasd')
+    // })();
+
+    //3. ways to use async (3/3): promises
+    // axios.get('asdasd').then((response)=>{
+    //   console.log(response.data);
+    // })
+
+
+  },[term]); 
   
   return (
     <div>
