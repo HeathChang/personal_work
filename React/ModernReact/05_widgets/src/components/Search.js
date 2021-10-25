@@ -12,9 +12,9 @@ const Search = () => {
   useEffect(() => {
     console.log("useEffect occurred");
     //1. ways to use async (1/3): recommended
-      // const search = async () => {
-      //   await axios.get('asdasd')
-      // }
+    // const search = async () => {
+    //   await axios.get('asdasd')
+    // }
 
     //2. ways to use async (2/3): define function & invoke it
     // (async () => {
@@ -26,9 +26,21 @@ const Search = () => {
     //   console.log(response.data);
     // })
 
+    axios.get('https://en.wikipedia.org/w/api.php', {
+      params: {
+        action: 'query',
+        list: 'search',
+        origin: '*',
+        format: 'json',
+        srsearch: term
+      }
+    })
+      .then((response) => {
+        console.log(response.data);
+      })
 
-  },[term]); 
-  
+  }, []);
+
   return (
     <div>
       <div>
