@@ -5,9 +5,14 @@ const Search = () => {
 
   console.log('I run with Every Render');
 
+  //useEffect의 params 의미
+  // []: Run at initial render
+  // ..nothing: Run after every re-render (+a)
+  // [data]: Run after every re-render if data has changed since last re-render
+  
   useEffect(() => {
-    console.log("I run every render");
-  },[]); //all of the second variable
+    console.log("useEffect");
+  },[]); 
   
   return (
     <div>
