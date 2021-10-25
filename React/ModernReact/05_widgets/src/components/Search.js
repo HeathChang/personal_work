@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios'
 
 const Search = () => {
-  const [term, setTerm] = useState("");
+  const [term, setTerm] = useState("programming!");
+  const [results, setResults] = useState([]);
 
 
   //useEffect의 params 의미
@@ -25,7 +26,6 @@ const Search = () => {
     // axios.get('asdasd').then((response)=>{
     //   console.log(response.data);
     // })
-
     axios.get('https://en.wikipedia.org/w/api.php', {
       params: {
         action: 'query',
@@ -36,10 +36,9 @@ const Search = () => {
       }
     })
       .then((response) => {
-        console.log(response.data);
+        setResults(response.data.query.search)
       })
-
-  }, []);
+  }, [term]);
 
   return (
     <div>
