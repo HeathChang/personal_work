@@ -42,11 +42,8 @@ const Search = () => {
             }
         }
         ,500);
-        return() => {
-          console.log("test");
-          clearTimeout(timeoutId);
-        }
-      }) //end then
+      }
+) //end then
       
   }, [term]);
 
