@@ -3,7 +3,7 @@ import Accordion from "./components/Accordion";
 import Search from "./components/Search";
 import Dropdown from "./components/Dropdown";
 import Translate from "./components/Translate";
-
+import Route from "./components/Route";
 const items = [
   {
     title: "What is React?",
@@ -34,23 +34,32 @@ const options = [
   },
 ];
 
-const pathName = window.location.pathname;
+//const pathName = window.location.pathname;
+// const pathComponents = () => {
+//   if(pathName === '/accordion'||'/'){
+//     return <Accordion items = {items}/>
+//   } else if(pathName === '/dropdown') {
+//     return <Dropdown />
+//   } else if (pathName === '/search'){
+//     return <Search />
+//   } else if (pathName === '/translate'){
+//     return <Translate/>
+//   }
+// }
+
 const pathComponents = () => {
-  if(pathName === '/accordion'||'/'){
-    return <Accordion items = {items}/>
-  } else if(pathName === '/dropdown') {
-    return <Dropdown />
-  } else if (pathName === '/search'){
-    return <Search />
-  } else if (pathName === '/translate'){
-    return <Translate/>
-  }
+
 }
 
 const App = () => {
+  const [selected, setSelected] = useState(options[0])
   return (
     <div>
-      {pathComponents()}
+      <Route path="/"><Accordion items={items} /* This becomes children*/ /></Route>
+      <Route path="/dropdown"><Dropdown label="Select a color" options={options} selected={selected} onSelectedChange={setSelected} /* This becomes children*/ /></Route>
+      <Route path="/search"><Search  /* This becomes children*/ /></Route>
+      <Route path="/translate"><Translate /* This becomes children*/ /></Route>
+
     </div>
   );
 };
