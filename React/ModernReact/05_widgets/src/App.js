@@ -34,10 +34,23 @@ const options = [
   },
 ];
 
+const pathName = window.location.pathname;
+const pathComponents = () => {
+  if(pathName === '/accordion'||'/'){
+    return <Accordion items = {items}/>
+  } else if(pathName === '/dropdown') {
+    return <Dropdown />
+  } else if (pathName === '/search'){
+    return <Search />
+  } else if (pathName === '/translate'){
+    return <Translate/>
+  }
+}
+
 const App = () => {
   return (
     <div>
-      <Translate />
+      {pathComponents()}
     </div>
   );
 };
