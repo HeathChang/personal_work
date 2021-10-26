@@ -36,12 +36,18 @@ const Search = () => {
       }
     })
       .then((response) => {
-        setTimeout(()=>{
+        const timeoutId= setTimeout(()=>{
           if(term){
             setResults(response.data.query.search)
             }
-        },400);
-      })
+        }
+        ,500);
+        return() => {
+          console.log("test");
+          clearTimeout(timeoutId);
+        }
+      }) //end then
+      
   }, [term]);
 
   const renderedResults = results.map((result) => {
