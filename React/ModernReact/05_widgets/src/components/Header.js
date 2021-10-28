@@ -3,10 +3,10 @@ import Link from './Link';
 const Header = () => {
     return (
         <div className="ui secondary point menu">
-            <a href="/" className="item">Accordion<Link /></a>
-            <a href="/search" className="item">Search<Link /></a>    
-            <a href="/dropdown" className="item">Dropdown<Link /></a>    
-            <a href="/translate" className="item">Translate<Link /></a>    
+            <Link href="/" className="item">Accordion</Link>
+            <Link href="/search" className="item">Search</Link>   
+            <Link href="/dropdown" className="item">Dropdown</Link>   
+            <Link href="/translate" className="item">Translate</Link>   
     
         </div>
     )
