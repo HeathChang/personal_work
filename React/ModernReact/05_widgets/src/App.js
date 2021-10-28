@@ -57,7 +57,7 @@ const App = () => {
   const [selected, setSelected] = useState(options[0])
   return (
     <div>
-      <Header/>
+      <Header />
       <Route path="/"><Accordion items={items} /* This becomes children*/ /></Route>
       <Route path="/dropdown"><Dropdown label="Select a color" options={options} selected={selected} onSelectedChange={setSelected} /* This becomes children*/ /></Route>
       <Route path="/search"><Search  /* This becomes children*/ /></Route>
