@@ -5,3 +5,17 @@
 2. 
     Props: System for passing data from a parent component to a child component
          : Goal is to customize of configure a child component
+
+3.
+    Actions: 상태에서 변화를 위해 사용, 이때 action객체는 type field(액션의 이름)을 반드시 가지고 있어야 한다. 
+4.
+    Reducers: 변화를 일으키는 함수. 액션을 만들어서 발생시키면 리듀서가 현재 state와 전달받은 action을 파라미터로 받아옴
+            : 두값을 참고하여 새로운 상태를 반환. 
+5.
+    Store: 프로젝트에 redux를 적용하기 위해 store 생성. 한개의 project는 단 하나의 store만 가질 수 있음.
+         : 스토어 안에는 현재 App의 state와 reducer가 들어가 있음. 
+6.
+    Dispatch:  액션을 발생 시키는 행위
+7.
+    Subscribe: 스토어의 내장 함수 중 하나로 subscribe 함수 안에 리스너 함수를 파라미터로 넣어서 호출하면, listener함수가 action이 dispatch되어
+                state가 업데이트 될떄마다 호출.              
