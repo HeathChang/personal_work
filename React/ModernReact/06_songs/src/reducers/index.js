@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import { selectSong } from '../actions';
-
+import { selectSong } from '../actions/index';
+//리듀서가 현재 state와 전달받은 action을 파라미터로 받아 state를 변화
 const songsReducer = () => {
     return [
         { title: 'No Scrubs', duration: '4:05' },
