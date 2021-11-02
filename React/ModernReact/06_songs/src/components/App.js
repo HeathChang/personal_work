@@ -1,5 +1,5 @@
 import React from "react";
-import actions from '../actions/index'
+import selectSong from '../actions/index'
 
 const App = () => {
     return <div>App</div>
