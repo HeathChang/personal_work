@@ -19,7 +19,6 @@ class SongList extends Component {
         })
     }
     render() {
-        console.log("check props: ", this.props);
         return <div className="ui divided list">{this.renderList()}</div>
     }
 }
