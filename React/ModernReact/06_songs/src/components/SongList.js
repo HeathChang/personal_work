@@ -11,7 +11,7 @@ class SongList extends Component {
                         <button
                             className="ui-button primary"
                             onClick={() => this.props.selectSong(song)}
-                        >Select</button>
+                        >SelecT</button>
                     </div>
                     
                     <div className="content">{song.title}</div>
