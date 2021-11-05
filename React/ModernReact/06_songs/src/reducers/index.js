@@ -13,7 +13,8 @@ const songsReducer = () => {
 
 const selectedSongReducer = (selectedSong = null, action) => {
     if (action.type === 'SONG_SELECTED') {
-        console.log("check action on reducers: ", action);
+        console.log("check action on reducers: ", action); //액션 정보
+        //console.log("This works: ", selectedSong); //이전에 선택한 노래 
         return action.payload
     }
     return selectedSong;

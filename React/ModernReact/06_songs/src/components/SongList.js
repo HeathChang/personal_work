@@ -11,12 +11,11 @@ class SongList extends Component {
                         <button
                             className="ui-button primary"
                             onClick={() => this.props.selectSong(song)}
-                        >SelecT</button>
+                        >Select</button>
                     </div>
-                    
+
                     <div className="content">{song.title}</div>
                 </div>
-
             )
         })
     }
@@ -26,12 +25,13 @@ class SongList extends Component {
 }
 
 const mapStateToProps = state => {
+    console.log("mapStateToProps: ",state);
     return {
-        songs: state.songs
+        songs: state.songs,
+        select: state.selectedSong
     }
 }
 
 
 export default connect(mapStateToProps, {
-    selectSong: selectSong
 })(SongList);
