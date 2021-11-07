@@ -28,10 +28,11 @@ const mapStateToProps = state => {
     console.log("mapStateToProps: ",state);
     return {
         songs: state.songs,
-        select: state.selectedSong
+        selectSong: state.selectedSong
     }
 }
 
 
 export default connect(mapStateToProps, {
+    selectSong: selectSong
 })(SongList);
