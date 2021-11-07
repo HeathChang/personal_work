@@ -5,6 +5,7 @@ import { selectSong } from '../actions/index';
 class SongList extends Component {
     renderList() {
         return this.props.songs.map((song) => {
+            console.log("checking: ", this.props);
             return (
                 <div className="item" key={song.title}>
                     <div className="right floated content">
@@ -25,7 +26,7 @@ class SongList extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log("mapStateToProps: ",state);
+    console.log("mapStateToProps: ", state);
     return {
         songs: state.songs,
         selectSong: state.selectedSong
