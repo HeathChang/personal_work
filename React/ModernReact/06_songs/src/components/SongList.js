@@ -5,7 +5,7 @@ import { selectSong } from '../actions/index';
 class SongList extends Component {
     renderList() {
         return this.props.songs.map((song) => {
-            console.log("checking: ", this.props);
+            //console.log("checking: ", this.props); //props 넘어옴
             return (
                 <div className="item" key={song.title}>
                     <div className="right floated content">
