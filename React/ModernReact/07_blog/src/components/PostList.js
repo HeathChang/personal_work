@@ -1,9 +1,15 @@
 import React from "react";
+import { connect } from 'react-redux';
 
-class PostList extends React.Component{
-    render(){
+import { fetchPosts } from '../actions'
+
+class PostList extends React.Component {
+    componentDidMount(){
+        this.props.fetchPosts();
+    }
+    render() {
         return <div className="">Post List</div>
     }
 }
 
-export default PostList;
+export default connect(null, { fetchPosts: fetchPosts })(PostList);
