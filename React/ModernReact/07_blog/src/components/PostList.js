@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { fetchPosts } from '../actions'
 
 class PostList extends React.Component {
-    componentDidMount(){
+    componentDidMount() {
         this.props.fetchPosts();
     }
     render() {
