@@ -8,8 +8,15 @@ class PostList extends React.Component {
         this.props.fetchPosts();
     }
     render() {
-        return <div className="">Post List</div>
+        console.log("render: ", this.props.posts);
+        return <div>Post List</div>
     }
 }
 
-export default connect(null, { fetchPosts: fetchPosts })(PostList);
+const mapStateToProps = (state) => {
+    return {
+        posts: state.posts
+    }
+}
+
+export default connect(mapStateToProps, { fetchPosts: fetchPosts })(PostList);
