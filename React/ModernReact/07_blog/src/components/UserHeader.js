@@ -10,9 +10,7 @@ class UserHeader extends React.Component {
 
     render() {
         //Arrow Function의 중괄호는 return 꼭 써줘야함. 
-
         const { user } = this.props
-
         if (!user) {
             return null
         }
