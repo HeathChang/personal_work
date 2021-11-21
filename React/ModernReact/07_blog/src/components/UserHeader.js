@@ -9,10 +9,10 @@ class UserHeader extends React.Component {
     }
 
     render() {
-        const user = this.props.users.find((user) => (
-             user.id === this.props.userId
-        ))
-        //중괄호는 return 꼭 써줘야함. 
+        //Arrow Function의 중괄호는 return 꼭 써줘야함. 
+
+        const { user } = this.props
+
         if (!user) {
             return null
         }
@@ -20,9 +20,13 @@ class UserHeader extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+    //ownProps를 통해 자신의 props를 사용 가능 
     return {
-        users: state.users
+        //다 넘겨줄 필요없음
+        user: state.users.find((user) => (
+            user.id === ownProps.userId
+        ))
     }
 }
 
