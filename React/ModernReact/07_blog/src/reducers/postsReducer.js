@@ -6,5 +6,6 @@ export default (state = [], action) => {
         default:
             return state;
     }
-
 }
+
+//1st arg (state) returned from the same reducer th last time it ran 

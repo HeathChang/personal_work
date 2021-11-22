@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchUser } from '../actions/index';
+// import { fetchUser } from '../actions/index';
 
 class UserHeader extends React.Component {
     //처음 화면에 마운트 될때 실행
-    componentDidMount() {
-        this.props.fetchUser(this.props.userId)
-    }
+    // componentDidMount() {
+    //     this.props.fetchUser(this.props.userId)
+    // }
 
     render() {
         //Arrow Function의 중괄호는 return 꼭 써줘야함. 
@@ -25,10 +25,11 @@ const mapStateToProps = (state, ownProps) => {
         user: state.users.find((user) => (
             user.id === ownProps.userId
         ))
-    }
+    }  
 }
 
-export default connect(mapStateToProps, { fetchUser })(UserHeader);
+// export default connect(mapStateToProps, { fetchUser })(UserHeader);
+export default connect(mapStateToProps)(UserHeader);
 
 
 //1. 컴포넌트를 생성 후, 메인컴포넌트에 연결 
