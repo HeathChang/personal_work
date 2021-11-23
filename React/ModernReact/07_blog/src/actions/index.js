@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import jsonPlaceholder from "../apis/jsonPlaceholder";
 
-//To avoid over-fetching problems, make new action creator that calls old action creator and dispatch it 
+//To avoid over-fetching, make new action creator that calls old action creator and dispatch it 
 export const fetchPostsAndUsers = () => async (dispatch, getState) => {
     await dispatch(fetchPosts());
     // const userIds= _.uniq (_.map(getState().posts, 'userId'))
