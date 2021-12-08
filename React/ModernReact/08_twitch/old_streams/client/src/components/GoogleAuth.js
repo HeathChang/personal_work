@@ -70,4 +70,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { signIn, signOut })(GoogleAuth)
+export default connect(
+    mapStateToProps,
+    { signIn, signOut }
+)(GoogleAuth);
