@@ -51,7 +51,6 @@ const validate = (formValues) => {
   if (!formValues.description) {
     errors.description = "Must Enter Description"
   }
-
   return errors
 }
 
