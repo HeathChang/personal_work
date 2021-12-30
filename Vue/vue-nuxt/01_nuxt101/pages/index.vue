@@ -1,5 +1,5 @@
 <template>
-  <main>Hello World</main>
+  <main>pages/index</main>
 </template>
 
 <script>
