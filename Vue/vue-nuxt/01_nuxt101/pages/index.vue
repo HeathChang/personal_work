@@ -1,5 +1,7 @@
 <template>
-  <main>pages/index</main>
+  <section class="container">
+    <router-link to="/users"> Users </router-link>
+  </section>
 </template>
 
 <script>
