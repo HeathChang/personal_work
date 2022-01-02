@@ -1,21 +1,12 @@
 <template>
   <main>
-    <input type="text" v-model="userId" />
-    <button @click="onLoadUser">Load User</button>
+    <p>Please enter an id and click th button</p>
   </main>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      userId: "",
-    };
-  },
-  methods: {
-    onLoadUser() {
-      this.$router.push("/users/" + this.userId);
-    },
-  },
+  layout: "users",
+  // 기본은 layouts/default이지만, 위와 같은 식으로 변경가능.
 };
 </script>
