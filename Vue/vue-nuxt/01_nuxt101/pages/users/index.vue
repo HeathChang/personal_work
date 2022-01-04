@@ -10,3 +10,7 @@ export default {
   // 기본은 layouts/default이지만, 위와 같은 식으로 변경가능.
 };
 </script>
+
+
+<style scoped>
+</style>

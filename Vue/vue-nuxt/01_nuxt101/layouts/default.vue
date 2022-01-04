@@ -11,4 +11,5 @@ export default {
     Header,
   },
 };
-</script>
+</script> 
+
