@@ -41,13 +41,14 @@
 
 <script>
 export default {
+  emits: ["save-data"],
   data() {
     return {
       firstName: "",
       lastName: "",
       description: "",
       rate: null,
-      area: "",
+      areas: [],
     };
   },
   methods: {
@@ -61,6 +62,7 @@ export default {
       };
       // eslint-disable-next-line no-console
       console.log(formData);
+      this.$emit("save-data", formData);
     },
   },
 };
