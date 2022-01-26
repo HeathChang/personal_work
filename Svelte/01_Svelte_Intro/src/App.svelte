@@ -1,39 +1,44 @@
-<h1>Hello {uppercaseName}, My age is {age + 1}</h1>
-<button on:click="{incrementAge}"> Change Age</button>
-<!-- <input type="text" value="{name}" on:input="{nameInput}"> -->
-<input type="text" bind:value="{name}" >
-<ConctactCard userName="{name}"/>
-
 <script>
-	import ConctactCard from './ConctactCard.svelte';
+  import ContactCard from "./ContactCard.svelte";
 
-	let name= 'heath';
-	let age= 30;
+  let name = "Max";
+  let title = "";
+  let image = "";
+  let description = "";
+  let done = false;
+  
+  function addContact () {
+    done = !done
+  }
 
-	// add dynamic calculation: 
-	$: uppercaseName = name.toUpperCase();
-	$: console.log(name)
-	$: if (name === 'Jeffrey') { 
-		console.log('Hello')
-		age = 31
-	}
-	function nameInput(event){
-		const enteredValue = event.target.value
-		name = enteredValue
-	}
-
-	function incrementAge() {
-		age += 1
-	}
-	
-	function changeName() {
-		name = 'Jeffrey'
-	}
 </script>
 
-
 <style>
-	h1 {
-		color: purple;
-	}
+  #form {
+    width: 30rem;
+    max-width: 100%;
+  }
 </style>
+
+<div id="form">
+  <div class="form-control">
+    <label for="userName">User Name</label>
+    <input type="text" bind:value={name} id="userName" />
+  </div>
+  <div class="form-control">
+    <label for="jobTitle">Job Title</label>
+    <input type="text" bind:value={title} id="jobTitle" />
+  </div>
+  <div class="form-control">
+    <label for="image">Image URL</label>
+    <input type="text" bind:value={image} id="image" />
+  </div>
+  <div class="form-control">
+    <label for="desc">Description</label>
+    <textarea rows="3" bind:value={description} id="desc" />
+  </div>
+</div>
+<button on:click="{addContact}">Add Contact Card</button>
+{#if done }
+<ContactCard userName={name} jobTitle={title} {description} userImage={image} />
+{/if}
