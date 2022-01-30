@@ -5,12 +5,23 @@
   let title = "";
   let image = "";
   let description = "";
-  let done = false;
+  let formState = "empty";
+
+  let createdContacts = [];
   
   function addContact () {
-    done = !done
+    if(name.trim().length == 0 || title.trim().length == 0 || image.trim().length == 0 || description.length == 0) {formState = 'invalid'; return false}
+    createdContacts = [...createdContacts,({id:Math.random(),name: name , jobTitle: title , imageUrl: image , desc: description})]
+    // push 하면, reference type 인 createdContacts 에서는 변화가 되지 않는다. 
+    formState = 'done'
   }
 
+  function deleteFirst () {
+    createdContacts = createdContacts.slice(1)
+  }
+  function deleteLast () {
+    createdContacts = createdContacts.slice(0, -1)
+  }
 </script>
 
 <style>
@@ -39,6 +50,17 @@
   </div>
 </div>
 <button on:click="{addContact}">Add Contact Card</button>
-{#if done }
-<ContactCard userName={name} jobTitle={title} {description} userImage={image} />
+<button on:click="{deleteFirst}">Delete First</button>
+<button on:click="{deleteLast}">Delete Last</button>
+{#if formState === 'invalid'}
+  <p> invalid input..</p>
+{:else}
+  <p> Please enter some date and hit the button.</p>
 {/if}
+
+{#each createdContacts as contact, i (contact.id)}
+<h2># {i + 1}</h2>
+<ContactCard userName={contact.name} jobTitle={contact.jobTitle} description={contact.desc} userImage={contact.imageUrl} />
+{:else}
+  <p> Please start adding contents</p>
+{/each}
