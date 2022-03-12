@@ -901,21 +901,21 @@ var app = (function () {
     			add_location(option2, file, 95, 2, 2155);
     			if (/*singleFavColor*/ ctx[5] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[22].call(select));
     			add_location(select, file, 92, 0, 2042);
-    			attr_dev(hr2, "description", "using this");
+    			attr_dev(hr2, "description", "using this // can store a reference to the element here ");
     			add_location(hr2, file, 98, 0, 2201);
     			attr_dev(input5, "type", "text");
     			attr_dev(input5, "id", "username");
-    			add_location(input5, file, 99, 0, 2233);
-    			add_location(button0, file, 100, 0, 2295);
-    			add_location(div, file, 101, 0, 2337);
-    			add_location(hr3, file, 103, 0, 2366);
+    			add_location(input5, file, 99, 0, 2279);
+    			add_location(button0, file, 100, 0, 2341);
+    			add_location(div, file, 101, 0, 2383);
+    			add_location(hr3, file, 103, 0, 2412);
     			attr_dev(input6, "type", "email");
     			attr_dev(input6, "class", input6_class_value = "" + (null_to_empty(isValidEmail(/*enteredEmail*/ ctx[7]) ? '' : 'invalid') + " svelte-u5nd84"));
-    			add_location(input6, file, 106, 2, 2408);
+    			add_location(input6, file, 106, 2, 2454);
     			attr_dev(button1, "type", "submit");
     			button1.disabled = button1_disabled_value = !/*formIsValid*/ ctx[10];
-    			add_location(button1, file, 110, 2, 2523);
-    			add_location(form, file, 105, 0, 2374);
+    			add_location(button1, file, 110, 2, 2569);
+    			add_location(form, file, 105, 0, 2420);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");

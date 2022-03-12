@@ -96,7 +96,7 @@
   <option value="blue">Blue</option>
 </select>
 
-<hr description="using this" />
+<hr description="using this // can store a reference to the element here " />
 <input type="text" id="username" bind:this={usernameInput} />
 <button on:click={saveData}>Save</button>
 <div bind:this={someDiv} />
