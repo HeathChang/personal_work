@@ -1,20 +1,27 @@
 //import from 3rd party
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from 'react'
 
 //import from src/files
-import Header from "./components/Layout/Header";
-import Meals from "./components/Meals/Meals";
+import Header from './components/Layout/Header'
+import Meals from './components/Meals/Meals'
+import Cart from './components/Cart/Cart'
 
 function App() {
+  const [CartIsShown, setCartIsShown] = useState(false)
+
+  const changeCartHandler = () => {
+    setCartIsShown(!CartIsShown)
+  }
+
   return (
     <Fragment>
-      <h2>Let's get started!</h2>
-      <Header />
+      {CartIsShown && <Cart onClose={changeCartHandler} />}
+      <Header onShowCart={changeCartHandler} />
       <main>
         <Meals />
       </main>
     </Fragment>
-  );
+  )
 }
 
-export default App;
+export default App
