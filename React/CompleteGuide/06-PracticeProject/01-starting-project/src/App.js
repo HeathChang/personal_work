@@ -1,10 +1,11 @@
 //import from 3rd party
-import React, { Fragment, useState } from 'react'
+import React, { useState } from 'react'
 
 //import from src/files
 import Header from './components/Layout/Header'
 import Meals from './components/Meals/Meals'
 import Cart from './components/Cart/Cart'
+import CartProvider from './store/CartProvider'
 
 function App() {
   const [CartIsShown, setCartIsShown] = useState(false)
@@ -14,13 +15,13 @@ function App() {
   }
 
   return (
-    <Fragment>
+    <CartProvider>
       {CartIsShown && <Cart onClose={changeCartHandler} />}
       <Header onShowCart={changeCartHandler} />
       <main>
         <Meals />
       </main>
-    </Fragment>
+    </CartProvider>
   )
 }
 

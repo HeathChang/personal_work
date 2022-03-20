@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 
 //import from src/files
 import mealsImage from '../../assets/meals.jpeg';
-import classes from './Header.module.css'
+import classes from './css/Header.module.css'
 import HeaderCartButton from './HeaderCartButton';
 
 
