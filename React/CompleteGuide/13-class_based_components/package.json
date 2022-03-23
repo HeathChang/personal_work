@@ -21,7 +21,10 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "react/jsx-filename-extension": 0
+    }
   },
   "browserslist": {
     "production": [
