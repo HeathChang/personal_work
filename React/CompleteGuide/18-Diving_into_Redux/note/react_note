@@ -13,3 +13,6 @@ React  vs Redux : (why not use React Context to deliver props)
 concepts:
 - Components ->(dispatch an action) -> Reducer Function ->(Mutates(=change))-> Stored Data(Central Data) ->(Subscription / subscribe)-> Components
 - need to dispatch an action !
+
+useSelector:
+select the part of the state managed by the store.
