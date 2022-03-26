@@ -1,21 +1,33 @@
 import { createStore } from 'redux';
 
+const initialState = { counter : 0 , showCounter : true }
+
 //1. CreateStore & reducer and  connect createStore to reducer
 // const store = createStore()
 
 //2. create reducer and mutates the state
-const counterReducer = ( state = { counter : 0 } , action ) => {
+const counterReducer = ( state = initialState , { type , amount = 1 } ) => {
 	//receive action from component by dispatching
-	if ( action.type === 'increment' ) {
+	if ( type === 'increment' ) {
 		return {
-			counter : state.counter + 1
+			counter : state.counter + amount ,
+			showCounter : state.showCounter
 		}
 	}
-	if ( action.type === 'decrement' ) {
+	if ( type === 'decrement' ) {
 		return {
-			counter : state.counter - 1
+			counter : state.counter - amount ,
+			showCounter : state.showCounter
 		}
 	}
+
+	if ( type === 'toggle' ) {
+		return {
+			counter : state.counter ,
+			showCounter : !state.showCounter
+		}
+	}
+
 	return state;
 }
 const store = createStore ( counterReducer )
