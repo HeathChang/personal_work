@@ -6,9 +6,8 @@ import { counterActionsCreator } from "../store";
 const Counter = () => {
 	// 4. useSelector : automatically select the part of the state managed by store
 	// 4-2. by using useSelector, Redux will automatically set up a subscription. so this will receive the latest counter automatically when data changes in Redux store.
-
-	const counter = useSelector(state => state.counter)
-	const showCounter = useSelector(state => state.showCounter)
+	const counter = useSelector(state => state.counter.counter)
+	const showCounter = useSelector(state => state.counter.showCounter)
 
 	// 5. dispatch: dispatch an action to the Redux store
 	const dispatch = useDispatch();
