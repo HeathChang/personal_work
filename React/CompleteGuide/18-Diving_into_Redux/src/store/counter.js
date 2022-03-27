@@ -7,6 +7,7 @@ const counterSlice = createSlice({
 	initialState : initialCounterState,
 	reducers : {
 		// if duplicated destructured value  is null, put amount : 1
+		// action , payload (name should be followed)
 		increment (state, { payload : { amount } = { amount : 1 } }) {
 			//immutable: automatically over-riding
 			// state.counter++

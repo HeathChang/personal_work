@@ -6,7 +6,6 @@ import authSlice from './auth'
 //////////////////////////////////////////////////////////////
 //1. CreateStore & reducer and  connect createStore to reducer
 // const store = createStore()
-
 //2. create reducer and mutates the state
 // const counterReducer = (state = initialState, { type, amount = 1 }) => {
 // 	//receive action from component by dispatching
