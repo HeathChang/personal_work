@@ -1,41 +1,7 @@
 // import { createStore } from 'redux';
 import { createSlice, configureStore } from '@reduxjs/toolkit'
-
-
-const initialCounterState = { counter : 0, showCounter : true }
-const initialAuthState = { isAuth : false }
-const authSlice = createSlice({
-	name : 'auth',
-	initialState : initialAuthState,
-	reducers : {
-		login (state) {
-			state.isAuth = true
-		},
-		logout (state) {
-			state.isAuth = false
-		}
-	}
-})
-const counterSlice = createSlice({
-	name : 'counter',
-	initialState : initialCounterState,
-	reducers : {
-		// if duplicated destructured value  is null, put amount : 1
-		increment (state, { payload : { amount } = { amount : 1 } }) {
-			//immutable: automatically over-riding
-			// state.counter++
-			console.log('check payload:: ', amount)
-			state.counter = state.counter + amount
-		},
-		decrement (state, { amount = 1 }) {
-			state.counter = state.counter - amount
-		},
-		toggleCounter (state) {
-			state.showCounter = !state.showCounter
-		}
-	}
-})
-
+import counterSlice from './counter'
+import authSlice from './auth'
 
 //////////////////////////////////////////////////////////////
 //1. CreateStore & reducer and  connect createStore to reducer
@@ -73,15 +39,13 @@ const counterSlice = createSlice({
 // const store = createStore ( counterReducer )
 // $$$$$ changes to
 // const store = createStore ( counterSlice.reducer )
-// $$$$$ changes to
+// $$$$$ changes to configureStore as below
 const store = configureStore({
 	// must have single reducer
 	reducer : {
 		counter : counterSlice.reducer,
 		auth : authSlice.reducer
 	}
-	// if many,
-	// reducer : { a: counterSlice.reducer, b: counterSlice.reducer...}
 })
 
 // create [action creator methods] to creat action and dispatch an action(+ unique id)
