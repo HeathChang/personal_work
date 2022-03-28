@@ -6,7 +6,6 @@ import classes from './ProductItem.module.css';
 
 const ProductItem = (props) => {
 	const dispatch = useDispatch();
-	console.log("prop check:: ", props)
 	const { title, price, description, id } = props;
 
 	const addToCartHandler = () => {
