@@ -1,4 +1,5 @@
 1. What is Routing?
 : Only one initial HTML request & response. Page changes are then handled by CS code
 
-2.
+2. {/*:productId"  <- dynamic segment*/ }
+   <Route path="/product-detail/:productId">
