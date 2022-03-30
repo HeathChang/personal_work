@@ -1,4 +1,4 @@
-import { Route } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Welcome from "./pages/Welcom";
 import Products from "./pages/Products";
 import MainHeader from './components/MainHeader'
@@ -9,18 +9,24 @@ function App() {
 			<div>
 				<MainHeader/>
 				<main>
-					<Route path="/welcome">
-						<Welcome/>
-					</Route>
-					<Route path="/products">
-						<Products/>
-					</Route>
-					<Route path="/product-detail/:productId">
-						<ProductDetail/>
-					</Route>
+					<Switch>
+						<Route path="/" exact><Redirect to="/welcome"/></Route>
+						<Route path="/welcome">
+							<Welcome/>
+						</Route>
+						<Route path="/products" exact>
+							<Products/>
+						</Route>
+						<Route path="/products/:productId">
+							<ProductDetail/>
+						</Route>
+					</Switch>
 				</main>
 			</div>
 	);
 }
 
+// basically, prodcuts/:id , shows both products page and product-detail page at the same times
+// use [ exact props] to hide products page
+// use [switch] to active route that i want
 export default App;

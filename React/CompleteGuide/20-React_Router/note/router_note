@@ -5,3 +5,17 @@
    <Route path="/product-detail/:productId">
    In this situation , productId becomes a Key of a value.
    Able to get data using params.productId
+
+3. basically, prodcuts/:id, shows both products page and product-detail page at the same times
+   use [ exact props] to hide products page
+   use [switch] to active route that i want
+
+4. Nested Route : using router in other components to load more component in the specific address
+			<section>
+				<h1>The Welcome Page</h1>
+				<Route path="/welcome/new-user">
+					<p>Welcome New User</p>
+				</Route>
+			</section>
+
+5. Redirect
