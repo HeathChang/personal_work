@@ -8,3 +8,6 @@
 
 4. useLocation : gives access to a location object which has information about currently loaded page.
     returns the location object that represents the current URL.
+
+5. useRouteMatch:
+    Returns a match object that contains all the information like how the current URL matched with the Route path.

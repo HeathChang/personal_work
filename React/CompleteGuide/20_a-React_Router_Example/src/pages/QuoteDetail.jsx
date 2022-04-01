@@ -1,4 +1,4 @@
-import { useParams, Route, useHistory, useLocation, Link } from 'react-router-dom'
+import { useParams, Route, useHistory, useLocation, useRouteMatch, Link } from 'react-router-dom'
 import { Fragment } from "react";
 import Comments from "../components/comments/Comments";
 import HighlightedQuote from '../components/quotes/HighlightedQuote'
@@ -23,16 +23,18 @@ const DUMMY_QUOTES = [
 ]
 
 const QuoteDetail = () => {
+	// hooks
 	const history = useHistory()
 	const params = useParams()
 	const location = useLocation();
-	console.log(112, location)
+	const match = useRouteMatch();
+
 	const path = location.pathname.split('/')[3]
 	const fnNewComment = () => {
 		if ( path !== undefined ) {
-			history.push(`/quotes/${ params.quoteId }`)
+			history.replace(`/quotes/${ params.quoteId }`)
 		} else {
-			history.push(`/quotes/${ params.quoteId }/comments`)
+			history.replace(`/quotes/${ params.quoteId }/comments`)
 		}
 	}
 
@@ -43,14 +45,14 @@ const QuoteDetail = () => {
 	return (
 			<Fragment>
 				<HighlightedQuote text={ quote.text } author={ quote.author }/>
-				<Route path={ `/quotes/${ params.quoteId }` } exact>
+				<Route path={ match.path } exact>
 					<div className='centered'>
-						<Link className='btn--flat' to={ `/quotes/${ params.quoteId }/comments` }>Load Comments</Link>
+						<Link className='btn--flat' to={ `${ match.url }/comments` }>Load Comments</Link>
 						{/*<button onClick={ fnNewComment }>Show New Comment</button>*/ }
 					</div>
 				</Route>
 				<p>{ params.quoteId }</p>
-				<Route path={ `/quotes/${ params.quoteId }/comments` }>
+				<Route path={ `${ match.path }/comments` }>
 					<Comments/>
 				</Route>
 			</Fragment>
