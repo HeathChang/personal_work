@@ -1,1 +1,9 @@
 1. No match ==> <Route path="*"> </Route>
+
+2. use useHistory to go Back from page to page (change the browser history)
+    - history.replace() -> redirect
+    - history.push -> go
+
+3. promt: this component will automatically watch if we navigate away.
+
+4.
