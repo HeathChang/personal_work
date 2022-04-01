@@ -7,8 +7,6 @@ import { addQuote } from '../lib/api.js'
 
 const NewQuote = () => {
 	const { sendRequest, status } = useHttps(addQuote);
-	console.log(1, sendRequest)
-	console.log(2, status)
 	const history = useHistory();
 
 	//sideEffect

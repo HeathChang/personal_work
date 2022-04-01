@@ -22,23 +22,6 @@ const QuoteDetail = () => {
 			history.replace(`/quotes/${ params.quoteId }/comments`)
 		}
 	}
-	const DUMMY_QUOTES = [
-		{
-			id : 'q1',
-			author : 'Max1',
-			text : 'Learning React is Fun1'
-		},
-		{
-			id : 'q2',
-			author : 'Max2',
-			text : 'Learning React is Fun2'
-		},
-		{
-			id : 'q3',
-			author : 'Max3',
-			text : 'Learning React is Fun3'
-		}
-	]
 	const { quoteId } = params
 	const { sendRequest, status, data : loadedQuotes, error } = useHttp(getSingleQuote, true) //start with pending
 	// when first initiated || changed, load data
@@ -59,10 +42,10 @@ const QuoteDetail = () => {
 			<Fragment>
 				<HighlightedQuote text={ loadedQuotes.text } author={ loadedQuotes.author }/>
 				<Route path={ match.path } exact>
-					<div className='centered'>
+					<p className='centered'>
 						<Link className='btn--flat' to={ `${ match.url }/comments` }>Load Comments</Link>
 						{/*<button onClick={ fnNewComment }>Show New Comment</button>*/ }
-					</div>
+					</p>
 				</Route>
 				<p>{ params.quoteId }</p>
 				<Route path={ `${ match.path }/comments` }>
