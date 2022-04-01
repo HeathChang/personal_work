@@ -6,4 +6,4 @@
 
 3. promt: this component will automatically watch if we navigate away.
 
-4.
+4. useLocation : gives access to a location object which has information about currently loaded page.
