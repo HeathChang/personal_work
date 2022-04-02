@@ -13,7 +13,7 @@ const AllQuotes = () => {
 	}, [ sendRequest ])
 
 	if ( status === 'pending' ) {
-		return <p className="centered"><LoadingSpinner/></p>
+		return <div className="centered"><LoadingSpinner/></div>
 	}
 
 	if ( error ) {
