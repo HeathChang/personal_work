@@ -1,0 +1,17 @@
+1. How does Authentication work ?
+    - Session (Server side)
+        : Once a server grants an access, the server stores a unique identifier on server for the client
+        : Send back the identifier to client
+        : Client send identifier along with request to protected resources
+        : BUT, SPA served by server A  & BE served by server B, there is no tight coupling.
+    - JWT-> Key difference with Server side Session
+        : Server create permission token on server, send token to client.
+        : Key: hashing data into a string
+        : don't store the token but sent back to the client, and only the server knows how to create that token.
+        : FE uses this token to attach it to future request. (can be validated by the server )
+        : allows for de-coupling
+
+2. https://react-http-40191-default-rtdb.firebaseio.com/
+    -> going to use Firebase Auth REST API
+
+3.
