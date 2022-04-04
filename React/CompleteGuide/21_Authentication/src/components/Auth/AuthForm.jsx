@@ -8,6 +8,7 @@ const AuthForm = () => {
 	const [ isLogin, setIsLogin ] = useState(true);
 	const emailInputRef = useRef()
 	const passwordInputRef = useRef()
+
 	const authCtx = useContext(AuthContext)
 	const history = useHistory();
 
@@ -58,7 +59,9 @@ const AuthForm = () => {
 				});
 			}
 		}).then(data => {
-			authCtx.login(data.idToken)
+			// 로그인성공후,
+			const expirationTime = new Date(( new Date().getTime() + +data.expiresIn * 1000 ))
+			authCtx.login(data.idToken, expirationTime.toISOString())
 			history.replace('/')
 
 		}).catch(err => alert(err.message));
