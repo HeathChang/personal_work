@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 import MainPage from '../Components/Main/index'
-import UserPage from '../Components/User/index'
+import MemoPage from '../Components/Memo/index'
 import Layout from '../Layout/Layout'
 
 const Router = () => {
@@ -12,8 +12,8 @@ const Router = () => {
 					<Route path="/" exact>
 						<MainPage/>
 					</Route>
-					<Route path="/test2">
-						<UserPage/>
+					<Route path="/memo">
+						<MemoPage/>
 					</Route>
 					<Route path="/*">
 						<Redirect to="/"/>

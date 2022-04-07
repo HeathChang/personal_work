@@ -8,14 +8,14 @@ const NavBar = () => {
 			<Fragment>
 				<header className={ classes.header }>
 					<Link to='/'>
-						<div className={ classes.logo }>React Auth</div>
+						<div className={ classes.logo }>Foo Nea</div>
 					</Link>
 					<ul>
 						<li>
-							<Link to="/">Map</Link>
+							<Link to="/">Main</Link>
 						</li>
 						<li>
-							<Link to="/test2">User</Link>
+							<Link to="/memo">Memo</Link>
 						</li>
 					</ul>
 				</header>

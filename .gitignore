@@ -105,3 +105,6 @@ dist
 
 #DB info
 .database.js
+
+#API Keys
+gitIgnore File/*
