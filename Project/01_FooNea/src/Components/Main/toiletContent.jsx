@@ -1,16 +1,21 @@
 import data from '../data/data'
 import classes from './css/toiletContent.module.css'
+import { useParams, Route, useHistory, useLocation, useRouteMatch, Link } from 'react-router-dom'
 
-const toiletContent = (props) => {
-	console.log(123, props)
+const ToiletContent = (props) => {
+	const match = useRouteMatch();
+	console.log(222, match)
+
 	return (
-				<li onClick={props.fnView}>
-						<h3 className={classes.name}>{props.name}</h3>
-						<div className={classes.description}>
-							Latitude: {props.lat} * Long: {props.long}
-						</div>
+			<Link className={ classes.link } to={ `${ props.id }` }>
+				<li>
+					<h3 className={ classes.name }>{ props.name }</h3>
+					<div className={ classes.description }>
+						{ props.lat } * { props.long }
+					</div>
 				</li>
+			</Link>
 	)
 }
 
-export default toiletContent;
+export default ToiletContent;

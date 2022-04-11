@@ -12,6 +12,9 @@ const Router = () => {
 					<Route path="/" exact>
 						<MainPage/>
 					</Route>
+					<Route path="/:toiletId" >
+						<MemoPage/>
+					</Route>
 					<Route path="/memo">
 						<MemoPage/>
 					</Route>

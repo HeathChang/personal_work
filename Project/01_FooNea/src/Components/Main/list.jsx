@@ -7,6 +7,7 @@ import ToiletContent from "./toiletContent";
 const List = () => {
 	const fnView = (id) => {
 		console.log('Hello World::::', id)
+		this.$router.push(`{id}`)
 		//bind 사용 이유: 모듈 블록 바깥에 있는걸 참조하기 위해서 사용
 	}
 	const toiletContents = toiletList.map((toilet) => {
@@ -17,7 +18,6 @@ const List = () => {
 						name={ toilet.name }
 						lat={ toilet.lat }
 						long={ toilet.long }
-						fnView={ fnView.bind(null, toilet.id)}
 				/>
 		)
 	})

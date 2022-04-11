@@ -14,3 +14,13 @@
     color: #ad5502;
     font-size: 1.25rem;
 }
+
+.link {
+    cursor: pointer;
+    font: inherit;
+    color: #000000;
+    border: none;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+}
