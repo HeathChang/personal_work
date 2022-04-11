@@ -1,13 +1,13 @@
-.title{
+.title {
     text-align: center;
     margin-top: 3rem;
 }
 
-.list{
+.list {
     justify-content: center;
-    display: flex;
     align-items: center;
     gap: 3.2rem;
+    display: grid;
 }
 
 .info {

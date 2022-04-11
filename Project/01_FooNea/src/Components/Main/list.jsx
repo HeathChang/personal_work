@@ -5,6 +5,10 @@ import ToiletContent from "./toiletContent";
 
 
 const List = () => {
+	const fnView = (id) => {
+		console.log('Hello World::::', id)
+		//bind 사용 이유: 모듈 블록 바깥에 있는걸 참조하기 위해서 사용
+	}
 	const toiletContents = toiletList.map((toilet) => {
 		return (
 				<ToiletContent
@@ -13,6 +17,7 @@ const List = () => {
 						name={ toilet.name }
 						lat={ toilet.lat }
 						long={ toilet.long }
+						fnView={ fnView.bind(null, toilet.id)}
 				/>
 		)
 	})
@@ -24,7 +29,7 @@ const List = () => {
 					co-ordinate
 				</h1>
 				<ol className={ classes.list }>
-					{toiletContents}
+					{ toiletContents }
 				</ol>
 			</Fragment>
 

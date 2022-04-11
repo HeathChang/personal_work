@@ -1,4 +1,4 @@
-.toilet {
+.name{
     display: flex;
     justify-content: space-between;
     margin: 1rem;
@@ -6,12 +6,9 @@
     border-bottom: 1px solid #ccc;
 }
 
-.toilet h3 .description {
-    margin: 0 0 0.25rem 0;
-}
 
-
-.lat .long {
+.description {
+    font-style: italic;
     margin-top: 0.25rem;
     font-weight: bold;
     color: #ad5502;
