@@ -20,6 +20,7 @@ const Map = () => {
 			setLat(position.coords.latitude)
 			setLong(position.coords.longitude)
 		})
+
 	})
 	//가져온 다음에, map 재설정
 	useEffect(() => {
@@ -32,19 +33,20 @@ const Map = () => {
 		setIsLoading(false)
 	})
 
+
 	// 이후 계획:
 	// 1. spinner를 통해서 UX 개선
 
 
 	return (
 			<Fragment>
-				{ isLoading && <LoadingSpinner/>}
+				{ isLoading && <LoadingSpinner/> }
 				{ !isLoading && (
-						<h1>Lat: { lat } * Long: { long }</h1>
-					)}
+						<h1 className={classes.info}>Lat: { lat } * Long: { long }</h1>
+				) }
 				{ !isLoading && (
 						<div className={ classes.map } id="myMap"></div>
-				)}
+				) }
 			</Fragment>
 	)
 }

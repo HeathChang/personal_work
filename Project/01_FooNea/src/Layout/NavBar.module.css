@@ -4,9 +4,11 @@
   background-color: #6F4F28;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0 10%;
+  padding: 1.6rem 2rem 1.4rem;
+  flex-flow: row;
+  justify-content: space-between;
+  border-bottom: 1px solid #444;
 }
 
 .logo {
