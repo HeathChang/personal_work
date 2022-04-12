@@ -6,12 +6,10 @@
 .list {
     justify-content: center;
     align-items: center;
-    gap: 3.2rem;
     display: grid;
 }
 
 .info {
     text-align: center;
     font-size: 16px;
-    margin-bottom: 10px;
 }

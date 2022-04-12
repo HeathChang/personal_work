@@ -9,8 +9,8 @@ const Map = () => {
 	//함수형 컴포넌트에서는 kakao script를 인지불가. const { kakao } = window를 통해 함수형 컴포넌트에 인지 시킨다고 합니다.
 	// https://velog.io/@lifeisbeautiful/React%EC%B9%B4%EC%B9%B4%EC%98%A4-API-%EC%A0%81%EC%9A%A9
 
-	const [ lat, setLat ] = useState(null)
-	const [ long, setLong ] = useState(null)
+	const [ lat, setLat ] = useState(33.450701)
+	const [ long, setLong ] = useState(126.5700667)
 	const [ isLoading, setIsLoading ] = useState(false)
 
 	// 경도, 위도 가져와 setState 하기
@@ -33,9 +33,7 @@ const Map = () => {
 		setIsLoading(false)
 	})
 
-
-	// 이후 계획:
-	// 1. spinner를 통해서 UX 개선
+	const pinImage = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png'
 
 
 	return (

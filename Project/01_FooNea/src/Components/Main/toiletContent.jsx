@@ -3,9 +3,6 @@ import classes from './css/toiletContent.module.css'
 import { useParams, Route, useHistory, useLocation, useRouteMatch, Link } from 'react-router-dom'
 
 const ToiletContent = (props) => {
-	const match = useRouteMatch();
-	console.log(222, match)
-
 	return (
 			<Link className={ classes.link } to={ `${ props.id }` }>
 				<li>
