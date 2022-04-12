@@ -8,7 +8,7 @@ const ToiletContent = (props) => {
 				<li>
 					<h3 className={ classes.name }>{ props.name }</h3>
 					<div className={ classes.description }>
-						{ props.lat } * { props.long }
+						{ props.lat } * { props.lang }
 					</div>
 				</li>
 			</Link>

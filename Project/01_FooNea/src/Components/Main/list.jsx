@@ -1,6 +1,6 @@
 import classes from "./css/list.module.css";
 import { Fragment, useEffect } from "react";
-import toiletList from '../data/data'
+import ToiletList from '../data/data'
 import ToiletContent from "./toiletContent";
 
 
@@ -10,14 +10,16 @@ const List = () => {
 		this.$router.push(`{id}`)
 		//bind 사용 이유: 모듈 블록 바깥에 있는걸 참조하기 위해서 사용
 	}
-	const toiletContents = toiletList.map((toilet) => {
+	const toiletContents = ToiletList.map((toilet) => {
 		return (
 				<ToiletContent
 						id={ toilet.id }
 						key={ toilet.id }
 						name={ toilet.name }
+						latlng={ toilet.latlng }
 						lat={ toilet.lat }
-						long={ toilet.long }
+						lang={ toilet.lang }
+
 				/>
 		)
 	})
