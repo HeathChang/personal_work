@@ -6,15 +6,14 @@ import { memoActions } from '../../store/memo';
 
 const Memo = () => {
 	//useSelector: 리덕스의 state를 조회할 수 있다.
-	const memoItems= useSelector((state)=> state.memo.items)
+	const memoItems = useSelector((state) => state.memo.items)
 	const textInputRef = useRef();
-	const [ textList, setTextList ] = useState(null);
 	const dispatch = useDispatch();
 
 	function fnInsertMemo() {
 		console.log('memo check:: ', memoItems)
 		let enteredText = textInputRef.current.value;
-		const id = (new Date().toISOString())
+		const id = ( new Date().toISOString() )
 		console.log(id)
 		dispatch(
 				memoActions.addMemo({
@@ -40,14 +39,14 @@ const Memo = () => {
 					</div>
 					<div>
 						<ul>
-							{memoItems.map ((item)=>{
-								return(
-										<li>
-											<h2> { item.id }</h2>
-											<div> {item.memoContent} </div>
+							{ memoItems.map((item) => {
+								return (
+										<li key={item.id}>
+											<h6> { item.id }</h6>
+											<div> { item.memoContent } </div>
 										</li>
 								)
-							})}
+							}) }
 						</ul>
 					</div>
 				</div>
