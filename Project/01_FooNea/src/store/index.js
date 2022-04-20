@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 
+import memoSlice from "./memo";
+
 const store = configureStore({
 	reducer : {
-		memo : '',
-		cart : ''
+		memo : memoSlice.reducer,
 	},
 });
 
