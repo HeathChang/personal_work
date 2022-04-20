@@ -4,10 +4,14 @@ import { useRef, useState } from 'react';
 
 const Memo = () => {
 	const textInputRef = useRef();
+	const [ textList, setTextList ] = useState(null);
 
 	function fnInsertMemo() {
 		console.log(112, textInputRef)
-		const enteredText = textInputRef.current.value;
+
+		let enteredText = textInputRef.current.value;
+		setTextList(enteredText)
+		textInputRef.current.value = ''
 	}
 
 	return ( <Fragment>
@@ -21,6 +25,13 @@ const Memo = () => {
 								fnInsertMemo()
 							}
 						} }/>
+			</div>
+			<div>
+				<ul>
+					<li>
+						{ textList }
+					</li>
+				</ul>
 			</div>
 		</div>
 	</Fragment> )
