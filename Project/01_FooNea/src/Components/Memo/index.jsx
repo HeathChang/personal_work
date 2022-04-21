@@ -13,7 +13,7 @@ const Memo = () => {
 	function fnInsertMemo() {
 		console.log('memo check:: ', memoItems)
 		let enteredText = textInputRef.current.value;
-		const id = ( new Date().toISOString() )
+		const id = ( new Date().toLocaleString() )
 		console.log(id)
 		dispatch(
 				memoActions.addMemo({
@@ -23,6 +23,22 @@ const Memo = () => {
 		)
 		textInputRef.current.value = ''
 	}
+
+	const fnRemoveMemo = (item) => {
+		const { id } = item
+		console.log(id)
+		dispatch(
+				memoActions.removeMemo({
+					id : id
+				})
+		)
+
+
+	}
+
+	// function fnRemoveMemo (item) {
+	// 	console.log('Hello World', item)
+	// }
 
 	return (
 			<Fragment>
@@ -41,9 +57,10 @@ const Memo = () => {
 						<ul>
 							{ memoItems.map((item) => {
 								return (
-										<li key={item.id}>
+										<li key={ item.id }>
 											<h6> { item.id }</h6>
 											<div> { item.memoContent } </div>
+											<button className={ classes.button } onClick={ fnRemoveMemo.bind(null, item) }>Delete</button>
 										</li>
 								)
 							}) }

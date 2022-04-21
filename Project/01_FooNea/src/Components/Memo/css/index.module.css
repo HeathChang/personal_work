@@ -18,3 +18,8 @@
 .list {
     list-style-type: none;
 }
+
+.button {
+    float: right;
+    margin-right: 3rem
+}

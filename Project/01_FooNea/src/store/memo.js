@@ -21,6 +21,7 @@ const memoSlice = createSlice({
 			})
 		},
 		removeMemo(state, action) {
+			console.log('remove action::', action)
 			state.items = state.items.filter(item => item.id !== action.payload.id)
 		}
 	}
