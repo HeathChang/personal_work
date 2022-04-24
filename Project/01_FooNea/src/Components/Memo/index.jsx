@@ -1,5 +1,5 @@
 import classes from "./css/index.module.css";
-import { useRef, useState, Fragment } from 'react';
+import { useRef, useState, useEffect, useCallback, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { memoActions } from '../../store/memo';
 
@@ -10,11 +10,20 @@ const Memo = () => {
 	const textInputRef = useRef();
 	const dispatch = useDispatch();
 
-	function fnInsertMemo() {
-		console.log('memo check:: ', memoItems)
+	useEffect(() => {
+		fnFetchMemo()
+	}, [fnFetchMemo])
+
+	const fnFetchMemo = () => {
+		const data = dispatch(
+				memoActions.fetchMemo({})
+		)
+		console.log('check::', data)
+	}
+
+	const fnInsertMemo = () => {
 		let enteredText = textInputRef.current.value;
-		const id = ( new Date().toLocaleString() )
-		console.log(id)
+		const id = new Date().toLocaleString()
 		dispatch(
 				memoActions.addMemo({
 					id : id,
@@ -32,13 +41,8 @@ const Memo = () => {
 					id : id
 				})
 		)
-
-
 	}
 
-	// function fnRemoveMemo (item) {
-	// 	console.log('Hello World', item)
-	// }
 
 	return (
 			<Fragment>
