@@ -67,7 +67,7 @@ const Memo = () => {
 								return (
 										<li key={ item.id }>
 											<h6> { item.id }</h6>
-											<div> { item.memoContent } </div>
+											<div> { item.memo } </div>
 											<button className={ classes.button } onClick={ fnRemoveMemo.bind(null, item) }>Delete</button>
 										</li>
 								)

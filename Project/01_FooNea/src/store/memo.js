@@ -7,15 +7,18 @@ const memoSlice = createSlice({
 		items : []
 	},
 	reducers : {
-		fetchMemo : async (state) =>{
-			const memoData = await  fetchMemo()
-			state.items.push({
-				key: memoData.key,
-				id : memoData.id,
-				memoContent : memoData.memoContent
+		fetchMemo : (state) => {
+			fetchMemo().then((memo) => {
+				memo.map(memo => {
+					state.items.push({
+						key : memo.id,
+						id : memo.id,
+						memoContent : memo.memo
+					})
+				})
 			})
-			console.log(12, state.items)
 		},
+
 		addMemo(state, action) {
 			addMemo(action.payload)
 			const newMemo = action.payload;

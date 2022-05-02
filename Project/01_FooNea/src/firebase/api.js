@@ -1,3 +1,5 @@
+import { memoActions } from "../store/memo";
+
 const FIREBASE_DOMAIN = 'https://foonea-21ee6-default-rtdb.firebaseio.com/'
 
 
@@ -17,6 +19,10 @@ export async function fetchMemo() {
 		}
 		memoData = [...memoData, memoObj]
 	}
+	// await dispatch(memoActions.fetchMemoList({
+	//
+	// }))
+	console.log(123,memoData)
 	return memoData
 }
 
