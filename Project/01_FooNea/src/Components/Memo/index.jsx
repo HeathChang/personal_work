@@ -2,6 +2,7 @@ import classes from "./css/index.module.css";
 import { useRef, useState, useEffect, useCallback, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { memoActions } from '../../store/memo';
+import { fetchMemo } from '../../firebase/api.js'
 
 
 const Memo = () => {
@@ -10,16 +11,19 @@ const Memo = () => {
 	const textInputRef = useRef();
 	const dispatch = useDispatch();
 
-	useEffect(() => {
-		fnFetchMemo()
-	}, [fnFetchMemo])
 
-	const fnFetchMemo = () => {
-		const data = dispatch(
-				memoActions.fetchMemo({})
-		)
-		console.log('check::', data)
-	}
+	useEffect(() => {
+		// const a = dispatch(memoActions.fetchMemo())
+		dispatch(memoActions.fetchMemo())
+	}, [dispatch])
+
+	// const fnFetchMemo = () => {
+	// 	const data = dispatch(
+	// 			memoActions.fetchMemo({})
+	// 	)
+	// 	console.log('check::', data)
+	// }
+
 
 	const fnInsertMemo = () => {
 		let enteredText = textInputRef.current.value;

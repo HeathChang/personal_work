@@ -7,7 +7,6 @@ import NoQuotesFound from "../components/quotes/NoQuotesFound";
 
 const AllQuotes = () => {
 	const { sendRequest, status, data : loadedQuotes, error } = useHttp(getAllQuotes, true)
-
 	useEffect(() => {
 		sendRequest();
 	}, [ sendRequest ])
