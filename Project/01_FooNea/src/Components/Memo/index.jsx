@@ -2,7 +2,7 @@ import classes from "./css/index.module.css";
 import { useRef, useState, useEffect, useCallback, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { memoActions } from '../../store/memo';
-import { fetchMemo } from '../../firebase/api.js'
+import { addMemo, fetchMemo, removeMemo } from '../../firebase/api.js'
 
 
 const Memo = () => {
@@ -13,38 +13,26 @@ const Memo = () => {
 
 
 	useEffect(() => {
-		// const a = dispatch(memoActions.fetchMemo())
 		dispatch(fetchMemo())
-	}, [dispatch])
-
-	// const fnFetchMemo = () => {
-	// 	const data = dispatch(
-	// 			memoActions.fetchMemo({})
-	// 	)
-	// 	console.log('check::', data)
-	// }
-
+	}, [ dispatch ])
 
 	const fnInsertMemo = () => {
 		let enteredText = textInputRef.current.value;
 		const id = new Date().toLocaleString()
-		dispatch(
-				memoActions.addMemo({
-					id : id,
-					memoContent : enteredText
-				})
-		)
+		const params = {
+			id : id,
+			memoContent : enteredText
+		}
+		dispatch(addMemo(params))
 		textInputRef.current.value = ''
 	}
 
 	const fnRemoveMemo = (item) => {
 		const { id } = item
-		console.log(id)
-		dispatch(
-				memoActions.removeMemo({
-					id : id
-				})
-		)
+		const params = {
+			id : id,
+		}
+		dispatch(removeMemo(params))
 	}
 
 
