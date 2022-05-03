@@ -28,9 +28,8 @@ const Memo = () => {
 	}
 
 	const fnRemoveMemo = (item) => {
-		const { id } = item
 		const params = {
-			id : id,
+			id : item.id,
 		}
 		dispatch(removeMemo(params))
 	}

@@ -16,7 +16,6 @@ const memoSlice = createSlice({
 				})
 			}
 		},
-
 		addMemo(state, action) {
 			const newMemo = action.payload;
 			state.items.push({
@@ -24,7 +23,6 @@ const memoSlice = createSlice({
 				memoContent : newMemo.memoContent
 			})
 		},
-
 		removeMemo(state, action) {
 			console.log(action)
 			state.items = state.items.filter(item => item.id !== action.payload.id)

@@ -32,10 +32,10 @@ export const addMemo = (params) => {
 			if ( response.status !== 200 ) {
 				throw new Error('Could not fetch Memo')
 			}
-		}).then(()=>{
+			dispatch(memoActions.addMemo(params))
+		}).then(() => {
 			window.location.reload()
 		})
-		dispatch(memoActions.addMemo(params))
 	}
 }
 
@@ -51,8 +51,9 @@ export const removeMemo = (params) => {
 			if ( response.status !== 200 ) {
 				throw new Error('Could not delete Memo')
 			}
-			console.log(response)
+			dispatch(memoActions.removeMemo(params))
+		}).then(() => {
+			window.location.reload()
 		})
-		dispatch(memoActions.removeMemo(params))
 	}
 }
