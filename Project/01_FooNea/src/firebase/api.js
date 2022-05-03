@@ -2,28 +2,45 @@ import { memoActions } from "../store/memo";
 
 const FIREBASE_DOMAIN = 'https://foonea-21ee6-default-rtdb.firebaseio.com/'
 
-
-export async function fetchMemo() {
-	const response = await fetch(`${ FIREBASE_DOMAIN }/memo.json`, {
-		method : 'GET',
-		headers : {
-			'Content-Type' : 'application/json',
-		},
-	})
-	let memoData = []
-	const data = await response.json()
-	for (const item in data){
-		const memoObj = {
-			id: data[item].id,
-			memo: data[item].memoContent
+export const fetchMemo = () => {
+		return async (dispatch)=>{
+			fetch(`${ FIREBASE_DOMAIN }/memo.json`, {
+				method : 'GET',
+				headers : {
+					'Content-Type' : 'application/json',
+				},
+			}).then(response => {
+				if ( response.status !== 200 ) {
+					throw new Error('Could not fetch Memo')
+				}
+				return response.json()
+			}).then(memo => {
+				dispatch(memoActions.fetchMemo(memo))
+			})
 		}
-		memoData = [...memoData, memoObj]
-	}
+
+// export const fetchMemo = async (dispatch) => {
+// 	return await fetch(`${ FIREBASE_DOMAIN }/memo.json`, {
+// 		method : 'GET',
+// 		headers : {
+// 			'Content-Type' : 'application/json',
+// 		},
+// 	}).then(response => {
+// 		if ( response.status !== 200 ) {
+// 			throw new Error('Could not fetch Memo')
+// 		}
+// 		return response.json()
+// 	}).then((memo) => {
+// 		console.log(123, memo)
+// 		dispatch(memoActions.fetchMemo({
+// 			id : memo.id,
+// 			memo : memo.memoContent
+// 		}))
+// 	})
 	// await dispatch(memoActions.fetchMemoList({
-	//
 	// }))
-	console.log(123,memoData)
-	return memoData
+	// console.log(123,memoData)
+	// return memoData
 }
 
 export async function addMemo(params) {

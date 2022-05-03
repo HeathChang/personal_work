@@ -14,7 +14,7 @@ const Memo = () => {
 
 	useEffect(() => {
 		// const a = dispatch(memoActions.fetchMemo())
-		dispatch(memoActions.fetchMemo())
+		dispatch(fetchMemo())
 	}, [dispatch])
 
 	// const fnFetchMemo = () => {
