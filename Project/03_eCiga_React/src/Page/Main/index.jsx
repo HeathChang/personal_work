@@ -1,10 +1,13 @@
 import { Fragment } from "react";
 import "./MainIndex.css";
+import MainProducts from "../../Components/Main/main-products";
+import MainReviews from "../../Components/Main/main-reviews";
+import MainCs from "../../Components/Main/main-cs";
 
 const MainIndex = () => {
   const fnTestBtn = () => {
-    console.log('Test Btn Clicked.')
-  }
+    console.log("Test Btn Clicked.");
+  };
   return (
     <Fragment>
       <div className="jb-box">
@@ -19,6 +22,9 @@ const MainIndex = () => {
           <p>2</p>
         </div>
       </div>
+      <MainProducts />
+      <MainReviews />
+      <MainCs />
     </Fragment>
   );
 };
