@@ -7,6 +7,7 @@ import MainCs from "../../Components/Main/main-cs";
 const MainIndex = () => {
   const fnTestBtn = () => {
     console.log("Test Btn Clicked.");
+    // Pop up?
   };
   return (
     <Fragment>
@@ -15,11 +16,9 @@ const MainIndex = () => {
           <source src="/Videos/video1.mp4" type="video/mp4" />
           <strong>Your browser does not support the video tag.</strong>
         </video>
-        <div className="jb-text-left" onClick={fnTestBtn}>
-          <p>1</p>
-        </div>
         <div className="jb-text-right" onClick={fnTestBtn}>
-          <p>2</p>
+          <p>e-Ciga</p>
+          <h6>Manners make Man</h6>
         </div>
       </div>
       <MainProducts />

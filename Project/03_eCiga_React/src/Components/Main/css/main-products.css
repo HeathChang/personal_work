@@ -1,0 +1,396 @@
+/* 메인 */
+.home_sec {
+    margin-top: 5rem;
+}
+
+.home_ttl {
+    font-weight: 500;
+    font-size: 2.2rem;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.1)
+}
+
+.home_con {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-bottom: 1rem;
+}
+
+.home_con .slide_hint {
+    position: absolute;
+    top: 0;
+    left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 12rem;
+    height: 12rem;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10rem;
+}
+
+.home_con .slide_hint img {
+    margin: 0 auto;
+    width: 5rem;
+    height: 5rem;
+}
+
+.home_con .slide_hint p {
+    color: #fff;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.home_con_card {
+    padding: 2.4rem;
+}
+
+.home_con_card li {
+    list-style: none;
+}
+
+.home_con_card_slide {
+    padding: 2.4rem 0 0 2.4rem;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.home_con_card_slide .card {
+    flex: 0 0 auto;
+    width: 31.2rem;
+    margin-right: 1.2rem;
+}
+
+.home_con_card_slide_area {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.home_scroll {
+    margin-top: 1.6rem;
+}
+
+.home_scroll li {
+    margin-right: 0.6rem;
+    width: 0.6rem;
+    height: 0.6rem;
+    background-color: rgba(255, 98, 27, 0.06);
+}
+
+
+.home_scroll li.on {
+    background-color: #FF621B;
+}
+
+.home_scroll li:last-child {
+    margin-right: 0;
+}
+
+
+/*Card*/
+.card {
+    padding: 1.6rem 1rem 1rem;
+    background: #fff;
+    border: 1px solid #E0E0E0;
+    border-radius: 0.8rem;
+}
+
+.card .ttl {
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+}
+
+.card .top {
+    margin-top: 1.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-left: 1rem
+}
+
+.card .top .detail {
+    flex: 1;
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.card .top .detail .txt {
+    margin-top: 0.2rem;
+    line-height: 1.2;
+}
+
+.card .top .price_box {
+    flex: 0 0 auto;
+    margin-left: 1rem
+}
+
+.card .top .price_box .sm_price {
+    text-decoration-line: line-through;
+    font-size: 1.2rem;
+    color: rgba(0, 0, 0, 0.4);
+    text-align: right;
+}
+
+.card .top .price_box .price {
+    color: #FF621B;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.card .top .price_box .price span {
+    margin: 0 0.2rem 0 0.6rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.card .info {
+    padding: 1rem;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1.6rem;
+    background: rgba(255, 98, 27, 0.06);
+}
+
+.card .info .box {
+    width: 100%;
+}
+
+.card .info .box_icon {
+    margin-bottom: 0.6rem;
+    width: 100%;
+}
+
+.card .info .box .txt {
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.card .info .box .txt p:nth-child(2) {
+    margin-top: 0.3rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.card.main_card {
+    background: #F5F5F5;
+    border: 0;
+    border-radius: 0;
+}
+
+.card.main_card .info {
+    margin-left: 1rem;
+    background: #fff;
+}
+
+.card.best_card {
+    position: relative;
+    display: flex;
+    background: rgba(255, 98, 27, 0.06);
+    border: 0;
+    border-radius: 2rem;
+}
+
+.card.best_card .price {
+    font-size: 1.4rem;
+}
+
+.card.best_card .price span {
+    margin: 0 0.2rem 0 0.6rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.card.best_card .price_box {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    gap: 0.5rem;
+}
+
+.card.best_card .price_box .name {
+    font-size: 1.8rem;
+}
+
+.card.best_card .info {
+    flex: 1;
+    padding: 0;
+    margin-top: 2rem;
+    flex-direction: column;
+    justify-content: inherit;
+    background: none;
+    gap: 0;
+}
+
+.card.best_card .info .top {
+    margin-top: 2rem;
+    flex-direction: column;
+    align-items: normal;
+    font-size: 1.1rem;
+}
+
+.card.best_card .info .top .txt {
+    margin-top: 0.4rem;
+}
+
+.card.best_card .thumb {
+    flex: 1;
+    width: 14.6rem;
+    height: 20.8rem;
+}
+
+.card.best_card .thumb .inner {
+    position: relative;
+    height: inherit;
+}
+
+.card.best_card .thumb img {
+    position: absolute;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    height: auto;
+    max-width: 100%;
+    width: auto;
+    max-height: 100%;
+    margin-right: 1rem;
+
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(0px 16px 30px rgba(255, 98, 27, 0.16));
+    object-fit: contain;
+}
+
+.card.best_card.on {
+    box-shadow: 0 0 0 1px #FF621B;
+}
+
+.card.best_card.on .price_box {
+    color: #FF621B;
+}
+
+.card.best_card.bo {
+    border: 1px solid #EEEEEE;
+    background: #fff;
+}
+
+.card.best_card.bo img {
+    filter: none;
+}
+
+.card.fare_gray {
+    background: #F5F5F5;
+    border: 0;
+    border-radius: 0;
+    padding: 2.4rem 1.6rem;
+}
+
+.card.fare_gray .info {
+    background: #fff;
+}
+
+.card.fare_gray .ttl {
+    text-align: left;
+    margin-top: 1rem;
+}
+
+.card.fare_gray .ttl_sm {
+    margin-top: 0.6rem;
+    font-size: 1.2rem;
+    font-weight: 200;
+}
+
+.card.fare_gray .my_tab {
+    padding-top: 1.6rem;
+}
+
+.card.fare_white {
+    background: #fff;
+    border: 1px solid #F5F5F5;
+    border-radius: 0.8rem;
+    margin: 0 1.6rem 1.6rem;
+}
+
+.card.fare_white .info {
+    background: rgba(255, 98, 27, 0.06);
+}
+
+.card .bottom {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0 1.6rem;
+}
+
+.card.on {
+    border: 1px solid #FF621B;
+}
+
+.card.on .tag_check {
+    opacity: 1;
+}
+
+
+.inner {
+    position: relative;
+    height: inherit;
+}
+
+
+/* 탭 버튼 */
+.tab .inner .btn_wrap {
+    display: flex;
+    border-bottom: 1px solid #FF621B;
+}
+.tab .inner .btn_wrap button {
+    flex-grow: 1;
+    border: 1px solid #F5F5F5;
+    background-color: #FAFAFA;
+    border-radius: 0.8rem 0.8rem 0 0;
+    font-size: 1.2rem;
+    font-weight: 400;
+    padding: 1.1rem 0.8rem;
+    text-align: center;
+}
+.tab .inner .btn_wrap button.on {
+    background-color: #FF621B;
+    border: 1px solid #FF621B;
+    color: #fff;
+    font-weight: 700;
+}
+.tab.bo .inner .btn_wrap {
+    border-bottom: 0;
+}
+.tab.bo .inner .btn_wrap button {
+    border-bottom: 1px solid #FF621B;
+}
+.tab.bo .inner .btn_wrap button.on {
+    color: #FF621B;
+    background: #fff;
+    border-bottom: 0;
+}
+
+.btn_view_more {
+    margin-top: 1.6rem;
+    font-size: 1rem;
+    background: rgba(255, 98, 27, 0.16);
+    float: right;
+    color: #FF621B;
+    font-weight: 700;
+}
+.btn_view_more span {
+    margin-left: 0.8rem;
+}
