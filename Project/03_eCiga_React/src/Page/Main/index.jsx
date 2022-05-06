@@ -25,6 +25,7 @@ const MainIndex = () => {
 				</div>
 				{ product.map(product => (
 								<MainProducts
+										key={ product.productId }
 										productId={ product.productId }
 										productName={ product.productName }
 										productPrice={ product.productPrice }
