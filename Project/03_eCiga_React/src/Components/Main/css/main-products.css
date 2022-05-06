@@ -80,8 +80,8 @@
 
 .home_scroll li {
     margin-right: 0.6rem;
-    width: 0.6rem;
-    height: 0.6rem;
+    width: 0.2rem;
+    height: 0.2rem;
     background-color: rgba(255, 98, 27, 0.06);
 }
 
@@ -222,7 +222,7 @@
 }
 
 .card.best_card .price_box .name {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
 }
 
 .card.best_card .info {
