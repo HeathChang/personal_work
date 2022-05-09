@@ -1,6 +1,6 @@
 <template>
   <div>
-    Home Page
+    Home / Index.vue
   </div>
 </template>
 
