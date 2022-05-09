@@ -1,6 +1,6 @@
 /* 메인 */
 .home_sec {
-    margin-top: 5rem;
+    /*margin-top: 5rem;*/
 }
 
 .home_ttl {
@@ -48,7 +48,7 @@
 }
 
 .home_con_card {
-    padding: 2.4rem;
+    padding: 0.5rem;
 }
 
 .home_con_card li {
@@ -144,8 +144,8 @@
 
 .card .top .price_box .price {
     color: #FF621B;
-    font-size: 1.4rem;
-    font-weight: 500;
+    font-size: 1.2rem;
+
 }
 
 .card .top .price_box .price span {
@@ -222,13 +222,13 @@
 }
 
 .card.best_card .price_box .name {
-    font-size: 1.2rem;
+    margin: 0 0.2rem 0 0.6rem;
+    font-size: 1.4rem;
 }
 
 .card.best_card .info {
     flex: 1;
     padding: 0;
-    margin-top: 2rem;
     flex-direction: column;
     justify-content: inherit;
     background: none;
@@ -343,6 +343,12 @@
     opacity: 1;
 }
 
+.badge .txt {
+    color: #FF621B;
+    float: right
+
+}
+
 
 .inner {
     position: relative;
@@ -351,46 +357,46 @@
 
 
 /* 탭 버튼 */
-.tab .inner .btn_wrap {
-    display: flex;
-    border-bottom: 1px solid #FF621B;
-}
-.tab .inner .btn_wrap button {
-    flex-grow: 1;
-    border: 1px solid #F5F5F5;
-    background-color: #FAFAFA;
-    border-radius: 0.8rem 0.8rem 0 0;
-    font-size: 1.2rem;
-    font-weight: 400;
-    padding: 1.1rem 0.8rem;
-    text-align: center;
-}
-.tab .inner .btn_wrap button.on {
-    background-color: #FF621B;
-    border: 1px solid #FF621B;
-    color: #fff;
-    font-weight: 700;
-}
-.tab.bo .inner .btn_wrap {
-    border-bottom: 0;
-}
-.tab.bo .inner .btn_wrap button {
-    border-bottom: 1px solid #FF621B;
-}
-.tab.bo .inner .btn_wrap button.on {
-    color: #FF621B;
-    background: #fff;
-    border-bottom: 0;
-}
+/*.tab .inner .btn_wrap {*/
+/*    display: flex;*/
+/*    border-bottom: 1px solid #FF621B;*/
+/*}*/
+/*.tab .inner .btn_wrap button {*/
+/*    flex-grow: 1;*/
+/*    border: 1px solid #F5F5F5;*/
+/*    background-color: #FAFAFA;*/
+/*    border-radius: 0.8rem 0.8rem 0 0;*/
+/*    font-size: 1.2rem;*/
+/*    font-weight: 400;*/
+/*    padding: 1.1rem 0.8rem;*/
+/*    text-align: center;*/
+/*}*/
+/*.tab .inner .btn_wrap button.on {*/
+/*    background-color: #FF621B;*/
+/*    border: 1px solid #FF621B;*/
+/*    color: #fff;*/
+/*    font-weight: 700;*/
+/*}*/
+/*.tab.bo .inner .btn_wrap {*/
+/*    border-bottom: 0;*/
+/*}*/
+/*.tab.bo .inner .btn_wrap button {*/
+/*    border-bottom: 1px solid #FF621B;*/
+/*}*/
+/*.tab.bo .inner .btn_wrap button.on {*/
+/*    color: #FF621B;*/
+/*    background: #fff;*/
+/*    border-bottom: 0;*/
+/*}*/
 
-.btn_view_more {
-    margin-top: 1.6rem;
-    font-size: 1rem;
-    background: rgba(255, 98, 27, 0.16);
-    float: right;
-    color: #FF621B;
-    font-weight: 700;
-}
-.btn_view_more span {
-    margin-left: 0.8rem;
-}
+/*.btn_view_more {*/
+/*    margin-top: 1.6rem;*/
+/*    font-size: 1rem;*/
+/*    background: rgba(255, 98, 27, 0.16);*/
+/*    float: right;*/
+/*    color: #FF621B;*/
+/*    font-weight: 700;*/
+/*}*/
+/*.btn_view_more span {*/
+/*    margin-left: 0.8rem;*/
+/*}*/
