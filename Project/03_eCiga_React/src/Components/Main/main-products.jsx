@@ -9,7 +9,7 @@ const MainProducts = (props) => {
 		// 페이지 이동 ? 아니면 데이터 더 가져오기?
 	}
 
-	const fnViewProduct = (data) => {
+	const fnViewProduct = () => {
 		history.push(`/view/${props.productId}`)
 	}
 	return (

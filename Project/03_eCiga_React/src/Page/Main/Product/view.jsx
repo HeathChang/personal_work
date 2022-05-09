@@ -1,6 +1,6 @@
-import { useEffect, useState , Fragment } from "react";
+import { useEffect, Fragment } from "react";
 import { useParams } from 'react-router-dom';
-import { useDispatch,useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {fetchSingleProduct} from '../../../Access/action.js'
 
