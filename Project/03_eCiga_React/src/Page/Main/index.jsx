@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import {Fragment, useEffect} from "react";
 import "./MainIndex.css";
 import MainProducts from "../../Components/Main/main-products";
 import MainReviews from "../../Components/Main/main-reviews";
@@ -15,6 +15,10 @@ const MainIndex = () => {
     // 페이지 이동 ? 아니면 데이터 더 가져오기?
   };
 
+  useEffect(()=>{
+    console.log('useEffect:: ',product)
+    // dispatch(fetchSingleProduct())
+  },)
   return (
     <Fragment>
       <div className="jb-box">
@@ -39,6 +43,7 @@ const MainIndex = () => {
             productFlavor={product.productFlavor}
             productContent={product.productContent}
             productRate={product.productRate}
+            productType={product.productType}
           />
         ))}
         <div className="btn_wrap">

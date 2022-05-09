@@ -12,7 +12,6 @@ export const fetchSingleProduct = () => {
         return res1.json();
       })
       .then((res2) => {
-        // state에 넣어줘야 되나..?
         dispatch(
           productReducers.storeInState({
             product: res2.product,

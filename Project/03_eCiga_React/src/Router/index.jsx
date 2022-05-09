@@ -22,7 +22,7 @@ const Router = () => {
 					<Route path="/dtl">
 						<DTLIndex/>
 					</Route>
-					<Route path="/view/:productId">
+					<Route path="/view/:productType/:productId">
 						<ProductView/>
 					</Route>
 					<Route path="/*">
