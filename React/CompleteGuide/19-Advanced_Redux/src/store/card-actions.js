@@ -46,7 +46,6 @@ export const fetchCartData = () => {
 			if ( response.status !== 200 ) {
 				throw new Error('Could not fetch a data.')
 			}
-			console.log(999, response)
 			// fetch를 사용할 땐 두 단계를 거쳐야 한다.
 			// 먼저 올바른 url로 요청을 보내야 하고, 바로 뒤에오는 응답에 대해 json()을 해줘야 하는 것이다(axios는 json()과정을 자동으로 해주는 셈이다).
 			// .json(): Response 스트림을 가져와 스트림이 완료될때까지 읽는다. 그리고 다 읽은 body의 텍스트를 Promise형태로 반환한다.
