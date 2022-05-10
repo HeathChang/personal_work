@@ -14,10 +14,14 @@
 table {
   width: 100%;
 }
+th{
+  color: beige;
+}
 td {
   border: 1px solid #ff621b;
   border-radius: 2rem;
-  padding: 0 1rem 0 1rem
+  padding: 0 1rem 0 1rem;
+  background-color: beige;
 }
 
 .info {
