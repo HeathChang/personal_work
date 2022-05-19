@@ -1,4 +1,22 @@
-import {Controller} from '@nestjs/common';
+import {Controller, Get} from '@nestjs/common';
+import {DiskService} from "../disk/disk.service";
+import {CpuService} from "../cpu/cpu.service";
+
 
 @Controller('computer')
-export class ComputerController {}
+export class ComputerController {
+    constructor(
+        private _cpuService: CpuService,
+        private _diskService: DiskService
+    ) {
+    }
+
+    @Get()
+    run() {
+        return [
+            this._cpuService.compute(1, 2),
+            this._diskService.getData()
+        ]
+    }
+
+}
