@@ -9,14 +9,14 @@ exports.__esModule = true;
 exports.ComputerController = void 0;
 var common_1 = require("@nestjs/common");
 var ComputerController = /** @class */ (function () {
-    function ComputerController(_cpuService, _diskService) {
-        this._cpuService = _cpuService;
-        this._diskService = _diskService;
+    function ComputerController(cpuService, diskService) {
+        this.cpuService = cpuService;
+        this.diskService = diskService;
     }
     ComputerController.prototype.run = function () {
         return [
-            this._cpuService.compute(1, 2),
-            this._diskService.getData()
+            this.cpuService.compute(1, 2),
+            this.diskService.getData()
         ];
     };
     __decorate([

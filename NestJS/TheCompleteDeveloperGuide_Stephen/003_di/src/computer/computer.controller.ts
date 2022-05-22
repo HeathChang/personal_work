@@ -6,16 +6,16 @@ import {CpuService} from "../cpu/cpu.service";
 @Controller('computer')
 export class ComputerController {
     constructor(
-        private _cpuService: CpuService,
-        private _diskService: DiskService
+        private cpuService: CpuService,
+        private diskService: DiskService
     ) {
     }
 
     @Get()
     run() {
         return [
-            this._cpuService.compute(1, 2),
-            this._diskService.getData()
+            this.cpuService.compute(1, 2),
+            this.diskService.getData()
         ]
     }
 
