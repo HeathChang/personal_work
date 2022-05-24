@@ -3,5 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/NestJS/TheCompleteDeveloperGuide_Stephen/000_main" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/NestJS/TheCompleteDeveloperGuide_Stephen/004_my-car-value" vcs="" />
   </component>
 </project>
