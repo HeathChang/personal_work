@@ -18,13 +18,12 @@ export class UsersService {
     }
 
     findOne(id: number) {
-        // @ts-ignore
-        return this.repo.findOne(id);
+        // depreciation waring:: findOne(id) do not work. change to findOneBy
+        return this.repo.findOneBy({id});
     }
 
     find(email: string) {
-        // @ts-ignore
-        return this.repo.find({email});
+        return this.repo.findBy({email});
     }
 
 
@@ -38,14 +37,14 @@ export class UsersService {
         return this.repo.save(user);
     }
 
-    async remove(id: number, attrs: Partial<User>) {
+    async remove(id: number) {
         // @ts-ignore
-        const user = await this.findOne({email})
+        const user = await this.findOne(id)
         if (!user) {
-            throw new Error('user not found');
+            return 'no data found'
+            // throw new Error('user not found');
         }
-        console.log('attr check:: ', attrs)
-        Object.assign(user, attrs)
+        Object.assign(user)
         return this.repo.remove(user)
     }
 }
