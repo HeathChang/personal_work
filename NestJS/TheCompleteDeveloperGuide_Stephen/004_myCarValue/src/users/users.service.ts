@@ -41,8 +41,8 @@ export class UsersService {
         // @ts-ignore
         const user = await this.findOne(id)
         if (!user) {
-            return 'no data found'
-            // throw new Error('user not found');
+            // return 'no data found'
+            throw new NotFoundException('user not found');
         }
         Object.assign(user)
         return this.repo.remove(user)
