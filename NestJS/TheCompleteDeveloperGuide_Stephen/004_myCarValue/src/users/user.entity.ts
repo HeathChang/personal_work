@@ -4,7 +4,7 @@ import {Entity, Column, PrimaryGeneratedColumn, AfterInsert, AfterUpdate, AfterR
 export class User {
     @PrimaryGeneratedColumn()
     id: number;
-
+    
     @Column()
     email: string;
 
