@@ -1,10 +1,11 @@
-import {Controller, Get, Post, Body, Patch, Param, Query, Delete, NotFoundException, UseInterceptors, ClassSerializerInterceptor} from '@nestjs/common';
+import {Controller, Get, Post, Body, Patch, Param, Query, Delete, NotFoundException } from '@nestjs/common';
 import {CreateUserDto} from './dtos/create-user.dto'
 import {UpdateUserDto} from './dtos/update-user.dto'
 import {UsersService} from './users.service'
 import {Serialize} from '../interceptors/serialize.interceptor'
 import {UserDto} from './dtos/user.dto'
 
+// before => UseInterceptors(new SerializeInterceptor(UserDto))
 @Serialize(UserDto)
 @Controller('auth')
 export class UsersController {

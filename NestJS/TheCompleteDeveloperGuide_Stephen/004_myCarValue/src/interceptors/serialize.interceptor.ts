@@ -9,6 +9,7 @@ interface ClassConstructor {
 }
 
 // export function Serialize(dto: any) {
+// custom decorator Which will be used in controllers
 export function Serialize(dto: ClassConstructor) {
     return UseInterceptors(new SerializeInterceptor(dto))
 }
@@ -19,11 +20,12 @@ export class SerializeInterceptor implements NestInterceptor {
     }
 
     intercept(context: ExecutionContext, handler: CallHandler): Observable<any> {
-        // Run sth before a request is handled by the request handler
+        //return type Observable
+        // Run sth before a request is handled
 
         return handler.handle().pipe(
             map((data: any) => {
-                // Run sth before the response is send out (back) to the Front (after controller gets the data)
+                // Run sth before the response is send back to the Front
                 // still using an instance of User entity
                 // => Until here, data is User entity
 
