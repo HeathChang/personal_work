@@ -1,21 +1,28 @@
-import {Controller, Get, Post, Body, Patch, Param, Query, Delete, NotFoundException } from '@nestjs/common';
+import {Controller, Get, Post, Body, Patch, Param, Query, Delete, NotFoundException} from '@nestjs/common';
 import {CreateUserDto} from './dtos/create-user.dto'
 import {UpdateUserDto} from './dtos/update-user.dto'
 import {UsersService} from './users.service'
 import {Serialize} from '../interceptors/serialize.interceptor'
 import {UserDto} from './dtos/user.dto'
+import {AuthService} from './auth.service'
 
 // before => UseInterceptors(new SerializeInterceptor(UserDto))
 @Serialize(UserDto)
 @Controller('auth')
 export class UsersController {
-    constructor(private usersService: UsersService) {
+    constructor(private usersService: UsersService,
+                private authService: AuthService) {
     }
 
     @Post('/signup')
     createUser(@Body() body: CreateUserDto) {
-        this.usersService.create(body.email, body.password)
+        return this.authService.signUp(body.email, body.password)
     }
+
+    @Get('/signin')
+    signIn(@Body() body: CreateUserDto){
+        return this.authService.signIn(body.email, body.password)
+}
 
     @Get('/:id')
     async findUser(@Param('id') id: string) {
