@@ -1,10 +1,10 @@
-### Create User
+### Create User (Sign Up)
 POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-  "email": "hiiiififi@eee.com",
-  "password": "12212211"
+  "email": "test@test.com",
+  "password": "12345"
 }
 
 ### Sign In
@@ -12,10 +12,17 @@ GET http://localhost:3000/auth/signin
 Content-Type: application/json
 
 {
-  "email": "hiiiififi@eee.com",
-  "password": "12212211"
+  "email": "test@test.com",
+  "password": "12345"
 }
+### Sign Out
+POST http://localhost:3000/auth/signout
+Content-Type: application/json
 
+
+### Get the currently signed is users
+GET http://localhost:3000/auth/whoami
+Content-Type: application/json
 
 
 ### Find One

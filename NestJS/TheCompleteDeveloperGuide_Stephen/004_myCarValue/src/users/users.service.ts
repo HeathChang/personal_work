@@ -19,6 +19,7 @@ export class UsersService {
 
     findOne(id: number) {
         // depreciation waring:: findOne(id) do not work. change to findOneBy
+        if (!id) return null
         return this.repo.findOneBy({id});
     }
 
