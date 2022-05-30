@@ -4,29 +4,36 @@ import {AuthService} from "./auth.service";
 import {UsersService} from "./users.service";
 import {User} from "./user.entity";
 
-it('can create an instance of authService', async () => {
-    //Create a fake copy of the users service
-    // Partial: TS will just check the properties we use.
-    const fakeUsersService: Partial<UsersService> = {
-        // Why do we only create find & create => AuthService only use those two
 
-        // Promise.resolve(): find & create is asynchronous, so need time to read & write data to DB => need to have promise from two methods
-        // Promise.resolve creates Promise and immediately resolve it
-        find: () => Promise.resolve([]),
-        create: (email: string, password: string) => Promise.resolve({id: 1, email, password} as User),
-    }
+// 1. Role of describe
+// -> Creating new scope
+// => further description
+describe('AuthService', () => {
+    let service: AuthService;
 
-    const module = await Test.createTestingModule({
-        // Provides: List of things we want to register in our Testing DI Container.
-        providers: [AuthService, {
-            // If anyone asks for Provide(UsersService), give them useValue(fakeUsersService)
-            provide: UsersService,
-            useValue: fakeUsersService
-        }],
-    }).compile()
+    beforeEach(async () => {
+        //Create a fake copy of the users service
+        // Partial: TS will just check the properties we use.
+        const fakeUsersService: Partial<UsersService> = {
+            // 1. Why do we only create find & create => AuthService only use those two
 
-    const service = module.get(AuthService)
-    console.log("::", service)
+            // 2. Promise.resolve(): find & create is asynchronous, so need time to read & write data to DB => need to have promise from two methods
+            //    Promise.resolve creates Promise and immediately resolve it
+            find: () => Promise.resolve([]),
+            create: (email: string, password: string) => Promise.resolve({id: 1, email, password} as User),
+        }
+        const module = await Test.createTestingModule({
+            // Provides: List of things we want to register in our Testing DI Container.
+            providers: [AuthService, {
+                // If anyone asks for Provide(UsersService), give them useValue(fakeUsersService)
+                provide: UsersService,
+                useValue: fakeUsersService
+            }],
+        }).compile()
+        service = module.get(AuthService)
+    })
 
-    expect(service).toBeDefined()
+    it('can create an instance of authService', async () => {
+        expect(service).toBeDefined()
+    })
 })
