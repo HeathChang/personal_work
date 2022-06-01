@@ -60,8 +60,10 @@ describe('AuthService', () => {
     })
 
     it('throws if an invalid password is used', async () => {
-        fakeUsersService.find = () => Promise.resolve([{email: 'in-use@email.com', password: 'qweqweqwe'} as User])
-        await expect(service.signIn('in-use@email.com', '123456')).rejects.toThrow(BadRequestException)
+        // 오버라이딩 하는 느낌
+        // fakeUsersService.find = () => Promise.resolve([{email: 'in-use@email.com', password: 'qweqweqwe'} as User])
+        await expect(service.signUp('in-use@email.com', '12345'))
+        await expect(service.signIn('in-use@email.com', '123456')).rejects.toThrow(Error)
     })
 
     it('returns a user if correct pw is provided', async () => {
