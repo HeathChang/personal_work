@@ -1,19 +1,20 @@
 <template>
-  <header class="footer">
+  <footer class="footer" >
     <div class="inner">
       <div class="bot-left">
       </div>
       <div class="bot-center">
+        {{  routeLayout }} 123123
         <div class="title-footer-title" @click="fnShowMore"></div>
       </div>
       <div class="bot-right">
       </div>
     </div>
-  </header>
+  </footer>
 </template>
 
 <script>
-import { computed, getCurrentInstance, reactive, toRef, toRefs } from "vue";
+import { computed, getCurrentInstance, reactive, toRefs } from "vue";
 import { useStore } from 'vuex'
 
 const layoutState = () => {
