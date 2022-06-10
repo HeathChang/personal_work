@@ -1,0 +1,40 @@
+/* 스타일 */
+.top-left{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+.top-center{
+    position: absolute;
+    top: 1rem;
+}
+.top-right{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+/* Home-Header*/
+.btn-header-back {
+    background: url(../images/btn-arrow-back.png) no-repeat;
+    background-size: 26px 26px;
+    width: 32px;
+    height: 32px;
+    border: none;
+
+}
+.title-header-title {
+
+}
+.btn-header-nav {
+    background: url(../images/btn-nav.png) no-repeat;
+    background-size: 26px 26px;
+    width: 32px;
+    height: 32px;
+    border: none;
+}
+
+.inner {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    place-items: center;
+}

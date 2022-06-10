@@ -4,5 +4,7 @@ module.exports = {
 			entry: 'src/main.js',
 			title: ''
 		}
-	}
+	},
+	lintOnSave: false
+
 }
