@@ -1,14 +1,12 @@
 <template>
   <header class="footer">
     <div class="inner">
-      <div class="left">
-        <button class="btn-back"> 아래좌측</button>
+      <div class="bot-left">
       </div>
-      <div class="mid">
-        아래 중앙
+      <div class="bot-center">
+        <div class="title-footer-title" @click="fnShowMore"></div>
       </div>
-      <div class="right">
-        <button class="btn-nav">아래 우측</button>
+      <div class="bot-right">
       </div>
     </div>
   </header>
@@ -39,10 +37,14 @@ export default {
       'test' : 1
     })
 
+    const fnShowMore = () => {
+      console.log('하단 부분 더보기')
+    }
     return {
       ...toRefs(page),
       ...layoutState(),
-      ...methodState()
+      ...methodState(),
+      fnShowMore
     }
   }
 

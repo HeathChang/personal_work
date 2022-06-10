@@ -1,18 +1,45 @@
 /* 스타일 */
-.top-left{
+.top-left {
     position: absolute;
     left: 10px;
     top: 10px;
 }
-.top-center{
+
+.top-center {
     position: absolute;
     top: 1rem;
 }
-.top-right{
+
+.top-right {
     position: absolute;
     right: 10px;
     top: 10px;
 }
+
+.main {
+    height: calc(100vh - 105px);
+    position: relative;
+    margin-top: 2rem;
+}
+
+.bot-left {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+}
+
+.bot-center {
+    position: absolute;
+    bottom: 1rem;
+}
+
+.bot-right {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+
 /* Home-Header*/
 .btn-header-back {
     background: url(../images/btn-arrow-back.png) no-repeat;
@@ -22,14 +49,24 @@
     border: none;
 
 }
+
 .title-header-title {
 
 }
+
 .btn-header-nav {
-    background: url(../images/btn-nav.png) no-repeat;
-    background-size: 26px 26px;
-    width: 32px;
-    height: 32px;
+    background: url(../images/btn-nav-unbox-type1.png) no-repeat;
+    background-size: 32px 32px;
+    width: 40px;
+    height: 40px;
+    border: none;
+}
+
+.btn-header-nav:active {
+    background: url(../images/btn-nav-box-type2.png) no-repeat;
+    background-size: 32px 32px;
+    width: 40px;
+    height: 40px;
     border: none;
 }
 
@@ -37,4 +74,21 @@
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     place-items: center;
+}
+
+
+/*Footer*/
+.title-footer-title {
+    background: url(../images/btn-footer-champagne-type1.png) no-repeat;
+    background-size: 40px 40px;
+    width: 48px;
+    height: 48px;
+    border: none;
+}
+.title-footer-title:active {
+    background: url(../images/btn-footer-champagne-type0.png) no-repeat;
+    background-size: 40px 40px;
+    width: 48px;
+    height: 48px;
+    border: none;
 }
