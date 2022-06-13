@@ -25,13 +25,13 @@ const routes = [
 		path : "/",
 		name : "Home",
 		component : Home,
-		// meta: {
-		// 	titleName: 'MainIndex',
-		// 	isHeader: true,
-		// 	isBack: true,
-		// 	isNav: true,
-		// 	isFooter: true,
-		// },
+		meta: {
+			titleName: 'MainIndex',
+			isHeader: false,
+			isBack: false,
+			isNav: false,
+			isFooter: false,
+		},
 	},
 	{
 		path : "/test",
