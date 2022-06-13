@@ -1,11 +1,10 @@
 <template>
-  <footer class="footer" >
+  <footer class="footer" v-if="routeLayout.isFooter">
     <div class="inner">
       <div class="bot-left">
       </div>
       <div class="bot-center">
-        {{  routeLayout }} 123123
-        <div class="title-footer-title" @click="fnShowMore"></div>
+        <div class="title-footer-title" :class="{on: tabFooterMid === true}" @click="fnShowMore"></div>
       </div>
       <div class="bot-right">
       </div>
@@ -35,10 +34,12 @@ export default {
   name : 'the-footer',
   setup() {
     const page = reactive({
-      'test' : 1
+      'test' : 1,
+      tabFooterMid: false
     })
 
     const fnShowMore = () => {
+      page.tabFooterMid = !page.tabFooterMid
       console.log('하단 부분 더보기')
     }
     return {

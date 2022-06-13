@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <header class="header" v-if="routeLayout.isHeader">
     <div class="inner">
       <div class="top-left">
         <button class="btn-header-back" @click="fnBackBtn"></button>
@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="top-right">
-        <button class="btn-header-nav" @click="fnNavBtn"></button>
+        <button class="btn-header-nav" :class="{on:tabHeaderRight === true}" @click="fnNavBtn"></button>
       </div>
     </div>
   </header>
@@ -38,16 +38,19 @@ const methodState = () => {
 export default {
   name : 'the-header',
   setup() {
+    const { proxy } = getCurrentInstance()
     const page = reactive({
-      'test' : 1
+      'test' : 1,
+      tabHeaderRight : false
     })
 
     const fnBackBtn = () => {
-      console.log('뒤로가기 버튼')
+      proxy.$router.go(-1)
     }
 
     const fnNavBtn = () => {
-      console.log('더보기 버튼')
+      page.tabHeaderRight = !page.tabHeaderRight
+      console.log(fnNavBtn)
     }
 
     return {

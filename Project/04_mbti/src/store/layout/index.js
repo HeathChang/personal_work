@@ -39,11 +39,11 @@ export const mutations = {
 		isNav = undefined,
 		isFooter = undefined
 	}) {
-		if ( titleName !== undefined ) state.titleName = titleName
-		if ( isHeader !== undefined ) state.routeLayout = isHeader
-		if ( isBack !== undefined ) state.isBack = isBack
-		if ( isNav !== undefined ) state.isNav = isNav
-		if ( isFooter !== undefined ) state.isFooter = isFooter
+		if ( titleName !== undefined ) state.routeLayout.titleName = titleName
+		if ( isHeader !== undefined ) state.routeLayout.isHeader = isHeader
+		if ( isBack !== undefined ) state.routeLayout.isBack = isBack
+		if ( isNav !== undefined ) state.routeLayout.isNav = isNav
+		if ( isFooter !== undefined ) state.routeLayout.isFooter = isFooter
 	}
 }
 

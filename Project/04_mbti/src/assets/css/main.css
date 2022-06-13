@@ -62,7 +62,7 @@
     border: none;
 }
 
-.btn-header-nav:active {
+.btn-header-nav.on {
     background: url(../images/btn-nav-box-type2.png) no-repeat;
     background-size: 32px 32px;
     width: 40px;
@@ -86,7 +86,7 @@
     border: none;
 }
 
-.title-footer-title:active {
+.title-footer-title.on {
     background: url(../images/btn-footer-champagne-type0.png) no-repeat;
     background-size: 40px 40px;
     width: 48px;

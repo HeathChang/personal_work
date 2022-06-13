@@ -1,9 +1,19 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home";
 import Test from "../views/test"
+import store from '@/store'
+
+
 
 const updateRouteLayout = async meta => {
 	//해당 부분에서 store 업데이트해주기
+	await store.dispatch('layout/updateRouteLayout',{
+		titleName: meta.titleName,
+		isHeader: meta.isHeader,
+		isBack: meta.isBack,
+		isNav: meta.isNav,
+		isFooter: meta.isFooter
+	})
 }
 
 const fnBeforeEnter = (to,from,next) => {
@@ -15,6 +25,13 @@ const routes = [
 		path : "/",
 		name : "Home",
 		component : Home,
+		// meta: {
+		// 	titleName: 'MainIndex',
+		// 	isHeader: true,
+		// 	isBack: true,
+		// 	isNav: true,
+		// 	isFooter: true,
+		// },
 	},
 	{
 		path : "/test",
@@ -22,10 +39,10 @@ const routes = [
 		component : Test,
 		meta: {
 			titleName: 'TestIndex',
-			isHeader: false,
-			isBack: false,
-			isNav: false,
-			isFooter: false,
+			isHeader: true,
+			isBack: true,
+			isNav: true,
+			isFooter: true,
 		},
 	},
 ];
