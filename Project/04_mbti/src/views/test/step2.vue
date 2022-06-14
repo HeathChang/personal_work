@@ -8,7 +8,7 @@
         <li v-for="(item2,index2) in item.r" :key="index2">
           <input
               type="radio"
-              name="pay"
+              name="`${item2.id}_${index2}`"
               id="`${item2.id}_${index2}`"
           />
           <label for="`${item2.id}_${index2}`" class="select-text">
