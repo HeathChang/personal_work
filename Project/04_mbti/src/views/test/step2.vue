@@ -1,48 +1,18 @@
 <template>
   <div class="inner-container">
-    <div class="inner-main-question">
+    <div class="inner-main-question" v-for="(item,index) in dummy" :key="index">
       <div class="inner-main-title">
-        1. 당신은 어떤 슈퍼파워를 가지고 싶나요 ?
+        {{ index }}. {{ item.q }}
       </div>
       <ul class="main-select">
-        <li>
+        <li v-for="(item2,index2) in item.r" :key="index2">
           <input
               type="radio"
               name="pay"
-              id="pay00"
+              id="`${item2.id}_${index2}`"
           />
-          <label for="pay00" class="select-text">
-            <p>불노불사</p>
-          </label>
-        </li>
-        <li>
-          <input
-              type="radio"
-              name="pay"
-              id="pay01"
-          />
-          <label for="pay01" class="select-text">
-            <p>순간이동</p>
-          </label>
-        </li>
-        <li>
-          <input
-              type="radio"
-              name="pay"
-              id="pay03"
-          />
-          <label for="pay01" class="select-text">
-            <p>투명인간</p>
-          </label>
-        </li>
-        <li>
-          <input
-              type="radio"
-              name="pay"
-              id="pay04"
-          />
-          <label for="pay01" class="select-text">
-            <p>초싸이어인</p>
+          <label for="`${item2.id}_${index2}`" class="select-text">
+            <p>{{ item2 }}</p>
           </label>
         </li>
       </ul>
@@ -52,8 +22,21 @@
 
 
 <script>
+import data from '@/dummy/data'
+import { reactive, toRefs } from "vue";
+
 export default {
-  name: 'test-step2'
+  name : 'test-step2',
+  setup() {
+
+    const state = reactive({
+      dummy : data.step1
+    })
+
+    return {
+      ...toRefs(state)
+    }
+  }
 }
 </script>
 
