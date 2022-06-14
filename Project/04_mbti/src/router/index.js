@@ -42,7 +42,7 @@ const routes = [
 			isHeader: true,
 			isBack: true,
 			isNav: true,
-			isFooter: true,
+			isFooter: false,
 		},
 	},
 ];

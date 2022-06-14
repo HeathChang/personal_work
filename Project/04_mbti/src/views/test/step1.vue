@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="inner-main">
-      <div class="main-title">
+      <div class="inner-main-title">
         1. 당신은 어떤 슈퍼파워를 가지고 싶나요 ?
       </div>
       <ul class="main-select">
@@ -55,21 +55,27 @@
         </li>
       </ul>
     </div>
-
+    <!--설명란-->
+    <div class="inner-main-title">
+      위에서 하나만 설정하면 됩니다.
+    </div>
     <button class="inner-confirm" @click="fnStartTest">
-      테스트 시작 하기
     </button>
   </div>
 </template>
 
 
 <script>
+import { getCurrentInstance } from "vue";
+
 export default {
   name : 'test-step1',
   description : 'Test 첫 페이지',
-  setup(){
-    const fnStartTest =() => {
-      console.log('본격적인 테스트 시작')
+  setup() {
+    const { proxy } = getCurrentInstance()
+    const fnStartTest = () => {
+      sessionStorage.setItem('step', '2')
+      proxy.$emit('done')
     }
 
     return {
@@ -80,9 +86,10 @@ export default {
 </script>
 
 <style>
-ul{
+ul {
   padding: 1rem
 }
+
 li {
   list-style-type: none
 }

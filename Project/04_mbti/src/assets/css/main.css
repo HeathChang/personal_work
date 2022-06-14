@@ -75,6 +75,24 @@
     grid-template-columns: 1fr 2fr 1fr;
     place-items: center;
 }
+.inner-main{
+    border:1px solid #dcdcdc;
+    background-color: ivory;
+    border-radius:10%;
+}
+.inner-main-title{
+    margin: 1rem;
+}
+.inner-confirm {
+    background: url(../images/btn-start.png) no-repeat;
+    background-size: 72px 72px;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    border: none;
+    margin-left: 9rem;
+    margin-top: 3rem;
+}
 
 
 /*Footer*/
