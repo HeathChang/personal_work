@@ -94,6 +94,15 @@
     margin-top: 3rem;
 }
 
+/*Step 2~ */
+#step2-select-ul {
+    margin: -1rem 1rem !important;
+}
+#step2-select-li {
+    line-height:50%
+}
+
+
 
 /*Footer*/
 .title-footer-title {
