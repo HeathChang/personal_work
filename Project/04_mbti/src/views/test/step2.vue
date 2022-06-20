@@ -2,24 +2,28 @@
   <div class="inner-container">
     <div class="inner-main-question" v-for="(item,index) in dummy" :key="index">
       <div class="inner-main-title">
-        {{ index }}. {{ item.q }}
+        {{ index }}. {{ item.q }} {{ item.id }}
       </div>
       <ul class="main-select" id="step2-select-ul">
-        <li id="step2-select-li" v-for="(item2,index2) in item.r" :key="index2">
+        <li id="step2-select-li" v-for="(res,idx) in item.r" :key="idx">
           <input
               type="radio"
-              name="`${item2.id}_${index2}`"
-              id="`${item2.id}_${index2}`"
-              @click="fnAdd(item.q,item2)"
+              :name="item.id"
+              :id="item.id"
+              @click="fnAdd(item.id, idx)"
+              :checked="resultSet[item.id] === idx"
           />
-          <label for="`${item2.id}_${index2}`" class="select-text">
-            <p>{{ item2 }}</p>
+          <label for="item.id" class="select-text">
+            <p>{{ res }}</p>
           </label>
         </li>
       </ul>
     </div>
+    <p v-if="valid.resultSet.$error">
+      {{ msg.resultSet }}
+    </p>
     <div class="confirm">
-      <button @click.prevent.stop="fnConfirm(step)">Next :: {{ step - 1 }}</button>
+      <button @click.prevent.stop="fnConfirm(step)">Next</button>
     </div>
   </div>
 </template>
@@ -28,6 +32,7 @@
 <script>
 import data from '@/dummy/data'
 import { getCurrentInstance, reactive, toRefs } from "vue";
+import useVuelidate from "@vuelidate/core";
 
 export default {
   name : 'test-step2',
@@ -37,27 +42,61 @@ export default {
   setup(props) {
     const { proxy } = getCurrentInstance()
     const state = reactive({
-      dummy : data.step1
+      dummy : data.step1,
       // dummy : `data.step${ props.step }`
-
+      resultSet : {},
+      msg : {
+        resultSet : ''
+      }
     })
 
-    const fnAdd = (index, value) => {
-      console.log(index, value)
+    const fnAdd = (id, value) => {
+      if ( state.resultSet.hasOwnProperty(id) ) {
+        // 이미 값 있을 경우 -> 해제
+        if ( state.resultSet[id] !== value ) {
+          // 이미 들어있는 값이 (결과값) 새로 들어오는 값과 다르면, 새로 들어오는 값으로 덮기
+          state.resultSet = { ...state.resultSet, [id] : value }
+        } else {
+          // 이미 들어있는 값이 (결과값) 새로 들어오는 값과 같으면,초기화
+          state.resultSet = Object.keys(state.resultSet).filter(i => i != id).reduce((a, v) => ( { ...a, [v] : value } ), {})
+        }
+      } else {
+        // 값이 없을 경우 -> 추가
+        state.resultSet = { ...state.resultSet, [id] : value }
+      }
+      console.log(123, state.resultSet)
     }
+
+    // Section::: Validations
+    const rules = {
+      resultSet : {
+        test : function (val) {
+          if ( Object.keys(state.resultSet).length < 21 ) {
+            state.msg.resultSet = '전부다 체크해주세용'
+            return false
+          }
+          return true
+        }
+      }
+    }
+    const valid = useVuelidate(rules, state.resultSet)
+
     const fnConfirm = (index) => {
       // sessionStorage.setItem('step', props.step)
-
-
+      valid.value.$touch()
+      if ( valid.value.$invalid ) return
       return false
-      setTimeout(() => {
-        proxy.$emit('done')
-      }, 250)
+
+      // setTimeout(() => {
+      //   proxy.$emit('done')
+      // }, 250)
     }
     return {
       ...toRefs(state),
       fnConfirm,
-      fnAdd
+      fnAdd,
+      valid
+
     }
   }
 }
