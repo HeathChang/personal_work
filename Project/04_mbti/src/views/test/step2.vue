@@ -71,7 +71,7 @@ export default {
     const rules = {
       resultSet : {
         test : function (val) {
-          if ( Object.keys(state.resultSet).length < 21 ) {
+          if ( Object.keys(state.resultSet).length < 20 ) {
             state.msg.resultSet = '전부다 체크해주세용'
             return false
           }
