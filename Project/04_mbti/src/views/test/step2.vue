@@ -82,11 +82,14 @@ export default {
     const valid = useVuelidate(rules, state.resultSet)
 
     const fnConfirm = (index) => {
-      // sessionStorage.setItem('step', props.step)
       valid.value.$touch()
       if ( valid.value.$invalid ) return
-      return false
 
+      console.log('다음페이지로 진입')
+      // AXIOS해서 스텝별로 한개씩 DB로 전송
+
+      // AXIOS 통신 이후에  다음 페이지로 이동
+      // sessionStorage.setItem('step', props.step)
       // setTimeout(() => {
       //   proxy.$emit('done')
       // }, 250)
