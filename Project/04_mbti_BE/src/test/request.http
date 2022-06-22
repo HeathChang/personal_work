@@ -1,0 +1,7 @@
+### Create Report
+POST http://localhost:8080/api/test/postTest
+Content-Type: application/json
+
+{
+  "id": "Hello World"
+}
