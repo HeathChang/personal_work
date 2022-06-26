@@ -3,9 +3,13 @@ import { TestDto as TestDTO } from "../dtos/test.dto";
 
 @Controller("/api/test")
 export class TestController {
+  // constructor(private testDTO: TestDTO){
+  // }
+
   @Post('/save_test')
-  saveTestResult(@Body() body:any) {
-    console.log('>>> ',body)
+  saveResult(@Body() body:TestDTO) {
+    // const result = await this.testService.saveResult(body.index, body.resultSet)
+    // console.log('result:: ', result)
     return body
   }
 
