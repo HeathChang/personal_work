@@ -1,12 +1,12 @@
-import { Controller, Get, Post, Param } from "@nestjs/common";
+import { Controller, Get, Post, Param, Body } from "@nestjs/common";
 import { TestDto as TestDTO } from "../dtos/test.dto";
 
-@Controller("test")
+@Controller("/api/test")
 export class TestController {
-  @Post("/postTest")
-  saveTestResult(@Param() params: any) {
-    console.log(112, params)
-    return params
+  @Post('/save_test')
+  saveTestResult(@Body() body:any) {
+    console.log('>>> ',body)
+    return body
   }
 
 }

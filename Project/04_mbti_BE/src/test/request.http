@@ -1,5 +1,13 @@
 ### Create Report
-POST http://localhost:8080/api/test/postTest
+GET http://localhost:3000/api/test/save_test
+Content-Type: application/json
+
+{
+  "id": "Checking api",
+  "pw": "1234"
+}
+### Test
+GET http://localhost:3000/api/
 Content-Type: application/json
 
 {

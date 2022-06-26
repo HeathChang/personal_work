@@ -1,10 +1,21 @@
 module.exports = {
-	pages: {
-		index: {
-			entry: 'src/main.js',
-			title: ''
+	pages : {
+		index : {
+			entry : 'src/main.js',
+			title : ''
 		}
 	},
-	lintOnSave: false
-
+	lintOnSave : false,
+	devServer : {
+		host : '0.0.0.0',
+		proxy : {
+			'/api' : {
+				target : 'http://192.168.1.154:3000',
+				changeOrigin: true,
+				pathRewrites :{
+					'^/api': ''
+				}
+			}
+		}
+	},
 }
