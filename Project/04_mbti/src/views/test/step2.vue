@@ -31,7 +31,7 @@
 
 <script>
 import data from '@/dummy/data'
-import { getCurrentInstance, reactive, toRefs } from "vue";
+import { getCurrentInstance, onMounted, reactive, toRefs } from "vue";
 import useVuelidate from "@vuelidate/core";
 
 export default {
@@ -81,6 +81,21 @@ export default {
     }
     const valid = useVuelidate(rules, state.resultSet)
 
+    onMounted(() => {
+      fnMounted(props.step)
+    })
+
+    const fnMounted = async index => {
+      const payload = {}
+      payload.index = String(index)
+      const res = await proxy.$TestSvc.getTest(payload)
+      if ( res.statusText !== 'OK' ) {
+        throw new Error('Sth Occured, Check next Time')
+      } else {
+
+      }
+    }
+
     const fnConfirm = async (index) => {
       // valid.value.$touch()
       // if ( valid.value.$invalid ) return
@@ -104,6 +119,7 @@ export default {
     return {
       ...toRefs(state),
       fnConfirm,
+      fnMounted,
       fnAdd,
       valid
 

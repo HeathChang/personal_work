@@ -7,9 +7,9 @@ Content-Type: application/json
   "pw": "1234"
 }
 ### Test
-GET http://localhost:3000/api/
+GET http://localhost:3000/api/test/get_test
 Content-Type: application/json
 
 {
-  "id": "Hello World"
+  "index": 2
 }

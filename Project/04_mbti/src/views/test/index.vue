@@ -3,9 +3,9 @@
     <div class="main_inner">
       <div class="page">
         <test-step1 v-if="step === '1'" @done="fnNext('2')"/>
-        <test-step2 v-if="step === '2'" @done="fnNext('3')" :step="parseInt(step)+1"/>
-        <test-step3 v-if="step === '3'" @done="fnNext('4')" :step="parseInt(step)+1"/>
-        <test-step4 v-if="step === '4'" @done="fnNext('5')" :step="parseInt(step)+1"/>
+        <test-step2 v-if="step === '2'" @done="fnNext('3')" :step="parseInt(step)"/>
+        <test-step3 v-if="step === '3'" @done="fnNext('4')" :step="parseInt(step)"/>
+        <test-step4 v-if="step === '4'" @done="fnNext('5')" :step="parseInt(step)"/>
         <test-step5 v-if="step === '5'" @done="fnNext('done')" :step="'done'"/>
 
         <div v-if="step === 'done'">끝입니다</div>
