@@ -1,13 +1,15 @@
-### Create Report
-GET http://localhost:3000/api/test/save_test
+### POST Test Result
+POST http://localhost:3000/api/test/save_test
 Content-Type: application/json
 
 {
-  "id": "Checking api",
-  "pw": "1234"
+  "index": 2
 }
-### Test
-GET http://localhost:3000/api/test/get_test
+
+
+
+### Fetch Test By Index
+GET http://localhost:3000/api/test/get_test/2
 Content-Type: application/json
 
 {

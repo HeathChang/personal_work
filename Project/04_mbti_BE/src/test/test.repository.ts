@@ -3,7 +3,7 @@ export class TestRepository {
 
   }
 
-  async fetch(index: String){
-
+  async fetchQuestion(index: String){
+    // const contents = await readFile('me')
   }
 }

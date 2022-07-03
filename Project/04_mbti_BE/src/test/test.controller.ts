@@ -13,12 +13,10 @@ export class TestController {
     return body;
   }
 
-  @Get("/get_test")
-  getTest(@Body() body: String) {
-
-    // const result = awiat this.testService.getTest(index)
-
-    return body;
+  @Get("/get_test/:index")
+  getTest(@Param('index') index: any) {
+    console.log("body check in get_test: " + index);
+    return index;
   }
 
 }
