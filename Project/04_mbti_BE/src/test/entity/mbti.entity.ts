@@ -13,5 +13,8 @@ export class MBTI {
   question: String;
 
   @Column({ comment: "대답" })
-  response: String;
+  response1: String;
+
+  @Column({ comment: "대답2" })
+  response2: String;
 }
