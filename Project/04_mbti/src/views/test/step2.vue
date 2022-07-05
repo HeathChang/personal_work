@@ -87,7 +87,7 @@ export default {
 
     const fnMounted = async index => {
       const payload = {}
-      payload.index = String(index)
+      payload.index = parseInt(index)
       const res = await proxy.$TestSvc.getTest(payload)
       if ( res.statusText !== 'OK' ) {
         throw new Error('Sth Occured, Check next Time')

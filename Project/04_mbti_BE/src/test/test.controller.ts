@@ -1,10 +1,12 @@
 import { Controller, Get, Post, Param, Body } from "@nestjs/common";
 import { TestDto as TestDTO } from "../dtos/test.dto";
+import {TestService} from './test.service'
+
 
 @Controller("/api/test")
 export class TestController {
-  // constructor(private testDTO: TestDTO){
-  // }
+  constructor(private testService: TestService){
+  }
 
   @Post("/save_test")
   saveTest(@Body() body: TestDTO) {
@@ -14,9 +16,8 @@ export class TestController {
   }
 
   @Get("/get_test/:index")
-  getTest(@Param('index') index: any) {
-    console.log("body check in get_test: " + index);
-    return index;
+  async getTest(@Param('index') index: any) {
+    const result = await this.testService.fetch(index)
+    console.log(111111, result)
   }
-
 }

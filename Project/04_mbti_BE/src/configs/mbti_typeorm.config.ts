@@ -1,5 +1,5 @@
 import { TypeOrmModuleOptions } from "@nestjs/typeorm";
-import { MBTI } from "../test/entity/mbti.entity";
+import { mbti } from "../test/entity/mbti.entity";
 
 
 export const typeORMConfig: TypeOrmModuleOptions = {
@@ -9,7 +9,7 @@ export const typeORMConfig: TypeOrmModuleOptions = {
   username: "root",
   password: "1234",
   database: "mbti",
-  entities: [MBTI],
+  entities: [mbti],
   // entities: ['dist/**/*.entity.ts'],
   synchronize: true
 
