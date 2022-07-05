@@ -6,7 +6,7 @@ export class mbti {
   id: number;
 
   @Column({ comment: "인덱스" })
-  index: string;
+  idx: string;
 
   @Column({ comment: "질문" })
   question: string;

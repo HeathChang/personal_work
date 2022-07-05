@@ -15,11 +15,10 @@ export class TestController {
     return body;
   }
 
-  @Get("/get_test/:index")
-  async getTest(@Param() index: string) {
-    console.log(112, index)
+  @Get("/get_test")
+  async getTest(@Param('index') index: any) {
+    console.log('index:: ', index, typeof index)
     const result = await this.testService.fetch(index)
-    console.log(111111, result)
     return result
   }
 }

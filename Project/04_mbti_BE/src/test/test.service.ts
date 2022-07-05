@@ -8,9 +8,8 @@ export class TestService {
   constructor(@InjectRepository(mbti) private repo: Repository<mbti>) {
   }
 
-  fetch(index: string) {
-    console.log(999, index);
-    return this.repo.findBy({ index });
+  fetch(idx: string) {
+    return this.repo.findBy({ idx });
   }
 
 }
