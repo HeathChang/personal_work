@@ -6,14 +6,14 @@ export class mbti {
   id: number;
 
   @Column({ comment: "인덱스" })
-  index: number;
+  index: string;
 
   @Column({ comment: "질문" })
-  question: String;
+  question: string;
 
   @Column({ comment: "대답" })
-  response1: String;
+  response1: string;
 
   @Column({ comment: "대답2" })
-  response2: String;
+  response2: string;
 }

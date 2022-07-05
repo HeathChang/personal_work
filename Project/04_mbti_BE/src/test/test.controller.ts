@@ -16,8 +16,10 @@ export class TestController {
   }
 
   @Get("/get_test/:index")
-  async getTest(@Param('index') index: any) {
+  async getTest(@Param() index: string) {
+    console.log(112, index)
     const result = await this.testService.fetch(index)
     console.log(111111, result)
+    return result
   }
 }
