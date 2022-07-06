@@ -2,7 +2,6 @@ import { Controller, Get, Post, Param, Body } from "@nestjs/common";
 import { TestDto as TestDTO } from "../dtos/test.dto";
 import {TestService} from './test.service'
 
-
 @Controller("/api/test")
 export class TestController {
   constructor(private testService: TestService){
@@ -16,9 +15,9 @@ export class TestController {
   }
 
   @Get("/get_test")
-  async getTest(@Param('index') index: any) {
-    console.log('index:: ', index, typeof index)
-    const result = await this.testService.fetch(index)
+  async getTest(@Body() body: TestDTO) {
+    console.log('body check::: ', body)
+    const result = await this.testService.fetch(body.index)
     return result
   }
 }

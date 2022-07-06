@@ -9,5 +9,10 @@ Content-Type: application/json
 
 
 ### Fetch Test By Index
-GET http://localhost:3000/api/test/get_test/2
+GET http://localhost:3000/api/test/get_test/
 Content-Type: application/json
+
+
+{
+  "index": "2"
+}

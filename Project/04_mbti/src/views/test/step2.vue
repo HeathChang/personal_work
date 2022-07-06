@@ -88,6 +88,7 @@ export default {
     const fnMounted = async index => {
       const payload = {}
       payload.index = String(index)
+      payload.resultSet = {}
       const res = await proxy.$TestSvc.getTest(payload)
       console.log(123, res)
       if ( res.statusText !== 'OK' ) {
