@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Param, Body } from "@nestjs/common";
+import { Controller, Get, Post, Param, Body, Patch } from "@nestjs/common";
 import { TestDto as TestDTO } from "../dtos/test.dto";
 import {TestService} from './test.service'
 
@@ -11,12 +11,12 @@ export class TestController {
   saveTest(@Body() body: TestDTO) {
     // const result = await this.testService.saveResult(body.index, body.resultSet)
     // console.log('result:: ', result)
+    console.log('body check:: ',body)
     return body;
   }
 
-  @Get("/get_test")
-  async getTest(@Body() body: TestDTO) {
-    console.log('body check::: ', body)
+  @Patch("/getTest")
+  async getTest(@Body() body: any) {
     const result = await this.testService.fetch(body.index)
     return result
   }

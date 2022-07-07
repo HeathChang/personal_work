@@ -7,7 +7,9 @@ module.exports = {
 	},
 	lintOnSave : false,
 	devServer : {
+		disableHostCheck: true,
 		host : '0.0.0.0',
+		port: 8080,
 		proxy : {
 			'/api' : {
 				target : 'http://localhost:3000',

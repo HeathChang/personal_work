@@ -1,20 +1,31 @@
 <template>
   <div class="inner-container">
-    <div class="inner-main-question" v-for="(item,index) in dummy" :key="index">
+    <div class="inner-main-question" v-for="(item,index) in data" :key="index">
       <div class="inner-main-title">
-        {{ index }}. {{ item.q }} {{ item.id }}
+        {{ item.id }}. {{ item.question }}
       </div>
       <ul class="main-select" id="step2-select-ul">
-        <li id="step2-select-li" v-for="(res,idx) in item.r" :key="idx">
+        <li>
           <input
               type="radio"
               :name="item.id"
               :id="item.id"
-              @click="fnAdd(item.id, idx)"
-              :checked="resultSet[item.id] === idx"
+              @click="fnAdd(item.id, '1')"
+
           />
           <label for="item.id" class="select-text">
-            <p>{{ res }}</p>
+            <p>{{ item.response1 }}</p>
+          </label>
+        </li>
+        <li>
+          <input
+              type="radio"
+              :name="item.id"
+              :id="item.id"
+              @click="fnAdd(item.id, '2')"
+          />
+          <label for="item.id" class="select-text">
+            <p>{{ item.response2 }}</p>
           </label>
         </li>
       </ul>
@@ -45,12 +56,14 @@ export default {
       dummy : data.step1,
       // dummy : `data.step${ props.step }`
       resultSet : {},
+      data : {},
       msg : {
         resultSet : ''
       }
     })
 
     const fnAdd = (id, value) => {
+      console.log('fnAdd: ', id, value)
       if ( state.resultSet.hasOwnProperty(id) ) {
         // 이미 값 있을 경우 -> 해제
         if ( state.resultSet[id] !== value ) {
@@ -87,10 +100,13 @@ export default {
 
     const fnMounted = async index => {
       const payload = {}
-      payload.index = String(index)
-      payload.resultSet = {}
+      payload.index = String(index-1)
+      // payload.resultSet = {}
       const res = await proxy.$TestSvc.getTest(payload)
-      console.log(123, res)
+      console.log(res.data)
+      if(res.status === 200){
+        state.data = res.data
+      }
       if ( res.statusText !== 'OK' ) {
         throw new Error('Sth Occured, Check next Time')
       }
@@ -105,7 +121,7 @@ export default {
       const payload = {}
       payload.resultSet = { ...state.resultSet }
       payload.index = props.step
-
+      console.log(payload)
       const res = await proxy.$TestSvc.sendTest(payload)
       console.log(112, res)
 

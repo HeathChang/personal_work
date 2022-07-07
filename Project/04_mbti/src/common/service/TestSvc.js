@@ -11,6 +11,7 @@ class CommonSvc extends ServiceExec {
 	 * 검사 결과 보내기
 	 */
 	sendTest(params = {}) {
+
 		return this.post('/api/test/save_test', params).then(response => {
 			return response
 		})
@@ -19,8 +20,8 @@ class CommonSvc extends ServiceExec {
 	/**
 	 * 검사 문제지 받기
 	 */
-	getTest(params ) {
-		return this.get('/api/test/get_test', params).then(response => {
+	getTest(params = {}) {
+		return this.patch('/api/test/getTest', params).then(response => {
 			return response
 		})
 	}
