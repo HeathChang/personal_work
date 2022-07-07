@@ -8,11 +8,9 @@ export class TestController {
   }
 
   @Post("/save_test")
-  saveTest(@Body() body: TestDTO) {
-    // const result = await this.testService.saveResult(body.index, body.resultSet)
-    // console.log('result:: ', result)
+  async saveTest(@Body() body: TestDTO) {
+    const result = await this.testService.save(body.index, body.resultSet)
     console.log('body check:: ',body)
-    return body;
   }
 
   @Patch("/getTest")
