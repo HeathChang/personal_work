@@ -8,16 +8,17 @@ import { result } from "./entity/result.entity";
 
 @Injectable()
 export class TestService {
-  constructor(@InjectRepository(mbti) private mbtiRepo: Repository<mbti>, @InjectRepository(result) private resultRepo: Repository<result>) {
+  constructor(@InjectRepository(mbti) private mbtiRepo: Repository<mbti>,
+              @InjectRepository(result) private resultRepo: Repository<result>) {
   }
 
-  async save(index: any, response: Object) {
-    for(let i in response){
-      console.log(i, response[i])
-      const res = await this.resultRepo.create(i, response[i]);
-      console.log(123, res)
+  save(index: any, response: Object) {
+    for (let i in response) {
+      console.log(i, response[i]);
+      const res = this.resultRepo.create(i, response[i]);
+      console.log(123, res);
     }
-    // return this.resultRepo.save(res);
+    return true
   }
 
   fetch(idx: string) {
