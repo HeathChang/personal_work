@@ -2,11 +2,8 @@
   <div class="main">
     <div class="main_inner">
       <div class="page">
-        <test-step1 v-if="step === '1'" @done="fnNext('2')"/>
-        <test-step2 v-if="step === '2'" @done="fnNext('3')" :step="parseInt(step)"/>
-        <test-step3 v-if="step === '3'" @done="fnNext('4')" :step="parseInt(step)"/>
-        <test-step4 v-if="step === '4'" @done="fnNext('5')" :step="parseInt(step)"/>
-        <test-step5 v-if="step === '5'" @done="fnNext('done')" :step="'done'"/>
+        <test-step1 v-if="step === '0'" @done="fnNext"/>
+        <test-step2 v-else @done="fnNext" :step="step"/>
 
         <div v-if="step === 'done'">끝입니다</div>
       </div>
@@ -17,22 +14,20 @@
 <script>
 import TestStep1 from './step1'
 import TestStep2 from './step2'
-import TestStep3 from './step2'
-import TestStep4 from './step2'
-import TestStep5 from './step2'
-import { onMounted, reactive, toRefs } from "vue";
+
+import { getCurrentInstance, onMounted, reactive, toRefs } from "vue";
 
 export default {
   name : "test-index",
-  components : { TestStep1, TestStep2, TestStep3, TestStep4, TestStep5 },
+  components : { TestStep1, TestStep2, },
   setup() {
+    const { proxy } = getCurrentInstance()
     const state = reactive({
       step : '1',
     })
 
     const fnNext = (index) => {
       state.step = index
-
     }
 
     onMounted(() => {
