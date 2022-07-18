@@ -30,9 +30,9 @@
         </li>
       </ul>
     </div>
-    <p v-if="valid.resultSet.$error">
-      {{ msg.resultSet }}
-    </p>
+    <!--    <p v-if="valid.resultSet.$error">-->
+    <!--      {{ msg.resultSet }}-->
+    <!--    </p>-->
     <div class="confirm">
       <button @click.prevent.stop="fnConfirm(step)">Next</button>
     </div>
@@ -81,18 +81,18 @@ export default {
     }
 
     // Section::: Validations
-    const rules = {
-      resultSet : {
-        test : function (val) {
-          if ( Object.keys(state.resultSet).length < 20 ) {
-            state.msg.resultSet = '전부다 체크해주세용'
-            return false
-          }
-          return true
-        }
-      }
-    }
-    const valid = useVuelidate(rules, state.resultSet)
+    // const rules = {
+    //   resultSet : {
+    //     test : function (val) {
+    //       if ( Object.keys(state.resultSet).length < 20 ) {
+    //         state.msg.resultSet = '전부다 체크해주세용'
+    //         return false
+    //       }
+    //       return true
+    //     }
+    //   }
+    // }
+    // const valid = useVuelidate(rules, state.resultSet)
 
     onMounted(() => {
       fnMounted(props.step)
@@ -128,14 +128,16 @@ export default {
     }
 
     const fnNext = (index, result) => {
-      console.log('check:: ', index, result)
+      console.log('save and next:: ', index, result)
       if ( index !== '4' ) {
+        sessionStorage.setItem('step', parseInt(index) + 1)
         sessionStorage.setItem(index, JSON.stringify(result))
         proxy.$emit('done', parseInt(index) + 1)
       }
     }
 
     const fnSave = async (index, result) => {
+      console.log('final')
       sessionStorage.setItem(index, JSON.stringify(result))
       let _arr = []
       for ( let i = 1 ; i <= 4 ; i++ ) {
@@ -150,7 +152,7 @@ export default {
       fnConfirm,
       fnMounted,
       fnAdd,
-      valid
+      // valid
 
     }
   }

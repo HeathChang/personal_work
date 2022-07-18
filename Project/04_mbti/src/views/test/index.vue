@@ -2,8 +2,11 @@
   <div class="main">
     <div class="main_inner">
       <div class="page">
-        <test-step1 v-if="step === '0'" @done="fnNext"/>
-        <test-step2 v-else @done="fnNext" :step="step"/>
+        <component-intro v-if="step === '0'" @done="fnNext"/>
+        <test-step1 v-else-if="step === '1'" @done="fnNext" :step="step"/>
+        <test-step2 v-else-if="step === '2'" @done="fnNext" :step="step"/>
+        <test-step3 v-else-if="step === '3'" @done="fnNext" :step="step"/>
+        <test-step4 v-else-if="step === '4'" @done="fnNext" :step="step"/>
 
         <div v-if="step === 'done'">끝입니다</div>
       </div>
@@ -12,23 +15,26 @@
 </template>
 
 <script>
-import TestStep1 from './step1'
+import ComponentIntro from './step1'
+import TestStep1 from './step2'
 import TestStep2 from './step2'
+import TestStep3 from './step2'
+import TestStep4 from './step2'
 
 import { getCurrentInstance, onMounted, reactive, toRefs } from "vue";
 
 export default {
   name : "test-index",
-  components : { TestStep1, TestStep2, },
+  components : { ComponentIntro,TestStep1, TestStep2, TestStep3, TestStep4 },
   setup() {
     const { proxy } = getCurrentInstance()
     const state = reactive({
-      step : '1',
+      step : sessionStorage.getItem('step') || '1',
     })
 
     const fnNext = (index) => {
-      console.log('다음페이지:', state.step)
       state.step = toString(index)
+      proxy.$router.go()
     }
 
     onMounted(() => {
