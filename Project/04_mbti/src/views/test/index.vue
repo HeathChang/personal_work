@@ -27,7 +27,8 @@ export default {
     })
 
     const fnNext = (index) => {
-      state.step = index
+      console.log('다음페이지:', state.step)
+      state.step = toString(index)
     }
 
     onMounted(() => {

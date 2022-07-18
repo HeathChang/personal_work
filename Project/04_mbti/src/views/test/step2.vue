@@ -128,6 +128,7 @@ export default {
     }
 
     const fnNext = (index, result) => {
+      console.log('check:: ', index, result)
       if ( index !== '4' ) {
         sessionStorage.setItem(index, JSON.stringify(result))
         proxy.$emit('done', parseInt(index) + 1)
@@ -141,7 +142,6 @@ export default {
         arr = [ ...JSON.parse(sessionStorage.getItem(i)) ]
       }
       console.log(_arr)
-      return false
       //체크 후, 한번에 백이랑 데이터 통신
     }
 
