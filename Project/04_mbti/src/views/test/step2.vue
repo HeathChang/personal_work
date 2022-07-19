@@ -128,7 +128,9 @@ export default {
     }
 
     const fnNext = (index, result) => {
-      console.log('save and next:: ', index, result)
+      console.log('save and next:: ', state.resultSet)
+
+
       if ( index !== '4' ) {
         sessionStorage.setItem('step', parseInt(index) + 1)
         sessionStorage.setItem(index, JSON.stringify(result))
@@ -137,13 +139,18 @@ export default {
     }
 
     const fnSave = async (index, result) => {
-      console.log('final')
-      sessionStorage.setItem(index, JSON.stringify(result))
-      let _arr = []
+      console.log('final:: ', JSON.parse(sessionStorage.getItem('1')))
+      // sessionStorage.setItem(index, JSON.stringify(result))
+      let _obj = {}
       for ( let i = 1 ; i <= 4 ; i++ ) {
-        arr = [ ...JSON.parse(sessionStorage.getItem(i)) ]
+        _obj = { ..._obj, ...JSON.parse(sessionStorage.getItem(i)) }
       }
-      console.log(_arr)
+      // const res = await proxy.$
+      console.log('arr check:: ', _obj)
+      const payload = {}
+      payload.resultSet = { ..._obj }
+      const res = await proxy.$TestSvc.sendTest(payload)
+      console.log('res check:: ', res)
       //체크 후, 한번에 백이랑 데이터 통신
     }
 

@@ -12,12 +12,14 @@ export class TestService {
               @InjectRepository(result) private resultRepo: Repository<result>) {
   }
 
-  save(index: any, response: Object) {
-    for (let i in response) {
-      console.log(i, response[i]);
-      const res = this.resultRepo.create(i, response[i]);
-      console.log(123, res);
-    }
+  save(id: any, response: any) {
+    // @ts-ignore
+    const res = this.resultRepo.create(id, response);
+
+    // for (let i in response) {
+    //   console.log(i, response[i]);
+    //   const res = this.resultRepo.create(index, response);
+    // }
     return true
   }
 

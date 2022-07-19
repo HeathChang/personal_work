@@ -8,8 +8,9 @@ export class TestController {
   }
 
   @Post("/save_test")
-  async saveTest(@Body() body: TestDTO) {
-    const result = await this.testService.save(body.index, body.resultSet);
+  async saveTest(@Body() body: any) {
+    const result = await this.testService.save(body.index, body.index);
+    // const result = await this.testService.save(body.index, body.resultSet)
     console.log("body check:: ", body);
   }
 
