@@ -59,7 +59,12 @@ export default {
       data : {},
       msg : {
         resultSet : ''
+      },
+      mbtiLetter : {
+        '0' : [ 'E', 'I' ],
+        '1' : [ 'N', 'S' ],
       }
+
     })
 
     const fnAdd = (id, value) => {
@@ -128,9 +133,32 @@ export default {
     }
 
     const fnNext = (index, result) => {
-      console.log('save and next:: ', state.resultSet)
+      const _letter = parseInt(index) - 1
+      let _a = 0
+      let _b = 0
+      let _res = ''
+      for ( let i in state.resultSet ) {
+        console.log(i, typeof state.resultSet[i])
+        if ( state.resultSet[i] === '1' ) {
+          _a++
+        } else {
+          _b++
+        }
+      }
+
+      if ( _a > _b ) {
+        _res = state.mbtiLetter['0'][0]
+      } else {
+        if ( _a < _b ) {
+          _res = state.mbtiLetter['0'][1]
+        } else {
+          _res = state.mbtiLetter['0'][1]
+        }
+      }
+      console.log(121212, _res)
 
 
+      return false
       if ( index !== '4' ) {
         sessionStorage.setItem('step', parseInt(index) + 1)
         sessionStorage.setItem(index, JSON.stringify(result))
