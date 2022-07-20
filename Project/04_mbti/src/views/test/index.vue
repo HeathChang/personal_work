@@ -6,7 +6,7 @@
         <test-step1 v-else-if="step === '1'" @done="fnNext" :step="step"/>
         <test-step2 v-else-if="step === '2'" @done="fnNext" :step="step"/>
         <test-step3 v-else-if="step === '3'" @done="fnNext" :step="step"/>
-        <test-step4 v-else-if="step === '4'" @done="fnNext" :step="step"/>
+        <test-step4 v-else @done="fnNext" :step="step"/>
 
         <div v-if="step === 'done'">끝입니다</div>
       </div>

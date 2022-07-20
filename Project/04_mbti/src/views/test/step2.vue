@@ -63,8 +63,9 @@ export default {
       mbtiLetter : {
         '0' : [ 'E', 'I' ],
         '1' : [ 'N', 'S' ],
+        '2' : [ 'F', 'J' ],
+        '3' : [ 'T', 'P' ],
       }
-
     })
 
     const fnAdd = (id, value) => {
@@ -120,19 +121,6 @@ export default {
     const fnConfirm = index => {
       // valid.value.$touch()
       // if ( valid.value.$invalid ) return
-      switch ( index ) {
-        case '1':
-        case '2':
-        case '3':
-          fnNext(index, state.resultSet)
-          break
-        case '4':
-          fnSave(index, state.resultSet)
-          break
-      }
-    }
-
-    const fnNext = (index, result) => {
       const _letter = parseInt(index) - 1
       let _a = 0
       let _b = 0
@@ -145,38 +133,40 @@ export default {
           _b++
         }
       }
-
       if ( _a > _b ) {
-        _res = state.mbtiLetter['0'][0]
+        _res = state.mbtiLetter[`${ _letter }`][0]
       } else {
-        if ( _a < _b ) {
-          _res = state.mbtiLetter['0'][1]
-        } else {
-          _res = state.mbtiLetter['0'][1]
-        }
+        _res = state.mbtiLetter[`${ _letter }`][1]
       }
-      console.log(121212, _res)
+      sessionStorage.setItem(index, _res)
 
 
-      return false
+      switch ( index ) {
+        case '1':
+        case '2':
+        case '3':
+          fnNext(index, state.resultSet)
+          break
+        default:
+          fnSave(index, state.resultSet)
+          break
+      }
+    }
+
+    const fnNext = (index, result) => {
       if ( index !== '4' ) {
         sessionStorage.setItem('step', parseInt(index) + 1)
-        sessionStorage.setItem(index, JSON.stringify(result))
         proxy.$emit('done', parseInt(index) + 1)
       }
     }
 
     const fnSave = async (index, result) => {
-      console.log('final:: ', JSON.parse(sessionStorage.getItem('1')))
-      // sessionStorage.setItem(index, JSON.stringify(result))
-      let _obj = {}
+      let _result = ''
       for ( let i = 1 ; i <= 4 ; i++ ) {
-        _obj = { ..._obj, ...JSON.parse(sessionStorage.getItem(i)) }
+        _result += sessionStorage.getItem(i)
       }
-      // const res = await proxy.$
-      console.log('arr check:: ', _obj)
-      const payload = {}
-      payload.resultSet = { ..._obj }
+      console.log('result:: ', _result)
+
       const res = await proxy.$TestSvc.sendTest(payload)
       console.log('res check:: ', res)
       //체크 후, 한번에 백이랑 데이터 통신
