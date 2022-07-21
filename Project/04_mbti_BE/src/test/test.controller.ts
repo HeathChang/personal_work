@@ -7,11 +7,11 @@ export class TestController {
   constructor(private testService: TestService) {
   }
 
-  @Post("/save_test")
-  async saveTest(@Body() body: any) {
-    const result = await this.testService.save(body.index, body.index);
-    // const result = await this.testService.save(body.index, body.resultSet)
-    console.log("body check:: ", body);
+  @Post("/fetchResult")
+  async saveTest(@Body("result") mbti: string) {
+    const result = await this.testService.save(mbti);
+    console.log(result)
+    return result;
   }
 
   @Patch("/getTest")

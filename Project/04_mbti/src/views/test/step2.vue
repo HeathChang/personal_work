@@ -165,9 +165,9 @@ export default {
       for ( let i = 1 ; i <= 4 ; i++ ) {
         _result += sessionStorage.getItem(i)
       }
-      console.log('result:: ', _result)
-
-      const res = await proxy.$TestSvc.sendTest(payload)
+      const payload = {}
+      payload.result = _result
+      const res = await proxy.$TestSvc.fetchResult(payload)
       console.log('res check:: ', res)
       //체크 후, 한번에 백이랑 데이터 통신
     }

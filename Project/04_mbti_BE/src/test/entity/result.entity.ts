@@ -1,13 +1,16 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, PrimaryColumn } from "typeorm";
 
 @Entity()
 export class result {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn({comment: '인덱스'})
+  index: number ;
 
-  // @Column({ comment: "번호" })
-  // index: string ;
+  @PrimaryColumn({comment: 'MBTI 검사 결과'})
+  mbti: string ;
 
-  @Column({ comment: "결과" })
-  response: string ;
+  @Column({ comment: "설명" })
+  comments: string ;
+
+  @Column({ comment: "비고" })
+  note: string;
 }
