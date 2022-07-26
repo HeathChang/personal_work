@@ -10,7 +10,6 @@ export class TestController {
   @Post("/fetchResult")
   async saveTest(@Body("result") mbti: string) {
     const result = await this.testService.save(mbti);
-    console.log(result)
     return result;
   }
 

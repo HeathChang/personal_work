@@ -1,15 +1,17 @@
 <template>
   <div class="main">
     <div class="main_inner">
-      <div class="page">
+      <div class="page" v-if="boolFinal !== false">
         <component-intro v-if="step === '0'" @done="fnNext"/>
         <test-step1 v-else-if="step === '1'" @done="fnNext" :step="step"/>
         <test-step2 v-else-if="step === '2'" @done="fnNext" :step="step"/>
         <test-step3 v-else-if="step === '3'" @done="fnNext" :step="step"/>
-        <test-step4 v-else @done="fnNext" :step="step"/>
-
-        <div v-if="step === 'done'">끝입니다</div>
+        <test-step4 v-else @close="fnCheckResult" :step="step"/>
       </div>
+      <div class="page" v-else>
+        <test-result v-else :data="mbtiResult"/>
+      </div>
+
     </div>
   </div>
 </template>
@@ -20,21 +22,30 @@ import TestStep1 from './step2'
 import TestStep2 from './step2'
 import TestStep3 from './step2'
 import TestStep4 from './step2'
-
+import TestResult from './result'
 import { getCurrentInstance, onMounted, reactive, toRefs } from "vue";
 
 export default {
   name : "test-index",
-  components : { ComponentIntro,TestStep1, TestStep2, TestStep3, TestStep4 },
+  components : { ComponentIntro, TestStep1, TestStep2, TestStep3, TestStep4, TestResult },
   setup() {
     const { proxy } = getCurrentInstance()
     const state = reactive({
       step : sessionStorage.getItem('step') || '1',
+      mbtiResult : [],
+      boolFinal : false
     })
 
     const fnNext = (index) => {
+      console.log('fnNext:: ', index)
       state.step = toString(index)
       proxy.$router.go()
+    }
+
+    const fnCheckResult = params => {
+      state.mbtiResult = params
+      state.boolFinal = true
+      console.log(state.boolFinal)
     }
 
     onMounted(() => {
@@ -46,7 +57,8 @@ export default {
 
     return {
       ...toRefs(state),
-      fnNext
+      fnNext,
+      fnCheckResult
     }
   }
 }

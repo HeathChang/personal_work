@@ -168,7 +168,11 @@ export default {
       const payload = {}
       payload.result = _result
       const res = await proxy.$TestSvc.fetchResult(payload)
-      console.log('res check:: ', res)
+      if ( res.status === 201 ) {
+        console.log(res)
+        proxy.$emit('close', res.data[0])
+      }
+      // if(res.status)
       //체크 후, 한번에 백이랑 데이터 통신
     }
 
