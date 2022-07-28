@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <div class="main_inner">
-      <div class="page" v-if="boolFinal !== false">
+      <div class="page" v-if="boolFinal !== true">
         <component-intro v-if="step === '0'" @done="fnNext"/>
         <test-step1 v-else-if="step === '1'" @done="fnNext" :step="step"/>
         <test-step2 v-else-if="step === '2'" @done="fnNext" :step="step"/>

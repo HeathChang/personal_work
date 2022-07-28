@@ -1,12 +1,28 @@
 <template>
   <div class="inner-container">
-    <div class="con-title">당신의 mbti는?</div>
+    <div class="con-title">당신의 MBTI는..
+      <div style="text-align: right"> [ {{ form.mbti || `ENFP` }} ]</div>
+    </div>
     <div class="con-body">
-
-      멋진 이름
-      멋진 내부
-      {{ form.mbti }}
-      {{ form.comments }}
+      <div class="con-body-title">
+        <h2 style="text-align: center">
+          {{ form.mbtiSentence || `열성적인 중재자` }}
+        </h2>
+      </div>
+      <div class="con-body-contents">
+        <div class="personality">
+          성격: {{ form.personality }}
+        </div>
+        <div class="adv">
+          장점: {{ form.adv }}
+        </div>
+        <div class="dis">
+          단점: {{ form.dis }}
+        </div>
+        <div class="job">
+          추천 직업: {{ form.job }}
+        </div>
+      </div>
     </div>
 
   </div>

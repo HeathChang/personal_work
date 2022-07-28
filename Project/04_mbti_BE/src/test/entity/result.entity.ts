@@ -8,9 +8,18 @@ export class result {
   @PrimaryColumn({comment: 'MBTI 검사 결과'})
   mbti: string ;
 
-  @Column({ comment: "설명" })
-  comments: string ;
+  @Column({ comment: "MBTI 검사 한줄" })
+  mbtiSentence: string ;
 
-  @Column({ comment: "비고" })
-  note: string;
+  @Column({ comment: "장점" })
+  adv: string;
+
+  @Column({ comment: "단점" })
+  dis: string;
+
+  @Column({ comment: "성격" })
+  personality: string;
+
+  @Column({ comment: "추천 직업" })
+  job: string;
 }
