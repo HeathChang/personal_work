@@ -4,6 +4,11 @@ Thu Jul 28, 2022
 1. Ep2. What is Docker?
 -Docker: A tool for creating and managing containers;
 -Containers: A standardized unit of SW which will yield the same output;
-
-2. Ep3. Why need independent application packages ? (skip from Ep 3 ~ 11)
+           : running instance of images
+2. Ep3. Why need independent application packages ? (skip from Ep 3 ~ 17)
 - same environment
+
+
+Sat July 30, 2022 (Ep18~ )
+1. Ep18. Images and Containers
+- Images: Blueprints for  containers (code + tools) which can be used to create multiple containers
