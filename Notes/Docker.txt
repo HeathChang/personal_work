@@ -1,4 +1,5 @@
 Docker
+==================================================================================================
 
 Thu Jul 28, 2022
 1. Ep2. What is Docker?
@@ -8,7 +9,48 @@ Thu Jul 28, 2022
 2. Ep3. Why need independent application packages ? (skip from Ep 3 ~ 17)
 - same environment
 
+==================================================================================================
 
-Sat July 30, 2022 (Ep18~ )
+Sat Jul 30, 2022 (Ep18~ )
 1. Ep18. Images and Containers
 - Images: Blueprints for  containers (code + tools) which can be used to create multiple containers
+
+==================================================================================================
+
+Sun Jul 31, 2022 (Ep21~)
+1. Ep21.
+- [ FROM ] : Build your image up on the other image.
+- [ WORKDIR ] :
+    - WORKDIR /app : all the subsequent files will be executed from inside the folder.
+                   : by setting WORKDIR, you can delete second dot of COPY . .
+- [ COPY . . ] :
+    - first dot: tell docker all the sub folders in the project should be copied to the image
+    - second dot: the path inside the image where those files should be stored
+- [ COPY package.json . ] :
+- [ RUN npm install ]  : install all the dependencies
+- [ EXPOSE 3000 ] : since the docker container is isolated from  local  env, need own internal network
+- [ CMD [ "node", "app.mjs" ] ]: run when a container is started based on the image
+
+2. Ep23: Image is read-only
+- Images are basically locked and finished once you built them.
+- Need to rebuild the image to pick up external changes
+
+3. Ep25: Understanding Image Layer
+- 기존 Source Code 변경하고 Build 시, npm install 까지 re-run 되었음.
+- Copy package.json 을 한 후에, Run npm install, 그 후, Copy . /App 을 하면 , npm install 이후에 subsequent files를 복사함으로,
+  Source Code가 변경 되더라도 npm install re-run 될 필요는 없음. ( 결과, 더 빠름 )
+
+    Before
+    => [3/5] COPY package.json /app                                                                                     0.1s
+    => [4/5] RUN npm install                                                                                            8.5s
+    => [5/5] COPY . /app                                                                                                0.0s
+
+   After
+   => CACHED [2/5] WORKDIR /app                                                                                        0.0s
+   => CACHED [3/5] COPY package.json /app                                                                              0.0s
+   => CACHED [4/5] RUN npm install                                                                                     0.0s
+
+4. Ep28: Image and Container Management
+- Docker run vs Docker start :
+    -docker start don't block terminal(detached) vs  docker run block terminal (attached)
+    -> attached here means that we are listening to the output of containers
