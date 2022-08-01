@@ -1,5 +1,5 @@
 FROM node
-
+#FROM node:12  -> use version 12 Node
 WORKDIR /app
 
 COPY package.json /app

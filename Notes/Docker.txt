@@ -54,3 +54,14 @@ Sun Jul 31, 2022 (Ep21~)
 - Docker run vs Docker start :
     -docker start don't block terminal(detached) vs  docker run block terminal (attached)
     -> attached here means that we are listening to the output of containers
+==================================================================================================
+Mon Aug 1, 2022
+1. Ep.31
+- Docker also can be used in simple utility application
+2. Ep.32 docker rm && docker rmi && docker container prune
+3. Ep.35 Copy files
+    local -> docker : HyunsoocBookAir:002_Docker(withNode) heath$ docker cp ../dummy/. elastic_aryabhata:/test
+    docker -> local : HyunsoocBookAir:002_Docker(withNode) heath$ docker cp elastic_aryabhata:/test dummy
+4. Ep.36 Setting name
+    container : docker run -p 3000:80 -d --name goalsapp --rm a8e10430f54
+    image:
