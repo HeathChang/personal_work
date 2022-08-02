@@ -65,3 +65,19 @@ Mon Aug 1, 2022
 4. Ep.36 Setting name
     container : docker run -p 3000:80 -d --name goalsapp --rm a8e10430f54
     image:
+
+==================================================================================================
+Tue Aug 2, 2022
+1. Ep38. push Docker Hub
+- after setting the repo name same with docker hub name, docker push jannhyunsoo/docker101
+
+2. Ep39. Pull Docker Hub
+- docker pull jannhyunsoo/docker101
+
+3. Ep41. Data Management
+- Types of Data
+    -> Application (Code + Environment) -> Fixed & Read Only
+    -> Temporary App Data ( Fetch/Produced in running container) -> Stored in memory and cleared regualry
+    -> Permanent App Data ( Fetch/Produced in running container ) -> store in DB
+
+-
