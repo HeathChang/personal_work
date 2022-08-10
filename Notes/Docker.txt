@@ -80,4 +80,21 @@ Tue Aug 2, 2022
     -> Temporary App Data ( Fetch/Produced in running container) -> Stored in memory and cleared regualry
     -> Permanent App Data ( Fetch/Produced in running container ) -> store in DB
 
--
+==================================================================================================
+Wed Aug 10, 2022
+1. Ep45
+- Important: There is no connection between container / image and my local file system.
+2. Ep46
+- using --rm in docker run will remove the container thus remove files created within
+:  this is because the image is read only
+:  the file is generated in the container doesn't write file into image
+: it writes in its own read-write layer(which is added on top)
+-> way to solve this is using volume
+3. Ep. 47 Volumes
+- Volumes help us with persisting data
+- Volumes are folders on your host machine hard drive which are mounted into containers
+- Volumes persist if a container shuts down
+
+4. Ep. 48 Volumes 2
+[DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+- This happens because rename method does not work if the file gets moved across multiple devices
