@@ -82,14 +82,17 @@ Tue Aug 2, 2022
 
 ==================================================================================================
 Wed Aug 10, 2022
+
 1. Ep45
 - Important: There is no connection between container / image and my local file system.
+
 2. Ep46
 - using --rm in docker run will remove the container thus remove files created within
 :  this is because the image is read only
 :  the file is generated in the container doesn't write file into image
 : it writes in its own read-write layer(which is added on top)
 -> way to solve this is using volume
+
 3. Ep. 47 Volumes
 - Volumes help us with persisting data
 - Volumes are folders on your host machine hard drive which are mounted into containers
@@ -98,3 +101,29 @@ Wed Aug 10, 2022
 4. Ep. 48 Volumes 2
 [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
 - This happens because rename method does not work if the file gets moved across multiple devices
+==================================================================================================
+Thu Aug 11, 2022
+Two Type of External Data Storage
+
+1. Ep. 49 Named Volumes
+-anonymous volume is removed when the container shut down.
+-name volume: defined path in the container is mapped to the created volume.
+            : named volume will survive ( but should not be edited)
+-docker run -p 3000:80 -d --name feedback-app -v feedback: /app/feedback  --rm feedback-node:volumes
+
+2. Ep.51 Bind Mount
+- change in code will not affect the running container ( => container )
+- But, such changes should be reflected.
+- Bind Mount can be used in persisted, editable data
+- I can define a folder/path on your host machine (whereas Volumes are managed by Docker )
+- docker run -p 3000:80 -d --name feedback-app -v feedback:/app/feedback  -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/004_Docker(useData):/app"  --rm feedback-node:volumes
+- file path => "%cd%"
+-> Error Occurred
+
+3. Ep.52 Bind Mount Error
+- Local Data (Bind mount folder content) overwrite the node modules
+- need to tell Docker that there are certain parts in its internal file system that should not be overwritten.
+-> using anonymous volume can solve the issue
+- docker run -p 3000:80 -d --name feedback-app -v feedback:/app/feedback  -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/004_Docker(useData):/app"  -v  /app/node_modules  --rm  feedback-node:volumes
+- docker  rules, specific path win so /app/node_modules overwrite non-existent node modules folder.
+-

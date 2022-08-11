@@ -12,7 +12,8 @@ EXPOSE 80
 
 
 #Volume
-VOLUME [ "/app/feedback" ]
+#Anonymous:: VOLUME [ "/app/feedback" ]
+
 # => inside my app conatainer which should be mapped to some folder outside of the container.
 
 
