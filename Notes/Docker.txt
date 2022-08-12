@@ -123,7 +123,22 @@ Two Type of External Data Storage
 3. Ep.52 Bind Mount Error
 - Local Data (Bind mount folder content) overwrite the node modules
 - need to tell Docker that there are certain parts in its internal file system that should not be overwritten.
--> using anonymous volume can solve the issue
+-> using anonymous volume can solve the issue (외부 경로보다 컨테이너 내부 경로의 우선순위를 높이는 데 사용 가능)
 - docker run -p 3000:80 -d --name feedback-app -v feedback:/app/feedback  -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/004_Docker(useData):/app"  -v  /app/node_modules  --rm  feedback-node:volumes
 - docker  rules, specific path win so /app/node_modules overwrite non-existent node modules folder.
--
+
+==================================================================================================
+Fri Aug 12, 2022
+1. Ep 56 Read only Volumes
+- docker run -p 3000:80 -d --name feedback-app -v feedback:/app/feedback  -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/004_Docker(useData):/app:ro"  -v /app/temp -v /app/node_modules   --rm  feedback-node:volumes
+
+2. Ep 61 Arguments & Environment
+- Docker supports build-time Arguments and runtime Environment variables
+- Arguments: Available inside dockerfile, not accessible in CMD or any application code. (set an image build via --build-arg)
+- Environment: Available inside dockerfile, in application code. ( Set Via Dockerfile or docker run)
+- docker run -p 3000:8000 -d --env PORT=8000  --name feedback-app -v feedback:/app/feedback  -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/004_Docker(useData):/app:ro"  -v /app/temp -v /app/node_modules   --rm  feedback-node:env
+- docker run -p 3000:8000 -d --env-file ./.env   --name feedback-app -v feedback:/app/feedback  -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/004_Docker(useData):/app:ro"  -v /app/temp -v /app/node_modules   --rm  feedback-node:env
+
+3. Ep 63 ARG
+- docker build -t feedback-node:dev --build-arg DEFAULT_PORT=8000 .
+
