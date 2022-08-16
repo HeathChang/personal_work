@@ -142,3 +142,13 @@ Fri Aug 12, 2022
 3. Ep 63 ARG
 - docker build -t feedback-node:dev --build-arg DEFAULT_PORT=8000 .
 
+==================================================================================================
+Tue Aug 16, 2022
+1. Ep66~ 69. Three types of Communication.
+- 1. Sending HTTP request to a website
+- 2. sth in our machine which we want to communicate to from inside our app
+- 3. between containers. every container should do one main thing.
+
+2. Ep70 ~ 71. Demo App
+-  Error response from daemon: Conflict. The container name "/favorites" is already in use by container "e911c3a3eab965f3ad35dd0cd49b08b8efc83bd52353eb8e85a95f43e68b278b". You have to remove (or rename) that container to be able to reuse that name.
+- failed app.js due to app.js
