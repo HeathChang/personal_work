@@ -74,6 +74,7 @@ Tue Aug 2, 2022
 2. Ep39. Pull Docker Hub
 - docker pull jannhyunsoo/docker101
 
+
 3. Ep41. Data Management
 - Types of Data
     -> Application (Code + Environment) -> Fixed & Read Only
@@ -140,7 +141,7 @@ Fri Aug 12, 2022
 - docker run -p 3000:8000 -d --env-file ./.env   --name feedback-app -v feedback:/app/feedback  -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/004_Docker(useData):/app:ro"  -v /app/temp -v /app/node_modules   --rm  feedback-node:env
 
 3. Ep 63 ARG
-- docker build -t feedback-node:dev --build-arg DEFAULT_PORT=8000 .
+- docker build -t feedback-no  de:dev --build-arg DEFAULT_PORT=8000 .
 
 ==================================================================================================
 Tue Aug 16, 2022
@@ -152,3 +153,13 @@ Tue Aug 16, 2022
 2. Ep70 ~ 71. Demo App
 -  Error response from daemon: Conflict. The container name "/favorites" is already in use by container "e911c3a3eab965f3ad35dd0cd49b08b8efc83bd52353eb8e85a95f43e68b278b". You have to remove (or rename) that container to be able to reuse that name.
 - failed app.js due to app.js
+
+==================================================================================================
+Wed Aug 17, 2022
+1. Ep.72 Connecting to Internal.
+- 'mongodb://host.docker.internal:27017/favorites',
+
+2. Ep. 73 Container to container
+- 1. make another docker container(mongoDB)
+-> docker run -d --name mongodb mongo : will create new container based on mongoDB image
+- 2. docker container inspect mongodb check IP address  and change host.docker.internal to IP address

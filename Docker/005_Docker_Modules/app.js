@@ -65,17 +65,18 @@ app.get('/people', async (req, res) => {
 	}
 });
 
-app.listen(3000);
+// app.listen(3000);
 
 
-// mongoose.connect(
-//   'mongodb:// :27017/swfavorites',
-//   { useNewUrlParser: true },
-//   (err) => {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       app.listen(3000);
-//     }
-//   }
-// );
+mongoose.connect(
+  'mongodb://172.17.0.2:27017/swfavorites',
+  // 'mongodb://host.docker.internal:27017/favorites', -> my local host machine
+  { useNewUrlParser: true },
+  (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      app.listen(3000);
+    }
+  }
+);
