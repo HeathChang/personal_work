@@ -174,3 +174,6 @@ Thu Aug 18,2022
 - docker run -d --name mongodb --network favorites-net mongo : will work
 - docker run --name favorites --network favorites-net  -d --rm -p 3000:3000 favorites-node
 
+2. Ep75. communicate with object
+- docker will not replace your source code. it will simply detects outgoing request and resolves the IP
+- Instead, docer owns the Environment in which your application runs and when request leaves the container, dockers will resolve the address
