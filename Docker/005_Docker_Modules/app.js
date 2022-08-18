@@ -69,7 +69,8 @@ app.get('/people', async (req, res) => {
 
 
 mongoose.connect(
-  'mongodb://172.17.0.2:27017/swfavorites',
+  // 'mongodb://172.17.0.2:27017/swfavorites',
+  'mongodb://mongodb:27017/swfavorites',
   // 'mongodb://host.docker.internal:27017/favorites', -> my local host machine
   { useNewUrlParser: true },
   (err) => {

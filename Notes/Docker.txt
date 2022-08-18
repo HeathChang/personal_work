@@ -163,3 +163,14 @@ Wed Aug 17, 2022
 - 1. make another docker container(mongoDB)
 -> docker run -d --name mongodb mongo : will create new container based on mongoDB image
 - 2. docker container inspect mongodb check IP address  and change host.docker.internal to IP address
+
+==================================================================================================
+Thu Aug 18,2022
+1. Ep 74. Network
+- docker run --network my_network: multiple isolated containers can talk to each other
+- docker run -d --name mongodb --network favorites-net mongo : wont work
+=> docker will not automatically create this.
+- docker network create favorites-net: will automatically create network
+- docker run -d --name mongodb --network favorites-net mongo : will work
+- docker run --name favorites --network favorites-net  -d --rm -p 3000:3000 favorites-node
+
