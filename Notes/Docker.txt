@@ -176,4 +176,14 @@ Thu Aug 18,2022
 
 2. Ep75. communicate with object
 - docker will not replace your source code. it will simply detects outgoing request and resolves the IP
-- Instead, docer owns the Environment in which your application runs and when request leaves the container, dockers will resolve the address
+- Instead, docker owns the Environment in which your application runs and when request leaves the container, dockers will resolve the address
+
+==================================================================================================
+Sun Aug 21, 2022
+1. Ep80~
+- 1. start DB. docker run --name mongodb --rm -d mongo
+ => by default, mongodb will export 27017 as default port
+ => docker run --name mongodb --rm -d -p 27017:270716
+ => data in mongodb is basically local node application
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS         PORTS                      NAMES
+d99943afdb63   mongo     "docker-entrypoint.s…"   11 seconds ago   Up 9 seconds   0.0.0.0:27017->27017/tcp   mongodb
