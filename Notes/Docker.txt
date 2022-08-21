@@ -187,3 +187,13 @@ Sun Aug 21, 2022
  => data in mongodb is basically local node application
 CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS         PORTS                      NAMES
 d99943afdb63   mongo     "docker-entrypoint.s…"   11 seconds ago   Up 9 seconds   0.0.0.0:27017->27017/tcp   mongodb
+
+2. Ep82 Backend
+- need to dockerized the file to build our own image for the project, since the file is custom
+- docker build -t goals-node .
+- docker run --name goals-backend --rm goals-node
+=> this will fail because, mongodb is a container exposing its port, but in the dockerized backend app, its reaching out to local host.
+- need to change mongo config:   'mongodb://host.docker.internal:27017/course-goals'
+=> special address/identifier which is translated to your real local host machine IP
+-Now connected to mongoDB, but now react app cannot access to backend & database.
+- docker run --name goals-backend --rm -d -p 80:80 goals-node
