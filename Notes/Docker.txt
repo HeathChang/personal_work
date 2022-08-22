@@ -183,7 +183,7 @@ Sun Aug 21, 2022
 1. Ep80~
 - 1. start DB. docker run --name mongodb --rm -d mongo
  => by default, mongodb will export 27017 as default port
- => docker run --name mongodb --rm -d -p 27017:270716
+ => docker run --name mongodb --rm -d -p 27017:270717 mongo
  => data in mongodb is basically local node application
 CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS         PORTS                      NAMES
 d99943afdb63   mongo     "docker-entrypoint.s…"   11 seconds ago   Up 9 seconds   0.0.0.0:27017->27017/tcp   mongodb
@@ -197,3 +197,32 @@ d99943afdb63   mongo     "docker-entrypoint.s…"   11 seconds ago   Up 9 second
 => special address/identifier which is translated to your real local host machine IP
 -Now connected to mongoDB, but now react app cannot access to backend & database.
 - docker run --name goals-backend --rm -d -p 80:80 goals-node
+
+==================================================================================================
+Mon Aug 22, 2022
+1. Ep 83. Frontend (With ReactJS)
+- After setting Dockerfile,
+    docker run --name goals-frontend --rm -d -p 3000:3000 goals-react
+=> this fails, because need to set interactive (links with project)
+- docker run --name goals-frontend --rm -p 3000:3000 -it  goals-react
+
+2. Ep 84. Setting up network
+- docker network create goals-net
+- mongo:
+    => docker run --name mongodb --rm -d --network goals-net mongo
+- back:
+    => docker run --name goals-backend --rm -d --network goals-net goals-node
+    -> fails because, mongodb is connected to host docker internal => need to change to mongodb
+- front
+    - need to change app.js in front-end
+    - needs to change address => goals-backend
+    docker run --name goals-frontend --rm --network goals-net -p 3000:3000 -it  goals-react
+    - front -> starts a development server,which serve basic  the basic react application
+    - The react code is not executed inside the container ( but runs in browser)
+    => React run in the browser, not on the server (dont need to change to goals-backend)
+    => doen not care of network, the part interact with API is not executed in the docker environment
+
+    - working separately by setting backend -p 80:80 && --network goals-net
+    => docker run --name goals-frontend --rm -p 3000:3000 -it  goals-react
+    => docker run --name goals-backend --rm -d --network goals-net -p 80:80 goals-node
+

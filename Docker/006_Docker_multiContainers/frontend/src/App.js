@@ -15,6 +15,7 @@ function App() {
 
       try {
         const response = await fetch('http://localhost/goals');
+        // const response = await fetch('http://goals-backend/goals');
 
         const resData = await response.json();
 
