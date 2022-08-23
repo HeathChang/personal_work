@@ -239,4 +239,6 @@ Tue Aug 23, 2022
 2. Ep.86: hot-reload and data persist
 - docker run --name goals-backend -v logs:/app/logs -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/006_Docker_multiContain
   ers/backend:/app" -v /app/node_modules --rm --network goals-net -d -p 80:80 goals-node
--
+- use nodemon => rebuild (  "devDependencies": {
+                              "nodemon": "^2.0.4"
+                             })

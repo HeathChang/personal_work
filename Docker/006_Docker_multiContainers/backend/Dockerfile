@@ -15,5 +15,8 @@ COPY . .
 #port used by this app
 EXPOSE 80
 
+ENV MOGODB_USERNAME=root
+ENV MOGODB_PASSWORD=secret
+
 #specify thecommand that should be executed
-CMD ["node","app.js"]
+CMD ["npm","start"]
