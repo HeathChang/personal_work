@@ -242,3 +242,7 @@ Tue Aug 23, 2022
 - use nodemon => rebuild (  "devDependencies": {
                               "nodemon": "^2.0.4"
                              })
+
+3. Ep.87: Front-end
+docker run -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/006_Docker_multiContainers/frontend/src:/app/src"  --name goals-frontend --rm -p 3000:3000 -it  goals-react
+
