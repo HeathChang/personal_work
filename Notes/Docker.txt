@@ -226,3 +226,17 @@ Mon Aug 22, 2022
     => docker run --name goals-frontend --rm -p 3000:3000 -it  goals-react
     => docker run --name goals-backend --rm -d --network goals-net -p 80:80 goals-node
 
+==================================================================================================
+Tue Aug 23, 2022
+1. Ep. 85: tear down data by volume and setting env variables
+- docker run --name mongodb -v data:/data/db  --rm -d --network goals-net mongo
+- docker run --name mongodb -v data:/data/db --rm -d --network goals-net -e MONGO_INITDB_ROOT_USERNAME=heath -e MONGO_INITDB_ROOT_PASSWPRD=secret mongo
+
+- After setting ID & PW in apps.js in backend => fails (needs special command in app.js MongoDB connection)
+- 'mongodb://heath:secret@mongodb:27017/course-goals?authSource=admin',
+- rebuild and run: docker build -t goals-backend . (auth error -> docker volume rm data)
+
+2. Ep.86: hot-reload and data persist
+- docker run --name goals-backend -v logs:/app/logs -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/006_Docker_multiContain
+  ers/backend:/app" -v /app/node_modules --rm --network goals-net -d -p 80:80 goals-node
+-
