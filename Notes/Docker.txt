@@ -252,3 +252,7 @@ Thu Aug 25, 2022
     : tools that allows you to replace multiple docker build and docker run
     : one configuration file which will leverage the config file and which will bring up or down entire application.
     : docker compose is not suited for managing multiple containers on different hosts/machine
+2. Ep 95. Docker Compose Up
+- docker-compose up // docker-compose -d : building and pulling all images + start container
+- docker-compose down: will shuts down all containers and network, but not volumes.
+- to shuts down everything + volume => docker-compose down -v

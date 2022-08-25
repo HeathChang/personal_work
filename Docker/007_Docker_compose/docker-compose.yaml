@@ -1,0 +1,25 @@
+version: "3.8"
+#  yaml uses indentation to express dependencies. : containers should be here.
+services:
+  mongodb:
+    image: 'mongo'
+    volumes:
+      - data:/data/db
+    env_file:
+      - ./env/mongo.env
+#  environment:
+    #      MONGO_INITDB_ROOT_USERNAME : heath
+    #      - MONGO_INITDB_ROOT_USERNAME=heath
+    #      - MONGO_INITDB_ROOT_PASSWORD=secret
+    #      use dash for single values (where you do not need colo and wide space)
+
+#  backend:
+#
+#
+#  frontend:
+
+
+#    any named volumes used will be added
+volumes:
+  data:
+
