@@ -246,3 +246,9 @@ Tue Aug 23, 2022
 3. Ep.87: Front-end
 docker run -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/006_Docker_multiContainers/frontend/src:/app/src"  --name goals-frontend --rm -p 3000:3000 -it  goals-react
 
+==================================================================================================
+Thu Aug 25, 2022
+1. Docker Compose
+    : tools that allows you to replace multiple docker build and docker run
+    : one configuration file which will leverage the config file and which will bring up or down entire application.
+    : docker compose is not suited for managing multiple containers on different hosts/machine
