@@ -37,3 +37,7 @@ const isAnagram = (s,t) => {
 
 	return true
 }
+
+isAnagram('rat', 'cat')
+
+
