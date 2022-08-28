@@ -25,10 +25,16 @@
 
 const solution = value => {
 	const split = value.toString().split("")
-	let sum = 0;
-	for ( let i = 0 ; i < split.length ; i++ ) {
-		sum += parseInt(split[i])
-	}
+	const sum = split.reduce((acc, cur) =>
+			parseInt(acc)+ parseInt(cur)
+	)
+	// let sum = 0;
+
+	// for ( let i = 0 ; i < split.length ; i++ ) {
+	// 	sum += parseInt(split[i])
+	// }
+
+
 	return value % sum === 0
 }
 const ans = solution(14)
