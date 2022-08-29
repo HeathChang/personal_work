@@ -13,13 +13,27 @@ services:
     #      - MONGO_INITDB_ROOT_PASSWORD=secret
     #      use dash for single values (where you do not need colo and wide space)
 
-#  backend:
-#
-#
-#  frontend:
+  backend:
+    build: ./backend
+#    build:
+#      context: ./backend
+#      dockerfile: Dockerfile
+    ports:
+      - '80:80'
+    volumes:
+      - logs:/app/logs
+      - ./backend:/app
+      - /app/node_modules
+    env_file:
+      - ./env/backend.env
+    depends_on: # one container might depend on another container, express dependencies (if )
+      - mongodb
+
+  #  frontend:
 
 
-#    any named volumes used will be added
+#    any named volumes used will be added, no bind mount & anonymous volume allowed here
 volumes:
   data:
+  logs:
 
