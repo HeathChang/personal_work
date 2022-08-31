@@ -29,7 +29,16 @@ services:
     depends_on: # one container might depend on another container, express dependencies (if )
       - mongodb
 
-  #  frontend:
+  frontend:
+    build: ./frontend
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./frontend/src:/app/src
+    stdin_open: true #needs open input connection
+    tty: true # attaching the terminal
+    depends_on:
+      - backend
 
 
 #    any named volumes used will be added, no bind mount & anonymous volume allowed here

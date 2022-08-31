@@ -256,3 +256,14 @@ Thu Aug 25, 2022
 - docker-compose up // docker-compose -d : building and pulling all images + start container
 - docker-compose down: will shuts down all containers and network, but not volumes.
 - to shuts down everything + volume => docker-compose down -v
+==================================================================================================
+Wed Aug 31, 2022
+1. Docker Utilities Containers
+- docker run -it node
+- docker exec : allows you to execute certain commands inside running container besides the default command
+- docker run -it node npm init
+- docker run -it -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/008_Docker_Utilities:/app" node-util npm init
+ => effect on host machine
+- ENTRYPOINT will appened after the entry point
+=> docker run -it -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/008_Docker_Utilities:/app" mynpm install
+- docker-compose run  npm init::: allows us to run single service.

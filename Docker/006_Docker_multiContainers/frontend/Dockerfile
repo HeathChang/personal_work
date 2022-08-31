@@ -1,6 +1,6 @@
 #React Docker setup
 # project setup requires node
-FROM node
+FROM node:16.13.0
 
 #
 WORKDIR /app
