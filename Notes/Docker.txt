@@ -258,7 +258,7 @@ Thu Aug 25, 2022
 - to shuts down everything + volume => docker-compose down -v
 ==================================================================================================
 Wed Aug 31, 2022
-1. Docker Utilities Containers
+1. Docker Utilities Containers: dnt include app
 - docker run -it node
 - docker exec : allows you to execute certain commands inside running container besides the default command
 - docker run -it node npm init
@@ -267,3 +267,5 @@ Wed Aug 31, 2022
 - ENTRYPOINT will appened after the entry point
 => docker run -it -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/008_Docker_Utilities:/app" mynpm install
 - docker-compose run  npm init::: allows us to run single service.
+
+2. Intro to Deploy.
