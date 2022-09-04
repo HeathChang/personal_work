@@ -269,7 +269,8 @@ Wed Aug 31, 2022
 - docker-compose run  npm init::: allows us to run single service.
 
 2. Intro to Deploy.
-- Bind Mounts should not be used in production
--containerized apps might need a build step
--multi-container projects might need to split
--tradoffs between control and responsibility.
+- Things to watch out
+-> Bind Mounts should not be used in production
+-> containerized apps might need a build step
+-> multi-container projects might need to split
+-> tradeoffs between control and responsibility.
