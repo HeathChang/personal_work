@@ -21,8 +21,8 @@ const solution = (a, b) => {
 			let index = alphabet.indexOf(a.split("")[i].toLowerCase())
 			result +=
 					a.split("")[i] === a.split("")[i].toUpperCase()
-					? alphabet.charAt(`${ index + b }`).toUpperCase()
-					: alphabet.charAt(`${ index + b }`)
+							? alphabet.charAt(`${ index + b }`).toUpperCase()
+							: alphabet.charAt(`${ index + b }`)
 		} else {
 			result += ' '
 		}
