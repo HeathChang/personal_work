@@ -279,3 +279,15 @@ Wed Aug 31, 2022
  Mon Sep 5, 2022
  1. Intro to Deployment.
  - EC2 is a service offered bby AWS, which allows you to spin up your own remote hosting machine.
+ - Steps:
+    1. Create and launch EC2 instance, VPC and security group (who has access to this instance)
+    2. Configure security group to expose all required ports to SSW.
+    3. Connect to instance SSH, install Docker and run container.
+ 2. Difference in volume between development and production.
+ -> In Development
+ - Containers should encapsulate the runtime environment but not necessarily the code
+ - Use Bind Mounts to provide your local host project filesd to the running container.
+ -> In Production
+ - container should really work stand-alone, you should not have source code on your remote machine.
+ - copy a code snapshot into the image.
+ 3. deploy onto a web-server.
