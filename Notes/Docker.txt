@@ -291,3 +291,10 @@ Wed Aug 31, 2022
  - container should really work stand-alone, you should not have source code on your remote machine.
  - copy a code snapshot into the image.
  3. deploy onto a web-server.
+==================================================================================================
+Tue Sep 6, 2022
+1. AWS
+- SSH : Secure Shell
+        - protocol for connecting to a remote machine from your local machine via the command line or terminal you have.
+- chmod 400 example-1.pem
+- ssh -i "example-1.pem" ec2-user@ec2-13-125-223-28.ap-northeast-2.compute.amazonaws.com
