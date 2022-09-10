@@ -304,18 +304,22 @@ Tue Sep 6, 2022
 - sudo amazon-linux-extras install docker : install docker in vm
 - sudo service docker start : execute docker as root user
 ==================================================================================================
-Sat Sep 10, 2022
+Sat Sep 10, 2022_ How to deploy a dockerized app to an EC2 instance
+
 1. Ep. 132: Local -push> Cloud
 - Need to bring our local image onto remote machine.
+
 - 1. Deploy source (copy and build on remote)
 : Build image on remote machine;
 : push source code to remote machine;
 : Run Docker build and the docker run;
 -> Unnecessary complexity
+
 - 2. Deploy Built Image
 : Build Image before deployment(on local machine)
 : Just execute docker run
 -> Avoid unnecessary remote server work.
+
 - Way to Push to Docker Hub.
 -> 1. Build Image
 docker build --platform linux/amd64 -t node-dep-example-1 .
@@ -336,4 +340,10 @@ docker build --platform linux/amd64 -t node-dep-example-1 .
 - Security Group:
     -> InBound : allowed from somewhere this instance is opened (SSH)
     -> OutBound : controls which traffic is allowed from the instance queue
--
+
+3. Ep. 134: Containers/Images Update
+=> docker does not check if there is more-up-to-date remote image
+- Docker rebuild & tag & push: 009_Docker_Deploy % docker build --platform amd64 -t node-dep-example-1 .
+- Docker pull:  sudo docker pull jannhyunsoo/node-example-1:latest
+- Docker run: sudo docker run -d --rm -p 80:80 jannhyunsoo/node-example-1
+   => Be careful of tag when build & push
