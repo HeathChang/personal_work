@@ -347,3 +347,7 @@ docker build --platform linux/amd64 -t node-dep-example-1 .
 - Docker pull:  sudo docker pull jannhyunsoo/node-example-1:latest
 - Docker run: sudo docker run -d --rm -p 80:80 jannhyunsoo/node-example-1
    => Be careful of tag when build & push
+
+==================================================================================================
+Sun Sep 11, 2022
+1. Intro to ECS
