@@ -351,3 +351,8 @@ docker build --platform linux/amd64 -t node-dep-example-1 .
 ==================================================================================================
 Sun Sep 11, 2022
 1. Intro to ECS
+- ECS has four steps.
+- 1: Container definition: same as Docker Command.
+- 2: Task definition: Blueprint for app. How it should launch your container. One remote server.
+- 3: Service: How the task (configured app and container) should be executed. eg. helps all the heavy lifting of redirecting the incoming requests, queue the up and running containers.
+- 4: Cluster: Overall network in which our services run. (group up multiple containers in one cluster)
