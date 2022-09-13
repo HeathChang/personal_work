@@ -356,3 +356,8 @@ Sun Sep 11, 2022
 - 2: Task definition: Blueprint for app. How it should launch your container. One remote server.
 - 3: Service: How the task (configured app and container) should be executed. eg. helps all the heavy lifting of redirecting the incoming requests, queue the up and running containers.
 - 4: Cluster: Overall network in which our services run. (group up multiple containers in one cluster)
+
+==================================================================================================
+Tue Sep 13, 2022 => Skipped to K8S
+1. What is Kubernetes ?
+-
