@@ -359,5 +359,11 @@ Sun Sep 11, 2022
 
 ==================================================================================================
 Tue Sep 13, 2022 => Skipped to K8S
-1. What is Kubernetes ?
--
+1. What is Kubernetes ? (similar to Docker Compose file) => multi-machine setup.
+- Kubernetes is an open source system, for automating deployment, scaling and management of containerized applications.
+- When manually deploying, there are some annoying concerns (Containers might need to be replaced / need more container instances, upon traffic spikes/ concerns to check traffic is evenly distributed) => K8S helps
+- ECS can help this concerns, (via. Container Health checks & auto re-deployment ,Auto-Scaling, Load Balancing), but we locked to the service(follow to their rules)
+- With K8S, we have ways of defining our deployments, scaling of containers and how containers should be monitored and replaced if they fail.
+- After defining configuration file, we can pass a configuration file to any cloud provider or remote machine, then create the resources and the deployment specified.
+- + if some cloud provider requires additional configuration, you could just add that configuration into the main file.
+- It is not a cloud service provider/not a service/not restricted to any specific cloud provider/not just a sw/not alternative to Docker/do not have to pay.
