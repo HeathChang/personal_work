@@ -367,3 +367,37 @@ Tue Sep 13, 2022 => Skipped to K8S
 - After defining configuration file, we can pass a configuration file to any cloud provider or remote machine, then create the resources and the deployment specified.
 - + if some cloud provider requires additional configuration, you could just add that configuration into the main file.
 - It is not a cloud service provider/not a service/not restricted to any specific cloud provider/not just a sw/not alternative to Docker/do not have to pay.
+
+==================================================================================================
+Thu Sep 15, 2022
+1. Core Kubernetes Concepts and Architecture
+
+- K8S is the collection of concepts and tools which help us with deploying containers anywhere.
+- container => pod(smallest unit) that holds a container / containers (can hold multiple containers)
+- pod -> worker node: (runs containers/ similar to EC2 instance) => machine => runs a container
+- worker node: runs the container in the end.  (similar to ec2 instance)
+- worker node needs proxy configuration & pod
+- proxy: control the network traffic of the pods on that worker node.
+- Nodes are your machines/ virtual instances
+- Multiple Pods can be created abd removed to scale your app.
+- Master Node: is a control centre that interacts with the worker nodes to control them.
+    -> you basically will control [The Control Place] to interact in K8S
+    -> contains various components which help with managing the Worker nodes.
+=> Entire things above form a Cluster
+
+- Cluster: One network in which all these different parts are connected.
+
+-Then, Master Node will send instructions to cloud provider to  create specific resources to replicate this desired big picture on that cloud provide.
+
+2. Worker Node: machine/ ec2 instance
+    - What is happening on the Worker Node is managed by Master Node.
+    - Inside of Worker node,
+        -> Pods: hosts one or more app containers and all their resources belong to these containers
+        -> In given, you have more than one Pod running on a given Worker Node.
+
+3. Master Node: What is Master Node is doing?
+    - Api Server: API for the kubelet to communicate. (Communication between Worker and Master Node)
+    - Scheduler: responsible for watching pods and choosing worker nodes on which new pods should be created on,
+    - Kube-Controller Manager: Watches and Controls Worker Nodes
+    - Cloud-Controller Manager: similar to Kube-Con-Man, but specific Cloud Provide.
+==================================================================================================
