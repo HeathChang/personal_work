@@ -391,9 +391,12 @@ Thu Sep 15, 2022
 
 2. Worker Node: machine/ ec2 instance
     - What is happening on the Worker Node is managed by Master Node.
-    - Inside of Worker node,
+    - Inside of Worker node, ( with other sw)
         -> Pods: hosts one or more app containers and all their resources belong to these containers
         -> In given, you have more than one Pod running on a given Worker Node.
+        -> kubelet: communication between Master and Worker Node
+        -> kube-proxy: responsible for handling incoming and outgoing traffic to ensure that everything is working as desired.
+           - Only allowed traffic is able to reach the Pods and only allowed traffic is able to leaver the Worker Node.
 
 3. Master Node: What is Master Node is doing?
     - Api Server: API for the kubelet to communicate. (Communication between Worker and Master Node)
