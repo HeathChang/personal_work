@@ -18,7 +18,7 @@ const solution = (param, ans) => {
 		res -= i
 		for(let j = 1+i; j < param; j++){
 			res -= j
-			if(res < 0) {
+			if(res < 0) { //  67 13 8 21  answ > n  break
 				res = param
 				break;
 			} else if(res ===0){
