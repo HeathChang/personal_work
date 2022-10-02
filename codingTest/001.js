@@ -23,19 +23,18 @@ s and t consist of lowercase English letters.
 
 
 const isAnagram = (s,t) => {
-
+	if(s.split("").length !== t.split("").length) return false
 	const a = s.split('').sort()
-
 	const b = t.split('').sort()
+	return s.split('').sort().toString() === t.split('').sort().toString()
 
-
-	for ( let i = 0 ; i < s.length ; i++) {
-		if ( a[i] !== b[i] ) {
-			return false;
-		}
-	}
-
-	return true
+	// for ( let i = 0 ; i < s.length ; i++) {
+	// 	if ( a[i] !== b[i] ) {
+	// 		return false;
+	// 	}
+	// }
+	//
+	// return true
 }
 
 isAnagram('rat', 'cat')
