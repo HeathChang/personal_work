@@ -404,3 +404,12 @@ Thu Sep 15, 2022
     - Kube-Controller Manager: Watches and Controls Worker Nodes
     - Cloud-Controller Manager: similar to Kube-Con-Man, but specific Cloud Provide.
 ==================================================================================================
+Wed Oct 5, 2022
+1. Definition:
+- Cluster: A set of Node machines which are running the containerized application or control other nodes.
+- Nodes: Physical or virtual machine with a certain hardware capacity which hosts one or multiple pods and communcates with the cluster.
+- Master Node: cluster control plane, managing the pods across worker nodes
+- worker node: hosts pods, running app containers
+- pods hold the actual running app containers + their required resources.
+- containers: normal containers
+- services: logical sets (group of pods with a unique, Pod and container independent IP address)
