@@ -1,7 +1,7 @@
 FROM node:16.13.0
 
 #setting for working directory
-WORKDIR /app
+WORKDIR /appOld
 
 #copy the package.file into working dicrectory
 COPY package.json .
@@ -12,7 +12,7 @@ RUN npm install
 #copy the remainng code to working dicrectory
 COPY . .
 
-#port used by this app
+#port used by this appOld
 EXPOSE 80
 
 ENV MONGODB_USERNAME=root

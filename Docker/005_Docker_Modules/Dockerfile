@@ -1,6 +1,6 @@
 FROM node
 
-WORKDIR /app
+WORKDIR /appOld
 
 COPY package.json .
 
@@ -8,4 +8,4 @@ RUN npm install
 
 COPY . .
 
-CMD ["node", "app.js"]
+CMD ["node", "appOld.js"]

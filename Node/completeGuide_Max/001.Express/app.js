@@ -1,25 +1,14 @@
-const http = require('http');
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
 
-// Using Router
-app.use('/',(req, res, next) => {
-    console.log(123123)
-    // res.send('<h1>HELLO WORLD</h1>');
-    next();
-});
+const adminRoutes = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
 
-app.use('/add-product',(req, res, next) => {
-    res.send('<h1></h1>');
-});
-app.use('/',(req, res, next) => {
-    console.log('In another middleware!');
-    res.send('<h1>Hello from Express!</h1>');
-});
+app.use(bodyParser.urlencoded({extended: false}));
 
+app.use(adminRoutes);
+app.use(shopRoutes);
 
-// const server = http.createServer(app);
-// server.listen(3000);
-// =>
 app.listen(3000);

@@ -3,7 +3,7 @@
 FROM node:16.13.0
 
 #
-WORKDIR /app
+WORKDIR /appOld
 
 #
 COPY package.json .

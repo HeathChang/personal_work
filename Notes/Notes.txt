@@ -21,7 +21,7 @@ Sun Jul 31, 2022 (Ep21~)
 1. Ep21.
 - [ FROM ] : Build your image up on the other image.
 - [ WORKDIR ] :
-    - WORKDIR /app : all the subsequent files will be executed from inside the folder.
+    - WORKDIR /appOld : all the subsequent files will be executed from inside the folder.
                    : by setting WORKDIR, you can delete second dot of COPY . .
 - [ COPY . . ] :
     - first dot: tell docker all the sub folders in the project should be copied to the image
@@ -29,7 +29,7 @@ Sun Jul 31, 2022 (Ep21~)
 - [ COPY package.json . ] :
 - [ RUN npm install ]  : install all the dependencies
 - [ EXPOSE 3000 ] : since the docker container is isolated from  local  env, need own internal network
-- [ CMD [ "node", "app.mjs" ] ]: run when a container is started based on the image
+- [ CMD [ "node", "appOld.mjs" ] ]: run when a container is started based on the image
 
 2. Ep23: Image is read-only
 - Images are basically locked and finished once you built them.
@@ -41,13 +41,13 @@ Sun Jul 31, 2022 (Ep21~)
   Source Code가 변경 되더라도 npm install re-run 될 필요는 없음. ( 결과, 더 빠름 )
 
     Before
-    => [3/5] COPY package.json /app                                                                                     0.1s
+    => [3/5] COPY package.json /appOld                                                                                     0.1s
     => [4/5] RUN npm install                                                                                            8.5s
-    => [5/5] COPY . /app                                                                                                0.0s
+    => [5/5] COPY . /appOld                                                                                                0.0s
 
    After
-   => CACHED [2/5] WORKDIR /app                                                                                        0.0s
-   => CACHED [3/5] COPY package.json /app                                                                              0.0s
+   => CACHED [2/5] WORKDIR /appOld                                                                                        0.0s
+   => CACHED [3/5] COPY package.json /appOld                                                                              0.0s
    => CACHED [4/5] RUN npm install                                                                                     0.0s
 
 4. Ep28: Image and Container Management
@@ -110,14 +110,14 @@ Two Type of External Data Storage
 -anonymous volume is removed when the container shut down.
 -name volume: defined path in the container is mapped to the created volume.
             : named volume will survive ( but should not be edited)
--docker run -p 3000:80 -d --name feedback-app -v feedback: /app/feedback  --rm feedback-node:volumes
+-docker run -p 3000:80 -d --name feedback-appOld -v feedback: /appOld/feedback  --rm feedback-node:volumes
 
 2. Ep.51 Bind Mount
 - change in code will not affect the running container ( => container )
 - But, such changes should be reflected.
 - Bind Mount can be used in persisted, editable data
 - I can define a folder/path on your host machine (whereas Volumes are managed by Docker )
-- docker run -p 3000:80 -d --name feedback-app -v feedback:/app/feedback  -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/004_Docker(useData):/app"  --rm feedback-node:volumes
+- docker run -p 3000:80 -d --name feedback-appOld -v feedback:/appOld/feedback  -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/004_Docker(useData):/appOld"  --rm feedback-node:volumes
 - file path => "%cd%"
 -> Error Occurred
 
@@ -125,20 +125,20 @@ Two Type of External Data Storage
 - Local Data (Bind mount folder content) overwrite the node modules
 - need to tell Docker that there are certain parts in its internal file system that should not be overwritten.
 -> using anonymous volume can solve the issue (외부 경로보다 컨테이너 내부 경로의 우선순위를 높이는 데 사용 가능)
-- docker run -p 3000:80 -d --name feedback-app -v feedback:/app/feedback  -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/004_Docker(useData):/app"  -v  /app/node_modules  --rm  feedback-node:volumes
-- docker  rules, specific path win so /app/node_modules overwrite non-existent node modules folder.
+- docker run -p 3000:80 -d --name feedback-appOld -v feedback:/appOld/feedback  -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/004_Docker(useData):/appOld"  -v  /appOld/node_modules  --rm  feedback-node:volumes
+- docker  rules, specific path win so /appOld/node_modules overwrite non-existent node modules folder.
 
 ==================================================================================================
 Fri Aug 12, 2022
 1. Ep 56 Read only Volumes
-- docker run -p 3000:80 -d --name feedback-app -v feedback:/app/feedback  -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/004_Docker(useData):/app:ro"  -v /app/temp -v /app/node_modules   --rm  feedback-node:volumes
+- docker run -p 3000:80 -d --name feedback-appOld -v feedback:/appOld/feedback  -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/004_Docker(useData):/appOld:ro"  -v /appOld/temp -v /appOld/node_modules   --rm  feedback-node:volumes
 
 2. Ep 61 Arguments & Environment
 - Docker supports build-time Arguments and runtime Environment variables
 - Arguments: Available inside dockerfile, not accessible in CMD or any application code. (set an image build via --build-arg)
 - Environment: Available inside dockerfile, in application code. ( Set Via Dockerfile or docker run)
-- docker run -p 3000:8000 -d --env PORT=8000  --name feedback-app -v feedback:/app/feedback  -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/004_Docker(useData):/app:ro"  -v /app/temp -v /app/node_modules   --rm  feedback-node:env
-- docker run -p 3000:8000 -d --env-file ./.env   --name feedback-app -v feedback:/app/feedback  -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/004_Docker(useData):/app:ro"  -v /app/temp -v /app/node_modules   --rm  feedback-node:env
+- docker run -p 3000:8000 -d --env PORT=8000  --name feedback-appOld -v feedback:/appOld/feedback  -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/004_Docker(useData):/appOld:ro"  -v /appOld/temp -v /appOld/node_modules   --rm  feedback-node:env
+- docker run -p 3000:8000 -d --env-file ./.env   --name feedback-appOld -v feedback:/appOld/feedback  -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/004_Docker(useData):/appOld:ro"  -v /appOld/temp -v /appOld/node_modules   --rm  feedback-node:env
 
 3. Ep 63 ARG
 - docker build -t feedback-no  de:dev --build-arg DEFAULT_PORT=8000 .
@@ -147,12 +147,12 @@ Fri Aug 12, 2022
 Tue Aug 16, 2022
 1. Ep66~ 69. Three types of Communication.
 - 1. Sending HTTP request to a website
-- 2. sth in our machine which we want to communicate to from inside our app
+- 2. sth in our machine which we want to communicate to from inside our appOld
 - 3. between containers. every container should do one main thing.
 
 2. Ep70 ~ 71. Demo App
 -  Error response from daemon: Conflict. The container name "/favorites" is already in use by container "e911c3a3eab965f3ad35dd0cd49b08b8efc83bd52353eb8e85a95f43e68b278b". You have to remove (or rename) that container to be able to reuse that name.
-- failed app.js due to app.js
+- failed appOld.js due to appOld.js
 
 ==================================================================================================
 Wed Aug 17, 2022
@@ -192,10 +192,10 @@ d99943afdb63   mongo     "docker-entrypoint.s…"   11 seconds ago   Up 9 second
 - need to dockerized the file to build our own image for the project, since the file is custom
 - docker build -t goals-node .
 - docker run --name goals-backend --rm goals-node
-=> this will fail because, mongodb is a container exposing its port, but in the dockerized backend app, its reaching out to local host.
+=> this will fail because, mongodb is a container exposing its port, but in the dockerized backend appOld, its reaching out to local host.
 - need to change mongo config:   'mongodb://host.docker.internal:27017/course-goals'
 => special address/identifier which is translated to your real local host machine IP
--Now connected to mongoDB, but now react app cannot access to backend & database.
+-Now connected to mongoDB, but now react appOld cannot access to backend & database.
 - docker run --name goals-backend --rm -d -p 80:80 goals-node
 
 ==================================================================================================
@@ -214,7 +214,7 @@ Mon Aug 22, 2022
     => docker run --name goals-backend --rm -d --network goals-net goals-node
     -> fails because, mongodb is connected to host docker internal => need to change to mongodb
 - front
-    - need to change app.js in front-end
+    - need to change appOld.js in front-end
     - needs to change address => goals-backend
     docker run --name goals-frontend --rm --network goals-net -p 3000:3000 -it  goals-react
     - front -> starts a development server,which serve basic  the basic react application
@@ -232,19 +232,19 @@ Tue Aug 23, 2022
 - docker run --name mongodb -v data:/data/db  --rm -d --network goals-net mongo
 - docker run --name mongodb -v data:/data/db --rm -d --network goals-net -e MONGO_INITDB_ROOT_USERNAME=heath -e MONGO_INITDB_ROOT_PASSWPRD=secret mongo
 
-- After setting ID & PW in apps.js in backend => fails (needs special command in app.js MongoDB connection)
+- After setting ID & PW in apps.js in backend => fails (needs special command in appOld.js MongoDB connection)
 - 'mongodb://heath:secret@mongodb:27017/course-goals?authSource=admin',
 - rebuild and run: docker build -t goals-backend . (auth error -> docker volume rm data)
 
 2. Ep.86: hot-reload and data persist
-- docker run --name goals-backend -v logs:/app/logs -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/006_Docker_multiContain
-  ers/backend:/app" -v /app/node_modules --rm --network goals-net -d -p 80:80 goals-node
+- docker run --name goals-backend -v logs:/appOld/logs -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/006_Docker_multiContain
+  ers/backend:/appOld" -v /appOld/node_modules --rm --network goals-net -d -p 80:80 goals-node
 - use nodemon => rebuild (  "devDependencies": {
                               "nodemon": "^2.0.4"
                              })
 
 3. Ep.87: Front-end
-docker run -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/006_Docker_multiContainers/frontend/src:/app/src"  --name goals-frontend --rm -p 3000:3000 -it  goals-react
+docker run -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/006_Docker_multiContainers/frontend/src:/appOld/src"  --name goals-frontend --rm -p 3000:3000 -it  goals-react
 
 ==================================================================================================
 Thu Aug 25, 2022
@@ -258,14 +258,14 @@ Thu Aug 25, 2022
 - to shuts down everything + volume => docker-compose down -v
 ==================================================================================================
 Wed Aug 31, 2022
-1. Docker Utilities Containers: dnt include app
+1. Docker Utilities Containers: dnt include appOld
 - docker run -it node
 - docker exec : allows you to execute certain commands inside running container besides the default command
 - docker run -it node npm init
-- docker run -it -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/008_Docker_Utilities:/app" node-util npm init
+- docker run -it -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/008_Docker_Utilities:/appOld" node-util npm init
  => effect on host machine
 - ENTRYPOINT will appened after the entry point
-=> docker run -it -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/008_Docker_Utilities:/app" mynpm install
+=> docker run -it -v "/Users/heath/Desktop/Personal Coding/personal_work/Docker/008_Docker_Utilities:/appOld" mynpm install
 - docker-compose run  npm init::: allows us to run single service.
 
 2. Intro to Deploy.
@@ -304,7 +304,7 @@ Tue Sep 6, 2022
 - sudo amazon-linux-extras install docker : install docker in vm
 - sudo service docker start : execute docker as root user
 ==================================================================================================
-Sat Sep 10, 2022_ How to deploy a dockerized app to an EC2 instance
+Sat Sep 10, 2022_ How to deploy a dockerized appOld to an EC2 instance
 
 1. Ep. 132: Local -push> Cloud
 - Need to bring our local image onto remote machine.
@@ -353,8 +353,8 @@ Sun Sep 11, 2022
 1. Intro to ECS
 - ECS has four steps.
 - 1: Container definition: same as Docker Command.
-- 2: Task definition: Blueprint for app. How it should launch your container. One remote server.
-- 3: Service: How the task (configured app and container) should be executed. eg. helps all the heavy lifting of redirecting the incoming requests, queue the up and running containers.
+- 2: Task definition: Blueprint for appOld. How it should launch your container. One remote server.
+- 3: Service: How the task (configured appOld and container) should be executed. eg. helps all the heavy lifting of redirecting the incoming requests, queue the up and running containers.
 - 4: Cluster: Overall network in which our services run. (group up multiple containers in one cluster)
 
 ==================================================================================================
@@ -379,7 +379,7 @@ Thu Sep 15, 2022
 - worker node needs proxy configuration & pod
 - proxy: control the network traffic of the pods on that worker node.
 - Nodes are your machines/ virtual instances
-- Multiple Pods can be created abd removed to scale your app.
+- Multiple Pods can be created abd removed to scale your appOld.
 - Master Node: is a control centre that interacts with the worker nodes to control them.
     -> you basically will control [The Control Place] to interact in K8S
     -> contains various components which help with managing the Worker nodes.
@@ -392,7 +392,7 @@ Thu Sep 15, 2022
 2. Worker Node: machine/ ec2 instance
     - What is happening on the Worker Node is managed by Master Node.
     - Inside of Worker node, ( with other sw)
-        -> Pods: hosts one or more app containers and all their resources belong to these containers
+        -> Pods: hosts one or more appOld containers and all their resources belong to these containers
         -> In given, you have more than one Pod running on a given Worker Node.
         -> kubelet: communication between Master and Worker Node
         -> kube-proxy: responsible for handling incoming and outgoing traffic to ensure that everything is working as desired.
@@ -409,8 +409,8 @@ Wed Oct 5, 2022
 - Cluster: A set of Node machines which are running the containerized application or control other nodes.
 - Nodes: Physical or virtual machine with a certain hardware capacity which hosts one or multiple pods and communcates with the cluster.
 - Master Node: cluster control plane, managing the pods across worker nodes
-- worker node: hosts pods, running app containers
-- pods hold the actual running app containers + their required resources.
+- worker node: hosts pods, running appOld containers
+- pods hold the actual running appOld containers + their required resources.
 - containers: normal containers
 - services: logical sets (group of pods with a unique, Pod and container independent IP address)
 
@@ -427,4 +427,7 @@ console.log(sayHello()) // hi
 -Restart Node
 1. MiddleWare
   - next() is crucial in Middleware otherwise, the req wont continue to the next middleware and die.
-  -
+2. bodyParser
+  - Request does not try to parse the incoming request body.
+  - by using bodyParser.urlencoded, it registers a middleware function, so this parses such a function here in the end even though we cant see it and this package will in the end, in this middleware function call next(0 in the end, so that the request also reaches our middleware.
+  - This will parse the whole request body parsing we had to do manually.

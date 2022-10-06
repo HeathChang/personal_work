@@ -1,10 +1,10 @@
 What is Redux?
-- A state management system for cross-component or app-wide state.
+- A state management system for cross-component or appOld-wide state.
 
 What is Cross-Component / App-Wide state management system
 -Local State: State that belongs to a single component        -> useState() / useReducers()
 -Cross-Component State: State that affect multiple components -> Requires prop chains
--App-Wide State: State that affect the entire app             -> Requires prop chains
+-App-Wide State: State that affect the entire appOld             -> Requires prop chains
 
 React  vs Redux : (why not use React Context to deliver props)
 - complex setup / hard to Management

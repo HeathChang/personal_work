@@ -1,7 +1,7 @@
 FROM node:14
 #FROM node:12  -> use version 12 Node
 
-WORKDIR /app
+WORKDIR /appOld
 
 COPY package.json .
 
@@ -19,9 +19,9 @@ EXPOSE $PORT
 
 
 #Volume
-#Anonymous:: VOLUME [ "/app/feedback" ]
+#Anonymous:: VOLUME [ "/appOld/feedback" ]
 
-# => inside my app conatainer which should be mapped to some folder outside of the container.
+# => inside my appOld conatainer which should be mapped to some folder outside of the container.
 
 # run-time command
 CMD [ "node", "server.js" ]

@@ -1,12 +1,12 @@
 FROM node
 #FROM node:12  -> use version 12 Node
-WORKDIR /app
+WORKDIR /appOld
 
-COPY package.json /app
+COPY package.json /appOld
 
 RUN npm install
 
-COPY . /app
+COPY . /appOld
 
 EXPOSE 80
 

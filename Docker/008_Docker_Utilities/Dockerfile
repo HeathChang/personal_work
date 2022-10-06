@@ -1,5 +1,5 @@
 FROM node:14-alpine
 
-WORKDIR /app
+WORKDIR /appOld
 
 ENTRYPOINT ["npm"]

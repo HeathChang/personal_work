@@ -33,7 +33,7 @@
 $ npm install
 ```
 
-## Running the app
+## Running the appOld
 
 ```bash
 # development

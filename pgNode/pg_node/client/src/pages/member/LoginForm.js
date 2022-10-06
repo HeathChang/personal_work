@@ -34,7 +34,7 @@ const LoginForm = () => {
     <>  
         <form  method="post" class="loginForm">
         <Link to="/"><img className="logo" src={require('../../Image/logo.png').default} /></Link> 
-            <a href="${request.getContextPath()}/app"> </a>
+            <a href="${request.getContextPath()}/appOld"> </a>
             <p>" 자신을 알아야 평화를 찾을 수 있는 법 "</p>
             <div class="idForm">
                 <input type="text" name="mbrId" id="mbrId" placeholder="ID" onChange={(e)=> {
@@ -50,9 +50,9 @@ const LoginForm = () => {
                 <button name="login" id="login" onClick={login}>L O G I N</button>
             </div>
             <div class="check">
-                <a href="${request.getContextPath()}/app/FindIdPw" id="find">아이디/비밀번호 찾기</a> 
+                <a href="${request.getContextPath()}/appOld/FindIdPw" id="find">아이디/비밀번호 찾기</a>
                 <br/>
-                <a href="${request.getContextPath()}/app/MemberForm" id="create">회원가입</a>
+                <a href="${request.getContextPath()}/appOld/MemberForm" id="create">회원가입</a>
             </div>
 	    </form>
     </>

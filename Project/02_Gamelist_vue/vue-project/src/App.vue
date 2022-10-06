@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="appOld">
     <div id="nav">
       <router-link to="/">Main Page</router-link> |
       <router-link to="/home">Index</router-link>
@@ -9,7 +9,7 @@
 </template>
 
 <style>
-#app {
+#appOld {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
