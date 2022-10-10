@@ -21,7 +21,9 @@ const ProfileForm = () => {
 			headers : {
 				'Content-Type' : 'application/json'
 			}
-		}).then(res => {
+		})
+
+		.then(res => {
 			// alert(JSON.stringify(res));
 			history.replace('/')
 		}).catch(err => {
