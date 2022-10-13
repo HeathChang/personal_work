@@ -7,3 +7,24 @@ Thu Oct 13, 2022.
     -> The Observables are like data or event generators with some logic stored inside.
     -> any data can be converted into an Observable.
     -> to run the code placed inside of an Observable, we need to subscribe it.
+3. What is a stream ?
+    -> The Observables are based around the idea of streams, which means that the data can come at varios points of time and the number of emitted values might be infinite.
+    -> stream is different to array
+        - items in a stream can come at various points of time.
+        - reacting to the things as they show up, we dont know the next value and whether it will appear at all.
+4. Observable.
+    ->  single callback function with a set of rules.
+    -> Once the Observable is executed, it can emit some notifications,
+        - next: emit value
+        - error:
+        - complete:
+    -> Observer: next function in the observer provides the behavior for the next notifications emitted by the observable.
+    -> Subscription is what executes the Observable.
+        - it runs the callback inside the Observable and passes to Observer object.
+        - Each Observable exposes the subscribe method, so to start a new Subscription, we simply call the subscribe method on the Observable and pass the Observer as an argument.
+        - observable$.subscribe(observer);
+        -  the subscribe method gets called on our Observable that we created
+            (new subscription is made, which means that the callback in the observable run with the provided observer converted in to a subscriber object.)
+        - each new subscription runs the Observable with the provided observer and each emitted value by the observable will call the observer's next handler with the provided value. then observer will do its work.
+
+============================================================================================================================================================================================================================
