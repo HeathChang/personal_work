@@ -1,0 +1,9 @@
+Thu Oct 13, 2022.
+1. RxJS Overview (Reactive Extensions for JS)
+    -> RxJS is a library for composing async and event-based programs by using observable sequences.
+    -> It provides once core type, the Observable, satellite types and operators to allow handling async events as collections.
+    -> Conveniently handling async code.
+2. What is Observables ?
+    -> The Observables are like data or event generators with some logic stored inside.
+    -> any data can be converted into an Observable.
+    -> to run the code placed inside of an Observable, we need to subscribe it.
