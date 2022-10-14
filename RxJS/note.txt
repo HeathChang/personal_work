@@ -28,3 +28,9 @@ Thu Oct 13, 2022.
         - each new subscription runs the Observable with the provided observer and each emitted value by the observable will call the observer's next handler with the provided value. then observer will do its work.
 
 ============================================================================================================================================================================================================================
+Fri Oct 14, 20022
+1. The notifications that can be emitted by the observable. (Marble Diagram => Next Notification / Complete Notification / error Notification)
+    -> Next: shows emit
+    -> Complete: shows complete : dont carry payload
+    -> Error: ends subscription: can carry payload
+    - No other notification after complete and error.
