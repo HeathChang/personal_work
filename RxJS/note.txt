@@ -8,7 +8,7 @@ Thu Oct 13, 2022.
     -> any data can be converted into an Observable.
     -> to run the code placed inside of an Observable, we need to subscribe it.
 3. What is a stream ?
-    -> The Observables are based around the idea of streams, which means that the data can come at varios points of time and the number of emitted values might be infinite.
+    -> The Observables are based around the idea of streams, which means that the data can come at various points of time and the number of emitted values might be infinite.
     -> stream is different to array
         - items in a stream can come at various points of time.
         - reacting to the things as they show up, we dont know the next value and whether it will appear at all.
@@ -28,9 +28,23 @@ Thu Oct 13, 2022.
         - each new subscription runs the Observable with the provided observer and each emitted value by the observable will call the observer's next handler with the provided value. then observer will do its work.
 
 ============================================================================================================================================================================================================================
-Fri Oct 14, 20022
+Fri Oct 14, 2002
 1. The notifications that can be emitted by the observable. (Marble Diagram => Next Notification / Complete Notification / error Notification)
     -> Next: shows emit
     -> Complete: shows complete : dont carry payload
     -> Error: ends subscription: can carry payload
     - No other notification after complete and error.
+
+============================================================================================================================================================================================================================
+Tue Oct 18, 2022
+1. Tear Down
+    -> Tear-Down logic can be used by Observable to clean up after itself to prevent memory leaks or to provide cancellation logic
+    -> eg.) If we had an Observable which would call the server using HTTP request, we could abort that HTTP request in the teardown login
+2. Order
+    -> 1. Order => Error > next & complete by setTimeout
+        - situation: the value and complete notification emitted after the error happens
+        - Error notification ends the subscription, which means there can be no more emissions
+        - intermediate subscriber obj, created automatically by RxJS, checks whether the subscription is still active before passing the notification.
+        - So this subscriber obj works like a safety fuse and ensures that Observables and subscription  always work in a designed way.
+3. Cancellation
+    ->   if , this teardown logic is null, the code inside  the observable is still running => no more code / memory leaks.
