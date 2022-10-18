@@ -48,3 +48,29 @@ Tue Oct 18, 2022
         - So this subscriber obj works like a safety fuse and ensures that Observables and subscription  always work in a designed way.
 3. Cancellation
     ->   if , this teardown logic is null, the code inside  the observable is still running => no more code / memory leaks.
+============================================================================================================================================================================================================================
+Wed Oct 19, 2022
+1. Types of Observables, depending on the source of emissions.
+    -> Hot Observables: Observables logic connects to some common, shared source (e.g. DOM event)
+    -> Cold Observables:  started a new interval and then produced the values based on the interval created.
+
+2. Cold Observables:
+    -> Observables which wwe subscribe, produced and emitted values ->  created an Observables independently.
+    -> All values were produced separately, independently for each subscription.
+3. Hot Observables
+    -> all subscription share the same sources.
+    -> It just connects to some existing source.
+    -> The actual source of the emissions is placed outside the observables' logic, we just connect event.
+    -> Each new subscription is adding a new listener to the event.
+    => Hot Observables is the one which has the actual source of the emissions placed outside it, and the observable logic just adds another connection to this source.
+4. Hot and Cold Observables/
+    -> COLD:
+        - Produces the data inside.
+        - New Subscriber - new Data
+        - E.G.: Set of values / HTTP request /Time&Interval
+    -> HOT:
+        - Multicasts the data from a common source (outside).
+        - All subscribers - common data
+        - E.G: DOM events/ state of the app / subjects (part of rxjs library)
+
+
