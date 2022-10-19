@@ -73,4 +73,13 @@ Wed Oct 19, 2022
         - All subscribers - common data
         - E.G: DOM events/ state of the app / subjects (part of rxjs library)
 
-
+============================================================================================================================================================================================================================
+Thu Oct 20, 2022
+1. Creation Functions
+    -> provides an easy way to create a new observable with certain behavior.ß
+    -> e.g) of / from / fromEvent / interval/timer / forkJoin / combineLatest
+2. of - How Creation function work.
+    ->  of creation function allows us to creaate an observable, which emits a set of values and completes, so when we subscribe to such observable, all values that we have provided as arguments will be emitted immediately as next notifications, and then, the observable will complete, ending the subscription.
+3. From CF
+    -> Convert other types into an observable.
+    -> From can be used in Array, promise, and others
