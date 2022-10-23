@@ -1,6 +1,7 @@
 const solution = (arr) => {
     let resultArr = []
-    let result = arr.reduce((previous, current)=> previous.toString() + current.toString())
+    // let result = arr.reduce((previous, current)=> previous.toString() + current.toString())
+    let result = arr.join("")
     result = BigInt(result)+1n
     let _new = result.toString().split('')
     _new.forEach(item => resultArr.push(parseInt(item)))
