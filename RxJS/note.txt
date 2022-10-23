@@ -83,3 +83,11 @@ Thu Oct 20, 2022
 3. From CF
     -> Convert other types into an observable.
     -> From can be used in Array, promise, and others
+============================================================================================================================================================================================================================
+Fri Oct 21, 2022
+1. fromEvent:
+    -> allows us to create an Observable from various event sources, including, multiple targets from DOM to jQuery
+2. timer:
+    -> Timer Creation Function allows us to create an Observable which will wait some time, emit a value and complete.
+3. interval
+    -> not a single timeout ( same as setInterval function) 
