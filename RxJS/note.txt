@@ -104,4 +104,12 @@ Mon Oct 24, 2022
     ->  they allow us to transform the notifications emitted by an Observable in countless ways.
     -> enable us to write complex async logic easily.
     -> Pipeable Operator, takes what it has above as that input.
-
+============================================================================================================================================================================================================================
+Tue OCtr 25, 2022
+1. Tap
+    -> Tap operator works like a spy and allow us to cause some side effects without interacting with the notifications.
+    -> It is useful if we have multiple operators stacked and we would like to be able to observe the notifications at ant stage of this operatros;'s pipeline to.
+2. debounce time
+    -> The 'debounceTime' operator would wait for the emissions to settle down, and after two seconds of no new emissions, it would reemit just the latest value.
+     -> This is useful to avoid putting excessive pressure on some recalculation logic to avoid performance
+     -> issues or, for example, to reduce the frequency of HTTP requests sent to the server.
