@@ -96,3 +96,12 @@ Mon Oct 24, 2022
 1. forkJoin
     -> when all observables complete, emit the last emitted value from each.
     -> Error in a single observable will cause other observables to be cancelled.
+    -> 'forkJoin' allowed us to wait for all the Observables to complete before our emitting
+2. combineLatest
+    ->  kept emitting the latest known set of values each time any of the provided input Observables emitted something new.
+    -> combineLatest needs at least one value from each source before it emits something.
+3. pipeable operators
+    ->  they allow us to transform the notifications emitted by an Observable in countless ways.
+    -> enable us to write complex async logic easily.
+    -> Pipeable Operator, takes what it has above as that input.
+
