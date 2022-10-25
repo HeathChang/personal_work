@@ -105,7 +105,7 @@ Mon Oct 24, 2022
     -> enable us to write complex async logic easily.
     -> Pipeable Operator, takes what it has above as that input.
 ============================================================================================================================================================================================================================
-Tue OCtr 25, 2022
+Tue Oct 25, 2022
 1. Tap
     -> Tap operator works like a spy and allow us to cause some side effects without interacting with the notifications.
     -> It is useful if we have multiple operators stacked and we would like to be able to observe the notifications at ant stage of this operatros;'s pipeline to.
@@ -113,3 +113,14 @@ Tue OCtr 25, 2022
     -> The 'debounceTime' operator would wait for the emissions to settle down, and after two seconds of no new emissions, it would reemit just the latest value.
      -> This is useful to avoid putting excessive pressure on some recalculation logic to avoid performance
      -> issues or, for example, to reduce the frequency of HTTP requests sent to the server.
+============================================================================================================================================================================================================================
+Wed Oct 26, 2022
+1. catchError operator:
+    -> provide a fallback source in case the original source fails.
+    -> so, operator will not change the emitted values and complete notification.
+    -> use EMPTY operator, to hide error notification from your observer.
+2. Flattening operators:
+    -> The Flattening Operators create new inner Subscriptions to the provided Observables generated based on the next notifications received from the source. Then, they pass the emitted values from those inner Subscriptions to the output.
+    -> In other words, the Flattening Operator will react to a next notification by creating a new inner Subscription to the provided Observable.
+3. concatMap
+    ->
