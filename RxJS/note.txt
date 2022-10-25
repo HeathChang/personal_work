@@ -123,4 +123,4 @@ Wed Oct 26, 2022
     -> The Flattening Operators create new inner Subscriptions to the provided Observables generated based on the next notifications received from the source. Then, they pass the emitted values from those inner Subscriptions to the output.
     -> In other words, the Flattening Operator will react to a next notification by creating a new inner Subscription to the provided Observable.
 3. concatMap
-    ->
+    -> https://boxfoxs.tistory.com/413
