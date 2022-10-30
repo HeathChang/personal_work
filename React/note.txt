@@ -1,0 +1,14 @@
+Sun Oct 30, 2022
+1. React Portal:
+    : Vue Portal 과 비슷한 동작을 한다, 원하는 컴포넌트를 원하는 위치로 이동
+    : {ReactDom.createPortal(<ModalOverlay
+                      title={props.title}
+                      message={props.message}
+                      onConfirm={props.onConfirm}
+                  />, document.getElementById("overlay-root"))}
+    : ReactDom import 하고 사용, index.html에 해당 컴포넌트가 이동하는 위치 선정해야함.
+2. React Ref
+    : Refs allow us to get access to other DOM elements and work with them.
+    : Easy access but directly using DOM element
+    : uncontrolled components : value is not controlled by react
+3.
