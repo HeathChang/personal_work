@@ -8,24 +8,23 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
+    useEffect(()=>{
+        const storedUserLoggedIn = localStorage.getItem('isLoggedIn');
+        if(storedUserLoggedIn === '1'){
+            setIsLoggedIn(true)
+        }
+    }, [])
+
+    // just using like this will cause infinite loop because whenever we call a state setting function, this component function re-executes and therefore run again.
+    // if(storedUserLoggedIn === '1'){
+    //     setIsLoggedIn(true)
+    // }
   const loginHandler = (email, password) => {
     // We should of course check email and password
     // But it's just a dummy/ demo anyways
       localStorage.setItem('isLoggedIn', '1');
     setIsLoggedIn(true);
   };
-
-  // just using like this will cause infinite loop because whenever we call a state setting function, this component function re-executes and therefore run again.
-  // if(storedUserLoggedIn === '1'){
-  //     setIsLoggedIn(true)
-  // }
-  useEffect(()=>{
-      console.log('useEffect::')
-      const storedUserLoggedIn = localStorage.getItem('isLoggedIn');
-      if(storedUserLoggedIn === '1'){
-          setIsLoggedIn(true)
-      }
-  }, [])
 
   const logoutHandler = () => {
       localStorage.removeItem('isLoggedIn');

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 
 import Card from '../UI/Card/Card';
 import classes from './Login.module.css';
@@ -11,27 +11,23 @@ const Login = (props) => {
     const [passwordIsValid, setPasswordIsValid] = useState();
     const [formIsValid, setFormIsValid] = useState(false);
 
-    useEffect(() => {
-        console.log('EFFECT RUNNING');
-
-        return () => {
-            console.log('EFFECT CLEANUP');
-        };
-    }, []);
+    // effect function runs after every component render cycle.(when without dependency)
+    // useEffect(()=>{
+    //     console.log(123123)
+    // })
 
     // useEffect(() => {
-    //   const identifier = setTimeout(() => {
-    //     console.log('Checking form validity!');
-    //     setFormIsValid(
-    //       enteredEmail.includes('@') && enteredPassword.trim().length > 6
-    //     );
-    //   }, 500);
-
-    //   return () => {
-    //     console.log('CLEANUP');
-    //     clearTimeout(identifier);
-    //   };
-    // }, [enteredEmail, enteredPassword]);
+    //     const identifier = setTimeout(()=>{
+    //         setFormIsValid(
+    //             enteredEmail.includes('@') && enteredPassword.trim().length > 6
+    //         );
+    //     },500)
+    //     // clean up function:
+    //     // -> makes sure that whenever the cleanup function runs, I clear the timer that was set before this cleanup function ran.
+    //     return ()=>{
+    //         clearTimeout(identifier)
+    //     };
+    // }, [enteredEmail, enteredPassword])
 
     const emailChangeHandler = (event) => {
         setEnteredEmail(event.target.value);

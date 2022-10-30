@@ -60,3 +60,8 @@ In this example:
     -> 1. Null dependency (useEffect(()=>{})) : This will run every time since effect hooks runs after every component render cycle.
     -> 2. No dependency (useEffect(()=>{}), []) : This will run only once, when the app starts up
     -> 3. Yes dependency (useEffect(()=>{}),[inputEmail]) : This will run when inputEmail is Changed.
+
+2. useReducer: helps with state management.
+    -> 기본적으로 reducer 는 현재 상태와 액션 객체를 파라미터로 받아와서 새로운 상태를 반환해주는 함수입니다.
+    : reducer 에서 반환하는 상태는 곧 컴포넌트가 지닐 새로운 상태
+    : good to use when, If you update a state  which depends on another state. (=> setPasswordIsValid(enteredPassword.trim().length > 6);)
