@@ -1,4 +1,4 @@
-Sun Oct 30, 2022
+Sun Oct 30, 2022 + Monday Oct 31, 2022
 1. React Portal:
     : Vue Portal 과 비슷한 동작을 한다, 원하는 컴포넌트를 원하는 위치로 이동
     : {ReactDom.createPortal(<ModalOverlay
@@ -18,5 +18,45 @@ Sun Oct 30, 2022
     -> useEffect hooks will take care of side effect
     : inside: function that should be executed after every component evaluation if the specified dependencies changes.
     : outside: dependencies of this effect the function only runs if the dependencies changed.
-4. useEffect()
+    : side Effect can be anything that should be executed in response to some other action.
+4. useEffect(()=>{},[])
     : no dependency useEffect will run only once, since there is no dependency.
+    : helps you deal with code that should be executed in response to something and something could be the component being loaded.
+========================================================================================================================================================================================================================================================================================================================================================================================================================
+Monday Oct 31, 2022
+there are a few exceptions you should be aware of when adding to useEffect dependencies:
+1. You DON'T need to add state updating functions (as we did in the last lecture with setFormIsValid): React guarantees that those functions never change, hence you don't need to add them as dependencies (you could though)
+2. You also DON'T need to add "built-in" APIs or functions like fetch(), localStorage etc (functions and features built-into the browser and hence available globally): These browser APIs / global functions are not related to the React component render cycle and they also never change
+3. You also DON'T need to add variables or functions you might've defined OUTSIDE of your components (e.g. if you create a new helper function in a separate file): Such functions or variables also are not created inside of a component function and hence changing them won't affect your components (components won't be re-evaluated if such variables or functions change and vice-versa)
+----
+So long story short: You must add all "things" you use in your effect function if those "things" could change because your component (or some parent component) re-rendered.
+That's why variables or state defined in component functions, props or functions defined in component functions have to be added as dependencies!
+----
+Here's a made-up dummy example to further clarify the above-mentioned scenarios:
+
+import { useEffect, useState } from 'react';
+let myTimer;
+const MyComponent = (props) => {
+  const [timerIsActive, setTimerIsActive] = useState(false);
+  const { timerDuration } = props; // using destructuring to pull out specific props values
+
+  useEffect(() => {
+    if (!timerIsActive) {
+      setTimerIsActive(true);
+      myTimer = setTimeout(() => {
+        setTimerIsActive(false);
+      }, timerDuration);
+    }
+  }, [timerIsActive, timerDuration]);
+};
+In this example:
+:timerIsActive is added as a dependency because it's component state that may change when the component changes (e.g. because the state was updated)
+:timerDuration is added as a dependency because it's a prop value of that component - so it may change if a parent component changes that value (causing this MyComponent component to re-render as well)
+:setTimerIsActive is NOT added as a dependency because it's that exception: State updating functions could be added but don't have to be added since React guarantees that the functions themselves never change
+:myTimer is NOT added as a dependency because it's not a component-internal variable (i.e. not some state or a prop value) - it's defined outside of the component and changing it (no matter where) wouldn't cause the component to be re-evaluated
+:setTimeout is NOT added as a dependency because it's a built-in API (built-into the browser) - it's independent from React and your components, it doesn't change
+
+1. useEffect dependency.
+    -> 1. Null dependency (useEffect(()=>{})) : This will run every time since effect hooks runs after every component render cycle.
+    -> 2. No dependency (useEffect(()=>{}), []) : This will run only once, when the app starts up
+    -> 3. Yes dependency (useEffect(()=>{}),[inputEmail]) : This will run when inputEmail is Changed.
