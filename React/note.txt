@@ -11,4 +11,12 @@ Sun Oct 30, 2022
     : Refs allow us to get access to other DOM elements and work with them.
     : Easy access but directly using DOM element
     : uncontrolled components : value is not controlled by react
-3.
+3. Effect (sideEffect)
+    : Things that does not bring sth onto the screen directly.
+    (e.g: store Data in browser send http Request etc)
+    : These tasks must happen outside the normal component evaluation and render cycle -esp since they might block/delay rendering
+    -> useEffect hooks will take care of side effect
+    : inside: function that should be executed after every component evaluation if the specified dependencies changes.
+    : outside: dependencies of this effect the function only runs if the dependencies changed.
+4. useEffect()
+    : no dependency useEffect will run only once, since there is no dependency.
