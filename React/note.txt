@@ -65,3 +65,12 @@ In this example:
     -> 기본적으로 reducer 는 현재 상태와 액션 객체를 파라미터로 받아와서 새로운 상태를 반환해주는 함수입니다.
     : reducer 에서 반환하는 상태는 곧 컴포넌트가 지닐 새로운 상태
     : good to use when, If you update a state  which depends on another state. (=> setPasswordIsValid(enteredPassword.trim().length > 6);)
+
+========================================================================================================================================================================================================================================================================================================================================================================================================================
+Tue Nov 1, 2022
+1. UseReducer
+    -> const [state, fnDispatch] = useReducer(fnReducer, initialState, fnInit);
+    -> 1st: the state snapshot used in the component render evaluation cycle.
+    -> 2nd: a function that can be used to dispatch a new action.
+    -> fnReducer: a function that is triggered automatically once an action is dispatched - it receives the latest state snapshot and should return the new, updated state.
+    ->
