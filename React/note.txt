@@ -73,4 +73,23 @@ Tue Nov 1, 2022
     -> 1st: the state snapshot used in the component render evaluation cycle.
     -> 2nd: a function that can be used to dispatch a new action.
     -> fnReducer: a function that is triggered automatically once an action is dispatched - it receives the latest state snapshot and should return the new, updated state.
-    ->
+
+========================================================================================================================================================================================================================================================================================================================================================================================================================
+Sat Nov 5, 2022
+1. Adding Nested Properties As Dependencies to useEffect.
+    -> key thing is NOT that we use destructuring but that we pass specific properties instead of the entire object.
+    -> effect function would re-run whenever ANY property of someObject changes - not just the one property
+    -> e.g const { someProperty } = someObject;
+           useEffect(() => {
+             // code that only uses someProperty ...
+           }, [someProperty]);
+2. useState() vs useReducer();
+    -> useState:
+        - main state management tool
+        - great for independent pieces of state/data
+        - great if state updates are easy and limited a few kinds of updates.
+    -> useReducer:
+        - great if you need more power.
+        - should be considered if you have related pieces of state/data.
+        - can be helpful if you have ore complex state updates.
+        - can lay more bugs and unintended bugs.
