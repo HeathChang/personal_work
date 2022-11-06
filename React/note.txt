@@ -93,3 +93,12 @@ Sat Nov 5, 2022
         - should be considered if you have related pieces of state/data.
         - can be helpful if you have ore complex state updates.
         - can lay more bugs and unintended bugs.
+
+========================================================================================================================================================================================================================================================================================================================================================================================================================
+Mon Nov 7, 2022
+1. Context API:
+    -> Main reason why we need Context API is to prevent prop chains which are used to forward data through components to other components.
+    -> Instead, it would be nicer if we could use props ina component to only receive the data this component really needs from its parent, and not to forward our data through the parent.
+    -> Need Provider (등록), Consumer (사용) to use.
+    -> use useContext hook in consumer to make it simple.
+    -> Context API can just pass down values and functions.
