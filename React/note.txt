@@ -110,3 +110,24 @@ Tue Nov 8, 2022
     -> React Context also should not be used to replace all component communications and props.
 2. rules of hooks
     -> Only call React hooks in React Functions.
+
+========================================================================================================================================================================================================================================================================================================================================================================================================================
+Wed Nov 9, 2022
+1.  React.memo()
+    -> React should look at the props this component gets and check the new value for all those props and compare it to the previous value those props got.
+    -> And if the parent component changed but the prop values for that component here did not change, component execution will be skipped.
+    -> The only magic thing here is that the function's going to be called by React
+    -> But then, it still executes like a normal function, which means all that code executes again, and that has one important implication.
+    -> Of course, this function which you pass to the Button is re-created.
+    -> works well in primitive values (e.g bool, int, string ..)
+2.  useCallBack
+    -> to basically store a function across component executions.
+    -> So it allows us to tell React that we wanna save a function and that this function should not be recreated with every execution.
+    -> Anything you use in your function which is coming from the surrounding component so any state or props or context should be specified in dependency.
+3. useMemo
+    -> When re-evaluated, the props will re-generated => memory over-used.
+    -> Use useMemo to avoid
+    -> useMemo basically allows you to memoize, so basically that means to store, any kind of data which you want to store, (just like useCallback does it for functions.)
+    -> useMemo(() => {}, [])
+    -> dependency: ensure that this stored value is updated whenever one of the values you change.
+    -> 바뀌지 않을 props (e.g: Array Items (listItem = {useMemo(()=>[1,2,3,4,5])}) that we want not to be re-created)에도 useMemo 사용할것 (이때, dependency X)
