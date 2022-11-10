@@ -131,3 +131,11 @@ Wed Nov 9, 2022
     -> useMemo(() => {}, [])
     -> dependency: ensure that this stored value is updated whenever one of the values you change.
     -> 바뀌지 않을 props (e.g: Array Items (listItem = {useMemo(()=>[1,2,3,4,5])}) that we want not to be re-created)에도 useMemo 사용할것 (이때, dependency X)
+========================================================================================================================================================================================================================================================================================================================================================================================================================
+Fri Nov 11, 2022
+1. useEffect on Created.
+    => add function as dependency.
+    => whenever app re-activate, the function will re-executed.
+    => add useCallBack and add no dependency to it.
+    => change the location of useEffect to the end.
+    *=> POST request skipped.
