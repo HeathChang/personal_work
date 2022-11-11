@@ -139,3 +139,6 @@ Fri Nov 11, 2022
     => add useCallBack and add no dependency to it.
     => change the location of useEffect to the end.
     *=> POST request skipped.
+2. custom hooks
+    => custom hooks should start with the word "use".
+    => if I call use counter in the forward counter component the state created here, in use counter  will be tied to this forward counter.
