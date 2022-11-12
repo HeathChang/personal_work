@@ -142,3 +142,10 @@ Fri Nov 11, 2022
 2. custom hooks
     => custom hooks should start with the word "use".
     => if I call use counter in the forward counter component the state created here, in use counter  will be tied to this forward counter.
+
+========================================================================================================================================================================================================================================================================================================================================================================================================================
+Sat Nov 12, 2022
+1. More on useCallBack
+    => The useCallback hook is used when you have a component in which the child is rerendering again and again without need.
+    => Pass an inline callback and an array of dependencies. useCallback will return a memoized version of the callback that only changes if one of the dependencies has changed. This is useful when passing callbacks to optimized child components that rely on reference equality to prevent unnecessary renders.
+========================================================================================================================================================================================================================================================================================================================================================================================================================
