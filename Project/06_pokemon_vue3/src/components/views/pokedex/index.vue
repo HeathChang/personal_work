@@ -6,7 +6,7 @@
       <div id="bg_curve2_left"></div>
       <div id="curve1_left">
         <div id="buttonGlass">
-          <div id="reflect"> </div>
+          <div id="reflect"></div>
         </div>
         <div id="miniButtonGlass1"></div>
         <div id="miniButtonGlass2"></div>
@@ -24,7 +24,7 @@
           <div id="buttontopPicture2"></div>
         </div>
         <div id="picture">
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/200653/psykokwak.gif" alt="psykokwak" height="170" />
+          <img :src="fnFetchImage(data.id)" :alt="data.name" height="170"/>
         </div>
         <div id="buttonbottomPicture"></div>
         <div id="speakers">
@@ -57,7 +57,7 @@
     </div>
     <div id="right">
       <div id="stats">
-        <strong>Name:</strong> Psyduck<br/>
+        <strong>Name:</strong> {{ data.name }}<br/>
         <strong>Type:</strong> Water<br/>
         <strong>Height:</strong> 2'072''<br/>
         <strong>Weight:</strong> 43.2 lbs.<br/><br/>
@@ -82,25 +82,65 @@
       <div id="miniButtonGlass5"></div>
       <div id="barbutton3"></div>
       <div id="barbutton4"></div>
-      <div id="yellowBox1"></div>
-      <div id="yellowBox2"></div>
+
+      <!--Before & Next Btn::        -->
+      <div id="yellowBox1" @click.prevent.stop="fnGetAnother('prev')"></div>
+      <div id="yellowBox2" @click.prevent.stop="fnGetAnother('next')"></div>
+
+
       <div id="bg_curve1_right"></div>
       <div id="bg_curve2_right"></div>
       <div id="curve1_right"></div>
-      <div id="curve2_right"></div>
+      <div id="curve2_right"> ></div>
     </div>
   </div>
 </template>
 
 <script>
-import { useRouter } from 'vue-router'
+import {useRouter} from 'vue-router'
+import {getCurrentInstance, reactive, toRefs} from "vue";
 
 export default {
-  name: 'main-view',
-  description: '메인 상세-pokedex',
+  name: 'components-views-pokedex',
+  emits: ['another'],
+  description: '검색시, 해당 정보가 여기로 들어옴.',
+  props: {
+    data: {
+      type: Object,
+      default: () => {
+      }
+    },
+  },
+  setup(props) {
+    const {proxy} = getCurrentInstance();
+
+    const state = reactive({
+      image: ''
+    })
+
+
+    const fnFetchImage = id => {
+      return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
+    }
+
+
+    const fnGetAnother = (cmd) => {
+      proxy.$emit('another', cmd)
+    }
+
+
+    console.log('props:: ', props.data)
+
+    return {
+      ...toRefs(state),
+      fnFetchImage,
+      fnGetAnother
+    }
+  }
 
 }
 </script>
+
 
 <style scoped>
 * {
@@ -109,17 +149,14 @@ export default {
 }
 
 
-
 @media all {
 
-  div#pokedex
-  {
+  div#pokedex {
     width: 750px;
     margin: 50px auto 0 auto;
   }
 
-  div#left
-  {
+  div#left {
     width: 400px;
     height: 500px;
     float: left;
@@ -127,8 +164,7 @@ export default {
     z-index: 1;
   }
 
-  div#right
-  {
+  div#right {
     width: 350px;
     height: 500px;
     float: left;
@@ -136,11 +172,8 @@ export default {
   }
 
 
-
   /* //// LEFT PART //// */
-
-  div#curve1_left
-  {
+  div#curve1_left {
     width: 201px;
     height: 85px;
     background-color: #8b0000;
@@ -168,8 +201,7 @@ export default {
   }
 
 
-  div#bg_curve1_left
-  {
+  div#bg_curve1_left {
     width: 400px;
     height: 80px;
     background-color: #8b0000;
@@ -180,8 +212,7 @@ export default {
     -o-border-top-left-radius: 30px;
   }
 
-  div#curve2_left
-  {
+  div#curve2_left {
     width: 216px;
     height: 451px;
     background-color: #c00d0d;
@@ -191,14 +222,13 @@ export default {
     bottom: 0;
     right: 0;
 
-    border-top-left-radius:85px 60px;
+    border-top-left-radius: 85px 60px;
     -webkit-border-top-left-radius: 85px 60px;
     -moz-border-top-left-radius: 85px 60px;
     -o-border-top-left-radius: 85px 60px;
   }
 
-  div#bg_curve2_left
-  {
+  div#bg_curve2_left {
     width: 400px;
     height: 420px;
     background-color: #c00d0d;
@@ -214,8 +244,7 @@ export default {
     -o-border-bottom-left-radius: 30px;
   }
 
-  div#buttonGlass
-  {
+  div#buttonGlass {
     width: 60px;
     height: 60px;
     margin-right: 15px;
@@ -238,8 +267,7 @@ export default {
     -o-border-radius: 35px;
   }
 
-  div#reflect
-  {
+  div#reflect {
     width: 30px;
     height: 18px;
     margin: 3px 0 0 15px;
@@ -253,8 +281,7 @@ export default {
 
   }
 
-  div#miniButtonGlass1
-  {
+  div#miniButtonGlass1 {
     width: 20px;
     height: 20px;
     margin-right: 10px;
@@ -276,8 +303,7 @@ export default {
     background: -o-radial-gradient(#fb7b7b, #fb0505);
   }
 
-  div#miniButtonGlass2
-  {
+  div#miniButtonGlass2 {
     width: 20px;
     height: 20px;
     margin-right: 10px;
@@ -299,8 +325,7 @@ export default {
     background: -o-radial-gradient(#fbfb9b, #fbfb05);
   }
 
-  div#miniButtonGlass3
-  {
+  div#miniButtonGlass3 {
     width: 20px;
     height: 20px;
     margin-right: 10px;
@@ -322,8 +347,7 @@ export default {
     background: -o-radial-gradient(#b0fb7b, #50fb05);
   }
 
-  div#junction
-  {
+  div#junction {
     width: 60px;
     height: 451px;
     float: right;
@@ -334,8 +358,7 @@ export default {
     background: -o-linear-gradient(left, #8b0000 0%, #c00d0d 50%, #8b0000 100%);
   }
 
-  div#junction1
-  {
+  div#junction1 {
     height: 40px;
     background-color: #5e0000;
     opacity: 0.3;
@@ -346,8 +369,7 @@ export default {
     border-bottom: 2px solid #330000;
   }
 
-  div#junction2
-  {
+  div#junction2 {
     height: 40px;
     background-color: #5e0000;
     opacity: 0.3;
@@ -356,13 +378,12 @@ export default {
     border-bottom: 2px solid #330000;
   }
 
-  div#screen
-  {
+  div#screen {
     height: 245px;
     width: 260px;
     padding: 0 20px;
     background-color: #b0b0b0;
-    float:left;
+    float: left;
 
     position: absolute;
     top: 130px;
@@ -374,8 +395,7 @@ export default {
     -o-border-radius: 15px;
   }
 
-  div#screen:after
-  {
+  div#screen:after {
     content: "";
     border-top: 40px solid #b0b0b0;
     border-left: 40px solid #c00d0d;
@@ -386,8 +406,7 @@ export default {
     left: 0;
   }
 
-  div#picture
-  {
+  div#picture {
     height: 175px;
     width: 254px;
     margin-top: 20px;
@@ -402,23 +421,20 @@ export default {
     -o-border-radius: 15px;
   }
 
-  div#picture img
-  {
+  div#picture img {
     display: block;
     margin: 0 auto;
   }
 
-  div#topPicture
-  {
+  div#topPicture {
     margin: 6px auto;
     width: 40px;
   }
 
-  div#buttontopPicture1, div#buttontopPicture2
-  {
+  div#buttontopPicture1, div#buttontopPicture2 {
     height: 8px;
     width: 8px;
-    background-color: #c00d0d;
+    /*background-color: #c00d0d;*/
     border: 1px solid #000;
     float: left;
 
@@ -428,13 +444,11 @@ export default {
     -o-border-radius: 15px;
   }
 
-  div#buttontopPicture1
-  {
+  div#buttontopPicture1 {
     margin-right: 20px;
   }
 
-  div#buttonbottomPicture
-  {
+  div#buttonbottomPicture {
     height: 26px;
     width: 26px;
     background-color: #c00d0d;
@@ -457,16 +471,14 @@ export default {
     background: -o-linear-gradient(top, #c00d0d 0%, #8b0000 80%);
   }
 
-  div#speakers
-  {
+  div#speakers {
     float: right;
     width: 75px;
     height: 25px;
     margin-right: 20px;
   }
 
-  div.sp
-  {
+  div.sp {
     height: 3px;
     margin-bottom: 5px;
     background-color: #494949;
@@ -477,8 +489,7 @@ export default {
     -o-border-radius: 30px;
   }
 
-  div#bigbluebutton
-  {
+  div#bigbluebutton {
     height: 50px;
     width: 50px;
     background-color: #000;
@@ -503,8 +514,7 @@ export default {
     -o-box-shadow: -3px 2px #001c91;
   }
 
-  div#barbutton1
-  {
+  div#barbutton1 {
     height: 13px;
     width: 50px;
 
@@ -528,8 +538,7 @@ export default {
     -o-box-shadow: -1px 2px #004200;
   }
 
-  div#barbutton2
-  {
+  div#barbutton2 {
     height: 13px;
     width: 50px;
 
@@ -553,8 +562,7 @@ export default {
     -o-box-shadow: -1px 2px #7b0000;
   }
 
-  div#cross
-  {
+  div#cross {
     width: 90px;
     height: 90px;
 
@@ -563,8 +571,7 @@ export default {
     left: 230px;
   }
 
-  div#topcross
-  {
+  div#topcross {
     width: 30px;
     height: 30px;
     background-color: #222;
@@ -589,8 +596,7 @@ export default {
     -o-border-top-right-radius: 5px;
   }
 
-  div#leftcross
-  {
+  div#leftcross {
     width: 30px;
     height: 30px;
     background-color: #222;
@@ -616,8 +622,7 @@ export default {
     -o-border-bottom-left-radius: 5px;
   }
 
-  div#midcross
-  {
+  div#midcross {
     width: 30px;
     height: 30px;
     background-color: #222;
@@ -632,8 +637,7 @@ export default {
     -o-box-shadow: -3px 2px #010101;
   }
 
-  div#rightcross
-  {
+  div#rightcross {
     width: 30px;
     height: 30px;
     background-color: #222;
@@ -658,8 +662,7 @@ export default {
     -o-border-bottom-right-radius: 5px;
   }
 
-  div#botcross
-  {
+  div#botcross {
     width: 30px;
     height: 30px;
     background-color: #222;
@@ -684,8 +687,7 @@ export default {
     -o-border-bottom-right-radius: 5px;
   }
 
-  div#upT
-  {
+  div#upT {
     width: 0;
     height: 0;
     border-left: 10px solid transparent;
@@ -697,8 +699,7 @@ export default {
     left: 4px;
   }
 
-  div#downT
-  {
+  div#downT {
     width: 0;
     height: 0;
     border-left: 10px solid transparent;
@@ -710,8 +711,7 @@ export default {
     left: 4px;
   }
 
-  div#leftT
-  {
+  div#leftT {
     width: 0;
     height: 0;
     border-top: 10px solid transparent;
@@ -723,8 +723,7 @@ export default {
     left: 4px;
   }
 
-  div#rightT
-  {
+  div#rightT {
     width: 0;
     height: 0;
     border-top: 10px solid transparent;
@@ -736,8 +735,7 @@ export default {
     right: 5px;
   }
 
-  div#midCircle
-  {
+  div#midCircle {
     width: 20px;
     height: 20px;
 
@@ -757,11 +755,8 @@ export default {
   }
 
 
-
   /* //// RIGHT PART //// */
-
-  div#curve1_right
-  {
+  div#curve1_right {
     width: 166px;
     height: 451px;
     background-color: #c00d0d;
@@ -771,15 +766,14 @@ export default {
     bottom: 0;
     left: 0;
 
-    border-top-right-radius:85px 60px;
+    border-top-right-radius: 85px 60px;
     -webkit-border-right-left-radius: 85px 60px;
     -moz-border-right-left-radius: 85px 60px;
     -o-border-right-left-radius: 85px 60px;
   }
 
 
-  div#bg_curve1_right
-  {
+  div#bg_curve1_right {
     width: 350px;
     height: 80px;
     background-color: #fff;
@@ -790,8 +784,7 @@ export default {
     -o-border-top-right-radius: 30px;
   }
 
-  div#curve2_right
-  {
+  div#curve2_right {
     width: 216px;
     height: 100px;
     background-color: #fff;
@@ -807,8 +800,7 @@ export default {
     -o-border-bottom-left-radius: 85px 60px;
   }
 
-  div#bg_curve2_right
-  {
+  div#bg_curve2_right {
     width: 350px;
     height: 420px;
     background-color: #c00d0d;
@@ -824,8 +816,7 @@ export default {
     -o-box-shadow: -10px 9px #5e0000;
   }
 
-  div#stats
-  {
+  div#stats {
     height: 130px;
     width: 280px;
     padding: 10px;
@@ -849,8 +840,7 @@ export default {
     -o-box-shadow: 0 0 20px #003300 inset;
   }
 
-  div#blueButtons1
-  {
+  div#blueButtons1 {
     z-index: 1;
 
     position: absolute;
@@ -858,8 +848,7 @@ export default {
     left: 49px;
   }
 
-  div#blueButtons2
-  {
+  div#blueButtons2 {
     z-index: 1;
 
     position: absolute;
@@ -867,10 +856,9 @@ export default {
     left: 49px;
   }
 
-  div.blueButton
-  {
+  div.blueButton {
     height: 35px;
-    width : 45px;
+    width: 45px;
     background-color: #003300;
     float: left;
     margin-right: 7px;
@@ -891,8 +879,7 @@ export default {
     -o-box-shadow: -1px 2px #001c91;
   }
 
-  div#barbutton3
-  {
+  div#barbutton3 {
     height: 13px;
     width: 50px;
     z-index: 1;
@@ -917,8 +904,7 @@ export default {
     -o-box-shadow: -1px 2px #004200;
   }
 
-  div#barbutton4
-  {
+  div#barbutton4 {
     height: 13px;
     width: 50px;
     z-index: 1;
@@ -943,8 +929,7 @@ export default {
     -o-box-shadow: -1px 2px #7b0000;
   }
 
-  div#miniButtonGlass4
-  {
+  div#miniButtonGlass4 {
     width: 15px;
     height: 15px;
     float: left;
@@ -970,8 +955,7 @@ export default {
     background: -o-radial-gradient(#ff9b5b, #fb6505);
   }
 
-  div#miniButtonGlass5
-  {
+  div#miniButtonGlass5 {
     width: 15px;
     height: 15px;
     float: left;
@@ -997,8 +981,7 @@ export default {
     background: -o-radial-gradient(#0abd0a, #057b05);
   }
 
-  div#yellowBox1
-  {
+  div#yellowBox1 {
     width: 140px;
     height: 70px;
     z-index: 1;
@@ -1019,8 +1002,7 @@ export default {
     -o-box-shadow: 0 0 20px #ff6600 inset;
   }
 
-  div#yellowBox2
-  {
+  div#yellowBox2 {
     width: 140px;
     height: 70px;
     z-index: 1;
@@ -1043,15 +1025,13 @@ export default {
 
 }
 
-@media handheld and (orientation:portrait), (max-width:768px) {
+@media handheld and (orientation: portrait), (max-width: 768px) {
 
-  div#pokedex
-  {
+  div#pokedex {
     width: 400px;
   }
 
-  div#logo
-  {
+  div#logo {
     width: 281px;
     height: 99px;
     background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/200653/logo.png') no-repeat left top;
@@ -1062,8 +1042,7 @@ export default {
     left: 30px;
   }
 
-  div#left
-  {
+  div#left {
     width: 400px;
     height: 500px;
     float: left;
@@ -1072,8 +1051,7 @@ export default {
     margin: 0 auto;
   }
 
-  div#curve1_left
-  {
+  div#curve1_left {
     width: 201px;
     height: 85px;
     background-color: #8b0000;
@@ -1100,8 +1078,7 @@ export default {
     -o-border-top-left-radius: 30px;
   }
 
-  div#bg_curve1_left
-  {
+  div#bg_curve1_left {
     width: 400px;
     height: 80px;
     background-color: #8b0000;
@@ -1117,8 +1094,7 @@ export default {
     -o-border-top-left-radius: 30px;
   }
 
-  div#right, div#screen, div#bigbluebutton, div#barbutton1, div#barbutton2, div#cross
-  {
+  div#right, div#screen, div#bigbluebutton, div#barbutton1, div#barbutton2, div#cross {
     display: none;
   }
 
