@@ -3,40 +3,40 @@
     <div class="form-control" :class="{ invalid: !firstName.isValid }">
       <label for="firstname">Firstname</label>
       <input
-        type="text"
-        id="firstname"
-        v-model.trim="firstName.val"
-        @blur="clearValidity('firstName')"
+          type="text"
+          id="firstname"
+          v-model.trim="firstName.val"
+          @blur="clearValidity('firstName')"
       />
       <p v-if="!firstName.isValid">Firstname must not be empty.</p>
     </div>
     <div class="form-control" :class="{ invalid: !lastName.isValid }">
       <label for="lastname">Lastname</label>
       <input
-        type="text"
-        id="lastname"
-        v-model.trim="lastName.val"
-        @blur="clearValidity('lastName')"
+          type="text"
+          id="lastname"
+          v-model.trim="lastName.val"
+          @blur="clearValidity('lastName')"
       />
       <p v-if="!lastName.isValid">Lastname must not be empty.</p>
     </div>
     <div class="form-control" :class="{ invalid: !description.isValid }">
       <label for="description">Description</label>
       <textarea
-        id="description"
-        rows="5"
-        v-model.trim="description.val"
-        @blur="clearValidity('description')"
+          id="description"
+          rows="5"
+          v-model.trim="description.val"
+          @blur="clearValidity('description')"
       ></textarea>
       <p v-if="!description.isValid">Description must not be empty.</p>
     </div>
     <div class="form-control" :class="{ invalid: !rate.isValid }">
       <label for="rate">Hourly Rate</label>
       <input
-        type="number"
-        id="rate"
-        v-model.number="rate.val"
-        @blur="clearValidity('rate')"
+          type="number"
+          id="rate"
+          v-model.number="rate.val"
+          @blur="clearValidity('rate')"
       />
       <p v-if="!rate.isValid">Rate must be greater than 0.</p>
     </div>
@@ -44,31 +44,31 @@
       <h3>Areas of Expertise</h3>
       <div>
         <input
-          type="checkbox"
-          id="frontend"
-          value="frontend"
-          v-model="areas.val"
-          @blur="clearValidity('areas')"
+            type="checkbox"
+            id="frontend"
+            value="frontend"
+            v-model="areas.val"
+            @blur="clearValidity('areas')"
         />
         <label for="frontend">Frontend Development</label>
       </div>
       <div>
         <input
-          type="checkbox"
-          id="backend"
-          value="backend"
-          v-model="areas.val"
-          @blur="clearValidity('areas')"
+            type="checkbox"
+            id="backend"
+            value="backend"
+            v-model="areas.val"
+            @blur="clearValidity('areas')"
         />
         <label for="backend">Backend Development</label>
       </div>
       <div>
         <input
-          type="checkbox"
-          id="career"
-          value="career"
-          v-model="areas.val"
-          @blur="clearValidity('areas')"
+            type="checkbox"
+            id="career"
+            value="career"
+            v-model="areas.val"
+            @blur="clearValidity('areas')"
         />
         <label for="career">Career Advisory</label>
       </div>
