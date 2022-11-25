@@ -24,7 +24,8 @@
           <div id="buttontopPicture2"></div>
         </div>
         <div id="picture">
-          <img :src="fnFetchImage(data.id)" :alt="data.name" height="170"/>
+          <img v-if="tab === true" :src="fnFetchImage(data.id)" :alt="data.name" height="170"/>
+          <span v-else-if="tab === false">여기다가 육각 모델</span>
         </div>
         <div id="buttonbottomPicture"></div>
         <div id="speakers">
@@ -38,13 +39,13 @@
       <div id="barbutton1"></div>
       <div id="barbutton2"></div>
       <div id="cross">
-        <div id="leftcross">
+        <div id="leftcross" @click.prevent.stop="()=>tab = true">
           <div id="leftT"></div>
         </div>
         <div id="topcross">
           <div id="upT"></div>
         </div>
-        <div id="rightcross">
+        <div id="rightcross" @click.prevent.stop="()=>tab = false">
           <div id="rightT"></div>
         </div>
         <div id="midcross">
@@ -58,25 +59,27 @@
     <div id="right">
       <div id="stats">
         <strong>Name:</strong> {{ data.name }}<br/>
-        <strong>Type:</strong> Water<br/>
-        <strong>Height:</strong> 2'072''<br/>
-        <strong>Weight:</strong> 43.2 lbs.<br/><br/>
-        <strong>The duck Pokemon</strong><br/>
-        Uses mysterious powers to perform various attacks.
+        <strong>Type:</strong> {{ data.types?.[0]?.type.name }}<br/>
+        <strong>Height:</strong> {{ data.height / 10 }} m<br/>
+        <strong>Weight:</strong> {{ (data.weight * 100) / 1000 }} Kg <br/><br/>
+        <strong>Basic Moves: </strong>
+        <section style="display: grid;">
+          <div v-for="(item, index) in data.abilities" :key="index"
+               :style="`grid-colum:${index/4}; grid-row:${index/index}`">
+            {{ item.ability.name }}
+          </div>
+        </section>
       </div>
       <div id="blueButtons1">
-        <div class="blueButton"></div>
-        <div class="blueButton"></div>
-        <div class="blueButton"></div>
-        <div class="blueButton"></div>
-        <div class="blueButton"></div>
-      </div>
-      <div id="blueButtons2">
-        <div class="blueButton"></div>
-        <div class="blueButton"></div>
-        <div class="blueButton"></div>
-        <div class="blueButton"></div>
-        <div class="blueButton"></div>
+        <strong> Save your favorite pokemon</strong>
+        {{ first }}
+        <section>
+          <div class="blueButton" @click.prevent.stop="fnSetFavorite(1)"></div>
+          <div class="blueButton" @click.prevent.stop="fnSetFavorite(2)"></div>
+          <div class="blueButton" @click.prevent.stop="fnSetFavorite(3)"></div>
+          <div class="blueButton" @click.prevent.stop="fnSetFavorite(4)"></div>
+          <div class="blueButton" @click.prevent.stop="fnSetFavorite(5)"></div>
+        </section>
       </div>
       <div id="miniButtonGlass4"></div>
       <div id="miniButtonGlass5"></div>
@@ -91,14 +94,15 @@
       <div id="bg_curve1_right"></div>
       <div id="bg_curve2_right"></div>
       <div id="curve1_right"></div>
-      <div id="curve2_right"> ></div>
+      <div id="curve2_right"></div>
     </div>
   </div>
 </template>
 
 <script>
 import {useRouter} from 'vue-router'
-import {getCurrentInstance, reactive, toRefs} from "vue";
+import {computed, getCurrentInstance, reactive, toRefs} from "vue";
+import {useStore} from "vuex";
 
 export default {
   name: 'components-views-pokedex',
@@ -113,9 +117,11 @@ export default {
   },
   setup(props) {
     const {proxy} = getCurrentInstance();
-
+    const {getters} = useStore();
     const state = reactive({
-      image: ''
+      image: '',
+      tab: true,
+      first: computed(() => getters['favorite/getFirst'])
     })
 
 
@@ -128,13 +134,24 @@ export default {
       proxy.$emit('another', cmd)
     }
 
+    const fnSetFavorite = index => {
+      let arr = ['First', 'Second', 'Third', 'Fourth', 'Fifth']
+      let param = arr[index - 1]
+      proxy.$store.dispatch(`favorite/async${param}`,{index: props.data.id})
+    }
 
-    console.log('props:: ', props.data)
+    const fnGetFavorite = index => {
+      let arr = ['First', 'Second', 'Third', 'Fourth', 'Fifth']
+      let param = arr[index - 1]
+    }
+
+    console.log(props.data)
 
     return {
       ...toRefs(state),
       fnFetchImage,
-      fnGetAnother
+      fnGetAnother,
+      fnSetFavorite
     }
   }
 

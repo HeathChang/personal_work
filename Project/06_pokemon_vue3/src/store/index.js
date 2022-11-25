@@ -1,6 +1,7 @@
 import { createStore } from 'vuex'
 import layout from '@/store/modules/layout/index'
 import fetched from '@/store/modules/fetched/index'
+import favorite from '@/store/modules/favorite/index'
 import user from '@/store/modules/user/index'
 
 export default createStore({
@@ -10,6 +11,7 @@ export default createStore({
   modules: {
     layout,
     user,
-    fetched
+    fetched,
+    favorite
   }
 })
