@@ -72,13 +72,12 @@
       </div>
       <div id="blueButtons1">
         <strong> Save your favorite pokemon</strong>
-        {{ first }}
         <section>
-          <div class="blueButton" @click.prevent.stop="fnSetFavorite(1)"></div>
-          <div class="blueButton" @click.prevent.stop="fnSetFavorite(2)"></div>
-          <div class="blueButton" @click.prevent.stop="fnSetFavorite(3)"></div>
-          <div class="blueButton" @click.prevent.stop="fnSetFavorite(4)"></div>
-          <div class="blueButton" @click.prevent.stop="fnSetFavorite(5)"></div>
+          <div class="blueButton" @click.prevent.stop="fnSetFavorite(1)">{{ First }}</div>
+          <div class="blueButton" @click.prevent.stop="fnSetFavorite(2)">{{ Second }}</div>
+          <div class="blueButton" @click.prevent.stop="fnSetFavorite(3)">{{ Third }}</div>
+          <div class="blueButton" @click.prevent.stop="fnSetFavorite(4)">{{ Fourth }}</div>
+          <div class="blueButton" @click.prevent.stop="fnSetFavorite(5)">{{ Fifth }}</div>
         </section>
       </div>
       <div id="miniButtonGlass4"></div>
@@ -121,7 +120,11 @@ export default {
     const state = reactive({
       image: '',
       tab: true,
-      first: computed(() => getters['favorite/getFirst'])
+      First: computed(() => getters['favorite/getFirst']),
+      Second: computed(() => getters['favorite/getSecond']),
+      Third: computed(() => getters['favorite/getThird']),
+      Fourth: computed(() => getters['favorite/getFourth']),
+      Fifth: computed(() => getters['favorite/getFifth']),
     })
 
 
@@ -137,7 +140,10 @@ export default {
     const fnSetFavorite = index => {
       let arr = ['First', 'Second', 'Third', 'Fourth', 'Fifth']
       let param = arr[index - 1]
-      proxy.$store.dispatch(`favorite/async${param}`,{index: props.data.id})
+      //비어있을때 리셋 ; 아닐때 채우기
+      proxy.$Util.isEmpty(state[`${param}`]) === true || props.data.id !== state[`${param}`] ?
+          proxy.$store.dispatch(`favorite/async${param}`, {index: props.data.id}):
+          proxy.$store.dispatch(`favorite/async${param}`, {index: -1})
     }
 
     const fnGetFavorite = index => {

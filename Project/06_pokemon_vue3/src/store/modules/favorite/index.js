@@ -7,33 +7,48 @@ export const state = {
 }
 export const getters = {
     getFirst(state) {
+        if(state.firstFavorite === -1) return;
         return state.firstFavorite
+    },
+    getSecond(state) {
+        if(state.secondFavorite === -1) return;
+        return state.secondFavorite
+    },
+    getThird(state) {
+        if(state.thirdFavorite === -1) return;
+        return state.thirdFavorite
+    },
+    getForth(state) {
+        if(state.fourthFavorite === -1) return;
+        return state.fourthFavorite
+    },
+    getFifth(state) {
+        if(state.fifthFavorite === -1) return;
+        return state.fifthFavorite
     },
 }
 
 
 export const mutations = {
     setFirst(state, {index = -1}) {
-        console.log(22, index)
         state.firstFavorite = index
     },
     setSecond(state, {index = -1}) {
-        state.secondFavorite = -1
+        state.secondFavorite = index
     },
     setThird(state, {index = -1}) {
-        state.thirdFavorite = -1
+        state.thirdFavorite = index
     },
     setFourth(state, {index = -1}) {
-        state.fourthFavorite = -1
+        state.fourthFavorite = index
     },
     setFifth(state, {index = -1}) {
-        state.fifthFavorite = -1
+        state.fifthFavorite = index
     },
 
 }
 export const actions = {
     asyncFirst({commit}, {index = -1}) {
-        console.log('async', index)
         commit('setFirst', {index})
     },
     asyncSecond({commit}, {index = -1}) {
