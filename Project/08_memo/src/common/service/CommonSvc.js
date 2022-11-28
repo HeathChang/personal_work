@@ -18,6 +18,19 @@ class CommonSvc extends ServiceExec {
       }
     )
   }
+
+  /**
+   * 파일 업로드
+   * @param file {string} 파일
+   */
+  fetchData(params = {}) {
+    return this.multiPost('', params).then(
+        response => {
+          return response.data
+        }
+    )
+  }
+
 }
 
 export default new CommonSvc()

@@ -29,7 +29,7 @@
 
 <script>
 import {useRouter} from 'vue-router'
-import {getCurrentInstance} from 'vue'
+import {getCurrentInstance, onMounted, reactive, toRefs} from 'vue'
 import ComponentViewFitlerTodo from "@/components/views/filter/todo";
 
 const sample = [
@@ -49,13 +49,23 @@ export default {
   description: '메인 인덱스',
   setup() {
     const {proxy} = getCurrentInstance()
-    const router = useRouter()
+    const state = reactive({
+      fetchedList: []
+    })
+    onMounted(() => {
+      fnMountedData()
+    })
 
-    console.log(123, sample)
+    const fnMountedData = async () => {
+      console.log('onMouted')
+      const res = await proxy.$MemoSvc.fetchData()
+      // console.log(res)
+    }
+
 
     const fnStatus = status => {
       console.log(status)
-      switch(status){
+      switch (status) {
         case 1:
           return 'red';
         case 2:
@@ -70,6 +80,7 @@ export default {
     }
 
     return {
+      ...toRefs(state),
       sample,
       fnStatus
     }
@@ -96,18 +107,21 @@ li {
   padding: 1rem;
 }
 
-.title{
+.title {
 }
 
 .red {
   color: red
 }
-.orange{
+
+.orange {
   color: orange;
 }
+
 .green {
   color: green
 }
+
 .blue {
   color: blue
 }
