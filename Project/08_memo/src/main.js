@@ -22,7 +22,7 @@ import axios from 'axios'
 import '@/common/utils/nativeCall'
 
 import CommonSvc from '@/common/service/CommonSvc'
-import MemoSvc from "@/common/service/MemoSvc";
+import MemoSvc from '@/common/service/MemoSvc'
 
 
 /** swiper **/

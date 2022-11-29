@@ -6,28 +6,25 @@ import ServiceExec from '@/common/utils/ServiceExec'
  */
 
 const FIREBASE_DOMAIN = 'https://memoapp-47a43-default-rtdb.asia-southeast1.firebasedatabase.app'
+// const FIREBASE_DOMAIN = 'https://foonea-21ee6-default-rtdb.firebaseio.com'
 
 
 // class MemoSvc extends ServiceExec {
-class MemoSvc{
+class MemoSvc extends ServiceExec {
 
     /**
      * 파일 업로드
      */
     fetchData(params = {}) {
-        //api 주소
-        fetch(`${FIREBASE_DOMAIN}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        }).then(res => console.log(res))
-
-        // return this.multiPost(FIREBASE_DOMAIN, params).then(
-        //     response => {
-        //         return response.data
-        //     }
-        // )
+        return this.get(`${FIREBASE_DOMAIN}/memo.json`, params).then(response => {
+            if ( response.status !== 200 ) {
+                throw new Error('Could not fetch Memo')
+            }
+            return {
+                status: response.status,
+                data: response.data
+            }
+        })
     }
 
 }

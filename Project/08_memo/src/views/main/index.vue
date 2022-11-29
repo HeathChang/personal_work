@@ -6,19 +6,30 @@
     <section>
       <base-card>
         <div class="controls">
-          <base-button mode="outline">Refresh</base-button>
-          <base-button link to="/register">Register New Todo</base-button>
+          <base-button mode="outline" @click="fnRefresh">Refresh</base-button>
+          <base-button @click="fnTabOpen">Register New Todo ({{isTabOpen}})</base-button>
         </div>
         <ul>
-          <li v-for="(item, index) in sample" :key="index">
-            <h3 class="title" :class="fnStatus(item.priority)">{{ item.title }}</h3>
-            <h4>{{ item.content }}</h4>
+          <section v-show="isTabOpen === true">
+            <base-card>
+              <coach-form @save-data="fnRegister"></coach-form>
+            </base-card>
+          </section>
+
+
+          <li v-for="(item, index) in fetchedList" :key="index">
+            <h3 class="title" :class="fnStatus(item.priority)" :style="item.isDone === true ?  'text-decoration: line-through' : ''">{{ item.title }}</h3>
+            <h4 :style="item.isDone === true ?  'text-decoration: line-through' : ''">{{ item.content }}</h4>
             <div>
-              <base-badge v-for="area in item?.area" :key="area" :type="area" :title="area">하이</base-badge>
+              <base-badge :type="item.area" :area="item.area"></base-badge>
             </div>
             <div class="actions">
               <base-button mode="outline">Delete</base-button>
-              <base-button>Done</base-button>
+              <base-button>
+                {{
+                  item.isDone === true ?  'Un-Done' : 'Done'
+                }}
+              </base-button>
             </div>
           </li>
         </ul>
@@ -31,26 +42,19 @@
 import {useRouter} from 'vue-router'
 import {getCurrentInstance, onMounted, reactive, toRefs} from 'vue'
 import ComponentViewFitlerTodo from "@/components/views/filter/todo";
+import CoachForm from "@/components/views/filter/register";
 
-const sample = [
-  {
-    title: '숨쉬기',
-    content: '가만히 앉아서 숨을 쉽니다.',
-    priority: 3,
-    area: ['morning', 'afternoon', 'evening'],
-  }
-
-]
 
 export default {
   name: 'main-index',
-  components: {ComponentViewFitlerTodo},
+  components: {CoachForm, ComponentViewFitlerTodo},
 
   description: '메인 인덱스',
   setup() {
     const {proxy} = getCurrentInstance()
     const state = reactive({
-      fetchedList: []
+      fetchedList: [],
+      isTabOpen: false
     })
     onMounted(() => {
       fnMountedData()
@@ -59,8 +63,18 @@ export default {
     const fnMountedData = async () => {
       console.log('onMouted')
       const res = await proxy.$MemoSvc.fetchData()
-      // console.log(res)
+      state.fetchedList = {...res.data}
     }
+
+    const fnRefresh = () => {
+      state.fetchedList = [];
+      fnMountedData();
+    }
+
+    const fnTabOpen = () => {
+      state.isTabOpen = !state.isTabOpen
+    }
+
 
 
     const fnStatus = status => {
@@ -79,10 +93,16 @@ export default {
 
     }
 
+    const fnRegister =() => {
+
+    }
+
     return {
       ...toRefs(state),
-      sample,
-      fnStatus
+      fnStatus,
+      fnRefresh,
+      fnTabOpen,
+      fnRegister
     }
   }
 }

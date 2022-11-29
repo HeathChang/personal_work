@@ -1,15 +1,36 @@
 <template>
-  <span class="badge" :class="type">
-    {{ text }}
-  </span>
+  <section class="filter">
+    <span class="badge" :class="item" v-for="(item, index) in text" :key="index">
+    {{ item }}
+    </span>
+  </section>
 </template>
 
 <script>
+import {onMounted, reactive, toRefs} from "vue";
+
 export default {
-  props: ['type', 'title'],
-  computed: {
-    text() {
-      return this.title.toUpperCase();
+  props: ['type', 'area'],
+  setup(props) {
+    const state = reactive({
+      text: []
+    })
+
+
+    onMounted(() => fnAreaToStatus())
+
+    const fnAreaToStatus = () => {
+      let type = props.type.split(",").sort();
+      const status = ['Morning', 'Afternoon', 'Evening']
+      type.filter((item, index) => {
+        state.text.push(status[parseInt(item)])
+      })
+      console.log(state.text)
+    }
+
+    return {
+      ...toRefs(state),
+
     }
   }
 }
@@ -25,17 +46,17 @@ export default {
   margin-right: 0.5rem;
 }
 
-.morning {
+.Morning {
   background-color: #3d008d;
   color: white;
 }
 
-.afternoon {
+.Afternoon {
   background-color: #71008d;
   color: white;
 }
 
-.evening {
+.Evening {
   background-color: #8d006e;
   color: white;
 }
