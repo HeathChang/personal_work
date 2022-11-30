@@ -119,8 +119,8 @@ export default {
     }
 
     const fnConfirm = index => {
-      // valid.value.$touch()
-      // if ( valid.value.$invalid ) return
+      valid.value.$touch()
+      if ( valid.value.$invalid ) return
       const _letter = parseInt(index) - 1
       let _a = 0
       let _b = 0
