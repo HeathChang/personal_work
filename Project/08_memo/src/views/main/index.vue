@@ -95,6 +95,7 @@ export default {
 
     const fnRegister = (formData) => {
       console.log("formData:: ", formData)
+
     }
 
     return {

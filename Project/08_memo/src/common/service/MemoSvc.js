@@ -27,6 +27,19 @@ class MemoSvc extends ServiceExec {
         })
     }
 
+    postData(params = {} ) {
+        return this.post(`${FIREBASE_DOMAIN}/memo.json`, params).then(response => {
+            if ( response.status !== 200 ) {
+                throw new Error('Could not fetch Memo')
+            }
+            return {
+                status: response.status,
+                data: response.data
+            }
+        })
+    }
+
+
 }
 
 export default new MemoSvc()
