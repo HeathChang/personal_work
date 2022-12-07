@@ -23,7 +23,7 @@
           <div id="buttontopPicture1"></div>
           <div id="buttontopPicture2"></div>
         </div>
-        <div id="picture">
+        <div id="picture" style="align-self: center">
           <img v-if="tab === true" :src="fnFetchImage(data.id)" :alt="data.name" height="170"/>
           <span v-else-if="tab === false">여기다가 육각 모델</span>
         </div>
