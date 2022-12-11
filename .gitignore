@@ -111,3 +111,18 @@ dist
 #API Keys
 gitIgnore File/*.txt
 gitIgnore File/*.js
+
+#gitIgnore from previous
+.rej
+*.rej
+*.orig
+temp/
+dist/
+versions/
+*.zip
+/bin
+package-lock.json
+yarn.lock
+yarn-error.log
+.DS_Store
+deploy.sh
