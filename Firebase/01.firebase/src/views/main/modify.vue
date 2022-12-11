@@ -23,6 +23,8 @@ export default {
     onMounted(() => {
       // state.id = proxy.$route.params.id
       // fnMountData()
+
+      console.log('proxy:: ', proxy);
     })
 
     // const fnMountData = async () => {

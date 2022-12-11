@@ -1,10 +1,8 @@
 const solution = (param, ans) => {
 	const result = '';
-
-
-	console.log('final should be:: ', ans)
-	console.log(result)
+	
 	return result
 }
 
-solution()
+const result = solution()
+console.log('result:: ', result)
