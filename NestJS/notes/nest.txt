@@ -1,0 +1,7 @@
+Thu Dec 22, 2022
+1. nest new project-name-in-lowercase --skip-git
+=> nest new automatically include .git folder which screw things up if you scaffold inside of existing git repo.
+=> to avoid, use --skip-git
+
+2. when the file is readonly => sudo chmod -R 777 fileDirectory
+=> 파일이름 파일이 모두에게 권한 생김
