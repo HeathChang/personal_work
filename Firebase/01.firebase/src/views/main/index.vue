@@ -71,6 +71,7 @@ export default {
       const q = await firebase.query(proxy.$todoCollection)
       const data = await firebase.getDocs(q)
       data.docs.map(item => {
+        //item.id(UID)에 대한 데이터는 item.data()로 가지고 와야함.
         state.fetchedData.push({...item.data(), id: item.id})
       })
     }
