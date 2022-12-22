@@ -7,6 +7,12 @@ import {request} from "express";
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
+  @Get()
+  // 경로중에 / 는 생략할 수 있다.
+  basic(): string {
+    return 'Example';
+  }
+
   @Get('/hello')
   // 경로중에 / 는 생략할 수 있다.
   getHello(): string {
