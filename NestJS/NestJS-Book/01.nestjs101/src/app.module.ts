@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { ApiController } from './api/api.controller';
+// import { EmailService } from './users/email.service';
 
 @Module({
   imports: [UsersModule],
