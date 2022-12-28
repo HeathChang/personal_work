@@ -15,8 +15,6 @@ export class EmailService {
         this.transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'hyunsoo1260@gmail.com',
-                pass: 'impuhkrdndcczqzt'
                 // user:  'G-MAIL 이메일 주소',
                 // pass: 'G-MAIL 이메일 비번 > 2차 비번'
                 // ㄱnodemailer는 간단한 이메일 전송 테스트만을 위해 작성되었기 때문에, 2단계 인증 활성화 및 앱 비밀번호를 진행해야됨
