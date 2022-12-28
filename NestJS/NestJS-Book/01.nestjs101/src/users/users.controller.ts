@@ -17,7 +17,6 @@ export class UsersController {
   async createUser(@Body() dto: CreateUserDto): Promise<any> {
     // return this.usersService.create(createUserDto);
     const { name , email , password } = dto;
-    // return `유저를 생성했습니다. ${JSON.stringify(dto)}`
     const res = await this.usersService.createUser(name, email, password);
     console.log('createUser::: ',res)
   }
@@ -32,22 +31,30 @@ export class UsersController {
   // curl -X POST http://localhost:3000/users -H "Content-Type: application/json" -d '{"name":"example name", "email":"example@gmail.com"}'
   // 유저를 생성했습니다. {"name":"example name","email":"example@gmail.com"}%
 
+  // Description:: 이메일 인증
+  // CMD:: curl -X POST  http://localhost:3000/users/email-verify -H "Content-Type: application/json" -d '{"name": "name_example", "email":"email@example.com","password":"1234"}'
   @Post('/email-verify')
   async verifyEmail(@Query() dto: VerifyEmailDto): Promise<string>{
-    console.log('verify email:: ', dto)
-    return;
+    const { signupVerifyToken } = dto;
+    console.log('dto check:: ', JSON.stringify(dto))
+    return await this.usersService.verifyEmail(signupVerifyToken);
   }
 
+
+  // Description:: 로그인
+  // CMD:: curl -X POST  http://localhost:3000/users/login -H "Content-Type: application/json" -d '{"name": "name_example", "email":"email@example.com","password":"1234"}
   @Post('/login')
-  login(@Body() dto: UserLoginDto): Promise<string> {
-    console.log(dto)
-    return;
+  async login(@Body() dto: UserLoginDto): Promise<string> {
+    const { email, password } = dto;
+    return await this.usersService.login(email, password)
   }
 
+  // Description:: 유저 정보 조회
+  // CMD:: curl -X POST  http://localhost:3000/users/3 -H
   @Get('/:id')
   async getUserInfo(@Param('id') userId: string): Promise<UserInfo> {
     console.log('getUserInfo::: ', userId)
-    return;
+    return await this.usersService.getUserInfo(userId)
   }
 
 
