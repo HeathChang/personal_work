@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import * as uuid from "uuid"
-import {EmailService} from "./email.service";
+import {EmailService} from "../email/email.service";
 import {UserInfo} from "./interface/user-info";
 
 
@@ -34,7 +34,6 @@ export class UsersService {
     // 2.  JWT 발급
     // return '';
     throw new Error('Method not implemented.')
-
   }
   async getUserInfo(userId: string): Promise<UserInfo>{
     // TODO
@@ -42,7 +41,6 @@ export class UsersService {
     // 2. UserInfo 타입으로 응답
     // return '';
     throw new Error('Method not implemented.')
-
   }
 
   private saveUser(name: string, email: string, password: string, signupVerifyToken: string){

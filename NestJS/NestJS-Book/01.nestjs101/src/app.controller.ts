@@ -2,10 +2,11 @@ import { Request } from 'express';
 import { Controller, Get, Req, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import {request} from "express";
+import {EmailService} from "./email/email.service";
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService, private readonly emailService: EmailService) {}
 
   @Get()
   // 경로중에 / 는 생략할 수 있다.
@@ -15,8 +16,10 @@ export class AppController {
 
   @Get('/hello')
   // 경로중에 / 는 생략할 수 있다.
-  getHello(): string {
-    return this.appService.getHello();
+  getHello(): any {
+    console.log('Hello::: ', process.env.DATABASE_HOST)
+    // return this.appService.getHello();
+    return process.env.DATABASE_HOST
   }
 
   //와일드카드: 아래와 같이 와일드 카드를 사용해서 라우팅 패스를 작성할 수 있다.

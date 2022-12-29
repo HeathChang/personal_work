@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import  Mail = require('nodemailer/lib/mailer');
 import * as nodemailer from 'nodemailer'
+import * as process from "process";
 
 
 interface EmailOptions  {
@@ -17,10 +18,13 @@ export class EmailService {
             auth: {
                 // user:  'G-MAIL 이메일 주소',
                 // pass: 'G-MAIL 이메일 비번 > 2차 비번'
-                // ㄱnodemailer는 간단한 이메일 전송 테스트만을 위해 작성되었기 때문에, 2단계 인증 활성화 및 앱 비밀번호를 진행해야됨
+                user:  process.env.GOOGLE_EMAIL,
+                pass: process.env.GOOGLE_PW
+                // nodemailer는 간단한 이메일 전송 테스트만을 위해 작성되었기 때문에, 2단계 인증 활성화 및 앱 비밀번호를 진행해야됨
             }
         })
     }
+
 
     async sendMemberJoinVerification(emailAddress: string, signupVerifyToken: string){
         const baseUrl = 'http://localhost: 3000'
