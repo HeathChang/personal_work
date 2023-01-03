@@ -11,11 +11,6 @@ import {ConfigModule} from "@nestjs/config";
 import emailConfig from "./config/emailConfig";
 import { validationSchema } from './config/validationSchema';
 
-// const envFilePath =
-//     (process.env.NODE_ENV === 'production') ? './env/.production.env'
-//         : (process.env.NODE_ENV === 'stage') ? './env/.stage.env' : './env/.development.env'
-
-
 @Module({
     // Nest에서 제공되는 Config 패키지
     // forRoot 매서드는 Dynamic Module을 리턴하는 정적 메서드

@@ -30,7 +30,8 @@ export class EmailService {
     // }
 
     constructor(
-        @Inject(emailConfig.KEY) private config: ConfigType<typeof emailConfig> // 주입받을 떄는 @Inject decorator의 토큰을 앞서 만든 ConfigFactory의 KEY 인 'email' 문자 열로 넣어주기
+        @Inject(emailConfig.KEY) private config: ConfigType<typeof emailConfig>
+        // 주입받을 떄는 @Inject decorator의 토큰을 앞서 만든 ConfigFactory의 KEY 인 'email' 문자 열로 넣어주기
     ) {
         this.transporter = nodemailer.createTransport({
             service: config.service,
@@ -41,7 +42,7 @@ export class EmailService {
         })
     }
 
-ß
+
     async sendMemberJoinVerification(emailAddress: string, signupVerifyToken: string) {
         const baseUrl = this.config.baseUrl
         const url = `${baseUrl}/users/email-verify?signupVerifyToken=${signupVerifyToken}`;

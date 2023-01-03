@@ -10,6 +10,15 @@ import {UserInfo} from "./interface/user-info";
 export class UsersService {
   constructor(private emailService: EmailService) {}
 
+
+  findAll(offset, limit) {
+    return `This action returns all users offset:: ${offset} & limit:: ${limit}`;
+  }
+
+  findOne(id: number) {
+    return `This action returns a #${id} user`;
+  }
+
   private checkUserExists(email: string){
     return false;
   }
@@ -51,16 +60,6 @@ export class UsersService {
     return this.emailService.sendMemberJoinVerification(email,signupVerifyToken)
   }
 
-
-  //   return 'This action adds a new user';
-  // }
-  // findAll() {
-  //   return `This action returns all users`;
-  // }
-  //
-  // findOne(id: number) {
-  //   return `This action returns a #${id} user`;
-  // }
   //
   // update(id: number, updateUserDto: UpdateUserDto) {
   //   return `This action updates a #${id} user`;

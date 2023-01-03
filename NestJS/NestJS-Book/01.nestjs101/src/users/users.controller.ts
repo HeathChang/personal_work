@@ -1,4 +1,17 @@
-import {Controller, Get, Post, Body, Patch,Header, Param, Delete, BadRequestException, Redirect, Query} from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Header,
+  Param,
+  Delete,
+  BadRequestException,
+  Redirect,
+  Query,
+  ParseIntPipe, HttpCode, HttpStatus
+} from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -13,7 +26,7 @@ export class UsersController {
 
 
 
-  @Post()
+  @Post('/create')
   async createUser(@Body() dto: CreateUserDto): Promise<any> {
     // return this.usersService.create(createUserDto);
     const { name , email , password } = dto;
@@ -21,10 +34,6 @@ export class UsersController {
     console.log('createUser::: ',res)
   }
 
-  // @Get()
-  // findAll() {
-  //   return this.usersService.findAll();
-  // }
 
 
   // 결과 예시 curl 로 구현
@@ -49,6 +58,25 @@ export class UsersController {
     return await this.usersService.login(email, password)
   }
 
+
+
+
+
+  // @Get('/origin')
+  // findAll()  {
+  //   return this.usersService.findAll();
+  // }
+  //
+  //
+  // @Get('/origin/:id')
+  // findOne(@Param('id', new ParseIntPipe({errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE})) id: number) {
+  //   // if(+id < 1){
+  //   //   //문자로 받은 id앞에 +붙여주면, 숫자로 변환
+  //   //   throw new BadRequestException('id값은 0보다 큰 값이어야 합니다.')
+  //   // }
+  //   return this.usersService.findOne(+id);
+  // }
+
   // Description:: 유저 정보 조회
   // CMD:: curl -X POST  http://localhost:3000/users/3 -H
   @Get('/:id')
@@ -58,14 +86,6 @@ export class UsersController {
   }
 
 
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   if(+id < 1){
-  //     //문자로 받은 id앞에 +붙여주면, 숫자로 변환
-  //     throw new BadRequestException('id값은 0보다 큰 값이어야 합니다.')
-  //   }
-  //   return this.usersService.findOne(+id);
-  // }
   //
   // //커스텀 Header: @Header데커레이터를 사용 (혹은, res.header()로 직접 설정 가능)
   // @Header('key', "value")
