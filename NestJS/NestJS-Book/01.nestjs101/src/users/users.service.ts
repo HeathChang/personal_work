@@ -19,6 +19,10 @@ export class UsersService {
     return `This action returns a #${id} user`;
   }
 
+  create(createUserDto) {
+    return `${JSON.stringify(createUserDto)}`;
+  }
+
   private checkUserExists(email: string){
     return false;
   }

@@ -1,5 +1,16 @@
 import {Request} from 'express';
-import {Controller, Get, Req, Post, Param, ParseIntPipe, HttpStatus, Query, DefaultValuePipe} from '@nestjs/common';
+import {
+    Controller,
+    Get,
+    Req,
+    Post,
+    Param,
+    ParseIntPipe,
+    HttpStatus,
+    Query,
+    DefaultValuePipe,
+    Body
+} from '@nestjs/common';
 import {AppService} from './app.service';
 import {request} from "express";
 import {EmailService} from "./email/email.service";
@@ -7,6 +18,8 @@ import {EmailService} from "./email/email.service";
 // Nest가 제공하는 ConfigModule은 .env파일에서 읽어온 환경 변수 값을 가져오는 provider인 ConfigService가 있음.
 import {ConfigService} from "@nestjs/config";
 import {UsersService} from "./users/users.service";
+import {ValidationPipe} from "./pipe/validation/validation.pipe";
+import {CreateUserDto} from "./users/dto/create-user.dto";
 
 @Controller()
 export class AppController {
@@ -20,7 +33,7 @@ export class AppController {
 
     @Get('/db-host-config')
     getDatabaseHostFromConfigService(): string {
-      return this.configService.get('DATABASE_HOST')
+        return this.configService.get('DATABASE_HOST')
     }
 
     //와일드카드: 아래와 같이 와일드 카드를 사용해서 라우팅 패스를 작성할 수 있다.
@@ -49,8 +62,8 @@ export class AppController {
     findAll(
         @Query('offset', new DefaultValuePipe(0), ParseIntPipe) offset: number,
         @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit: number
-    )  {
-        return this.usersService.findAll(offset,limit);
+    ) {
+        return this.usersService.findAll(offset, limit);
     }
 
     // CMD:: curl -X GET http://localhost:3000/origin/22
@@ -62,6 +75,21 @@ export class AppController {
         //   throw new BadRequestException('id값은 0보다 큰 값이어야 합니다.')
         // }
         return this.usersService.findOne(+id);
+    }
+
+    // CMD:: curl -X GET http://localhost:3000/origin/pipe/23
+    // RESULT:: This action returns a #22 user%
+    // CONSOLE:: { metatype: [Function: Number], type: 'param', data: 'id' }
+    @Get('/origin/pipe/:id')
+    findOne_validationPipe(@Param('id', ValidationPipe) id: number) {
+        return this.usersService.findOne(+id);
+    }
+
+    // CMD:: curl -X GET http://localhost:3000/origin/pipe/23
+    // RESULT:: This action returns a #22 user%
+    @Post('/origin/create')
+    create(@Body(ValidationPipe) createUserDto: CreateUserDto) {
+        return this.usersService.create(createUserDto)
     }
 
 

@@ -29,7 +29,6 @@ export class SerializeInterceptor implements NestInterceptor {
                 // still using an instance of User entity
                 // => Until here, data is User entity
 
-
                 //take user entity and turn it into user instant
                 return plainToClass(this.dto, data, {
                     excludeExtraneousValues: true, // ensures only values that has expose() decorator will be change to plainJSON
