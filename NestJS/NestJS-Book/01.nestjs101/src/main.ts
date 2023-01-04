@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { ValidationPipe } from "./pipe/validation/validation.pipe";
+// import { ValidationPipe } from "./pipe/validation/validation.pipe";
+import { ValidationPipe } from "@nestjs/common";
 import * as dotenv from 'dotenv';
 import * as path from 'path';
 
@@ -16,8 +17,13 @@ import * as path from 'path';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  // ValidationPipe를 모든 핸들러에 일일이 지정하지 않고, 전역으로 설정하려면 부트스트랩 과정에서 적용
-  app.useGlobalPipes(new ValidationPipe())
+  // ValidationPipe를 모든 핸들러에 일일이 지정하지 않고, 전역으로 설정하려면 부트스트랩 과정에서 적용 => nest에 이미 validation-pipe가 있기 때문에 직접 만들필요 X
+  // app.useGlobalPipes(new ValidationPipe())
+
+  // class-transformer를 사용하기 위해서는 transform: true값 지정
+  app.useGlobalPipes(new ValidationPipe({
+    transform: true
+  }))
   await app.listen(3000);
 }
 bootstrap();

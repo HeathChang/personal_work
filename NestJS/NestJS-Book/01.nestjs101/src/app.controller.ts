@@ -18,7 +18,9 @@ import {EmailService} from "./email/email.service";
 // Nest가 제공하는 ConfigModule은 .env파일에서 읽어온 환경 변수 값을 가져오는 provider인 ConfigService가 있음.
 import {ConfigService} from "@nestjs/config";
 import {UsersService} from "./users/users.service";
-import {ValidationPipe} from "./pipe/validation/validation.pipe";
+// import {ValidationPipe} from "./pipe/validation/validation.pipe";
+import { ValidationPipe } from "@nestjs/common";
+
 import {CreateUserDto} from "./users/dto/create-user.dto";
 
 @Controller()
