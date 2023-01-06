@@ -4,11 +4,21 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import * as uuid from "uuid"
 import {EmailService} from "../email/email.service";
 import {UserInfo} from "./interface/user-info";
+import {InjectRepository} from "@nestjs/typeorm";
+import {UserEntity} from "./entities/user.entity";
+import {Repository} from "typeorm";
+import { ulid } from "ulid";
 
 
 @Injectable()
 export class UsersService {
-  constructor(private emailService: EmailService) {}
+  constructor(
+      private emailService: EmailService,
+      @InjectRepository(UserEntity) private usersRepository: Repository<UserEntity> // UsersService에 유저 저장소 주입
+  ) {}
+
+
+
 
 
   findAll(offset, limit) {
@@ -23,11 +33,15 @@ export class UsersService {
     return `${JSON.stringify(createUserDto)}`;
   }
 
-  private checkUserExists(email: string){
-    return false;
+  private async checkUserExists(email: string){
+    const user = await this.usersRepository.findOne({
+      where: {email: email}
+    })
+    return user !== undefined;
   }
   async createUser(name: string, email: string, password: string) {
-    // await this.checkUserExists(email);
+    const usersExist = await this.checkUserExists(email);
+    if(usersExist) throw new Error('이미 존재하는 email')
     const signupVerifyToken = uuid.v1();
     await this.saveUser(name, email,password, signupVerifyToken);
     const res  = await this.emailService.sendMemberJoinVerification(email, signupVerifyToken);
@@ -56,8 +70,26 @@ export class UsersService {
     throw new Error('Method not implemented.')
   }
 
-  private saveUser(name: string, email: string, password: string, signupVerifyToken: string){
-    return;
+  private async saveUser(name: string, email: string, password: string, signupVerifyToken: string){
+    const user = new UserEntity();
+    user.id= ulid(); // npm u ulid (랜덤한 string 값)
+    user.name = name;
+    user.email = email;
+    user.password = password;
+    user.signupVerifyToken = signupVerifyToken;
+    await this.usersRepository.save(user);
+    // =>  결과값
+    // createUser:::  {
+    //   accepted: [ 'email@example.com' ],
+    //   rejected: [],
+    //   envelopeTime: 1324,
+    //   messageTime: 855,
+    //   messageSize: 789,
+    //   response: '250 2.0.0 OK  1672997421 u3-20020a17090341c300b0018f6900a183sm505493ple.140 - gsmtp',
+    //   envelope: { from: '', to: [ 'email@example.com' ] },
+    //   messageId: '<2146cec5-71de-1198-61aa-b5fb2b8eec25@localhost>'
+    // }
+
   }
 
   private async sendMemberJoinEmail( email: string, signupVerifyToken: string) {

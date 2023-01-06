@@ -9,17 +9,35 @@ import {EmailModule} from './email/email.module';
 //dotenv
 import {ConfigModule} from "@nestjs/config";
 import emailConfig from "./config/emailConfig";
-import { validationSchema } from './config/validationSchema';
+import {validationSchema} from './config/validationSchema';
+import {TypeOrmModule} from "@nestjs/typeorm";
+import * as process from "process";
+import {UserEntity} from "./users/entities/user.entity";
 
 @Module({
     // Nest에서 제공되는 Config 패키지
     // forRoot 매서드는 Dynamic Module을 리턴하는 정적 메서드
-    imports: [UsersModule, EmailModule, ConfigModule.forRoot({
-        envFilePath: [`${__dirname}/config/env/.${process.env.NODE_ENV}.env`],
-        load: [emailConfig], // load 속성을 통해 앞서 구성해둔 configFactory 지정
-        isGlobal: true, // 전역 모듈로 사용
-        validationSchema // 환경변수의 값에 대한 유효성 검사를 수행하도록 joi를 이용해 유효성 검사 객체를 작성
-    })],
+    imports: [
+        UsersModule,
+        EmailModule,
+        ConfigModule.forRoot({
+            envFilePath: [`${__dirname}/config/env/.${process.env.NODE_ENV}.env`],
+            load: [emailConfig], // load 속성을 통해 앞서 구성해둔 configFactory 지정
+            isGlobal: true, // 전역 모듈로 사용
+            validationSchema // 환경변수의 값에 대한 유효성 검사를 수행하도록 joi를 이용해 유효성 검사 객체를 작성
+        }),
+        TypeOrmModule.forRoot({ // 1. TypeOrm을 동적 모듈로 가져옴
+            type: 'mysql', // TypeOrmModule 이 다루고자 하는 DB 타입
+            host: process.env.DB_HOST, // 연결할 DB 호스트 주소
+            port: 3306, // DB와의 연결을 위해 열어 놓은 포트 번호
+            username: process.env.DB_USERNAME, // DB user id
+            password: process.env.DB_PASSWORD, // DB user pw
+            database: 'test', // 연결하고자 하는 DB 스키마 이름.
+            // entities: [__dirname + '**/**/*.entity{.ts, .js}'], // 소스코드 내에서 TypeORM이 구동될 때 인식하도록 할 엔티티 클래스의 경로 지정
+            entities: [UserEntity],
+            synchronize: true, // synchronize는 서비스 구동 시, 소스 코드 기반으로 DB 스키마를 동기화할지 여부
+        })
+    ],
     controllers: [ApiController, AppController],
     providers: [AppService],
 })
