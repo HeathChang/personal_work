@@ -10,3 +10,11 @@ export class LoggerMiddleware implements NestMiddleware{
         next();
     }
 }
+
+@Injectable()
+export class LoggerMiddleware2 implements NestMiddleware{
+    use(req: Request, res: Response, next: NextFunction){
+        console.log('Middle Ware:: ')
+        next();
+    }
+}
