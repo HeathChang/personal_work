@@ -1,4 +1,4 @@
-import {Module} from '@nestjs/common';
+import {MiddlewareConsumer, Module, NestModule} from '@nestjs/common';
 import {AppController} from './app.controller';
 import {AppService} from './app.service';
 import {UsersModule} from './users/users.module';
@@ -13,6 +13,7 @@ import {validationSchema} from './config/validationSchema';
 import {TypeOrmModule} from "@nestjs/typeorm";
 import * as process from "process";
 import {UserEntity} from "./users/entities/user.entity";
+import {LoggerMiddleware} from "./middleware/logger.middleware";
 
 @Module({
     // Nest에서 제공되는 Config 패키지
@@ -41,5 +42,11 @@ import {UserEntity} from "./users/entities/user.entity";
     controllers: [ApiController, AppController],
     providers: [AppService],
 })
-export class AppModule {
+
+// DESCRIPTION:: 미들웨어를 모듈에 포함시키기 위해서는 해당 모듈은 NestModule 인터페이스를 구현
+export class AppModule implements NestModule{
+    // configure 매서드에 인수로 전달된 MiddlewareConsumer 객체를 이용해 미들웨어를 어디에서 적용할 지 관리
+    configure(consumer: MiddlewareConsumer): any {
+        consumer.apply(LoggerMiddleware).forRoutes('/users')
+    }
 }
