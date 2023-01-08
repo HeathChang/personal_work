@@ -47,10 +47,10 @@ import {LoggerMiddleware} from "./middleware/logger.middleware";
 export class AppModule implements NestModule{
     // configure 매서드에 인수로 전달된 MiddlewareConsumer 객체를 이용해 미들웨어를 어디에서 적용할 지 관리
     configure(consumer: MiddlewareConsumer): any {
-        // consumer.apply(LoggerMiddleware, LoggerMiddleware2).forRoutes('/users')
+        // consumer.apply(LoggerMiddleware, LoggerMiddleware2, LoggerMiddleware_Global).forRoutes('/users') // class가 아닌 function으로 사용해도 무방
         consumer
             .apply(LoggerMiddleware)  // 적용되는 middleware, 다중 사용시 [ , ] 로 구분
-            .exclude({path: '/users', method: RequestMethod.GET}) // 제외
+            // .exclude({path: '/users', method: RequestMethod.GET}) // 제외
             .forRoutes('/users')
         // .forRoutes(UsersController) // 이런식으로 RouteInfo 객체를 넘길 수 있음
     }
