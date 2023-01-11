@@ -9,7 +9,7 @@ import {
     HttpStatus,
     Query,
     DefaultValuePipe,
-    Body
+    Body, UseGuards
 } from '@nestjs/common';
 import {AppService} from './app.service';
 import {request} from "express";
@@ -22,6 +22,7 @@ import {UsersService} from "./users/users.service";
 import { ValidationPipe } from "@nestjs/common";
 
 import {CreateUserDto} from "./users/dto/create-user.dto";
+import {AuthGuard} from "./guard/authguard";
 
 @Controller()
 export class AppController {
@@ -75,13 +76,14 @@ export class AppController {
         // if(+id < 1){
         //   //문자로 받은 id앞에 +붙여주면, 숫자로 변환
         //   throw new BadRequestException('id값은 0보다 큰 값이어야 합니다.')
-        // }
+        // }ㅁ
         return this.usersService.findOne(+id);
     }
 
     // CMD:: curl -X GET http://localhost:3000/origin/pipe/23
     // RESULT:: This action returns a #22 user%
     // CONSOLE:: { metatype: [Function: Number], type: 'param', data: 'id' }
+    // @UseGuards(AuthGuard)
     @Get('/origin/pipe/:id')
     findOne_validationPipe(@Param('id', ValidationPipe) id: number) {
         return this.usersService.findOne(+id);

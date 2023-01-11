@@ -14,6 +14,9 @@ import {TypeOrmModule} from "@nestjs/typeorm";
 import * as process from "process";
 import {UserEntity} from "./users/entities/user.entity";
 import {LoggerMiddleware} from "./middleware/logger.middleware";
+import {APP_GUARD} from "@nestjs/core";
+import {AuthGuard} from "./guard/authguard";
+import authConfig from "./config/authConfig";
 
 @Module({
     // Nest에서 제공되는 Config 패키지
@@ -23,7 +26,7 @@ import {LoggerMiddleware} from "./middleware/logger.middleware";
         EmailModule,
         ConfigModule.forRoot({
             envFilePath: [`${__dirname}/config/env/.${process.env.NODE_ENV}.env`],
-            load: [emailConfig], // load 속성을 통해 앞서 구성해둔 configFactory 지정
+            load: [emailConfig, authConfig], // load 속성을 통해 앞서 구성해둔 configFactory 지정
             isGlobal: true, // 전역 모듈로 사용
             validationSchema // 환경변수의 값에 대한 유효성 검사를 수행하도록 joi를 이용해 유효성 검사 객체를 작성
         }),
@@ -40,11 +43,17 @@ import {LoggerMiddleware} from "./middleware/logger.middleware";
         })
     ],
     controllers: [ApiController, AppController],
-    providers: [AppService],
+    providers: [
+        AppService,
+        // {
+        // provide: APP_GUARD,
+        // useClass: AuthGuard
+        // }
+    ],
 })
 
 // DESCRIPTION:: 미들웨어를 모듈에 포함시키기 위해서는 해당 모듈은 NestModule 인터페이스를 구현
-export class AppModule implements NestModule{
+export class AppModule implements NestModule {
     // configure 매서드에 인수로 전달된 MiddlewareConsumer 객체를 이용해 미들웨어를 어디에서 적용할 지 관리
     configure(consumer: MiddlewareConsumer): any {
         // consumer.apply(LoggerMiddleware, LoggerMiddleware2, LoggerMiddleware_Global).forRoutes('/users') // class가 아닌 function으로 사용해도 무방
