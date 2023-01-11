@@ -29,10 +29,11 @@ export class AuthService {
         try{
             const payload = jwt.verify(jwtString, this.config.jwtSecret) as userInterface | any;
             // as tells the compiler to consider the typed object as a plain untyped JavaScript object.
-            const { id, email } = payload
+            const { id, email, name } = payload
             return {
                 userId: id,
-                email: email
+                email: email,
+                name: name
             }
         } catch {
             throw new UnauthorizedException('Cannot find correct jwt')

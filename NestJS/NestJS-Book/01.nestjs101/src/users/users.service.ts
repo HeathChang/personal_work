@@ -142,7 +142,6 @@ export class UsersService {
         const user = await this.usersRepository.findOne({
             where: {id: userId}
         })
-        console.log('User::: ', user)
         if (!user) {
             throw new NotFoundException('유저가 존재하지 않습니다. ')
         }

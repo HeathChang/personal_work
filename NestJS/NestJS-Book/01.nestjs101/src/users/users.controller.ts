@@ -5,7 +5,7 @@ import {
     Body,
     Headers,
     Param,
-    Query, UnauthorizedException, UseGuards,
+    Query, UnauthorizedException, UseGuards, Req, ValidationPipe,
 } from '@nestjs/common';
 import {UsersService} from './users.service';
 import {CreateUserDto} from './dto/create-user.dto';
@@ -14,6 +14,7 @@ import {UserLoginDto} from "./dto/login-info.dto";
 import {UserInfo} from "./interface/user-info";
 import {AuthService} from "../module/auth/auth.service";
 import {AuthGuard} from "../guard/authguard";
+import {UserAuth} from "../decorator/user-auth";
 
 
 @Controller('users')
@@ -80,19 +81,39 @@ export class UsersController {
     // RES: {"email":"email@example.com","id":"01GP36MF1Z16ADQ3C00S78WFTX","name":"name_example"}%
     // CMD:: curl -X GET  http://localhost:3000/users/3 -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVtYWlsQGV4YW1wbGUuY29tIiwiaWQiOiIwMUdQMzZNRjFaMTZBRFEzQzAwUzc4V0ZUWCIsIm5hbWUiOiJuYW1lX2V4YW1wbGUiLCJpYXQiOjE2NzM0MzU2MzYsImV4cCI6MTY4MjA3NTYzNiwiYXVkIjoiZXhhbXBsZS5jb20iLCJpc3MiOiJleGFtcGxlLmNvbSJ9.Fc_MBl6m1YIo1keV4zp0HU9oC_0dArXOc-_Qzw5pdgc"
     // ERR: {"statusCode":404,"message":"유저가 존재하지 않습니다. ","error":"Not Found"}
+    // CMD:: curl -X GET  http://localhost:3000/users/0sw -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVtYWlsQGV4YW1wbGUuY29tIiwiaWQiOiIwMUdQMzZNRjFaMTZBRFEzQzAwUzc4V0ZUWCIsIm5hbWUiOiJuYW1lX2V4YW1wbGUiLCJpYXQiOjE2NzM0MzU2MzYsImV4cCI6MTY4MjA3NTYzNiwiYXVkIjoiZXhhbXBsZS5jb20iLCJpc3MiOiJleGFtcGxlLmNvbSJ9.Fc_MBl6m1YIo1keV4zp0HU9oC_0dArXOc-_Qzw5pdgc"
+    // RES: {"email":"email@example.com","id":"01GP36MF1Z16ADQ3C00S78WFTX","name":"name_example"}%
     @UseGuards(AuthGuard)
     @Get('/:id')
     // @Get('/:id)
     async getUserInfo(
-        @Headers() headers: any,
-        @Param('id') userId: string
+        // @Headers() headers: any, //  => 추가 수정: 여기서 더이상 사용안하고, AuthGuard에서 verify해줌으로 주석처리
+        // @Req() req: any
+        // => 수정: req.user를 매서드 내부에서 직접 가져다 사용해도 되지만, 아래와 같이 인수로 직접 받을 수 있다.
+        @UserAuth() user: UserInfo
+        // @UserAuth(new ValidationPipe({ validateCustomDecorators: true})) user: UserInfo // => 이런식으로, 받은 req.user에 대한 유효성 검사를 진행할 수 있다. (지금 필요 X)
+
+        // @Param('id') userId: string
     ): Promise<UserInfo> {
+        // => Moved below lines to auth.guard.ts
         // const jwtString = headers?.authorization.split('Bearer')[1].trim()
         // const {userId, email} = this.authService.verify(jwtString)
         // if(!userId){
         //     throw new UnauthorizedException('Cannot find correct jwt')
         // }
-        return await this.usersService.getUserInfo(userId)
+        // }
+        return await this.usersService.getUserInfo(user.id)
+    }
+
+    @UseGuards(AuthGuard)
+    @Get('/pipe/:id')
+    // @Get('/:id)
+    async getUserInfo_pipe(
+        @Headers() headers: any,
+        @UserAuth() user: UserInfo
+    ): Promise<UserInfo> {
+        console.log('request:: ', user)
+        return await this.usersService.getUserInfo(user.id)
     }
 
 

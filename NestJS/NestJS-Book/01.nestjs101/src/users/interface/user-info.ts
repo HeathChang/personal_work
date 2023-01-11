@@ -3,7 +3,10 @@
 // https://poiemaweb.com/typescript-interface
 
 
-export interface UserInfo{
+import {IsEmail} from "class-validator";
+
+export class UserInfo{
+    @IsEmail()
     id: string;
     name: string;
     email: string;

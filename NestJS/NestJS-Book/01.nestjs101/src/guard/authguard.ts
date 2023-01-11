@@ -13,16 +13,17 @@ export class AuthGuard implements CanActivate  {
     // 인터페이스에서 제공하는 함수중 swtichToHttp()함수를 사용해 필요한 정보가져옴
     canActivate(context: ExecutionContext): boolean | Promise<boolean> | Observable<boolean> {
         const request = context.switchToHttp().getRequest()
-        // console.log('getting request:: ', request)
-        console.log('auth guard activated')
-        return this.validateRequest(request)
+        return this.validateRequest(request);
     }
     private  validateRequest(request: any){
+        // 아래서, Bearer는  JWT 혹은 OAuth에 대한 토큰을 사용한다. (RFC 6750)
         const jwtString = request?.headers?.authorization.split('Bearer')[1].trim()
-        const {userId, email} = this.authService.verify(jwtString)
+        const {userId, email, name} = this.authService.verify(jwtString)
         if(!userId){
             throw new UnauthorizedException('Cannot find correct jwt')
         }
+        // verify가 되면, 받은 request에 원하는 값을 넣어주면 된다.
+        request.user = { id:userId, email, name}
         return true;
     }
 }
