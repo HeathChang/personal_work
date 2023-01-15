@@ -69,6 +69,13 @@ export class AppController {
         return this.usersService.findAll(offset, limit);
     }
 
+
+    //와일드카드: 아래와 같이 와일드 카드를 사용해서 라우팅 패스를 작성할 수 있다.
+    @Get('/origin/test')
+    getHello5(): string {
+        return this.appService.getHello();
+    }
+
     // CMD:: curl -X GET http://localhost:3000/origin/22
     // RESULT:: This action returns a #22 user%
     @Get('/origin/:id')

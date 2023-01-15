@@ -6,6 +6,8 @@ import * as dotenv from 'dotenv';
 import * as path from 'path';
 import {LoggerMiddleware_Global} from "./middleware/logger.middleware";
 import {AuthGuard} from "./guard/authguard";
+import * as process from "process";
+import {LoggerService} from "./logger/logger.service";
 
 // dotenv.config({
 //   path: path.resolve(
@@ -18,7 +20,11 @@ import {AuthGuard} from "./guard/authguard";
 // console.log(`ENV CHECK:::: ${path.resolve('./env/.development.env')}` )
 
 async function bootstrap() {
-    const app = await NestFactory.create(AppModule);
+    const app = await NestFactory.create(AppModule, {
+        logger: process.env.NODE_ENV === 'production'
+            ? ['error','warn','log'] // 여기 노출되는 logger만 보여지게 실행
+            : ['error','warn','log','verbose','debug'] // 여기 노출되는 logger만 보여지게 실행
+    });
     // ValidationPipe를 모든 핸들러에 일일이 지정하지 않고, 전역으로 설정하려면 부트스트랩 과정에서 적용 => nest에 이미 validation-pipe가 있기 때문에 직접 만들필요 X
     // app.useGlobalPipes(new ValidationPipe())
 
@@ -38,7 +44,8 @@ async function bootstrap() {
     // Exception Filters are called after the route handler and after the interceptors.
     // Middleware -> Interceptors -> Route Handler -> Interceptors -> Exception Filter
 
-
+    // Global Use of Logger::
+    // app.useLogger(app.get(LoggerService))
 
     await app.listen(3000);
 }

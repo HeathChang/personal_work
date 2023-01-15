@@ -16,6 +16,7 @@ import {UserEntity} from "./users/entities/user.entity";
 import {LoggerMiddleware} from "./middleware/logger.middleware";
 import {APP_GUARD} from "@nestjs/core";
 import {AuthGuard} from "./guard/authguard";
+import { LoggerService } from './logger/logger.service';
 import authConfig from "./config/authConfig";
 
 @Module({
@@ -45,6 +46,7 @@ import authConfig from "./config/authConfig";
     controllers: [ApiController, AppController],
     providers: [
         AppService,
+        LoggerService,
         // {
         // provide: APP_GUARD,
         // useClass: AuthGuard
