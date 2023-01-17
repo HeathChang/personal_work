@@ -8,6 +8,7 @@ import {LoggerMiddleware_Global} from "./middleware/logger.middleware";
 import {AuthGuard} from "./guard/authguard";
 import * as process from "process";
 import {LoggerService} from "./logger/logger.service";
+import {WINSTON_MODULE_PROVIDER} from "nest-winston";
 
 // dotenv.config({
 //   path: path.resolve(
@@ -46,8 +47,10 @@ async function bootstrap() {
 
     // Global Use of Logger::
     // app.useLogger(app.get(LoggerService))
+    app.useLogger(app.get(WINSTON_MODULE_PROVIDER))
 
     await app.listen(3000);
+
 }
 
 bootstrap();

@@ -5,7 +5,7 @@ import {
     Body,
     Headers,
     Param,
-    Query, UnauthorizedException, UseGuards, Req, ValidationPipe,
+    Query, UnauthorizedException, UseGuards, Req, ValidationPipe, Inject,
 } from '@nestjs/common';
 import {UsersService} from './users.service';
 import {CreateUserDto} from './dto/create-user.dto';
@@ -15,23 +15,47 @@ import {UserInfo} from "./interface/user-info";
 import {AuthService} from "../module/auth/auth.service";
 import {AuthGuard} from "../guard/authguard";
 import {UserAuth} from "../decorator/user-auth";
+import { Logger as WinstonLogger } from "winston"
+import {WINSTON_MODULE_PROVIDER} from "nest-winston";
 
 
 @Controller('users')
 export class UsersController {
     constructor(
         private readonly usersService: UsersService,
-        private readonly authService: AuthService
+        private readonly authService: AuthService,
+        @Inject(WINSTON_MODULE_PROVIDER) private readonly logger: WinstonLogger
     ) {
     }
 
 
+    // CMD :: curl -X POST  http://localhost:3000/users/create -H "Content-Type: application/json" -d '{"name": "name_example12", "email":"email12@example.com","password":"1234","id":"id11"}'
     @Post('/create')
     async createUser(@Body() dto: CreateUserDto): Promise<any> {
         // return this.usersService.create(createUserDto);
+        this.printWinstonLog(dto)
+
+
         const {name, email, password} = dto;
         const res = await this.usersService.createUser(name, email, password);
         console.log('createUser::: ', res)
+    }
+
+    private printWinstonLog(dto){
+        this.logger.error('Error: ', dto)
+        this.logger.warn('Error: ', dto)
+        this.logger.info('info: ', dto)
+        this.logger.http('http: ', dto)
+        this.logger.verbose('verbose: ', dto)
+        this.logger.debug('debug: ', dto)
+        this.logger.silly('silly: ', dto)
+        // [MyApp] Error   1/17/2023, 12:22:02 PM Error:  - {
+        //   name: 'name_example12',
+        //   email: 'email1243@example.com',
+        //   password: '1234',
+        //   id: 'id11'
+        // }
+        // => 이런식으로 노출
     }
 
 
