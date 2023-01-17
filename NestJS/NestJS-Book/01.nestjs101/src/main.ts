@@ -30,11 +30,11 @@ async function bootstrap() {
     // app.useGlobalPipes(new ValidationPipe())
 
     // Pipes 사용: class-transformer를 사용하기 위해서는 transform: true값 지정옴
-    app.useGlobalPipes(new ValidationPipe({
-        transform: true
-    }))
+    // app.useGlobalPipes(new ValidationPipe({
+    //     transform: true
+    // }))
     // Middleware::
-    app.use(LoggerMiddleware_Global); // 전역으로 사용할 경우, class가 아닌, function으로 사용
+    // app.use(LoggerMiddleware_Global); // 전역으로 사용할 경우, class가 아닌, function으로 사용
     // 이유: const app = await NestFactory.create(AppModule)는 use()가 사용된 클래스를 인수로 받을 수 없음
     // Guard 전역 사용: 여기 등록후, Module 에 등록
     // app.useGlobalGuards(new AuthGuard())
@@ -47,7 +47,7 @@ async function bootstrap() {
 
     // Global Use of Logger::
     // app.useLogger(app.get(LoggerService))
-    app.useLogger(app.get(WINSTON_MODULE_PROVIDER))
+    // app.useLogger(app.get(WINSTON_MODULE_PROVIDER))
 
     await app.listen(3000);
 

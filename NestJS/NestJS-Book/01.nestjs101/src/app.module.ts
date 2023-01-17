@@ -20,6 +20,7 @@ import { LoggerService } from './logger/logger.service';
 import authConfig from "./config/authConfig";
 import {utilities, WinstonModule} from "nest-winston";
 import * as winston from "winston";
+import {BatchModule} from "./module/batch/batch.module";
 
 @Module({
     // Nest에서 제공되는 Config 패키지
@@ -27,6 +28,7 @@ import * as winston from "winston";
     imports: [
         UsersModule,
         EmailModule,
+        BatchModule,
         // configure 설정
         ConfigModule.forRoot({
             envFilePath: [`${__dirname}/config/env/.${process.env.NODE_ENV}.env`],
@@ -59,12 +61,12 @@ import * as winston from "winston";
                     )
                 })
             ]
-        })
+        }),
     ],
     controllers: [ApiController, AppController],
     providers: [
         AppService,
-        LoggerService,
+        LoggerService
         // {
         // provide: APP_GUARD,
         // useClass: AuthGuard

@@ -22,7 +22,7 @@ import {UsersService} from "./users/users.service";
 import { ValidationPipe } from "@nestjs/common";
 
 import {CreateUserDto} from "./users/dto/create-user.dto";
-import {AuthGuard} from "./guard/authguard";
+// import {AuthGuard} from "./guard/authguard";
 import {HttpExceptionFilter} from "./filters/http-exception-filter";
 import {LoggingInterceptor} from "./interceptor/logging-interceptor";
 
@@ -119,7 +119,6 @@ export class AppController {
     // CMD:: curl -X GET http://localhost:3000/origin/22
     // RESULT:: This action returns a #22 user%
     @UseInterceptors(LoggingInterceptor)
-
     @Get('/origin/:id')
     findOne_Exception(@Param('id') id: number) {
         if(+id < 1){
@@ -139,5 +138,12 @@ export class AppController {
         return this.appService.getHello();
     }
 
+
+    @Get('/task-schedule')
+    taskSchedule(){
+        // this.taskService.handleCron()
+        // this.taskService.handleInterval()
+        // this.taskService.handleTimeout()
+    }
 
 }
