@@ -11,9 +11,10 @@ import {BatchController} from "./batch.controller";
     // providers: [
     //     TaskService
     // ],
-    controllers: [
-        BatchController
-    ]
+    // controllers: [
+    //     BatchController
+    // ]
 })
 
-export class BatchModule {};
+export class BatchModule {
+};

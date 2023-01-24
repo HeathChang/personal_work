@@ -15,19 +15,35 @@ import {UserInfo} from "./interface/user-info";
 import {AuthService} from "../module/auth/auth.service";
 import {AuthGuard} from "../guard/authguard";
 import {UserAuth} from "../decorator/user-auth";
-import { Logger as WinstonLogger } from "winston"
+import {Logger as WinstonLogger} from "winston"
 import {WINSTON_MODULE_PROVIDER} from "nest-winston";
+import {CommandBus, ICommand} from "@nestjs/cqrs";
 
+export class CreateUserCommand implements ICommand {
+    constructor(
+        readonly name: string,
+        readonly email: string,
+        readonly password: string
+    ) {
+    }
+}
 
 @Controller('users')
 export class UsersController {
     constructor(
         private readonly usersService: UsersService,
         private readonly authService: AuthService,
+        private commandBus: CommandBus,
         @Inject(WINSTON_MODULE_PROVIDER) private readonly logger: WinstonLogger
     ) {
     }
 
+    @Post("/cqrs")
+    async createUser_cqrs(@Body() dto: CreateUserDto): Promise<void> {
+        const { name, email, password } = dto;
+        const command  = new CreateUserCommand(name, email , password);
+        return this.commandBus.execute(command) // 이전에 정의한 CreateUserCommand를 전송
+    }
 
     // CMD :: curl -X POST  http://localhost:3000/users/create -H "Content-Type: application/json" -d '{"name": "name_example12", "email":"email12@example.com","password":"1234","id":"id11"}'
     @Post('/create')
@@ -41,7 +57,7 @@ export class UsersController {
         console.log('createUser::: ', res)
     }
 
-    private printWinstonLog(dto){
+    private printWinstonLog(dto) {
         this.logger.error('Error: ', dto)
         this.logger.warn('Error: ', dto)
         this.logger.info('info: ', dto)
@@ -193,3 +209,4 @@ export class UsersController {
     //   return this.usersService.remove(+id);
     // }
 }
+
