@@ -4,6 +4,8 @@ import com.in28minutes.learnspringframework.game.GameRunner;
 import com.in28minutes.learnspringframework.game.PacMan;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.util.Arrays;
+
 public class App02HelloWorldSpring {
     public static void main(String[] args) {
         // Launch a Spring Context
@@ -20,7 +22,12 @@ public class App02HelloWorldSpring {
         System.out.println(context.getBean("address2"));
         System.out.println("person3Parameters::"+context.getBean("person3Parameters"));
         // 2 matching Beans::
-//        System.out.println(context.getBean(Person.class));
-//        System.out.println(context.getBean(Address.class));
+        System.out.println("context.getBean('Person.class')::"+ context.getBean(Person.class)+"->primary");
+        System.out.println(context.getBean(Address.class));
+        System.out.println("person5Qualifier:: "+context.getBean("person5Qualifier"));
+
+//        Arrays.stream(context.getBeanDefinitionNames())
+//                .forEach(item -> System.out.println("item:: "+ item));
+
     }
 }
