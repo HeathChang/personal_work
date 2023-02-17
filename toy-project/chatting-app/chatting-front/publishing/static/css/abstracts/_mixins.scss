@@ -1,0 +1,140 @@
+@import "variavles";
+
+//index
+//
+//크로스 브라우징
+//텍스트 말줄임 처리
+//단축
+//  포지션
+//  트랜지션
+
+//컴포넌트
+//  팝업
+//  버튼
+//  플렉스박스
+
+@mixin clearfix() {
+  & {
+    *zoom: 1;
+  }
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+//크로스 브라우징(Vendor Prefix)
+//
+//개발에서 웹키드로 적용
+//https://developer.mozilla.org/en-US/docs/Web/CSS/width
+@mixin max-content {
+  width: intrinsic;           //Safari/WebKit uses a non-standard name
+  width: -moz-max-content;    //Firefox/Gecko
+  width: -webkit-max-content; //Chrome
+  width: max-content;
+}
+@mixin min-content {
+  width: -moz-min-content;    //Firefox
+  width: -webkit-min-content; //Chrome
+  width: min-content;
+}
+
+//텍스트 말줄임 처리
+//
+//line: 한 줄
+@mixin line {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+//lines($number): 여러 줄, 괄호 안에 몇 줄인지 적어주면 됩니다.
+@mixin lines($number) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $number;
+  -webkit-box-orient: vertical;
+}
+
+//포지션
+//
+@mixin position($position, $left: 0, $top: 0, $right: null, $bottom: null) {
+  position: $position;
+  top: $top;
+  left: $left;
+  right: $right;
+  bottom: $bottom;
+}
+//중앙정렬 같이 할 때
+@mixin position-center($align, $position,  $left: 0, $top: 0, $right: null, $bottom: null) {
+  position: $position;
+  top: $top;
+  left: $left;
+  right: $right;
+  bottom: $bottom;
+  @if $align == xy {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  @else if $align == x {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  @else if $align == y {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+//트랜지션
+@mixin transition($what, $time, $delay: null) {
+  transition-property: $what;
+  transition-duration: $time;
+  transition-delay: $delay;
+}
+
+//버튼
+//
+//$border 보더 없으면 0, 있으면 두께 값 입력(픽셀 단위로 설정되어 있음)
+//$radius 형태가 원이면 circle, 양끝이 둥근 형태면 round, 값이 정해져 있으면 레디우스값 입력
+//***보더가 있어서 보더에 색상을 추가할 경우, 배경값도 다시 입력해주어야 함
+@mixin btn($border, $radius, $width, $height, $bg-color: #fff, $bo-color: transpatent) {
+  width: $width;
+  height: $height;
+  background-color: $bg-color;
+  &.on {background-color: $color-primary; color: #fff;}
+  &:active {background-color: darken($bg-color, 10%);}
+
+  @if $radius == round {border-radius: ($height / 2);}
+  @else if $radius == circle {border-radius: 50%;}
+  @else {border-radius: $radius;}
+
+  @if $border != 0 {border:$border * 1px solid $bo-color;}
+}
+
+//플렉스 박스
+@mixin flexbox($align, $wrap: null){
+  display: flex;
+  flex-flow: $align $wrap;
+}
+//$align = row, column
+//$wrap = wrap 필요할 경우 wrap 적용
+
+@mixin flexbox-center($align, $wrap: null){
+  display: flex;
+  flex-flow: $align;
+  justify-content: center;
+  align-items: center;
+}
+//flexbox-center는 가로세로 전부 중앙배열이라서 align-items:center만 필요할 경우에는 flexbox 불러놓고 요소 추가하시는게 나을거예요
+
+@mixin flexbox-between($wrap: null){
+  display: flex;
+  flex-flow: row $wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+//flexbox-center는 가로세로 전부 중앙배열이라서 align-items:center만 필요할 경우에는 flexbox 불러놓고 요소 추가하시는게 나을거예요

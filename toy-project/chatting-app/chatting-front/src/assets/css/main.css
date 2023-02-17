@@ -1,0 +1,127 @@
+/* 스타일 */
+.top-left {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+.top-center {
+    position: absolute;
+    top: 1rem;
+}
+
+.top-right {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.main {
+    height: calc(100vh - 105px);
+    position: relative;
+    top: 3rem
+}
+
+.bot-left {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+}
+
+.bot-center {
+    position: absolute;
+    bottom: 1rem;
+}
+
+.bot-right {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+
+/* Home-Header*/
+.btn-header-back {
+    background: url(src/assets/images/btn-arrow-back.png) no-repeat;
+    background-size: 26px 26px;
+    width: 32px;
+    height: 32px;
+    border: none;
+
+}
+
+.title-header-title {
+
+}
+
+.btn-header-nav {
+    background: url(src/assets/images/btn-nav-unbox-type1.png) no-repeat;
+    background-size: 32px 32px;
+    width: 40px;
+    height: 40px;
+    border: none;
+}
+
+.btn-header-nav.on {
+    background: url(src/assets/images/btn-nav-box-type2.png) no-repeat;
+    background-size: 32px 32px;
+    width: 40px;
+    height: 40px;
+    border: none;
+}
+
+.inner {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    place-items: center;
+}
+.inner-main{
+    border:1px solid #dcdcdc;
+    background-color: ivory;
+    border-radius:10%;
+}
+.inner-main-title{
+    margin: 1rem;
+}
+.inner-confirm {
+    background: url(src/assets/images/btn-start.png) no-repeat;
+    background-size: 72px 72px;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    border: none;
+    margin-left: 9rem;
+    margin-top: 3rem;
+}
+
+/*Step 2~ */
+#step2-select-ul {
+    margin: -1rem 1rem !important;
+}
+#step2-select-li {
+    line-height:50%
+}
+
+
+/*Result Page*/
+.con-title {
+    font-size: 2rem;
+}
+
+
+/*Footer*/
+.title-footer-title {
+    background: url(src/assets/images/btn-footer-champagne-type1.png) no-repeat;
+    background-size: 40px 40px;
+    width: 48px;
+    height: 48px;
+    border: none;
+}
+
+.title-footer-title.on {
+    background: url(src/assets/images/btn-footer-champagne-type0.png) no-repeat;
+    background-size: 40px 40px;
+    width: 48px;
+    height: 48px;
+    border: none;
+}

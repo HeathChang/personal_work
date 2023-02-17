@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
+    <title>title</title>
+</head>
+<body id="body" ontouchstart="">
+<!--210906-->
+<header class="header">
+    <div class="inner">
+        <div class="left">
+            <button class="h-btn back"></button>
+        </div>
+        <div class="text">header</div>
+        <h1 class="logo"></h1>
+    </div>
+</header>
+<main class="main" role="main">
+    <div class="main-inner">
+        <div class="main-con">
+            <div class="thumb-box">
+                <div class="thumb">
+                    <img src="static/images/profile.jpg" alt="profile">
+                </div>
+                <p class="name">사용자 이름</p>
+            </div>
+
+            <div class="category">
+                <ul>
+                    <!--희민 디자인 특징: i-right 버튼이 꼭 있다 없애도 될 듯? 카카오톡 메뉴 참고-->
+                    <li>
+                        <div class="category-name"><i class="i-icon"></i>Category</div>
+                        <i class="i-right"></i>
+                    </li>
+                    <li>
+                        <div class="category-name"><i class="i-icon"></i>Category</div>
+                        <i class="i-right"></i>
+                    </li>
+                    <li>
+                        <div class="category-name"><i class="i-icon"></i>Category</div>
+                        <i class="i-right"></i>
+                    </li>
+                    <li>
+                        <div class="category-name"><i class="i-icon"></i>Category</div>
+                        <i class="i-right"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <nav class="nav">
+            <button class="nav-icon" onclick="classList.toggle('on')">
+                <span class="i-noti"></span>
+                <span class="ttl">Notice</span>
+            </button>
+            <button class="nav-icon on" onclick="classList.toggle('on')">
+                <span class="i-home"></span>
+                <span class="ttl">Home</span>
+            </button>
+            <button class="nav-icon" onclick="classList.toggle('on')">
+                <span class="i-user"></span>
+                <span class="ttl">User</span>
+            </button>
+        </nav>
+    </div>
+</main>
+</body>
+</html>
