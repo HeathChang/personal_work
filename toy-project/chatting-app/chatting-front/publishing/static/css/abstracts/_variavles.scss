@@ -1,0 +1,64 @@
+//컬러
+$color-primary: #FF3A3A;
+$color-secondary: #003471;
+$color-error: #ee0000;
+$color-black: #333;
+$gray-5: #FAFAFA;
+$gray-10: #F5F5F5;
+$gray-20: #EEEEEE;
+$gray-30: #E0E0E0;
+$gray-40: #BDBDBD;
+$gray-50: #9E9E9E;
+$gray-60: #757575;
+$gray-70: #616161;
+$gray-80: #424242;
+$gray-90: #212121;
+$blue-gray-5: #ECEFF1;
+$blue-gray-10: #CFD8DC;
+$blue-gray-20: #B0BEC5;
+$blue-gray-30: #90A4AE;
+$blue-gray-40: #78909C;
+$blue-gray-50: #607D8B;
+$blue-gray-60: #546E7A;
+$blue-gray-70: #455A64;
+$blue-gray-80: #37474F;
+$blue-gray-90: #263238;
+$blue-10: #eef8fc;
+$blue-20: #d8f0fd;
+$blue-30: #8dd5f6;
+$yellow-10: #FFFAD8;
+$color-kakao: #FEE500;
+$color-naver: #1EC800;
+
+//폰트
+$thin: 100;
+$light: 300;
+$demiLight: 350;
+$regular: 400;
+$medium: 500;
+$bold: 700;
+$black: 900;
+
+//단위
+$unit: 0.1rem;
+$page-padding: 20*$unit;
+$header-height: 50*$unit;
+$tab-depth01-height: 40*$unit;
+$tab-depth02-height: 32*$unit;
+$tab-height: 50*$unit;
+$page-tab-height: 40*$unit;
+$page-btn-height: 40*$unit;
+//unit 제외하고 프로젝트마다 안 쓰는 부분은 삭제해도 될 듯 합니다.
+
+//분기점
+$web-break-width: 1024px;
+$web-page-padding: 34*$unit;
+
+//기타
+$shadow: 0 0 6*$unit rgba(0, 0, 0, 0.15);
+:root {
+  --pt-txt-color: null;
+  --pt-bg-color: null;
+  --progress-percent: null;
+  --party-guide-bg: null;
+}
