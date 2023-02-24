@@ -40,6 +40,8 @@ import VueScrollTo from 'vue-scrollto'
 import { ObserveVisibility } from 'vue-observe-visibility'
 const app = createApp(App)
 
+
+
 app.config.globalProperties.$Util = Util
 app.config.globalProperties.$ConstCode = ConstCode
 app.config.globalProperties.$dayjs = dayjs
