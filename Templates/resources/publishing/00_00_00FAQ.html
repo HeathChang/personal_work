@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+        //     $(".accodian-menu-li").click(function(){
+        //         $(".toggle-inner").slideToggle("100");
+        //     });
+            //이대로 하면 제목 하나 누르면 전체가 다 열리게 됩니다..
+
+            $('.toggle-inner').hide(); // 최초에 toggle-inner 안보이게.
+            $(".accodian-menu-li").click(function(){
+                $(this).children('.toggle-inner').slideToggle("100");
+            });
+        });
+    </script>
+    <title>title</title>
+</head>
+<body id="body" ontouchstart="">
+<!--210906-->
+<header class="header">
+    <div class="inner">
+        <div class="left">
+            <button class="h-btn back"></button>
+        </div>
+        <div class="text">FAQ</div>
+    </div>
+</header>
+<main class="main" role="main">
+    <div class="main-inner bg">
+        <div class="main-con">
+           <div class="accodian-menu">
+               <ul class="accodian-menu-ul">
+                   <li class="accodian-menu-li" onclick="classList.toggle('on')">
+                       <div class="toggle-ttl">
+                           <h3>제목</h3>
+                       </div>
+                       <div class="toggle-inner">
+                           <p>답변이 등록됩니다.</p>
+                           <p>답변이 등록됩니다.</p>
+                           <p>답변이 등록됩니다.</p>
+                       </div>
+                   </li>
+                   <li class="accodian-menu-li" onclick="classList.toggle('on')">
+                       <div class="toggle-ttl">
+                           <h3>제목</h3>
+                       </div>
+                       <div class="toggle-inner">
+                           <p>답변이 등록됩니다.</p>
+                       </div>
+                   </li>
+               </ul>
+           </div>
+        </div>
+        <nav class="nav">
+
+        </nav>
+    </div>
+</main>
+</body>
+</html>
