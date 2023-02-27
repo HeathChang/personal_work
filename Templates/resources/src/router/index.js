@@ -36,12 +36,23 @@ const routes = [
   {
     path: '/dropdown1',
     name: 'dropdown1',
-    component: () => import('@/views/dropdown/index.vue'),
+    component: () => import('@/components/views/dropdown/index.vue'),
     meta: {
       isHeader: false,
       isNav: false,
       isBack: false,
       titleName: 'dropdown1'
+    }
+  },
+  {
+    path: '/swiper1',
+    name: 'swiper1',
+    component: () => import('@/components/views/swiper/index.vue'),
+    meta: {
+      isHeader: false,
+      isNav: false,
+      isBack: false,
+      titleName: 'swiper1'
     }
   },
   {

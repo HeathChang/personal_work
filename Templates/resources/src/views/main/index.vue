@@ -5,6 +5,7 @@
         <div class="sec">
           <section>
             <router-link to="/dropdown1">dropdown_triangle_change</router-link>
+            <router-link to="/swiper1">swiper_child_component</router-link>
             <router-link to=""></router-link>
             <router-link to=""></router-link>
             <router-link to=""></router-link>
