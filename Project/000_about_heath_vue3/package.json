@@ -10,6 +10,7 @@
   "dependencies": {
     "ant-design-vue": "^3.2.15",
     "core-js": "^3.8.3",
+    "swiper": "^9.0.5",
     "vue": "^3.2.13"
   },
   "devDependencies": {
@@ -19,7 +20,9 @@
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "eslint": "^7.32.0",
-    "eslint-plugin-vue": "^8.0.3"
+    "eslint-plugin-vue": "^8.0.3",
+    "node-sass": "^8.0.0",
+    "sass-loader": "^13.2.0"
   },
   "eslintConfig": {
     "root": true,
@@ -33,7 +36,11 @@
     "parserOptions": {
       "parser": "@babel/eslint-parser"
     },
-    "rules": {}
+    "rules": {
+      "vue/multi-word-component-names": "off",
+      "no-unused-vars": "off",
+      "no-unreachable": "off"
+    }
   },
   "browserslist": [
     "> 1%",

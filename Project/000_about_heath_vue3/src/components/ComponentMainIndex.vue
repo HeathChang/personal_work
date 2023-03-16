@@ -19,6 +19,8 @@ import ComponentMidContent from "@/components/main/ComponentMidIndex.vue";
 import ComponentFooterIndex from "@/components/main/ComponentFooterIndex.vue";
 </script>
 
+
+
 <style>
 #components-layout-demo-fixed .logo {
   width: 120px;

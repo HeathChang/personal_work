@@ -1,14 +1,30 @@
 <template>
-  <div class="mid" :style="{ background: '#fff', padding: '24px', minHeight: '380px' }">
-    <div class="section">1</div>
-    <div class="section">2</div>
-    <div class="section">3</div>
-    <div class="section">4</div>
-    <div class="section">5</div>
-
+  <div class="mid" :style="{ background: '#fff', padding: '24px' }">
+    <swiper
+        v-bind="swiperOptions"
+        class="movie-swiper"
+    >
+      <swiper-slide
+          v-for="(item, index) in 3"
+          :key="index">
+        {{ item }}
+      </swiper-slide>
+    </swiper>
   </div>
 </template>
 
-<style scoped>
+<script setup>
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/swiper.css';
 
+
+const swiperOptions = {
+
+}
+</script>
+
+<style scoped lang="scss">
+.mid {
+  height: auto;
+}
 </style>
