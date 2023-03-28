@@ -120,60 +120,146 @@
 
 
 // 8. draw complex shapes
-window.onload = function () {
+// window.onload = function () {
+//
+//     // Definitions
+//     const canvas = document.getElementById("hello-world-canvas");
+//     const context = canvas.getContext("2d");
+//
+//
+// // First Z Object
+//     context.beginPath();
+//     context.strokeStyle = "red";
+//     context.lineWidth = 15;
+//     context.lineCap = "butt";
+//     context.lineJoin = "miter";
+//     context.shadowColor = "blue";
+//     context.shadowOffsetX = 10;
+//     context.shadowOffsetY = 10;
+//     context.shadowBlur = 10;
+//     context.moveTo(60, 80);
+//     context.lineTo(160, 80);
+//     context.lineTo(80, 180);
+//     context.lineTo(180, 180);
+//     context.stroke();
+//
+// // Second Z Object
+//     context.beginPath();
+//     context.strokeStyle = "blue";
+//     context.lineWidth = 15;
+//     context.lineCap = "round";
+//     context.lineJoin = "round";
+//     context.shadowColor = "yellow";
+//     context.shadowOffsetX = 10;
+//     context.shadowOffsetY = 10;
+//     context.shadowBlur = 10;
+//     context.moveTo(340, 80);
+//     context.lineTo(240, 80);
+//     context.lineTo(340, 180);
+//     context.lineTo(240, 180);
+//     context.stroke();
+//
+// // Third Z Object
+//     context.beginPath();
+//     context.strokeStyle = "green";
+//     context.lineWidth = 15;
+//     context.lineCap = "square";
+//     context.lineJoin = "bevel";
+//     context.shadowColor = "red";
+//     context.shadowOffsetX = 10;
+//     context.shadowOffsetY = 10;
+//     context.shadowBlur = 10;
+//     context.moveTo(420, 80);
+//     context.lineTo(520, 80);
+//     context.lineTo(440, 180);
+//     context.lineTo(540, 180);
+//     context.stroke();
+//
+//
+// }
+
+
+// 2. arc
+// window.onload = () => {
+//
+//     // Definitions
+//     var canvas = document.getElementById("hello-world-canvas");
+//     var context = canvas.getContext("2d");
+//
+//     var radian = Math.PI / 180;
+//
+//     // First Arc
+//     context.beginPath();
+//     context.strokeStyle = "blue";
+//     context.lineWidth = 10;
+//     context.arc(100, 100, 50, 0 * radian, 180 * radian, false);
+//     context.stroke();
+//
+//     // Second Arc
+//     context.beginPath();
+//     context.strokeStyle = "red";
+//     context.lineWidth = 10;
+//     context.arc(300, 200, 50, 45 * radian, 130 * radian, false);
+//     context.stroke();
+//
+//
+//     // Third Arc
+//     context.beginPath();
+//     context.strokeStyle = "green";
+//     context.lineWidth = 10;
+//     context.arc(300, 100, 50, 45 * radian, 130 * radian, true);
+//     context.stroke();
+// }
+
+
+//  curve
+// window.onload = () => {
+//
+//     // Definitions
+//     var canvas = document.getElementById("hello-world-canvas");
+//     var context = canvas.getContext("2d");
+//
+//
+//     context.beginPath();
+//     context.strokeStyle = "blue";
+//     context.lineWidth = 10;
+//     context.moveTo(200, 250)
+//     // cp => control point
+//     context.quadraticCurveTo(300, 100, 400, 250)
+//     context.stroke();
+//
+// }
+
+
+// cubic curve
+window.onload = () => {
 
     // Definitions
-    const canvas = document.getElementById("hello-world-canvas");
-    const context = canvas.getContext("2d");
+    var canvas = document.getElementById("hello-world-canvas");
+    var context = canvas.getContext("2d");
 
 
-// First Z Object
-    context.beginPath();
-    context.strokeStyle = "red";
-    context.lineWidth = 15;
-    context.lineCap = "butt";
-    context.lineJoin = "miter";
-    context.shadowColor = "blue";
-    context.shadowOffsetX = 10;
-    context.shadowOffsetY = 10;
-    context.shadowBlur = 10;
-    context.moveTo(60, 80);
-    context.lineTo(160, 80);
-    context.lineTo(80, 180);
-    context.lineTo(180, 180);
-    context.stroke();
-
-// Second Z Object
     context.beginPath();
     context.strokeStyle = "blue";
-    context.lineWidth = 15;
-    context.lineCap = "round";
-    context.lineJoin = "round";
-    context.shadowColor = "yellow";
-    context.shadowOffsetX = 10;
-    context.shadowOffsetY = 10;
-    context.shadowBlur = 10;
-    context.moveTo(340, 80);
-    context.lineTo(240, 80);
-    context.lineTo(340, 180);
-    context.lineTo(240, 180);
+    context.lineWidth = 10;
+    context.moveTo(200, 250)
+    // controlX1, controly1, controlx2, controly2, endx, endy (2 points and end point)
+    context.bezierCurveTo(200, 10, 50, 150, 400, 250)
     context.stroke();
 
-// Third Z Object
+    // mark control points
     context.beginPath();
-    context.strokeStyle = "green";
-    context.lineWidth = 15;
-    context.lineCap = "square";
-    context.lineJoin = "bevel";
-    context.shadowColor = "red";
-    context.shadowOffsetX = 10;
-    context.shadowOffsetY = 10;
-    context.shadowBlur = 10;
-    context.moveTo(420, 80);
-    context.lineTo(520, 80);
-    context.lineTo(440, 180);
-    context.lineTo(540, 180);
-    context.stroke();
+    context.arc(200, 250, 5, 0, 2 * Math.PI); // circle at first control point
+    context.arc(200, 10, 5, 0, 2 * Math.PI); // circle at first control point
+    context.fillStyle = "red";
+    context.fill();
+    context.closePath();
 
+    context.beginPath();
+    context.arc(50, 150, 5, 0, 2 * Math.PI); // circle at second control point
+    context.arc(400, 250, 5, 0, 2 * Math.PI); // circle at first control point
+    context.fillStyle = "green";
+    context.fill();
+    context.closePath();
 
 }
