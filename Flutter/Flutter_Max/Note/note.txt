@@ -1,0 +1,9 @@
+Tue Apr 4
+1. Ep 17. An overview of the generated files and folders.
+    - android directory: holds a complete android project that will be built into real Android app.
+    - build directory: holds output of Flutter App:
+    - ios directory: holds a complete ios(Xcode) project that will be built into real Android app.
+    - lib directory: write code
+    - test directory: automatic test
+    - pubspec.yaml file: dependency/ configure 3rd party packages etc.
+
