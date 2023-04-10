@@ -21,14 +21,14 @@ class MyAppState extends State<MyApp> {
   var questionNum = 'Q1';
 
   void answerQuestion() {
-    setState(()=> {
-      questionIndex += 1,
-      questionNum = "Q2",
-      if(questionIndex == 2){
-        questionIndex = 0,
-        questionNum = "Q1",
-      }
-    });
+    setState(() => {questionIndex, questionNum});
+
+    questionIndex += 1;
+    questionNum = "Q2";
+    if (questionIndex == 2) {
+      questionIndex = 0;
+      questionNum = "Q1";
+    };
     // the data will not change because we're trying to change some internal state of the widget
     // but this is stateless widget.
     print(questionIndex);
