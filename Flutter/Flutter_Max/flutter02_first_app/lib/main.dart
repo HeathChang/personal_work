@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './question.dart';
 
 void main() {
   //create an Object.
@@ -10,48 +11,48 @@ class MyApp extends StatefulWidget {
   // this will be re-create
   @override
   State<StatefulWidget> createState() {
-    return MyAppState();
+    return _MyAppState();
   }
 }
 
-class MyAppState extends State<MyApp> {
+class _MyAppState extends State<MyApp> {
   // this state belongs to MyApp
   // this will not re-create
-  var questionIndex = 0;
-  var questionNum = 'Q1';
+  var _questionIndex = 0;
+  var _questionNum = 'Q1';
 
-  void answerQuestion() {
-    setState(() => {questionIndex, questionNum});
+  void _answerQuestion() {
+    setState(() => {_questionIndex, _questionNum});
 
-    questionIndex += 1;
-    questionNum = "Q2";
-    if (questionIndex == 2) {
-      questionIndex = 0;
-      questionNum = "Q1";
+    _questionIndex += 1;
+    _questionNum = "Q2";
+    if (_questionIndex == 2) {
+      _questionIndex = 0;
+      _questionNum = "Q1";
     };
     // the data will not change because we're trying to change some internal state of the widget
     // but this is stateless widget.
-    print(questionIndex);
+    print(_questionIndex);
   }
 
   @override
   Widget build(BuildContext context) {
     var questions = [
-      questionNum + '. What\`s your favorite color ? ',
-      questionNum + '. What\`s your favorite animal ? ',
+      _questionNum + '. What\`s your favorite color ? ',
+      _questionNum + '. What\`s your favorite animal ? ',
     ];
     return MaterialApp(
         home: Scaffold(
             appBar: AppBar(title: Text("My First App")),
             body: Column(
               children: <Widget>[
-                Text(questions[questionIndex]),
+                Question(questions[_questionIndex]),
                 ElevatedButton(
-                    onPressed: answerQuestion, child: Text('Answer 1')),
+                    onPressed: _answerQuestion, child: Text('Answer 1')),
                 ElevatedButton(
-                    onPressed: answerQuestion, child: Text('Answer 2')),
+                    onPressed: _answerQuestion, child: Text('Answer 2')),
                 ElevatedButton(
-                    onPressed: answerQuestion, child: Text('Answer 3'))
+                    onPressed: _answerQuestion, child: Text('Answer 3'))
               ], // this will holds a widget (list of widget).
             )));
   }
