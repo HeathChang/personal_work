@@ -20,7 +20,8 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('First App'),
         ),
-        body: GradientContainer('Hello World :)'), // => will be moved as custom
+        body: GradientContainer("Hello World", Color.fromARGB(255, 4, 2, 80),
+            Color.fromARGB(255, 45, 7, 98)), // => will be moved as custom
       ),
     );
   }
