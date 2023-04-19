@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
 class StartScreen extends StatelessWidget {
-  const StartScreen({super.key});
+  final void Function() startQuiz;
+
+
+  const StartScreen(this.startQuiz, {super.key}); // add positional argument
+  // able to call switchScreen because it was passed
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +30,7 @@ class StartScreen extends StatelessWidget {
           ),
           const SizedBox(height: 30),
           OutlinedButton.icon( // ways to add Icon
-            onPressed: () => {},
+            onPressed: startQuiz, // anonymous function
             style: OutlinedButton.styleFrom(foregroundColor: Colors.white),
             icon: const Icon(Icons.arrow_right_alt), // can be use anywhere else
             label: const Text('Learn Now !'),
