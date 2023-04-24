@@ -4,7 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class QuestionScreen extends StatefulWidget {
-  const QuestionScreen({super.key});
+  const QuestionScreen(this.onSelectAnswer, {super.key});
+
+  final void Function(String answer) onSelectAnswer;
+
+  // need to send this to _QuestionScreenState
+  // => use [widget]
 
   @override
   State<QuestionScreen> createState() {
@@ -15,7 +20,9 @@ class QuestionScreen extends StatefulWidget {
 class _QuestionScreenState extends State<QuestionScreen> {
   var currentQuestionIndex = 0;
 
-  void answerQuestion() {
+  void answerQuestion(String selectedAnswer) {
+    widget.onSelectAnswer(selectedAnswer);
+    //widget instance allows Flutter to access to Widget Class and its properties
     setState(() {
       currentQuestionIndex++;
     });
@@ -37,17 +44,23 @@ class _QuestionScreenState extends State<QuestionScreen> {
               currentQuestion.text,
               // style: const TextStyle(color: Colors.white),
               style: GoogleFonts.lato(
-                color: const Color.fromARGB(255, 237, 223, 252),
-                fontSize: 24,
-                fontWeight: FontWeight.bold
-              ), // use google fonts
+                  color: const Color.fromARGB(255, 237, 223, 252),
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold), // use google fonts
               textAlign: TextAlign.center,
             ),
             const SizedBox(
               height: 30,
             ),
-            ...currentQuestion.getShuffledAnswers().map((item) {
-              return AnswerButton(item, answerQuestion);
+            ...currentQuestion.getShuffledAnswers().map((answer) {
+              return AnswerButton(answer, (){
+                // answerQuestion
+                answerQuestion(answer);
+                // NOTE::
+                // This seems that we are executing function right away, but
+                // this function is forwarded as a value to onTap.
+                // this will not be executed when it is created, but only when this anonymous function is triggered from the button.
+              });
               //  Iterable !== Widget => use Spread Operator
             }), // convert string to widget
             // AnswerButton(currentQuestion.answers[0], () {}),
