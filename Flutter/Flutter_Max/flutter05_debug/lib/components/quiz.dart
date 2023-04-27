@@ -1,11 +1,9 @@
 // quiz.dart contains contents MaterialApp
 import 'package:flutter/material.dart';
-import 'package:basic101_01/components/data/questions.dart';
-import 'package:basic101_01/components/questions_screen.dart';
-import 'package:basic101_01/components/start_screen.dart';
-import 'package:basic101_01/components/results_screen.dart';
-
-
+import 'package:adv_basics/components/data/questions.dart';
+import 'package:adv_basics/components/questions_screen.dart';
+import 'package:adv_basics/components/start_screen.dart';
+import 'package:adv_basics/components/results_screen.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
@@ -71,11 +69,6 @@ class _QuizState extends State<Quiz> {
     );
   }
 }
-
-
-
-
-
 
 // class Quiz extends StatefulWidget {
 //   const Quiz({super.key});
