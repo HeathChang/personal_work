@@ -4,8 +4,9 @@ import 'package:flutter06_expense/widgets/expenses.dart';
 
 void main() {
   runApp(
-    const MaterialApp(
-      home: Expenses(),
+     MaterialApp(
+      theme: ThemeData(useMaterial3: true), // change material 2 to material3
+      home: const Expenses(),
     ),
   );
 }
