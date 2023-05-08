@@ -28,11 +28,20 @@ class _ExpensesState extends State<Expenses> {
 
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
-        context: context, // context ,which is full of meta-data, holds information about expenses widget in the end and its position in the widget tree
-        builder: (builderContext) { // builder basically means that you must provide a function as a value. (return a widget that should basically be displayed when Flutter renders this mbs is opening up)
-          return const NewExpense();
-        } //
-    ); //
+        // isScrollControlled: will take full available height.
+        isScrollControlled: true,
+        context: context,
+        // context ,which is full of meta-data, holds information about expenses widget in the end and its position in the widget tree
+        builder: (builderContext) {
+          // builder basically means that you must provide a function as a value. (return a widget that should basically be displayed when Flutter renders this mbs is opening up)
+          return NewExpense(onAddExpense: _addExpense);
+        });
+  }
+
+  void _addExpense(Expense expense) {
+    setState(() {
+      _registeredExpenses.add(expense);
+    });
   }
 
   @override
@@ -41,9 +50,11 @@ class _ExpensesState extends State<Expenses> {
       appBar: AppBar(
         title: const Text("Flutter Expense Tracker"),
         actions: [
-          IconButton(onPressed: () {
-            return _openAddExpenseOverlay();
-          }, icon: const Icon(Icons.add)),
+          IconButton(
+              onPressed: () {
+                return _openAddExpenseOverlay();
+              },
+              icon: const Icon(Icons.add)),
         ], // actions: typically used to display buttons in top app bar.
       ),
       body: Column(
