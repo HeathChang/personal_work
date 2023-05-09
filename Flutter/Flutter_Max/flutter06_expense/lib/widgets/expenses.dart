@@ -28,7 +28,7 @@ class _ExpensesState extends State<Expenses> {
 
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
-        // isScrollControlled: will take full available height.
+      // isScrollControlled: will take full available height.
         isScrollControlled: true,
         context: context,
         // context ,which is full of meta-data, holds information about expenses widget in the end and its position in the widget tree
@@ -44,8 +44,33 @@ class _ExpensesState extends State<Expenses> {
     });
   }
 
+  void _removeExpense(Expense expense) {
+    final expenseIndex = _registeredExpenses.indexOf(expense);
+    setState(() {
+      _registeredExpenses.remove(expense);
+    });
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        duration: const Duration(seconds: 3),
+        content: const Text('Expense Deleted'),
+        action: SnackBarAction(label: 'Undo', onPressed: () {
+          setState(() {
+            _registeredExpenses.insert(expenseIndex, expense);
+          });
+        }),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    Widget mainContent = const Center(child: Text('No Expenses found.'));
+
+    if (_registeredExpenses.isNotEmpty) {
+      mainContent = ExpensesList(
+          expenses: _registeredExpenses, onRemoveExpense: _removeExpense);
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Flutter Expense Tracker"),
@@ -61,7 +86,7 @@ class _ExpensesState extends State<Expenses> {
         children: [
           // Tool Bar
           const Text('The Chart'),
-          Expanded(child: ExpensesList(expenses: _registeredExpenses))
+          Expanded(child: mainContent)
           // column inside column will cause error => use expanded to avoid issue
         ],
       ),
