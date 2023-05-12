@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter06_expense/widgets/chart/chart.dart';
 import 'package:flutter06_expense/widgets/expenses_list/expenses_list.dart';
 import 'package:flutter06_expense/models/expense.dart';
 import 'package:flutter06_expense/widgets/expenses_list/new_expense.dart';
@@ -85,7 +86,7 @@ class _ExpensesState extends State<Expenses> {
       body: Column(
         children: [
           // Tool Bar
-          const Text('The Chart'),
+          Chart(expenses: _registeredExpenses),
           Expanded(child: mainContent)
           // column inside column will cause error => use expanded to avoid issue
         ],
