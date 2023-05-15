@@ -90,94 +90,202 @@ class _NewExpenseState extends State<NewExpense> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 48, 16, 16),
-      child: Column(
-        children: [
-          TextField(
-            // onChanged: _saveTitleInput, // first way of storing text value => onChanged
-            controller: _titleController,
-            // second way of storing text value => controller
-            maxLength: 50,
-            keyboardType: TextInputType.text,
-            // input tag type in JS
-            decoration: const InputDecoration(
-                label: Text('Title')), // title of input (Text Field)
+    // extra info abut UI elements that might be overlapping
+    final keyboardSpace = MediaQuery.of(context).viewInsets.bottom;
+    return LayoutBuilder(builder: (ctx, constraints) {
+      final width = constraints.maxWidth;
+
+      return SizedBox(
+        height: double.infinity,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(16, 48, 16, keyboardSpace + 16),
+            child: Column(
+              children: [
+                if (width >= 600)
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: TextField(
+                          controller: _titleController,
+                          maxLength: 50,
+                          keyboardType: TextInputType.text,
+                          decoration: const InputDecoration(
+                              label:
+                                  Text('Title')), // title of input (Text Field)
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 96,
+                      ),
+                      Expanded(
+                        child: TextField(
+                          // TextField wants to take as much space horizontally as possible, and Row do not restrict the amount of space  which will cause error => Expanded
+                          controller: _amountController,
+                          keyboardType: TextInputType.number,
+                          decoration: const InputDecoration(
+                              // 앞에 붙는 $ 표시
+                              prefixText: '\$ ',
+                              // title of input (Text Field)
+                              label: Text('Amount')),
+                        ),
+                      ),
+                    ],
+                  )
+                else
+                  TextField(
+                    // onChanged: _saveTitleInput, // first way of storing text value => onChanged
+                    controller: _titleController,
+                    // second way of storing text value => controller
+                    maxLength: 50,
+                    keyboardType: TextInputType.text,
+                    // input tag type in JS
+                    decoration: const InputDecoration(
+                        label: Text('Title')), // title of input (Text Field)
+                  ),
+
+
+                if (width >= 600)
+                  Row(
+                    children: [
+                      DropdownButton(
+                        //initial data:
+                        value: _selectedCategory,
+                        // DropdownMenuItem: need to set the child parameter to another widget, which simply defines what will be shown on the screen.
+                        items: Category.values
+                            .map((category) => DropdownMenuItem(
+                                  // save internally: value of selected category
+                                  value: category,
+                                  child: Text(
+                                    category.name.toUpperCase(),
+                                  ),
+                                ))
+                            .toList(),
+                        onChanged: (value) {
+                          // the value here is value from map of DropDownMenuItem
+                          if (value == null) return;
+                          setState(() {
+                            _selectedCategory = value;
+                          });
+                        },
+                      ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          // row controls the horizontal alignment to push content to the end
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          // center the content vertically.
+                          children: [
+                            Text(
+                              _selectedDate == null
+                                  ? 'No Dated Date'
+                                  : formatter.format(
+                                      _selectedDate!), // ! assume this wont be null
+                            ),
+                            IconButton(
+                                onPressed: _presentDatePicker,
+                                icon: const Icon(Icons.calendar_month))
+                          ],
+                        ),
+                      )
+                    ],
+                  )
+                else
+                  Row(
+                    children: [
+                      Expanded(
+                        child: TextField(
+                          // TextField wants to take as much space horizontally as possible, and Row do not restrict the amount of space  which will cause error => Expanded
+                          controller: _amountController,
+                          keyboardType: TextInputType.number,
+                          decoration: const InputDecoration(
+                              // 앞에 붙는 $ 표시
+                              prefixText: '\$ ',
+                              // title of input (Text Field)
+                              label: Text('Amount')),
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          // row controls the horizontal alignment to push content to the end
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          // center the content vertically.
+                          children: [
+                            Text(
+                              _selectedDate == null
+                                  ? 'No Dated Date'
+                                  : formatter.format(
+                                      _selectedDate!), // ! assume this wont be null
+                            ),
+                            IconButton(
+                                onPressed: _presentDatePicker,
+                                icon: const Icon(Icons.calendar_month))
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                const SizedBox(height: 16),
+                if (width >= 600)
+                  Row(
+                    children: [
+                      const Spacer(),
+                      TextButton(
+                          onPressed: () {
+                            // Navigator class's pop makes modal close
+                            Navigator.pop(context);
+                          },
+                          child: const Text('Cancel')),
+                      ElevatedButton(
+                          onPressed: _submitExpenseData,
+                          child: const Text('Save Expense')),
+                    ],
+                  )
+                else
+                  Row(
+                    children: [
+                      DropdownButton(
+                        //initial data:
+                        value: _selectedCategory,
+                        // DropdownMenuItem: need to set the child parameter to another widget, which simply defines what will be shown on the screen.
+                        items: Category.values
+                            .map((category) => DropdownMenuItem(
+                                  // save internally: value of selected category
+                                  value: category,
+                                  child: Text(
+                                    category.name.toUpperCase(),
+                                  ),
+                                ))
+                            .toList(),
+                        onChanged: (value) {
+                          // the value here is value from map of DropDownMenuItem
+                          if (value == null) return;
+                          setState(() {
+                            _selectedCategory = value;
+                          });
+                        },
+                      ),
+                      const Spacer(),
+                      TextButton(
+                          onPressed: () {
+                            // Navigator class's pop makes modal close
+                            Navigator.pop(context);
+                          },
+                          child: const Text('Cancel')),
+                      ElevatedButton(
+                          onPressed: _submitExpenseData,
+                          child: const Text('Save Expense')),
+                    ],
+                  )
+              ],
+            ),
           ),
-          Row(
-            children: [
-              Expanded(
-                child: TextField(
-                  // TextField wants to take as much space horizontally as possible, and Row do not restrict the amount of space  which will cause error => Expanded
-                  controller: _amountController,
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                      // 앞에 붙는 $ 표시
-                      prefixText: '\$ ',
-                      // title of input (Text Field)
-                      label: Text('Amount')),
-                ),
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  // row controls the horizontal alignment to push content to the end
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  // center the content vertically.
-                  children: [
-                    Text(
-                      _selectedDate == null
-                          ? 'No Dated Date'
-                          : formatter.format(
-                              _selectedDate!), // ! assume this wont be null
-                    ),
-                    IconButton(
-                        onPressed: _presentDatePicker,
-                        icon: const Icon(Icons.calendar_month))
-                  ],
-                ),
-              )
-            ],
-          ),
-          const SizedBox(height: 16),
-          Row(
-            children: [
-              DropdownButton(
-                //initial data:
-                value: _selectedCategory,
-                // DropdownMenuItem: need to set the child parameter to another widget, which simply defines what will be shown on the screen.
-                items: Category.values
-                    .map((category) => DropdownMenuItem(
-                          // save internally: value of selected category
-                          value: category,
-                          child: Text(
-                            category.name.toUpperCase(),
-                          ),
-                        ))
-                    .toList(),
-                onChanged: (value) {
-                  // the value here is value from map of DropDownMenuItem
-                  if (value == null) return;
-                  setState(() {
-                    _selectedCategory = value;
-                  });
-                },
-              ),
-              const Spacer(),
-              TextButton(
-                  onPressed: () {
-                    // Navigator class's pop makes modal close
-                    Navigator.pop(context);
-                  },
-                  child: const Text('Cancel')),
-              ElevatedButton(
-                  onPressed: _submitExpenseData,
-                  child: const Text('Save Expense')),
-            ],
-          )
-        ],
-      ),
-    );
+        ),
+      );
+    });
   }
 }

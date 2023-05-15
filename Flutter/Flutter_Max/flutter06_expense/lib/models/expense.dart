@@ -60,4 +60,10 @@ class ExpenseBucket {
 
     return sum;
   }
+
+  @override
+  String toString() {
+    // To print a custom string representation of the ExpenseBucket instance, you can override the toString() method in your ExpenseBucket class.
+    return 'ExpenseBucket{category: $category, expenses: $expenses, totalExpenses: $totalExpenses}';
+  }
 }

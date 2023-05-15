@@ -8,7 +8,8 @@ class Chart extends StatelessWidget {
 
   final List<Expense> expenses;
 
-  List<ExpenseBucket> get buckets { // helper getters
+  List<ExpenseBucket> get buckets {
+    // helper getters
     return [
       ExpenseBucket.forCategory(expenses, Category.food),
       ExpenseBucket.forCategory(expenses, Category.leisure),
@@ -18,15 +19,16 @@ class Chart extends StatelessWidget {
   }
 
   double get maxTotalExpense {
-    double maxTotalExpense = 0;
-
+    double _maxTotalExpense = 0;
+    // print(buckets.length);
     for (final bucket in buckets) {
-      if (bucket.totalExpenses > maxTotalExpense) {
-        maxTotalExpense = bucket.totalExpenses;
+      // print(bucket.toString());
+      if (bucket.totalExpenses > _maxTotalExpense) {
+        _maxTotalExpense = bucket.totalExpenses;
       }
     }
 
-    return maxTotalExpense;
+    return _maxTotalExpense;
   }
 
   @override
@@ -72,20 +74,20 @@ class Chart extends StatelessWidget {
             children: buckets
                 .map(
                   (bucket) => Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 4),
-                  child: Icon(
-                    categoryIcons[bucket.category],
-                    color: isDarkMode
-                        ? Theme.of(context).colorScheme.secondary
-                        : Theme.of(context)
-                        .colorScheme
-                        .primary
-                        .withOpacity(0.7),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
+                      child: Icon(
+                        categoryIcons[bucket.category],
+                        color: isDarkMode
+                            ? Theme.of(context).colorScheme.secondary
+                            : Theme.of(context)
+                                .colorScheme
+                                .primary
+                                .withOpacity(0.7),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            )
+                )
                 .toList(),
           )
         ],
