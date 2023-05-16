@@ -70,7 +70,8 @@ class _ExpensesState extends State<Expenses> {
   @override
   Widget build(BuildContext context) {
     // if rotate, build will re-executed.
-    // print(MediaQuery.of(context).size);
+    print("Hello World::::");
+    print(MediaQuery.of(context).size);
     final Size screenSize = MediaQuery
         .of(context)
         .size;
