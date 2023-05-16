@@ -1,36 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:flutter07_todo/keys/keys.dart';
+
+import 'package:flutter07_todo/ui_updates_demo.dart';
 
 void main() {
-  runApp(const MyApp());
+  // 1. final
+  // final numbers = [1,2,3];
+  // numbers.add(4); // 0
+  // numbers = [1]; // X
+
+  // 2. Var
+  // var numbers = [1,2,3];
+  // numbers.add(4); // 0
+  // numbers = [1]; // 0
+
+  // 3. Const:
+  // const numbers = [1,2,3];
+  // numbers.add(4); // X, cannot add to an unmodifiable list (runtime error)
+  // numbers = [1]; // X
+
+  runApp(const App());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class App extends StatelessWidget {
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData(useMaterial3: true),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('First App'),
+          title: const Text('Flutter Internals'),
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Text(
-                'Hello World!',
-              ),
-              Text(
-                'It\'s time to learn Flutter!',
-              ),
-            ],
-          ),
-        ),
+        body: const Keys(),
+        // body: const UIUpdatesDemo(),
       ),
     );
   }
