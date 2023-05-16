@@ -29,7 +29,8 @@ class _MyAppState extends State<MyApp> {
     if (_questionIndex == 2) {
       _questionIndex = 0;
       _questionNum = "Q1";
-    };
+    }
+    ;
     // the data will not change because we're trying to change some internal state of the widget
     // but this is stateless widget.
     print(_questionIndex);

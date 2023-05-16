@@ -144,8 +144,6 @@ class _NewExpenseState extends State<NewExpense> {
                     decoration: const InputDecoration(
                         label: Text('Title')), // title of input (Text Field)
                   ),
-
-
                 if (width >= 600)
                   Row(
                     children: [

@@ -22,8 +22,13 @@ class ExpensesList extends StatelessWidget {
         // Dismissible: swipe to delete
         return Dismissible(
           key: ValueKey(expenses[index]), //create key obj
-          background: Container(color: Theme.of(context).colorScheme.error.withOpacity(0.3), // setting up background color
-          margin: EdgeInsets.symmetric(horizontal: Theme.of(context).cardTheme.margin!.horizontal),
+          background: Container(
+            color: Theme.of(context)
+                .colorScheme
+                .error
+                .withOpacity(0.3), // setting up background color
+            margin: EdgeInsets.symmetric(
+                horizontal: Theme.of(context).cardTheme.margin!.horizontal),
           ),
           child: ExpenseItem(expense: expenses[index]),
           onDismissed: (direction) {

@@ -72,9 +72,7 @@ class _ExpensesState extends State<Expenses> {
     // if rotate, build will re-executed.
     print("Hello World::::");
     print(MediaQuery.of(context).size);
-    final Size screenSize = MediaQuery
-        .of(context)
-        .size;
+    final Size screenSize = MediaQuery.of(context).size;
     final double width = screenSize.width;
     final double height = screenSize.height;
 
@@ -98,18 +96,18 @@ class _ExpensesState extends State<Expenses> {
       ),
       body: width < height
           ? Column(
-        children: [
-          // Tool Bar
-          Chart(expenses: _registeredExpenses),
-          Expanded(child: mainContent)
-          // column inside column will cause error => use expanded to avoid issue
-        ],
-      )
+              children: [
+                // Tool Bar
+                Chart(expenses: _registeredExpenses),
+                Expanded(child: mainContent)
+                // column inside column will cause error => use expanded to avoid issue
+              ],
+            )
           : Row(children: [
-        // since row takes as much space as infinity, and container in chart takes as many as infinite thus error => use Expanded, and wrap
-        Expanded(child: Chart(expenses: _registeredExpenses)),
-        Expanded(child: mainContent)
-      ]),
+              // since row takes as much space as infinity, and container in chart takes as many as infinite thus error => use Expanded, and wrap
+              Expanded(child: Chart(expenses: _registeredExpenses)),
+              Expanded(child: mainContent)
+            ]),
     );
   }
 }

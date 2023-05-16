@@ -9,14 +9,11 @@ void main() {
   var newAge = person.age;
   print(newName);
   print(newAge);
-
-
 }
 
 int addNumbers(int num1, int num2) {
   return num1 + num2;
 }
-
 
 class Person {
   String name = 'Heath';
