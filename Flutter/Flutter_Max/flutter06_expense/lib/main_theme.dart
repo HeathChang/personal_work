@@ -40,9 +40,9 @@ ThemeData getDarkTheme(ColorScheme colorScheme) {
           margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8)),
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-              backgroundColor: colorScheme.primaryContainer,
-              // primary container is the background color
-              foregroundColor: colorScheme
-                  .onPrimaryContainer) //colors the content inside of that button: onPrimaryContainer
+        backgroundColor: colorScheme.primaryContainer,
+        // primary container is the background color
+        foregroundColor: colorScheme.onPrimaryContainer,
+      ) //colors the content inside of that button: onPrimaryContainer
           ));
 }

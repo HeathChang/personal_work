@@ -1,9 +1,9 @@
 // quiz.dart contains contents MaterialApp
-import 'package:flutter/material.dart';
 import 'package:basic101_01/components/data/questions.dart';
 import 'package:basic101_01/components/questions_screen.dart';
-import 'package:basic101_01/components/start_screen.dart';
 import 'package:basic101_01/components/results_screen.dart';
+import 'package:basic101_01/components/start_screen.dart';
+import 'package:flutter/material.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});

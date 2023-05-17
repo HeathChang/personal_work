@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter07_todo/keys/keys.dart';
 
-import 'package:flutter07_todo/ui_updates_demo.dart';
-
 void main() {
   // 1. final
   // final numbers = [1,2,3];
