@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter08_meal/data/dummy_data.dart';
+import 'package:flutter08_meal/widgets/category_grid_item.dart';
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});
@@ -9,7 +11,9 @@ class CategoriesScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Pick your category"),
       ),
+      // GridView: Scrollable
       body: GridView(
+        padding: const EdgeInsets.all(24),
         // gridDelegate: controls the layout of Grid : top to bottom, left to right,  horizontally 2
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2, // Row 별 item 갯수
@@ -17,17 +21,7 @@ class CategoriesScreen extends StatelessWidget {
           crossAxisSpacing: 20, // Row item의 간격
           mainAxisSpacing: 20, // Colum item의 간격
         ),
-        children: const [
-          Text(
-            "1",
-            style: TextStyle(color: Colors.white),
-          ),
-          Text("2", style: TextStyle(color: Colors.white)),
-          Text("3", style: TextStyle(color: Colors.white)),
-          Text("4", style: TextStyle(color: Colors.white)),
-          Text("5", style: TextStyle(color: Colors.white)),
-          Text("6", style: TextStyle(color: Colors.white)),
-        ],
+        children:  availableCategories.map((data) => CategoryGridItem(category: data)).toList(),
       ),
     );
   }
