@@ -24,7 +24,28 @@ class _ExpensesState extends State<Expenses> {
         title: 'Cinema',
         amount: 15.99,
         date: DateTime.now(),
-        category: Category.leisure), // need to refer enum
+        category: Category.leisure),
+    Expense(
+        title: 'Cinema',
+        amount: 15.99,
+        date: DateTime.now(),
+        category: Category.leisure), /// need to refer enum
+    Expense(
+        title: 'Cinema',
+        amount: 15.99,
+        date: DateTime.now(),
+        category: Category.leisure), /// need to refer enum
+
+    Expense(
+        title: 'Cinema',
+        amount: 15.99,
+        date: DateTime.now(),
+        category: Category.leisure), /// need to refer enum
+    Expense(
+        title: 'Cinema',
+        amount: 15.99,
+        date: DateTime.now(),
+        category: Category.leisure), /// need to refer enum
   ];
 
   void _openAddExpenseOverlay() {
