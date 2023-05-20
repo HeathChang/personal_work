@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter08_meal/models/category.dart';
 
 class CategoryGridItem extends StatelessWidget {
-  const CategoryGridItem({required this.category, super.key});
+  const CategoryGridItem({required this.category, super.key, required this.onSelectCategory});
 
   final Category category;
-
+  final void Function() onSelectCategory;
   @override
   Widget build(BuildContext context) {
     // Inkwell: Event Listener with a Feedback
     return InkWell(
-      onTap: () {},
+      onTap: onSelectCategory,
       splashColor: Theme.of(context).primaryColor, // visual tapping effect.
       borderRadius: BorderRadius.circular(16),
       child: Container(
