@@ -4,14 +4,16 @@ import 'package:flutter08_meal/widgets/meal_item_trait.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class MealItem extends StatelessWidget {
-  const MealItem({super.key, required this.meal});
+  const MealItem({super.key, required this.meal, required this.onSelectMeal});
 
   final Meal meal;
+  final void Function(Meal meal) onSelectMeal;
 
   String get getComplexityText {
     return meal.complexity.name[0].toUpperCase() +
         meal.complexity.name.substring(1);
   }
+
   String get getAffordability {
     return meal.affordability.name[0].toUpperCase() +
         meal.affordability.name.substring(1);
@@ -26,7 +28,9 @@ class MealItem extends StatelessWidget {
       //overflow: hidden
       elevation: 2,
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          onSelectMeal(meal);
+        },
         // stack: position multiple widgets above each other, but not above each other as column
         child: Stack(
           //stack ignores shape attribute.
@@ -67,11 +71,15 @@ class MealItem extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        MealItemTrait(icon: Icons.schedule, label: '${meal.duration} min'),
+                        MealItemTrait(
+                            icon: Icons.schedule,
+                            label: '${meal.duration} min'),
                         const SizedBox(width: 12),
-                        MealItemTrait(icon: Icons.work, label: getComplexityText),
+                        MealItemTrait(
+                            icon: Icons.work, label: getComplexityText),
                         const SizedBox(width: 12),
-                        MealItemTrait(icon: Icons.work, label: getAffordability),
+                        MealItemTrait(
+                            icon: Icons.work, label: getAffordability),
                       ],
                     )
                   ],
