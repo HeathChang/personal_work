@@ -9,7 +9,6 @@ let x2: Bool = false;
 func guardExample(expr: Bool, str: String) {
     guard(expr) else {
         // if expr is true, dont do express, if false, do this
-        
         print("We are here because the expression is false");
         return
     }
