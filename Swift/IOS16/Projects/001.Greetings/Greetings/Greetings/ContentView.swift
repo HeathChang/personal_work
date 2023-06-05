@@ -7,15 +7,31 @@
 
 import SwiftUI
 
+
+struct DataItemModel {
+    let text: String
+    let color: Color
+}
+
+
 struct ContentView: View {
+    
+    let messages = [
+        DataItemModel(text: "Hello There", color: .green),
+        DataItemModel(text: "Welcome to Swift Programming", color: .gray),
+        DataItemModel(text: "Are you Ready?", color: .yellow),
+        DataItemModel(text: "Start Exploring", color: .red),
+        DataItemModel(text: "Boom", color: .purple),
+    ];
+    
     var body: some View {
         VStack(alignment: .leading) {
             // ExtractedView: technique refers to the process of extracting a reusable view from existing code. 
-            TextView(text: "Hello There", color: .green)
-            TextView(text: "Welcome to Swift Programming", color: .gray)
-            TextView(text: "Are you Ready?", color: .yellow)
-            TextView(text: "Start Exploring", color: .red)
-            TextView(text: "Boom", color: .purple)
+            TextView(text: messages[0].text, color: messages[0].color)
+            TextView(text: messages[1].text, color: messages[1].color)
+            TextView(text: messages[2].text, color: messages[2].color)
+            TextView(text: messages[3].text, color: messages[3].color)
+            TextView(text: messages[4].text, color: messages[4].color)
         }
         .padding()
     }
