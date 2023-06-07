@@ -93,6 +93,7 @@ struct TextView: View {
     }
 }
 
+
 struct TitleView: View {
     @State var isRotated: Bool = false;
     @State var captionIndex: Int = 0;
@@ -148,6 +149,8 @@ struct MessagesView: View {
     }
 }
 
+
+/// Using Summary wih triple slash [ /// ]
 struct BackgroundView: View {
     // Linear Background
     var body: some View {
@@ -163,12 +166,10 @@ struct BackgroundView: View {
 }
 
 
-
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-//        ContentView()
-
+        //        ContentView()
+        
         ContentView()
             .preferredColorScheme(.dark) // dark mode
     }
