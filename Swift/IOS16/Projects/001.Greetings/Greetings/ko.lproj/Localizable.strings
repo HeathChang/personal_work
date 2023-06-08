@@ -1,13 +1,12 @@
-"Hello There" = "Hello There";
-"Welcome to Swift Programming" = "Welcome to SwiftProgramming";
-"Are you Ready?" = "Are you Ready?";
-"Start Exploring" = "Start Exploring";
-"Boom" = "Boom";
-"Greetings" = "안녕하세요";
-"Exploring iOS 15 programming" = "Exploring iOS 15 programming";
-"Learning how to bake" = "Learning how to bake";
-"Programming recipes" = "Programming recipes";
-"A quest for knowledge" = "A quest for knowledge";
-
+"Hello There" = "안녕하세요";
+"Welcome to Swift Programming" = "Swift 프로그래밍에 오신 것을 환영합니다";
+"Are you Ready?" = "준비되셨나요?";
+"Start Exploring" = "탐색을 시작하세요";
+"Boom" = "붐";
+"Greetings" = "인사";
+"Exploring iOS 16 programming" = "iOS 16 프로그래밍 탐색하기";
+"Learning how to bake" = "베이킹 배우기";
+"Programming recipes" = "프로그래밍 레시피";
+"A quest for knowledge" = "지식을 위한 탐구";
 
 /*번역*/

@@ -1,18 +1,23 @@
-//
-//  GreetingsApp.swift
-//  Greetings
-//
-//  Created by Hyunsoo Chang on 2023/06/05.
-//
 
 import SwiftUI
 
 @main
 struct GreetingsApp: App {
+    @State var language: String = "en";
+    @State var layoutDirection: LayoutDirection = .leftToRight;
+    
+    
+    
     var body: some Scene {
         WindowGroup {
-            GreetingsView()
+            MainView(language: $language, layoutDirection: $layoutDirection)
+                .environment(\.locale, Locale(identifier: language))
+                .environment(\.layoutDirection, layoutDirection)
         }
     }
 }
+
+
+
+
 

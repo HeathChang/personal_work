@@ -22,7 +22,7 @@ struct TextView: View {
         
     ]
     var body: some View {
-        Text(text)
+        Text(LocalizedStringKey(text))
             .font(.title2)
             .fontWeight(.semibold)
             .foregroundColor(Color.white)
