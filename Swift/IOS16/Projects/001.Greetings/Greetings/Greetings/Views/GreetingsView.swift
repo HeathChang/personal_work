@@ -1,9 +1,3 @@
-//
-//  ContentView.swift
-//  Greetings
-//
-//  Created by Hyunsoo Chang on 2023/06/05.
-//
 
 import SwiftUI
 

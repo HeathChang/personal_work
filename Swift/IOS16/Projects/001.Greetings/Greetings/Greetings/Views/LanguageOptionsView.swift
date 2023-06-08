@@ -1,5 +1,6 @@
 import SwiftUI
 
+
 struct LanguageOptionsView: View {
     @Binding var language: String;
     @Binding var layoutDirection: LayoutDirection;
@@ -8,6 +9,7 @@ struct LanguageOptionsView: View {
     var body: some View {
         Image(systemName: "gearshape.fill")
             .contextMenu{
+                // provides a list of actions that are relevant to the selected view or its content. 
                 Button(action: {
                     language = "en"
                     layoutDirection = .leftToRight
