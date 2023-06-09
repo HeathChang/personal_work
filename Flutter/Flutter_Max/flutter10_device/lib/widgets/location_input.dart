@@ -1,18 +1,20 @@
 import 'dart:convert';
 
 import 'package:favorite_places/models/place.dart';
+import 'package:favorite_places/screens/map.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import "package:http/http.dart" as http;
 
 class LocationInput extends StatefulWidget {
-  const LocationInput({Key? key, required this.onSelectLocation}) : super(key: key);
+  const LocationInput({Key? key, required this.onSelectLocation})
+      : super(key: key);
 
   final void Function(PlaceLocation location) onSelectLocation;
 
   @override
   State<LocationInput> createState() => _LocationInputState();
-
 }
 
 class _LocationInputState extends State<LocationInput> {
@@ -60,27 +62,39 @@ class _LocationInputState extends State<LocationInput> {
     final lng = locationData.longitude;
     final lat = locationData.latitude;
 
-    if (lng == null || lat == null) {
-      return;
-    }
+    _savePlace(lat!, lng!);
+  }
 
+  void _savePlace(double latitude, double longitude) async {
     final url = Uri.parse(
-        'https://maps.googleapis.com/maps/api/geocode/json?latlng=$lat,$lng&key=AIzaSyDzdrX7OknG1J0WA4dF9BsCQXak5eBxN3o');
+        'https://maps.googleapis.com/maps/api/geocode/json?latlng=$latitude,$longitude&key=AIzaSyDzdrX7OknG1J0WA4dF9BsCQXak5eBxN3o');
     final response = await http.get(url);
     final resData = json.decode(response.body);
     final address = resData['results'][0]['formatted_address'];
 
-    print(address);
-
     setState(() {
       _pickedLocation = PlaceLocation(
-        latitude: lat,
-        longitude: lng,
+        latitude: latitude,
+        longitude: longitude,
         address: address,
       );
       _isGettingLocation = false;
     });
     widget.onSelectLocation(_pickedLocation!);
+  }
+
+  void _selectOnMap() async {
+    final pickedLocation = await Navigator.of(context).push<LatLng>(
+      MaterialPageRoute(
+        builder: (ctx) => const MapScreen(),
+      ),
+    );
+
+    if (pickedLocation == null) {
+      return;
+    }
+
+    _savePlace(pickedLocation.latitude, pickedLocation.longitude);
   }
 
   @override
@@ -95,8 +109,13 @@ class _LocationInputState extends State<LocationInput> {
     );
 
     /// picked
-    if(_pickedLocation != null){
-      previewContent = Image.network(locationImage, fit: BoxFit.cover,width: double.infinity,height: double.infinity,);
+    if (_pickedLocation != null) {
+      previewContent = Image.network(
+        locationImage,
+        fit: BoxFit.cover,
+        width: double.infinity,
+        height: double.infinity,
+      );
     }
 
     if (_isGettingLocation) {
@@ -124,7 +143,7 @@ class _LocationInputState extends State<LocationInput> {
                 icon: const Icon(Icons.location_on),
                 label: const Text('Get current Location')),
             TextButton.icon(
-                onPressed: () {},
+                onPressed: _selectOnMap,
                 icon: const Icon(Icons.map),
                 label: const Text('Select on Map')),
           ],
