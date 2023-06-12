@@ -7,37 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4C4BD7812A32EA8500587386 /* Image_ExploreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4BD7802A32EA8500587386 /* Image_ExploreApp.swift */; };
-		4C4BD7832A32EA8500587386 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4BD7822A32EA8500587386 /* ContentView.swift */; };
-		4C4BD7852A32EA8600587386 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C4BD7842A32EA8600587386 /* Assets.xcassets */; };
-		4C4BD7892A32EA8600587386 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C4BD7882A32EA8600587386 /* Preview Assets.xcassets */; };
-		4C4BD7902A32F06C00587386 /* ImageConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4BD78F2A32F06C00587386 /* ImageConstants.swift */; };
-		4CDCB1AE2A3690C000E9B022 /* ImageExploreExample1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDCB1AD2A3690C000E9B022 /* ImageExploreExample1.swift */; };
-		4CDCB1B22A369AF200E9B022 /* ImageExploreExample2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDCB1B12A369AF200E9B022 /* ImageExploreExample2.swift */; };
-		4CDCB1B42A369B9300E9B022 /* ImageExploreExample3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDCB1B32A369B9300E9B022 /* ImageExploreExample3.swift */; };
-		4CDCB1B62A369DC500E9B022 /* ImageExploreExample4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDCB1B52A369DC500E9B022 /* ImageExploreExample4.swift */; };
-		4CDCB1B82A36A52C00E9B022 /* ImageExample5-async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDCB1B72A36A52C00E9B022 /* ImageExample5-async.swift */; };
-		4CDCB1BA2A36AF3F00E9B022 /* ImageExample6-lazyVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDCB1B92A36AF3F00E9B022 /* ImageExample6-lazyVGrid.swift */; };
+		4CDCB1C82A36B4F300E9B022 /* CodeSnippetsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDCB1C72A36B4F300E9B022 /* CodeSnippetsApp.swift */; };
+		4CDCB1CA2A36B4F300E9B022 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDCB1C92A36B4F300E9B022 /* ContentView.swift */; };
+		4CDCB1CC2A36B4F400E9B022 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CDCB1CB2A36B4F400E9B022 /* Assets.xcassets */; };
+		4CDCB1D02A36B4F400E9B022 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CDCB1CF2A36B4F400E9B022 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4C4BD77D2A32EA8500587386 /* Image Explore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Image Explore.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4C4BD7802A32EA8500587386 /* Image_ExploreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image_ExploreApp.swift; sourceTree = "<group>"; };
-		4C4BD7822A32EA8500587386 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		4C4BD7842A32EA8600587386 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4C4BD7862A32EA8600587386 /* Image_Explore.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Image_Explore.entitlements; sourceTree = "<group>"; };
-		4C4BD7882A32EA8600587386 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		4C4BD78F2A32F06C00587386 /* ImageConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageConstants.swift; sourceTree = "<group>"; };
-		4CDCB1AD2A3690C000E9B022 /* ImageExploreExample1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExploreExample1.swift; sourceTree = "<group>"; };
-		4CDCB1B12A369AF200E9B022 /* ImageExploreExample2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExploreExample2.swift; sourceTree = "<group>"; };
-		4CDCB1B32A369B9300E9B022 /* ImageExploreExample3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExploreExample3.swift; sourceTree = "<group>"; };
-		4CDCB1B52A369DC500E9B022 /* ImageExploreExample4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExploreExample4.swift; sourceTree = "<group>"; };
-		4CDCB1B72A36A52C00E9B022 /* ImageExample5-async.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageExample5-async.swift"; sourceTree = "<group>"; };
-		4CDCB1B92A36AF3F00E9B022 /* ImageExample6-lazyVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageExample6-lazyVGrid.swift"; sourceTree = "<group>"; };
+		4CDCB1C42A36B4F300E9B022 /* CodeSnippets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeSnippets.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CDCB1C72A36B4F300E9B022 /* CodeSnippetsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeSnippetsApp.swift; sourceTree = "<group>"; };
+		4CDCB1C92A36B4F300E9B022 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4CDCB1CB2A36B4F400E9B022 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4CDCB1CD2A36B4F400E9B022 /* CodeSnippets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CodeSnippets.entitlements; sourceTree = "<group>"; };
+		4CDCB1CF2A36B4F400E9B022 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4C4BD77A2A32EA8500587386 /* Frameworks */ = {
+		4CDCB1C12A36B4F300E9B022 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -47,93 +33,78 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4C4BD7742A32EA8500587386 = {
+		4CDCB1BB2A36B4F300E9B022 = {
 			isa = PBXGroup;
 			children = (
-				4C4BD77F2A32EA8500587386 /* Image Explore */,
-				4C4BD77E2A32EA8500587386 /* Products */,
+				4CDCB1C62A36B4F300E9B022 /* CodeSnippets */,
+				4CDCB1C52A36B4F300E9B022 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		4C4BD77E2A32EA8500587386 /* Products */ = {
+		4CDCB1C52A36B4F300E9B022 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4C4BD77D2A32EA8500587386 /* Image Explore.app */,
+				4CDCB1C42A36B4F300E9B022 /* CodeSnippets.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4C4BD77F2A32EA8500587386 /* Image Explore */ = {
+		4CDCB1C62A36B4F300E9B022 /* CodeSnippets */ = {
 			isa = PBXGroup;
 			children = (
-				4CDCB1B02A36911700E9B022 /* Image Explore */,
-				4C4BD7802A32EA8500587386 /* Image_ExploreApp.swift */,
-				4C4BD7822A32EA8500587386 /* ContentView.swift */,
-				4C4BD7842A32EA8600587386 /* Assets.xcassets */,
-				4C4BD78F2A32F06C00587386 /* ImageConstants.swift */,
-				4C4BD7862A32EA8600587386 /* Image_Explore.entitlements */,
-				4C4BD7872A32EA8600587386 /* Preview Content */,
+				4CDCB1C72A36B4F300E9B022 /* CodeSnippetsApp.swift */,
+				4CDCB1C92A36B4F300E9B022 /* ContentView.swift */,
+				4CDCB1CB2A36B4F400E9B022 /* Assets.xcassets */,
+				4CDCB1CD2A36B4F400E9B022 /* CodeSnippets.entitlements */,
+				4CDCB1CE2A36B4F400E9B022 /* Preview Content */,
 			);
-			path = "Image Explore";
+			path = CodeSnippets;
 			sourceTree = "<group>";
 		};
-		4C4BD7872A32EA8600587386 /* Preview Content */ = {
+		4CDCB1CE2A36B4F400E9B022 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				4C4BD7882A32EA8600587386 /* Preview Assets.xcassets */,
+				4CDCB1CF2A36B4F400E9B022 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		4CDCB1B02A36911700E9B022 /* Image Explore */ = {
-			isa = PBXGroup;
-			children = (
-				4CDCB1AD2A3690C000E9B022 /* ImageExploreExample1.swift */,
-				4CDCB1B12A369AF200E9B022 /* ImageExploreExample2.swift */,
-				4CDCB1B32A369B9300E9B022 /* ImageExploreExample3.swift */,
-				4CDCB1B52A369DC500E9B022 /* ImageExploreExample4.swift */,
-				4CDCB1B72A36A52C00E9B022 /* ImageExample5-async.swift */,
-				4CDCB1B92A36AF3F00E9B022 /* ImageExample6-lazyVGrid.swift */,
-			);
-			path = "Image Explore";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4C4BD77C2A32EA8500587386 /* Image Explore */ = {
+		4CDCB1C32A36B4F300E9B022 /* CodeSnippets */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4C4BD78C2A32EA8600587386 /* Build configuration list for PBXNativeTarget "Image Explore" */;
+			buildConfigurationList = 4CDCB1D32A36B4F400E9B022 /* Build configuration list for PBXNativeTarget "CodeSnippets" */;
 			buildPhases = (
-				4C4BD7792A32EA8500587386 /* Sources */,
-				4C4BD77A2A32EA8500587386 /* Frameworks */,
-				4C4BD77B2A32EA8500587386 /* Resources */,
+				4CDCB1C02A36B4F300E9B022 /* Sources */,
+				4CDCB1C12A36B4F300E9B022 /* Frameworks */,
+				4CDCB1C22A36B4F300E9B022 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Image Explore";
-			productName = "Image Explore";
-			productReference = 4C4BD77D2A32EA8500587386 /* Image Explore.app */;
+			name = CodeSnippets;
+			productName = CodeSnippets;
+			productReference = 4CDCB1C42A36B4F300E9B022 /* CodeSnippets.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		4C4BD7752A32EA8500587386 /* Project object */ = {
+		4CDCB1BC2A36B4F300E9B022 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
-					4C4BD77C2A32EA8500587386 = {
-						CreatedOnToolsVersion = 14.3;
+					4CDCB1C32A36B4F300E9B022 = {
+						CreatedOnToolsVersion = 14.3.1;
 					};
 				};
 			};
-			buildConfigurationList = 4C4BD7782A32EA8500587386 /* Build configuration list for PBXProject "Image Explore" */;
+			buildConfigurationList = 4CDCB1BF2A36B4F300E9B022 /* Build configuration list for PBXProject "CodeSnippets" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -141,49 +112,42 @@
 				en,
 				Base,
 			);
-			mainGroup = 4C4BD7742A32EA8500587386;
-			productRefGroup = 4C4BD77E2A32EA8500587386 /* Products */;
+			mainGroup = 4CDCB1BB2A36B4F300E9B022;
+			productRefGroup = 4CDCB1C52A36B4F300E9B022 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4C4BD77C2A32EA8500587386 /* Image Explore */,
+				4CDCB1C32A36B4F300E9B022 /* CodeSnippets */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		4C4BD77B2A32EA8500587386 /* Resources */ = {
+		4CDCB1C22A36B4F300E9B022 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C4BD7892A32EA8600587386 /* Preview Assets.xcassets in Resources */,
-				4C4BD7852A32EA8600587386 /* Assets.xcassets in Resources */,
+				4CDCB1D02A36B4F400E9B022 /* Preview Assets.xcassets in Resources */,
+				4CDCB1CC2A36B4F400E9B022 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		4C4BD7792A32EA8500587386 /* Sources */ = {
+		4CDCB1C02A36B4F300E9B022 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CDCB1B42A369B9300E9B022 /* ImageExploreExample3.swift in Sources */,
-				4CDCB1B62A369DC500E9B022 /* ImageExploreExample4.swift in Sources */,
-				4CDCB1BA2A36AF3F00E9B022 /* ImageExample6-lazyVGrid.swift in Sources */,
-				4CDCB1B22A369AF200E9B022 /* ImageExploreExample2.swift in Sources */,
-				4CDCB1B82A36A52C00E9B022 /* ImageExample5-async.swift in Sources */,
-				4CDCB1AE2A3690C000E9B022 /* ImageExploreExample1.swift in Sources */,
-				4C4BD7832A32EA8500587386 /* ContentView.swift in Sources */,
-				4C4BD7902A32F06C00587386 /* ImageConstants.swift in Sources */,
-				4C4BD7812A32EA8500587386 /* Image_ExploreApp.swift in Sources */,
+				4CDCB1CA2A36B4F300E9B022 /* ContentView.swift in Sources */,
+				4CDCB1C82A36B4F300E9B022 /* CodeSnippetsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		4C4BD78A2A32EA8600587386 /* Debug */ = {
+		4CDCB1D12A36B4F400E9B022 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -241,7 +205,7 @@
 			};
 			name = Debug;
 		};
-		4C4BD78B2A32EA8600587386 /* Release */ = {
+		4CDCB1D22A36B4F400E9B022 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -292,15 +256,15 @@
 			};
 			name = Release;
 		};
-		4C4BD78D2A32EA8600587386 /* Debug */ = {
+		4CDCB1D42A36B4F400E9B022 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Image Explore/Image_Explore.entitlements";
+				CODE_SIGN_ENTITLEMENTS = CodeSnippets/CodeSnippets.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Image Explore/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"CodeSnippets/Preview Content\"";
 				DEVELOPMENT_TEAM = 9847RZ3V98;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -320,7 +284,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.heath.swift.Image-Explore";
+				PRODUCT_BUNDLE_IDENTIFIER = com.heath.swift.CodeSnippets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -330,15 +294,15 @@
 			};
 			name = Debug;
 		};
-		4C4BD78E2A32EA8600587386 /* Release */ = {
+		4CDCB1D52A36B4F400E9B022 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Image Explore/Image_Explore.entitlements";
+				CODE_SIGN_ENTITLEMENTS = CodeSnippets/CodeSnippets.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Image Explore/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"CodeSnippets/Preview Content\"";
 				DEVELOPMENT_TEAM = 9847RZ3V98;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -358,7 +322,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.heath.swift.Image-Explore";
+				PRODUCT_BUNDLE_IDENTIFIER = com.heath.swift.CodeSnippets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -371,25 +335,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4C4BD7782A32EA8500587386 /* Build configuration list for PBXProject "Image Explore" */ = {
+		4CDCB1BF2A36B4F300E9B022 /* Build configuration list for PBXProject "CodeSnippets" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4C4BD78A2A32EA8600587386 /* Debug */,
-				4C4BD78B2A32EA8600587386 /* Release */,
+				4CDCB1D12A36B4F400E9B022 /* Debug */,
+				4CDCB1D22A36B4F400E9B022 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4C4BD78C2A32EA8600587386 /* Build configuration list for PBXNativeTarget "Image Explore" */ = {
+		4CDCB1D32A36B4F400E9B022 /* Build configuration list for PBXNativeTarget "CodeSnippets" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4C4BD78D2A32EA8600587386 /* Debug */,
-				4C4BD78E2A32EA8600587386 /* Release */,
+				4CDCB1D42A36B4F400E9B022 /* Debug */,
+				4CDCB1D52A36B4F400E9B022 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 4C4BD7752A32EA8500587386 /* Project object */;
+	rootObject = 4CDCB1BC2A36B4F300E9B022 /* Project object */;
 }
