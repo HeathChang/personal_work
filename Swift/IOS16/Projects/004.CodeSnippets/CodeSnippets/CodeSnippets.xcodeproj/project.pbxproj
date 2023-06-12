@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4CCDBF372A36DACC00E01B40 /* Example02-PageTabbed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCDBF362A36DACC00E01B40 /* Example02-PageTabbed.swift */; };
+		4CCDBF392A36E2AA00E01B40 /* Example03-ButtonSnippets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCDBF382A36E2AA00E01B40 /* Example03-ButtonSnippets.swift */; };
 		4CDCB1C82A36B4F300E9B022 /* CodeSnippetsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDCB1C72A36B4F300E9B022 /* CodeSnippetsApp.swift */; };
 		4CDCB1CA2A36B4F300E9B022 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDCB1C92A36B4F300E9B022 /* ContentView.swift */; };
 		4CDCB1CC2A36B4F400E9B022 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CDCB1CB2A36B4F400E9B022 /* Assets.xcassets */; };
@@ -14,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4CCDBF362A36DACC00E01B40 /* Example02-PageTabbed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Example02-PageTabbed.swift"; sourceTree = "<group>"; };
+		4CCDBF382A36E2AA00E01B40 /* Example03-ButtonSnippets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Example03-ButtonSnippets.swift"; sourceTree = "<group>"; };
 		4CDCB1C42A36B4F300E9B022 /* CodeSnippets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeSnippets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CDCB1C72A36B4F300E9B022 /* CodeSnippetsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeSnippetsApp.swift; sourceTree = "<group>"; };
 		4CDCB1C92A36B4F300E9B022 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -33,6 +37,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4CCDBF352A36DAA400E01B40 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4CCDBF362A36DACC00E01B40 /* Example02-PageTabbed.swift */,
+				4CCDBF382A36E2AA00E01B40 /* Example03-ButtonSnippets.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		4CDCB1BB2A36B4F300E9B022 = {
 			isa = PBXGroup;
 			children = (
@@ -52,6 +65,7 @@
 		4CDCB1C62A36B4F300E9B022 /* CodeSnippets */ = {
 			isa = PBXGroup;
 			children = (
+				4CCDBF352A36DAA400E01B40 /* Views */,
 				4CDCB1C72A36B4F300E9B022 /* CodeSnippetsApp.swift */,
 				4CDCB1C92A36B4F300E9B022 /* ContentView.swift */,
 				4CDCB1CB2A36B4F400E9B022 /* Assets.xcassets */,
@@ -140,7 +154,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CDCB1CA2A36B4F300E9B022 /* ContentView.swift in Sources */,
+				4CCDBF372A36DACC00E01B40 /* Example02-PageTabbed.swift in Sources */,
 				4CDCB1C82A36B4F300E9B022 /* CodeSnippetsApp.swift in Sources */,
+				4CCDBF392A36E2AA00E01B40 /* Example03-ButtonSnippets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
