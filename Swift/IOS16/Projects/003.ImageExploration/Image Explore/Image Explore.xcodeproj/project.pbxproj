@@ -15,6 +15,7 @@
 		4CDCB1AE2A3690C000E9B022 /* ImageExploreExample1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDCB1AD2A3690C000E9B022 /* ImageExploreExample1.swift */; };
 		4CDCB1B22A369AF200E9B022 /* ImageExploreExample2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDCB1B12A369AF200E9B022 /* ImageExploreExample2.swift */; };
 		4CDCB1B42A369B9300E9B022 /* ImageExploreExample3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDCB1B32A369B9300E9B022 /* ImageExploreExample3.swift */; };
+		4CDCB1B62A369DC500E9B022 /* ImageExploreExample4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDCB1B52A369DC500E9B022 /* ImageExploreExample4.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		4CDCB1AD2A3690C000E9B022 /* ImageExploreExample1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExploreExample1.swift; sourceTree = "<group>"; };
 		4CDCB1B12A369AF200E9B022 /* ImageExploreExample2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExploreExample2.swift; sourceTree = "<group>"; };
 		4CDCB1B32A369B9300E9B022 /* ImageExploreExample3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExploreExample3.swift; sourceTree = "<group>"; };
+		4CDCB1B52A369DC500E9B022 /* ImageExploreExample4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExploreExample4.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +69,6 @@
 				4C4BD78F2A32F06C00587386 /* ImageConstants.swift */,
 				4C4BD7862A32EA8600587386 /* Image_Explore.entitlements */,
 				4C4BD7872A32EA8600587386 /* Preview Content */,
-				4CDCB1B12A369AF200E9B022 /* ImageExploreExample2.swift */,
 			);
 			path = "Image Explore";
 			sourceTree = "<group>";
@@ -84,7 +85,9 @@
 			isa = PBXGroup;
 			children = (
 				4CDCB1AD2A3690C000E9B022 /* ImageExploreExample1.swift */,
+				4CDCB1B12A369AF200E9B022 /* ImageExploreExample2.swift */,
 				4CDCB1B32A369B9300E9B022 /* ImageExploreExample3.swift */,
+				4CDCB1B52A369DC500E9B022 /* ImageExploreExample4.swift */,
 			);
 			path = "Image Explore";
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CDCB1B42A369B9300E9B022 /* ImageExploreExample3.swift in Sources */,
+				4CDCB1B62A369DC500E9B022 /* ImageExploreExample4.swift in Sources */,
 				4CDCB1B22A369AF200E9B022 /* ImageExploreExample2.swift in Sources */,
 				4CDCB1AE2A3690C000E9B022 /* ImageExploreExample1.swift in Sources */,
 				4C4BD7832A32EA8500587386 /* ContentView.swift in Sources */,
