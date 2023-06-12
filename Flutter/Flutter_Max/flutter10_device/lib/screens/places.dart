@@ -47,6 +47,13 @@ class _PlacesScreenState extends ConsumerState<PlacesScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
+
+        // The FutureBuilder widget is used to asynchronously build UI based on the result of a future.
+        // In this case, the future being passed is _placesFuture. The builder property of FutureBuilder takes a callback function that receives the context and snapshot as parameters.
+        // The snapshot represents the current state of the future.
+        // The code checks the connectionState property of the snapshot to determine what UI to display. If the connection state is ConnectionState.waiting, indicating that the future is still in progress, a Center widget with a CircularProgressIndicator is displayed.
+        // This is a common loading indicator used to show that data is being fetched.
+        // Once the future completes, and the connection state is no longer ConnectionState.waiting, the PlacesList widget is displayed. It is passed the userPlaces as a parameter. userPlaces is likely the result obtained from _placesFuture.
         child: FutureBuilder(future: _placesFuture, builder: (context, snapshot) =>
         snapshot.connectionState == ConnectionState.waiting ? const Center(
             child: CircularProgressIndicator()) : PlacesList(places: userPlaces,
