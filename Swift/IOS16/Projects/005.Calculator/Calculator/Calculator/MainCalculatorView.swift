@@ -4,11 +4,29 @@ import SwiftUI
 
 struct MainCalculatorView: View {
     @State var lightMode: Bool = true
-    @State var currentComputation: String = ""
-    @State var mainResult: String = "0"
+    @State var currentComputation: String = "123"
+    @State var mainResult: String = "23"
     
     var body: some View {
-        Text("Hello World")
+        ZStack{
+            primaryBackgroundColor.ignoresSafeArea();
+            VStack{
+                SunMoonView(lightMode: lightMode)
+                    .onTapGesture {
+                        withAnimation {
+                            lightMode.toggle();
+                        }
+                    }
+                Spacer();
+
+                ComputationView(mainResult: mainResult, currentComputation: currentComputation);
+                Spacer();
+
+                CalcsButtonsView(mainResult: $mainResult, currentComputation: $currentComputation);
+            }
+        }
+        // background 
+        .environment(\.colorScheme, lightMode ? .light : .dark)
     }
 }
 

@@ -13,6 +13,11 @@
 		4C0A25162A36F36C00F8326B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C0A25152A36F36C00F8326B /* Preview Assets.xcassets */; };
 		4C0A251D2A36F6A200F8326B /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 4C0A251C2A36F6A200F8326B /* readme.md */; };
 		4C0A25202A36F9D100F8326B /* Image Constatns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A251F2A36F9D100F8326B /* Image Constatns.swift */; };
+		4C0A25242A37F59D00F8326B /* SunMoonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A25232A37F59D00F8326B /* SunMoonView.swift */; };
+		4C0A25262A37FB5C00F8326B /* ComputationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A25252A37FB5C00F8326B /* ComputationView.swift */; };
+		4C0A25282A37FDB900F8326B /* CalcsButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A25272A37FDB900F8326B /* CalcsButtonsView.swift */; };
+		4C0A252A2A38096400F8326B /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A25292A38096400F8326B /* Enumerations.swift */; };
+		4C0A252C2A381F9D00F8326B /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A252B2A381F9D00F8326B /* ButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		4C0A25152A36F36C00F8326B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4C0A251C2A36F6A200F8326B /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 		4C0A251F2A36F9D100F8326B /* Image Constatns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image Constatns.swift"; sourceTree = "<group>"; };
+		4C0A25232A37F59D00F8326B /* SunMoonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunMoonView.swift; sourceTree = "<group>"; };
+		4C0A25252A37FB5C00F8326B /* ComputationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputationView.swift; sourceTree = "<group>"; };
+		4C0A25272A37FDB900F8326B /* CalcsButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcsButtonsView.swift; sourceTree = "<group>"; };
+		4C0A25292A38096400F8326B /* Enumerations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enumerations.swift; sourceTree = "<group>"; };
+		4C0A252B2A381F9D00F8326B /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +67,8 @@
 		4C0A250C2A36F36A00F8326B /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				4C0A25292A38096400F8326B /* Enumerations.swift */,
+				4C0A25222A37F58100F8326B /* Views */,
 				4C0A250D2A36F36A00F8326B /* CalculatorApp.swift */,
 				4C0A250F2A36F36A00F8326B /* MainCalculatorView.swift */,
 				4C0A25112A36F36C00F8326B /* Assets.xcassets */,
@@ -73,6 +85,17 @@
 				4C0A25152A36F36C00F8326B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4C0A25222A37F58100F8326B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4C0A25232A37F59D00F8326B /* SunMoonView.swift */,
+				4C0A25252A37FB5C00F8326B /* ComputationView.swift */,
+				4C0A25272A37FDB900F8326B /* CalcsButtonsView.swift */,
+				4C0A252B2A381F9D00F8326B /* ButtonView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,8 +169,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C0A252A2A38096400F8326B /* Enumerations.swift in Sources */,
 				4C0A25102A36F36A00F8326B /* MainCalculatorView.swift in Sources */,
+				4C0A252C2A381F9D00F8326B /* ButtonView.swift in Sources */,
 				4C0A250E2A36F36A00F8326B /* CalculatorApp.swift in Sources */,
+				4C0A25262A37FB5C00F8326B /* ComputationView.swift in Sources */,
+				4C0A25282A37FDB900F8326B /* CalcsButtonsView.swift in Sources */,
+				4C0A25242A37F59D00F8326B /* SunMoonView.swift in Sources */,
 				4C0A25202A36F9D100F8326B /* Image Constatns.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
