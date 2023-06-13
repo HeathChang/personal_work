@@ -18,7 +18,6 @@ struct MainCalculatorView: View {
                         }
                     }
                 Spacer();
-
                 ComputationView(mainResult: mainResult, currentComputation: currentComputation);
                 Spacer();
 
