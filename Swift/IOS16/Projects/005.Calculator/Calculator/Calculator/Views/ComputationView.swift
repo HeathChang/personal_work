@@ -24,7 +24,6 @@ struct ComputationView: View {
             .minimumScaleFactor(0.1) // set font-size min to 10% when, the text is wrong.
             HStack(spacing: 20) {
                 Spacer()
-                Text("=")
                 Text(mainResult)
                     .foregroundColor(foregroundDigitsColor)
                     .font(.largeTitle)
