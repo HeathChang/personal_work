@@ -1,11 +1,6 @@
-//
-//  CalcsButtonsView.swift
-//  Calculator
-//
-//  Created by Hyunsoo Chang on 2023/06/13.
-//
 
 import SwiftUI
+
 
 
 struct CalcButtonModel: Identifiable {
@@ -64,7 +59,9 @@ struct CalcsButtonsView: View {
                     GridRow{
                         ForEach(rowOfCalcButtonModel.row) {
                             calcButtonModel in Button {
-                                print("cliccked")
+                                // Logic
+                                print("cliccked", calcButtonModel.calcButton)
+                                buttonPressed(calcButton: calcButtonModel.calcButton)
                             } label: {
                                 ButtonView(
                                     calcButton: calcButtonModel.calcButton,
@@ -77,6 +74,46 @@ struct CalcsButtonsView: View {
             }
             .padding()
             .background(secondaryBackgroundColor.cornerRadius(20))
+        }
+    }
+    
+    
+    func appendTocurrentComputation (calcButton: CalcButton)  {
+        currentComputation += calcButton.rawValue
+    }
+    
+    func buttonPressed(calcButton: CalcButton){
+        switch calcButton{
+        case .clear:
+            print("clear all")
+            currentComputation = ""
+            mainResult = "0"
+            
+        case .equal, .negative:
+            print("eq/neg")
+        case .decimal:
+            print("decimal")
+            
+            
+        case .percent:
+            if lastCharIsDigit(str: currentComputation){
+                if lastCharIsDigit(str: currentComputation){
+                    appendTocurrentComputation(calcButton: calcButton)
+                }            }
+            
+        case .undo:
+            // dropLast:
+            currentComputation = String(currentComputation.dropLast())
+            
+        case .add, .subtract, .divide, .multiply:
+            // operations
+            if lastCharIsDigitOrPercent(str: currentComputation){
+                appendTocurrentComputation(calcButton: calcButton)
+            }
+            
+        default:
+            // digits
+            appendTocurrentComputation(calcButton: calcButton)
         }
     }
 }

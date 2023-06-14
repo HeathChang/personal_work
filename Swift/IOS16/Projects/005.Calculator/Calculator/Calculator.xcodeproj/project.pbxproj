@@ -18,6 +18,7 @@
 		4C0A25282A37FDB900F8326B /* CalcsButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A25272A37FDB900F8326B /* CalcsButtonsView.swift */; };
 		4C0A252A2A38096400F8326B /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A25292A38096400F8326B /* Enumerations.swift */; };
 		4C0A252C2A381F9D00F8326B /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A252B2A381F9D00F8326B /* ButtonView.swift */; };
+		4C0A25312A393AE100F8326B /* String Helper Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0A25302A393AE100F8326B /* String Helper Functions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		4C0A25272A37FDB900F8326B /* CalcsButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcsButtonsView.swift; sourceTree = "<group>"; };
 		4C0A25292A38096400F8326B /* Enumerations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enumerations.swift; sourceTree = "<group>"; };
 		4C0A252B2A381F9D00F8326B /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		4C0A25302A393AE100F8326B /* String Helper Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String Helper Functions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				4C0A25132A36F36C00F8326B /* Calculator.entitlements */,
 				4C0A25142A36F36C00F8326B /* Preview Content */,
 				4C0A251F2A36F9D100F8326B /* Image Constatns.swift */,
+				4C0A25302A393AE100F8326B /* String Helper Functions.swift */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C0A252A2A38096400F8326B /* Enumerations.swift in Sources */,
+				4C0A25312A393AE100F8326B /* String Helper Functions.swift in Sources */,
 				4C0A25102A36F36A00F8326B /* MainCalculatorView.swift in Sources */,
 				4C0A252C2A381F9D00F8326B /* ButtonView.swift in Sources */,
 				4C0A250E2A36F36A00F8326B /* CalculatorApp.swift in Sources */,
