@@ -20,6 +20,7 @@ struct MainCalculatorView: View {
                 Spacer();
                 ComputationView(mainResult: mainResult, currentComputation: currentComputation);
                 Spacer();
+                
 
                 CalcsButtonsView(mainResult: $mainResult, currentComputation: $currentComputation);
             }
