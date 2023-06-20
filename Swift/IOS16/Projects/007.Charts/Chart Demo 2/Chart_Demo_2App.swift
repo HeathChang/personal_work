@@ -11,4 +11,3 @@ struct Chart_Demo_1App: App {
         }
     }
 }
-

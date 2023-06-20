@@ -16,6 +16,7 @@
 		4C2B101B2A4184540028ED83 /* RandomArcFromColorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B101A2A4184540028ED83 /* RandomArcFromColorListView.swift */; };
 		4C2B101D2A41846D0028ED83 /* ArcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B101C2A41846D0028ED83 /* ArcView.swift */; };
 		4C2B101F2A4184800028ED83 /* TestColorButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B101E2A4184800028ED83 /* TestColorButtonView.swift */; };
+		4C2B10252A41D6560028ED83 /* Data File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B10242A41D6560028ED83 /* Data File.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		4C2B101A2A4184540028ED83 /* RandomArcFromColorListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomArcFromColorListView.swift; sourceTree = "<group>"; };
 		4C2B101C2A41846D0028ED83 /* ArcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcView.swift; sourceTree = "<group>"; };
 		4C2B101E2A4184800028ED83 /* TestColorButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestColorButtonView.swift; sourceTree = "<group>"; };
+		4C2B10242A41D6560028ED83 /* Data File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data File.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				4C2B10202A41848A0028ED83 /* Extensions */,
 				4C2B10072A4183D50028ED83 /* Chart_Demo_1App.swift */,
 				4C2B10092A4183D50028ED83 /* ContentView.swift */,
+				4C2B10242A41D6560028ED83 /* Data File.swift */,
 				4C2B100B2A4183D60028ED83 /* Assets.xcassets */,
 				4C2B100D2A4183D60028ED83 /* Chart_Demo_1.entitlements */,
 				4C2B100E2A4183D60028ED83 /* Preview Content */,
@@ -174,6 +177,7 @@
 				4C2B101B2A4184540028ED83 /* RandomArcFromColorListView.swift in Sources */,
 				4C2B10172A4183F20028ED83 /* Color Extension.swift in Sources */,
 				4C2B101D2A41846D0028ED83 /* ArcView.swift in Sources */,
+				4C2B10252A41D6560028ED83 /* Data File.swift in Sources */,
 				4C2B101F2A4184800028ED83 /* TestColorButtonView.swift in Sources */,
 				4C2B100A2A4183D50028ED83 /* ContentView.swift in Sources */,
 				4C2B10082A4183D50028ED83 /* Chart_Demo_1App.swift in Sources */,
