@@ -45,7 +45,9 @@ struct ContentView1: View {
         .padding()
     }
 }
-
+enum ChartType {
+    case bar, line, area
+}
 struct ContentView2: View{
     let dailySale: [DailySalesType]
     let min: Double
@@ -54,7 +56,7 @@ struct ContentView2: View{
     let xAxisMarkPosition: AxisMarkPosition = .bottom
     let yAxisMarkPosition: AxisMarkPosition = .leading
     
-    
+    @State private var chartType: ChartType = .bar
     @State private var isVerticalChart = true
     var body: some View {
         VStack{
@@ -63,23 +65,64 @@ struct ContentView2: View{
                 .fontWeight(.semibold)
             Chart{
                 ForEach(dailySale) { item in
-                    BarMark(x: .value("Day", item.day),
-                            y: .value("hiees1", item.sales))
-                    .foregroundStyle(by: .value("Day", item.day))
-                
+                    
+                    //                    BarMark(x: .value("Day", item.day),
+                    //                    LineMark(x: .value("Day", item.day),
+                    //                    AreaMark(x: .value("Day", item.day),
+                    switch(chartType){
+                    case .bar:
+                        BarMark(x: .value("Day", item.day),
+                                y: .value("hiees1", item.sales))
+                        .foregroundStyle(by: .value("Day", item.day))
+                    case .line:
+                        LineMark(x: .value("Day", item.day),
+                                 y: .value("hiees1", item.sales))
+                        
+                    case .area:
+                        AreaMark(x: .value("Day", item.day),
+                                 y: .value("hiees1", item.sales))
+                        
+                    }
+                    
+                    
+                    
                 }
                 
             }
-        }
+            Spacer()
+            // Chart Buttons
+            HStack(spacing: 90){
+                Button(action: {
+                    withAnimation{
+                        chartType = .bar
+                    }
+                }, label: {Text("BAR")})
+                Button(action: {
+                    withAnimation{
+                        chartType = .line
+                    }
+                }, label: {Text("Line")})
+                Button(action: {
+                    withAnimation{
+                        chartType = .area
+                        isVerticalChart.toggle()
+                    }
+                }, label: {Image(systemName: "chart.bar.fill").rotationEffect(.degrees(isVerticalChart ? 0: 90))})
+            }.padding()
+        }.padding()
     }
 }
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         //        ContentView1()
-        ContentView2(dailySale: defaultDailySales,
-                     min: 0.0,
-                     max: 700.0,
-                     barColors: defaultBarColors)
+                ContentView2(dailySale: defaultDailySales,
+                             min: 0.0,
+                             max: 700.0,
+                             barColors: defaultBarColors)
+        
+        
     }
 }
