@@ -11,7 +11,10 @@ import SwiftUI
 struct Chart_Demo_2App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
-        }
+            ContentView(
+                dailySales: defaultDailySales,
+                min: 0.0,
+                max: 700.0
+            )        }
     }
 }
