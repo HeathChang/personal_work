@@ -54,20 +54,20 @@ struct ContentView: View {
                     if isVerticalChart {
                         switch(chartType) {
                         case .bar:
-                            BarChartVerticalView(dailySales: dailySales, barColors: barColors)
+                            BarChartVerticalView(dailySales: dailySales, barColors: barColors, editMode: editMode)
                         case .line:
-                            LineChartVerticalView(dailySales: dailySales)
+                            LineChartVerticalView(dailySales: dailySales, editMode: editMode)
                         case .area:
-                            AreaChartVerticalView(dailySales: dailySales)
+                            AreaChartVerticalView(dailySales: dailySales, editMode: editMode)
                         }
                     } else {
                         switch(chartType) {
                         case .bar:
-                            BarChartHorizontalView(dailySales: dailySales, barColors: barColors)
+                            BarChartHorizontalView(dailySales: dailySales, barColors: barColors, editMode: editMode)
                         case .line:
-                            LineChartHorizontalView(dailySales: dailySales)
+                            LineChartHorizontalView(dailySales: dailySales, editMode: editMode)
                         case .area:
-                            AreaChartHorizontalView(dailySales: dailySales)
+                            AreaChartHorizontalView(dailySales: dailySales, editMode: editMode)
                         }
                     }
                 }

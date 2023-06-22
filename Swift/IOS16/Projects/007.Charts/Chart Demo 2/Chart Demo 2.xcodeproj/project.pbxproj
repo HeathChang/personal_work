@@ -26,6 +26,7 @@
 		4C2B108A2A43C1DB0028ED83 /* RightChartButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B10892A43C1DB0028ED83 /* RightChartButtonView.swift */; };
 		4C2B108C2A43C93B0028ED83 /* TitleAlignmentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B108B2A43C93B0028ED83 /* TitleAlignmentButton.swift */; };
 		4C2B108E2A43D05A0028ED83 /* SimpleTitleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B108D2A43D05A0028ED83 /* SimpleTitleButtonView.swift */; };
+		4C2B10902A4413D20028ED83 /* RuleMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B108F2A4413D20028ED83 /* RuleMarkView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		4C2B10892A43C1DB0028ED83 /* RightChartButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightChartButtonView.swift; sourceTree = "<group>"; };
 		4C2B108B2A43C93B0028ED83 /* TitleAlignmentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleAlignmentButton.swift; sourceTree = "<group>"; };
 		4C2B108D2A43D05A0028ED83 /* SimpleTitleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTitleButtonView.swift; sourceTree = "<group>"; };
+		4C2B108F2A4413D20028ED83 /* RuleMarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleMarkView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				4C2B10722A4327700028ED83 /* AreaChartVerticalView.swift */,
 				4C2B10742A43277C0028ED83 /* BarChartHorizontalView.swift */,
 				4C2B10762A4327870028ED83 /* BarChartVerticalView.swift */,
+				4C2B108F2A4413D20028ED83 /* RuleMarkView.swift */,
 				4C2B10782A4327950028ED83 /* LineChartHorizontalView.swift */,
 				4C2B107A2A4327A20028ED83 /* LineChartVerticalView.swift */,
 			);
@@ -213,6 +216,7 @@
 				4C2B10752A43277C0028ED83 /* BarChartHorizontalView.swift in Sources */,
 				4C2B107B2A4327A20028ED83 /* LineChartVerticalView.swift in Sources */,
 				4C2B108E2A43D05A0028ED83 /* SimpleTitleButtonView.swift in Sources */,
+				4C2B10902A4413D20028ED83 /* RuleMarkView.swift in Sources */,
 				4C2B10732A4327700028ED83 /* AreaChartVerticalView.swift in Sources */,
 				4C2B10712A4327500028ED83 /* AreaChartHorizontalView.swift in Sources */,
 				4C2B10822A4328E60028ED83 /* ColorfulButtonView.swift in Sources */,
@@ -354,7 +358,6 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -392,7 +395,6 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";

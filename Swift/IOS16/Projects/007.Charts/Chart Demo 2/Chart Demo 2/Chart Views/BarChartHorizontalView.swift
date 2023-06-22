@@ -18,8 +18,15 @@ struct BarChartHorizontalView: View {
                 BarMark(
                     x: .value("Sales", item.sales),
                     y: .value("Day", item.day))
-                .foregroundStyle(by: .value("Day", item.day))            }
+                .foregroundStyle(by: .value("Day", item.day))
+            }
+            // 상한선
+            RuleMark(y:
+                    .value("Sales", 500))
+            .foregroundStyle(Color.red)
+            .lineStyle(StrokeStyle(lineWidth: 2, dash:[5]))
         }
+        
         .chartForegroundStyleScale( range: barColors)
     }
 }
