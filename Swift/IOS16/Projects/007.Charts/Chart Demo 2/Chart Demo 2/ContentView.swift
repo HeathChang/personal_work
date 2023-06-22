@@ -15,79 +15,75 @@ struct ContentView: View {
     let xAxisMarkPosition: AxisMarkPosition = .bottom
     let yAxisMarkPosition: AxisMarkPosition = .leading
     @State private var isVerticalChart = true
-    
+    @State private var title = "Chart Title"
+    @State private var titleAlignment:HorizontalAlignment = .trailing
+    @State private var editMode: Bool = false
     var body: some View {
-        VStack {
-            Text("Chart Demo 3")
-                .font(.largeTitle)
-                .fontWeight(.semibold)
-            
-            if isVerticalChart {
-                switch(chartType) {
-                case .bar:
-                    BarChartVerticalView(dailySales: dailySales, barColors: barColors)
-                case .line:
-                    LineChartVerticalView(dailySales: dailySales)
-                case .area:
-                    AreaChartVerticalView(dailySales: dailySales)
-                }
-            } else {
-                switch(chartType) {
-                case .bar:
-                    BarChartHorizontalView(dailySales: dailySales, barColors: barColors)
-                case .line:
-                    LineChartHorizontalView(dailySales: dailySales)
-                case .area:
-                    AreaChartHorizontalView(dailySales: dailySales)
-                }
-            }
-            
-            // Chart Buttons
+        VStack(alignment: titleAlignment) {
+            // Top Button
+
             HStack {
+                Button(action: {
+                    withAnimation{
+                        editMode.toggle()
+                    }
+                }, label: {
+                    Image(systemName: editMode ?  "checkmark" : "square.and.pencil")
+                })
+                if !editMode {
+                    Spacer()
+                    Button(action: {
+                        // sharing
+                    }, label: {
+                        Image(systemName: "square.and.arrow.up")
+                    })
+                }
+            }
+            
+            //
+            HStack{
+                if editMode {
+                    LeftChartButtonView(chartType: $chartType, isVerticalChart: $isVerticalChart, barColors: $barColors)
+                }
                 
-                ColorfulButtonView(
-                    colors: $barColors,
-                    dim: 30,
-                    offset: 10,
-                    action: {})
+                VStack(alignment: titleAlignment){
+                    Text(title)
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .padding()
+                    if isVerticalChart {
+                        switch(chartType) {
+                        case .bar:
+                            BarChartVerticalView(dailySales: dailySales, barColors: barColors)
+                        case .line:
+                            LineChartVerticalView(dailySales: dailySales)
+                        case .area:
+                            AreaChartVerticalView(dailySales: dailySales)
+                        }
+                    } else {
+                        switch(chartType) {
+                        case .bar:
+                            BarChartHorizontalView(dailySales: dailySales, barColors: barColors)
+                        case .line:
+                            LineChartHorizontalView(dailySales: dailySales)
+                        case .area:
+                            AreaChartHorizontalView(dailySales: dailySales)
+                        }
+                    }
+                }
                 
-                Spacer()
+                if editMode {
+                    RightChartButtonView(chartType: $chartType, isVerticalChart: $isVerticalChart, barColors: $barColors, titleAlignment: $titleAlignment)
+                }
                 
-                Button(action: {
-                    withAnimation {
-                        chartType = .bar
-                    }
-                }, label: {
-                    Text("BAR")
-                })
-                Spacer()
-                Button(action: {
-                    withAnimation {
-                        chartType = .line
-                    }
-                }, label: {
-                    Text("LINE")
-                })
-                Spacer()
-                Button(action: {
-                    withAnimation {
-                        chartType = .area
-                    }
-                }, label: {
-                    Text("AREA")
-                })
-                Spacer()
-                Button(action: {
-                    withAnimation {
-                        isVerticalChart.toggle()
-                    }
-                }, label: {
-                    Image(systemName: "chart.bar.fill")
-                        .rotationEffect(.degrees(isVerticalChart ? 90 : 0))
-                })
+                if !editMode {
+                    
+                }
+                
                 
             }
-            .padding()
+            
+            
         }
         .padding()
     }
