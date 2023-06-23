@@ -34,6 +34,10 @@
 		4C2B10D72A4529620028ED83 /* Sound Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B10C12A4529620028ED83 /* Sound Constants.swift */; };
 		4C2B10D82A4529620028ED83 /* tennessee_whiskey.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4C2B10C22A4529620028ED83 /* tennessee_whiskey.mp3 */; };
 		4C2B10E52A452AFE0028ED83 /* GrayedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B10E42A452AFE0028ED83 /* GrayedTextView.swift */; };
+		4C2B10E82A4534D10028ED83 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C2B10EA2A4534D10028ED83 /* Localizable.strings */; };
+		4C2B10EE2A453A960028ED83 /* Color Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B10ED2A453A960028ED83 /* Color Constants.swift */; };
+		4C2B10F02A4562A00028ED83 /* TimeOfDayIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B10EF2A4562A00028ED83 /* TimeOfDayIcon.swift */; };
+		4C2B10F22A4563190028ED83 /* TimeAndDateSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B10F12A4563190028ED83 /* TimeAndDateSupport.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +70,12 @@
 		4C2B10C12A4529620028ED83 /* Sound Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Sound Constants.swift"; sourceTree = "<group>"; };
 		4C2B10C22A4529620028ED83 /* tennessee_whiskey.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tennessee_whiskey.mp3; sourceTree = "<group>"; };
 		4C2B10E42A452AFE0028ED83 /* GrayedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayedTextView.swift; sourceTree = "<group>"; };
+		4C2B10E92A4534D10028ED83 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4C2B10EB2A4534D70028ED83 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4C2B10EC2A4534D80028ED83 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4C2B10ED2A453A960028ED83 /* Color Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color Constants.swift"; sourceTree = "<group>"; };
+		4C2B10EF2A4562A00028ED83 /* TimeOfDayIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDayIcon.swift; sourceTree = "<group>"; };
+		4C2B10F12A4563190028ED83 /* TimeAndDateSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAndDateSupport.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +165,7 @@
 		4C2B10D92A45296D0028ED83 /* Local Notifications */ = {
 			isa = PBXGroup;
 			children = (
+				4C2B10EA2A4534D10028ED83 /* Localizable.strings */,
 			);
 			path = "Local Notifications";
 			sourceTree = "<group>";
@@ -201,6 +212,8 @@
 		4C2B10DF2A452A930028ED83 /* Constatns */ = {
 			isa = PBXGroup;
 			children = (
+				4C2B10ED2A453A960028ED83 /* Color Constants.swift */,
+				4C2B10EF2A4562A00028ED83 /* TimeOfDayIcon.swift */,
 			);
 			path = Constatns;
 			sourceTree = "<group>";
@@ -223,6 +236,7 @@
 		4C2B10E22A452AC10028ED83 /* Supporting View */ = {
 			isa = PBXGroup;
 			children = (
+				4C2B10F12A4563190028ED83 /* TimeAndDateSupport.swift */,
 			);
 			path = "Supporting View";
 			sourceTree = "<group>";
@@ -276,6 +290,8 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
+				es,
 			);
 			mainGroup = 4C2B10912A4421620028ED83;
 			productRefGroup = 4C2B109B2A4421620028ED83 /* Products */;
@@ -294,6 +310,7 @@
 			files = (
 				4C2B10CD2A4529620028ED83 /* soft rain ambient.mp3 in Resources */,
 				4C2B10CE2A4529620028ED83 /* bird forest.mp3 in Resources */,
+				4C2B10E82A4534D10028ED83 /* Localizable.strings in Resources */,
 				4C2B10D12A4529620028ED83 /* forest birds sweden.mp3 in Resources */,
 				4C2B10D32A4529620028ED83 /* forest with cuckoo birds.mp3 in Resources */,
 				4C2B10D82A4529620028ED83 /* tennessee_whiskey.mp3 in Resources */,
@@ -324,15 +341,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C2B10F22A4563190028ED83 /* TimeAndDateSupport.swift in Sources */,
 				4C2B10A02A4421620028ED83 /* MainAlarmView.swift in Sources */,
 				4C2B10CF2A4529620028ED83 /* Play Sound.swift in Sources */,
+				4C2B10EE2A453A960028ED83 /* Color Constants.swift in Sources */,
 				4C2B10E52A452AFE0028ED83 /* GrayedTextView.swift in Sources */,
 				4C2B10D72A4529620028ED83 /* Sound Constants.swift in Sources */,
+				4C2B10F02A4562A00028ED83 /* TimeOfDayIcon.swift in Sources */,
 				4C2B109E2A4421620028ED83 /* AlarmApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4C2B10EA2A4534D10028ED83 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C2B10E92A4534D10028ED83 /* en */,
+				4C2B10EB2A4534D70028ED83 /* ko */,
+				4C2B10EC2A4534D80028ED83 /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		4C2B10A72A4421630028ED83 /* Debug */ = {
