@@ -47,6 +47,10 @@
 		4C2B11082A4945A30028ED83 /* WorkSans-Italic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C2B11062A4945A30028ED83 /* WorkSans-Italic-VariableFont_wght.ttf */; };
 		4C2B110A2A4946240028ED83 /* CoolTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B11092A4946240028ED83 /* CoolTextView.swift */; };
 		4C2B110C2A49483D0028ED83 /* Image Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B110B2A49483D0028ED83 /* Image Constants.swift */; };
+		4C2B11102A4968450028ED83 /* EnableNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B110F2A4968450028ED83 /* EnableNotifications.swift */; };
+		4C2B11122A496A6A0028ED83 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B11112A496A6A0028ED83 /* ButtonView.swift */; };
+		4C2B11142A496A770028ED83 /* MainGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B11132A496A770028ED83 /* MainGradient.swift */; };
+		4C2B11162A496B2A0028ED83 /* Screen Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B11152A496B2A0028ED83 /* Screen Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +98,10 @@
 		4C2B11062A4945A30028ED83 /* WorkSans-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		4C2B11092A4946240028ED83 /* CoolTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolTextView.swift; sourceTree = "<group>"; };
 		4C2B110B2A49483D0028ED83 /* Image Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image Constants.swift"; sourceTree = "<group>"; };
+		4C2B110F2A4968450028ED83 /* EnableNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableNotifications.swift; sourceTree = "<group>"; };
+		4C2B11112A496A6A0028ED83 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		4C2B11132A496A770028ED83 /* MainGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGradient.swift; sourceTree = "<group>"; };
+		4C2B11152A496B2A0028ED83 /* Screen Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Screen Constants.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +248,7 @@
 				4C2B10EF2A4562A00028ED83 /* TimeOfDayIcon.swift */,
 				4C2B10F82A4914D60028ED83 /* Activities Constants.swift */,
 				4C2B110B2A49483D0028ED83 /* Image Constants.swift */,
+				4C2B11152A496B2A0028ED83 /* Screen Constants.swift */,
 			);
 			path = Constatns;
 			sourceTree = "<group>";
@@ -255,6 +264,8 @@
 		4C2B10E12A452AB50028ED83 /* Sub View */ = {
 			isa = PBXGroup;
 			children = (
+				4C2B110F2A4968450028ED83 /* EnableNotifications.swift */,
+				4C2B11112A496A6A0028ED83 /* ButtonView.swift */,
 			);
 			path = "Sub View";
 			sourceTree = "<group>";
@@ -265,6 +276,7 @@
 				4C2B10F12A4563190028ED83 /* TimeAndDateSupport.swift */,
 				4C2B10FD2A492D660028ED83 /* FourCoolCircles.swift */,
 				4C2B11092A4946240028ED83 /* CoolTextView.swift */,
+				4C2B11132A496A770028ED83 /* MainGradient.swift */,
 			);
 			path = "Supporting View";
 			sourceTree = "<group>";
@@ -380,14 +392,18 @@
 			files = (
 				4C2B10F22A4563190028ED83 /* TimeAndDateSupport.swift in Sources */,
 				4C2B10A02A4421620028ED83 /* MainAlarmView.swift in Sources */,
+				4C2B11162A496B2A0028ED83 /* Screen Constants.swift in Sources */,
 				4C2B10CF2A4529620028ED83 /* Play Sound.swift in Sources */,
 				4C2B10EE2A453A960028ED83 /* Color Constants.swift in Sources */,
+				4C2B11122A496A6A0028ED83 /* ButtonView.swift in Sources */,
 				4C2B10F42A490C280028ED83 /* TimeModel.swift in Sources */,
+				4C2B11102A4968450028ED83 /* EnableNotifications.swift in Sources */,
 				4C2B10F62A4912390028ED83 /* AlarmModel.swift in Sources */,
 				4C2B110A2A4946240028ED83 /* CoolTextView.swift in Sources */,
 				4C2B10E52A452AFE0028ED83 /* GrayedTextView.swift in Sources */,
 				4C2B10F92A4914D60028ED83 /* Activities Constants.swift in Sources */,
 				4C2B110C2A49483D0028ED83 /* Image Constants.swift in Sources */,
+				4C2B11142A496A770028ED83 /* MainGradient.swift in Sources */,
 				4C2B10D72A4529620028ED83 /* Sound Constants.swift in Sources */,
 				4C2B10F02A4562A00028ED83 /* TimeOfDayIcon.swift in Sources */,
 				4C2B109E2A4421620028ED83 /* AlarmApp.swift in Sources */,

@@ -1,8 +1,7 @@
 import SwiftUI
 
 
-let screenWidth = UIScreen.main.bounds.width
-let screenHeight = UIScreen.main.bounds.height
+
 
 struct FourCoolCircles: View {
     var color1 = darkYellow
