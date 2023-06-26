@@ -41,6 +41,12 @@
 		4C2B10F42A490C280028ED83 /* TimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B10F32A490C270028ED83 /* TimeModel.swift */; };
 		4C2B10F62A4912390028ED83 /* AlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B10F52A4912390028ED83 /* AlarmModel.swift */; };
 		4C2B10F92A4914D60028ED83 /* Activities Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B10F82A4914D60028ED83 /* Activities Constants.swift */; };
+		4C2B10FC2A492BFD0028ED83 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B10FB2A492BFD0028ED83 /* SplashScreenView.swift */; };
+		4C2B10FE2A492D660028ED83 /* FourCoolCircles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B10FD2A492D660028ED83 /* FourCoolCircles.swift */; };
+		4C2B11072A4945A30028ED83 /* WorkSans-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C2B11052A4945A20028ED83 /* WorkSans-VariableFont_wght.ttf */; };
+		4C2B11082A4945A30028ED83 /* WorkSans-Italic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C2B11062A4945A30028ED83 /* WorkSans-Italic-VariableFont_wght.ttf */; };
+		4C2B110A2A4946240028ED83 /* CoolTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B11092A4946240028ED83 /* CoolTextView.swift */; };
+		4C2B110C2A49483D0028ED83 /* Image Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B110B2A49483D0028ED83 /* Image Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +88,12 @@
 		4C2B10F32A490C270028ED83 /* TimeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeModel.swift; sourceTree = "<group>"; };
 		4C2B10F52A4912390028ED83 /* AlarmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
 		4C2B10F82A4914D60028ED83 /* Activities Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Activities Constants.swift"; sourceTree = "<group>"; };
+		4C2B10FB2A492BFD0028ED83 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		4C2B10FD2A492D660028ED83 /* FourCoolCircles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourCoolCircles.swift; sourceTree = "<group>"; };
+		4C2B11052A4945A20028ED83 /* WorkSans-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		4C2B11062A4945A30028ED83 /* WorkSans-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		4C2B11092A4946240028ED83 /* CoolTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolTextView.swift; sourceTree = "<group>"; };
+		4C2B110B2A49483D0028ED83 /* Image Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image Constants.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +126,7 @@
 		4C2B109C2A4421620028ED83 /* Alarm */ = {
 			isa = PBXGroup;
 			children = (
+				4C2B11042A4945890028ED83 /* New Group */,
 				4C2B10AC2A4529620028ED83 /* Sounds */,
 				4C2B10DD2A4529970028ED83 /* Model */,
 				4C2B10DC2A45298F0028ED83 /* ViewModel */,
@@ -186,6 +199,7 @@
 		4C2B10DB2A4529880028ED83 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4C2B10FB2A492BFD0028ED83 /* SplashScreenView.swift */,
 				4C2B10E32A452AD60028ED83 /* Unused Views */,
 				4C2B10E22A452AC10028ED83 /* Supporting View */,
 				4C2B10E12A452AB50028ED83 /* Sub View */,
@@ -213,6 +227,8 @@
 		4C2B10DE2A45299E0028ED83 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				4C2B11062A4945A30028ED83 /* WorkSans-Italic-VariableFont_wght.ttf */,
+				4C2B11052A4945A20028ED83 /* WorkSans-VariableFont_wght.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -223,6 +239,7 @@
 				4C2B10ED2A453A960028ED83 /* Color Constants.swift */,
 				4C2B10EF2A4562A00028ED83 /* TimeOfDayIcon.swift */,
 				4C2B10F82A4914D60028ED83 /* Activities Constants.swift */,
+				4C2B110B2A49483D0028ED83 /* Image Constants.swift */,
 			);
 			path = Constatns;
 			sourceTree = "<group>";
@@ -246,6 +263,8 @@
 			isa = PBXGroup;
 			children = (
 				4C2B10F12A4563190028ED83 /* TimeAndDateSupport.swift */,
+				4C2B10FD2A492D660028ED83 /* FourCoolCircles.swift */,
+				4C2B11092A4946240028ED83 /* CoolTextView.swift */,
 			);
 			path = "Supporting View";
 			sourceTree = "<group>";
@@ -255,6 +274,13 @@
 			children = (
 			);
 			path = "Unused Views";
+			sourceTree = "<group>";
+		};
+		4C2B11042A4945890028ED83 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,10 +348,12 @@
 				4C2B10E82A4534D10028ED83 /* Localizable.strings in Resources */,
 				4C2B10D12A4529620028ED83 /* forest birds sweden.mp3 in Resources */,
 				4C2B10D32A4529620028ED83 /* forest with cuckoo birds.mp3 in Resources */,
+				4C2B11072A4945A30028ED83 /* WorkSans-VariableFont_wght.ttf in Resources */,
 				4C2B10D82A4529620028ED83 /* tennessee_whiskey.mp3 in Resources */,
 				4C2B10C92A4529620028ED83 /* welcome_to_my_house.mp3 in Resources */,
 				4C2B10A62A4421630028ED83 /* Preview Assets.xcassets in Resources */,
 				4C2B10CB2A4529620028ED83 /* Sound Wake up.aiff in Resources */,
+				4C2B11082A4945A30028ED83 /* WorkSans-Italic-VariableFont_wght.ttf in Resources */,
 				4C2B10C62A4529620028ED83 /* owl hooting.mp3 in Resources */,
 				4C2B10D42A4529620028ED83 /* night ambience.mp3 in Resources */,
 				4C2B10C42A4529620028ED83 /* Lagrima.aiff in Resources */,
@@ -356,11 +384,15 @@
 				4C2B10EE2A453A960028ED83 /* Color Constants.swift in Sources */,
 				4C2B10F42A490C280028ED83 /* TimeModel.swift in Sources */,
 				4C2B10F62A4912390028ED83 /* AlarmModel.swift in Sources */,
+				4C2B110A2A4946240028ED83 /* CoolTextView.swift in Sources */,
 				4C2B10E52A452AFE0028ED83 /* GrayedTextView.swift in Sources */,
 				4C2B10F92A4914D60028ED83 /* Activities Constants.swift in Sources */,
+				4C2B110C2A49483D0028ED83 /* Image Constants.swift in Sources */,
 				4C2B10D72A4529620028ED83 /* Sound Constants.swift in Sources */,
 				4C2B10F02A4562A00028ED83 /* TimeOfDayIcon.swift in Sources */,
 				4C2B109E2A4421620028ED83 /* AlarmApp.swift in Sources */,
+				4C2B10FE2A492D660028ED83 /* FourCoolCircles.swift in Sources */,
+				4C2B10FC2A492BFD0028ED83 /* SplashScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
