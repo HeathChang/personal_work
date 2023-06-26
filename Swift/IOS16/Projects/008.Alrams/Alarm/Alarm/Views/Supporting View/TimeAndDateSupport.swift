@@ -13,12 +13,6 @@ func getTimeComponents(date: Date) -> (hour:Int, minute: Int, day: Int, month: I
     return (hour: hour, minute: minute, day: day, month: month, year: year)
 }
 
-func dateToPercent(date: Date) -> CGFloat{
-    let result = getTimeComponents(date: date)
-    return CGFloat(result.hour) / 24 + CGFloat(result.minute) / (60 * 24)
-}
-
-
 func getTimeFromDate(date: Date) -> String{
     let result = getTimeComponents(date: date)
     let hour = result.hour
@@ -30,8 +24,35 @@ func getTimeFromDate(date: Date) -> String{
 }
 
 
+
+func dateToPercent(date: Date) -> CGFloat{
+    let result = getTimeComponents(date: date)
+    return CGFloat(result.hour) / 24 + CGFloat(result.minute) / (60 * 24)
+}
+
+
 func addHourToDate(date: Date, numHours: Int, numMinutes: Int) -> Date {
     return date.addingTimeInterval(
         TimeInterval(numMinutes * 60 + numHours * 3600)
     )
+}
+
+
+func formatDate(date: Date) -> String {
+    let result = getTimeComponents(date: date)
+    return "\(result.day)-\(result.minute)-\(result.year)(\(result.hour):\(result.minute)"
+}
+
+func DateToTimeModel(date: Date) -> TimeModel {
+    let result = getTimeComponents(date: date)
+    return TimeModel(hours: result.hour, minutes: result.minute)
+
+}
+
+
+extension Date {
+    // name is -, overloading the - operator to provide a custom implementation for calculating the time difference between two Date objects.
+    static func - (lhs: Date, rhs: Date) -> TimeInterval {
+        return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
+    }
 }

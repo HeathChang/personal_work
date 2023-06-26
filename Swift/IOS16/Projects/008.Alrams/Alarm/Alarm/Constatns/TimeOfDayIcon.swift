@@ -44,8 +44,7 @@ struct TimeOfDayIcon_Previews: PreviewProvider {
                 Text(getTimeFromDate(date: theDate))
                 Spacer()
                 TimeOfDayIcon(date: theDate)
-            }
-            
-        }.padding()
+            }.padding()
+        }
     }
 }
