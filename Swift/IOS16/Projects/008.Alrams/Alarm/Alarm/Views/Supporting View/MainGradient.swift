@@ -23,6 +23,6 @@ struct MainGradient: View {
 struct MainGradient_Previews: PreviewProvider {
     static var previews: some View {
         MainGradient(endRadius: 75)
-            .frame(width: screenWidth, height: 100)
+            .frame(width: screenWidth, height: 100) // specify the size and alignment of a view within its parent container
     }
 }
