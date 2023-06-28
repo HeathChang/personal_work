@@ -8,12 +8,14 @@ struct ToBedWakeUpView: View {
     
     var body: some View {
         VStack {
+            // Cancel and Save Button
             CancelSaveAlarm(currentAlarmIndex: currentIndex, alarmModel: $alarmModel)
+            
+            /// Alarm Toggler
+            AlarmToggleView(alarmEnabled: $alarmModel.alarmEnabled)
 
-            Text("Toggle Alarm")
-            
             Divider()
-            
+        
             HStack{
                 VStack {
                     Grid{
@@ -22,7 +24,7 @@ struct ToBedWakeUpView: View {
                                 .font(.largeTitle)
                             VStack(alignment: .leading){
                                 GrayedTextView(text: "Start")
-                                Text("Time Picker")
+                                TimePicker(time: $alarmModel.start, scale: 1.3)
                             }
                         }
                         GridRow{
@@ -36,7 +38,8 @@ struct ToBedWakeUpView: View {
                             Image(systemName: alarmModel.activity)
                                 .foregroundColor(alarmModel.activityColor)
                                 .font(.headline)
-                            Text("SelectActiviyView")
+                            SelectActivityView(currentColorIndex: $alarmModel.colorIndex,
+                                               currentActivity:  $alarmModel.activity)
                         }.padding(.vertical)
                         GridRow{
                             HStack{
@@ -49,7 +52,8 @@ struct ToBedWakeUpView: View {
                             TimeOfDayIcon(date: alarmModel.end)
                                 .font(.largeTitle)
                             VStack(alignment: .leading){
-                                Text("Time Picker")
+                                TimePicker(time: $alarmModel.end, scale: 1.3)
+
                                 GrayedTextView(text: "End")
                             }
                         }
