@@ -7,7 +7,6 @@ struct TimeOfDayIcon: View {
         return dateToPercent(date: date)
     }
     var hour: Int {
-        print("Hello")
         return Int( 24 * percent )
     }
     

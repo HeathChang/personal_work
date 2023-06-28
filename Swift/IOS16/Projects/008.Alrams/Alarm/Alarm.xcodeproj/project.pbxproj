@@ -54,6 +54,10 @@
 		4C2B11182A4A99F90028ED83 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B11172A4A99F90028ED83 /* AboutView.swift */; };
 		4C2B111A2A4AA9500028ED83 /* AddEditAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B11192A4AA9500028ED83 /* AddEditAlarmView.swift */; };
 		4C2B111C2A4AAAB90028ED83 /* YouDidItView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2B111B2A4AAAB90028ED83 /* YouDidItView.swift */; };
+		4C6E32FB2A4BC3A1003EF9C2 /* ToBedWakeUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6E32FA2A4BC3A1003EF9C2 /* ToBedWakeUpView.swift */; };
+		4C6E32FD2A4BCD41003EF9C2 /* CancelSaveAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6E32FC2A4BCD41003EF9C2 /* CancelSaveAlarm.swift */; };
+		4C6E32FF2A4BD292003EF9C2 /* AlarmToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6E32FE2A4BD292003EF9C2 /* AlarmToggleView.swift */; };
+		4C6E33012A4BD308003EF9C2 /* TheToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6E33002A4BD308003EF9C2 /* TheToggleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +112,10 @@
 		4C2B11172A4A99F90028ED83 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AboutView.swift; path = "Views/Main View/AboutView.swift"; sourceTree = "<group>"; };
 		4C2B11192A4AA9500028ED83 /* AddEditAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddEditAlarmView.swift; path = "Views/Main View/AddEditAlarmView.swift"; sourceTree = "<group>"; };
 		4C2B111B2A4AAAB90028ED83 /* YouDidItView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouDidItView.swift; sourceTree = "<group>"; };
+		4C6E32FA2A4BC3A1003EF9C2 /* ToBedWakeUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToBedWakeUpView.swift; sourceTree = "<group>"; };
+		4C6E32FC2A4BCD41003EF9C2 /* CancelSaveAlarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelSaveAlarm.swift; sourceTree = "<group>"; };
+		4C6E32FE2A4BD292003EF9C2 /* AlarmToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmToggleView.swift; sourceTree = "<group>"; };
+		4C6E33002A4BD308003EF9C2 /* TheToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheToggleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,6 +283,7 @@
 			children = (
 				4C2B110F2A4968450028ED83 /* EnableNotifications.swift */,
 				4C2B11112A496A6A0028ED83 /* ButtonView.swift */,
+				4C6E32FA2A4BC3A1003EF9C2 /* ToBedWakeUpView.swift */,
 			);
 			path = "Sub View";
 			sourceTree = "<group>";
@@ -286,6 +295,9 @@
 				4C2B10FD2A492D660028ED83 /* FourCoolCircles.swift */,
 				4C2B11092A4946240028ED83 /* CoolTextView.swift */,
 				4C2B11132A496A770028ED83 /* MainGradient.swift */,
+				4C6E32FC2A4BCD41003EF9C2 /* CancelSaveAlarm.swift */,
+				4C6E32FE2A4BD292003EF9C2 /* AlarmToggleView.swift */,
+				4C6E33002A4BD308003EF9C2 /* TheToggleView.swift */,
 			);
 			path = "Supporting View";
 			sourceTree = "<group>";
@@ -405,16 +417,20 @@
 				4C2B111C2A4AAAB90028ED83 /* YouDidItView.swift in Sources */,
 				4C2B10CF2A4529620028ED83 /* Play Sound.swift in Sources */,
 				4C2B11182A4A99F90028ED83 /* AboutView.swift in Sources */,
+				4C6E33012A4BD308003EF9C2 /* TheToggleView.swift in Sources */,
 				4C2B10EE2A453A960028ED83 /* Color Constants.swift in Sources */,
 				4C2B11122A496A6A0028ED83 /* ButtonView.swift in Sources */,
+				4C6E32FF2A4BD292003EF9C2 /* AlarmToggleView.swift in Sources */,
 				4C2B111A2A4AA9500028ED83 /* AddEditAlarmView.swift in Sources */,
 				4C2B10F42A490C280028ED83 /* TimeModel.swift in Sources */,
+				4C6E32FD2A4BCD41003EF9C2 /* CancelSaveAlarm.swift in Sources */,
 				4C2B11102A4968450028ED83 /* EnableNotifications.swift in Sources */,
 				4C2B10F62A4912390028ED83 /* AlarmModel.swift in Sources */,
 				4C2B110A2A4946240028ED83 /* CoolTextView.swift in Sources */,
 				4C2B10E52A452AFE0028ED83 /* GrayedTextView.swift in Sources */,
 				4C2B10F92A4914D60028ED83 /* Activities Constants.swift in Sources */,
 				4C2B110C2A49483D0028ED83 /* Image Constants.swift in Sources */,
+				4C6E32FB2A4BC3A1003EF9C2 /* ToBedWakeUpView.swift in Sources */,
 				4C2B11142A496A770028ED83 /* MainGradient.swift in Sources */,
 				4C2B10D72A4529620028ED83 /* Sound Constants.swift in Sources */,
 				4C2B10F02A4562A00028ED83 /* TimeOfDayIcon.swift in Sources */,
