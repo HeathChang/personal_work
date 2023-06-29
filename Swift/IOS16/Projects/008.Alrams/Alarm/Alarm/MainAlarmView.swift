@@ -3,14 +3,19 @@ import SwiftUI
 
 struct MainAlarmView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        TabView{
+//            AddEditAlarmView(currentIndex: nil, alarmModel: AlarmModel.DefaultAlaram())
+            ListOfTheAlarmsView(alarmViewModels: AlarmModel.DummyAlarmData())
+                .tabItem({
+                    Label("Alarms", systemImage: "alarm.fill")
+                })
+            AboutView()
+                .tabItem({
+                    Label("About", systemImage: "info.circle.fill")
+                })
         }
-        .padding()
     }
+        
 }
 
 struct ContentView_Previews: PreviewProvider {

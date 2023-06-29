@@ -82,7 +82,6 @@ struct ToBedWakeUpView: View {
                                             }.padding(.vertical)
                                         })
                         }
-                        
                     }.frame(maxWidth: .infinity, alignment: .leading)
                     
                 }.padding()
