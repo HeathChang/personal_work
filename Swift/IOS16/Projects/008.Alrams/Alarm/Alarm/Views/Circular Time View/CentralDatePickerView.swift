@@ -3,9 +3,37 @@ import SwiftUI
 struct CentralDatePickerView: View {
     let size: CGFloat
     @Binding var alarmModel: AlarmModel
-
+    
     
     var lineWidth: CGFloat = 10.0
+    
+//    var startTime: Date {
+//        return alarmModel.start
+//    }
+//    
+//    var endTime: Date {
+//        return alarmModel.end
+//    }
+//    
+//    var startDateToPercent: CGFloat {
+//        return dateToPercent(date: startTime)
+//    }
+//
+//    var endDateToPercent: CGFloat {
+//        return startDateToPercent + percentDifference
+//    }
+//    
+//    var percentDifference: CGFloat {
+//        let value = dateToPercent(date: endTime) - dateToPercent(date: startTime)
+//        return value >= 0 ? value: 1 + value
+//    }
+//    
+//    
+//    var rotateCircleOffset: CGFloat {
+//        360 * startDateToPercent
+//    }
+//    
+
     
     var body: some View {
         VStack{
