@@ -8,17 +8,21 @@ struct ListOfTheAlarmsView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                List {
-                    ForEach(0 ..< alarmViewModels.count, id: \.self) { i in
-                        let alarmModel = alarmViewModels[i]
-                        NavigationLink {
-                            AddEditAlarmView(currentIndex: i, alarmModel: alarmModel)
-                        } label: {
-                            HStack {
-                                AlarmRowView(model: alarmModel, i: i)
-                            }
+                VStack {
+                    List {
+                        ForEach(0 ..< alarmViewModels.count, id: \.self) { i in
+                            let alarmModel = alarmViewModels[i]
+                            NavigationLink (
+                                destination: {
+                                    MainAddEditAlarmView(currnetAlaramIndex: i, alarmModel: alarmModel)
+    //                                AddEditAlarmView(currentIndex: i, alarmModel: alarmModel)
+                                }, label: {
+                                    HStack {
+                                        AlarmRowView(model: alarmModel, i: i)
+                                    }
+                                })
+                            
                         }
-                        
                     }
                 }
                 
@@ -33,7 +37,8 @@ struct ListOfTheAlarmsView: View {
                 // Add
                 ToolbarItem(placement: .navigationBarTrailing){
                     NavigationLink {
-                        AddEditAlarmView(currentIndex: nil, alarmModel: AlarmModel.DefaultAlaram())
+                        MainAddEditAlarmView(currnetAlaramIndex: nil, alarmModel: .DefaultAlaram())
+//                        AddEditAlarmView(currentIndex: nil, alarmModel: AlarmModel.DefaultAlaram())
                     } label: {
                         Text("+")
                             .font(.largeTitle)

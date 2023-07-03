@@ -19,9 +19,9 @@ struct TheToggleView: View {
     // should be a value between 0.5 to 1.0
     var backgroundWhiteness: Double {
         var result = xShift + offsetDelta
-        result / (2 * offsetDelta)
+        result = result / (2 * offsetDelta)
         // normalize
-        result = result * 0.5
+//        result = result * 0.5
         result = 0.5 - result
         return result
         
@@ -65,7 +65,7 @@ struct TheToggleView: View {
                height: width,
                alignment: .leading)
         .gesture(combinedGesture)
-
+        
     }
 }
 
