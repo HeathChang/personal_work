@@ -2,6 +2,10 @@
 import SwiftUI
 
 struct EnableNotifications: View {
+    
+    
+    @EnvironmentObject var lnManager: LocalNoficationManager
+    
     var body: some View {
         
         ZStack{
@@ -12,9 +16,9 @@ struct EnableNotifications: View {
                     .multilineTextAlignment(.center)
                 Spacer()
                 Button(action: {
-                    print("Enabled")
+                    // 버튼 클릭시 Setting Open
+                    lnManager.openSettings()
                 }, label: {
-//                    Text("Enabled")
                     ButtonView(text: "Enable").padding()
                 })
             }
@@ -25,6 +29,8 @@ struct EnableNotifications: View {
 
 struct EnableNotifications_Previews: PreviewProvider {
     static var previews: some View {
+        // need to add environmentObject(LocalNoficationManager) to use lnManager
         EnableNotifications()
+            .environmentObject(LocalNoficationManager())
     }
 }

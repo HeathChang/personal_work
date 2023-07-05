@@ -2,20 +2,40 @@
 import SwiftUI
 
 struct MainAlarmView: View {
+    @StateObject var lnManager: LocalNoficationManager = LocalNoficationManager()
+    
+    // Every time the scene phase change this will update > way to observe and react to changes in the app's lifecycle.
+    @Environment(\.scenePhase) var scenePhase
+    
     var body: some View {
         TabView{
-//            AddEditAlarmView(currentIndex: nil, alarmModel: AlarmModel.DefaultAlaram())
-            ListOfTheAlarmsView(alarmViewModels: AlarmModel.DummyAlarmData())
-                .tabItem({
-                    Label("Alarms", systemImage: "alarm.fill")
-                })
-            AboutView()
-                .tabItem({
-                    Label("About", systemImage: "info.circle.fill")
-                })
+            if lnManager.isAuthorized {
+                ListOfTheAlarmsView(alarmViewModels: AlarmModel.DummyAlarmData())
+                    .tabItem({
+                        Label("Alarms", systemImage: "alarm.fill")
+                    })
+                AboutView()
+                    .tabItem({
+                        Label("About", systemImage: "info.circle.fill")
+                    })
+            } else {
+                EnableNotifications()
+            }
+        }
+        .ignoresSafeArea()
+        .task {
+            // Authorization 물어봄
+            try? await lnManager.requestAuthorization()
+        }
+        .onChange(of: scenePhase){ newValue in
+            if newValue == .active {
+                Task {
+                    await lnManager.getCurrentSetting()
+                }
+            }
         }
     }
-        
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
