@@ -31,6 +31,9 @@ struct MainAlarmView: View {
             if newValue == .active {
                 Task {
                     await lnManager.getCurrentSetting()
+                    
+                    // if view is active. > update view
+                    await lnManager.getPendingAlarms()
                 }
             }
         }
