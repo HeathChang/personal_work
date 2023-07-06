@@ -72,7 +72,7 @@ import Foundation
 
 
 // CaseIterable: run through the enum so we can run through a list
-enum Sounds: String, CaseIterable {
+enum Sounds: String, CaseIterable, Codable {
     case wake_up = "Sound Wake up.aiff"
     case lagrima = "Lagrima.aiff"
     case christmas_bells = "christmas_bells.mp3"

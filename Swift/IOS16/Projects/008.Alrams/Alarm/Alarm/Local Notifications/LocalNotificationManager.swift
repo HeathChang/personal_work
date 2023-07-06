@@ -10,6 +10,19 @@ class LocalNoficationManager: NSObject, ObservableObject, UNUserNotificationCent
     let notificationCenter = UNUserNotificationCenter.current()
     @Published var isAuthorized = false
     
+    // Store a list of notifications / alarm
+    @Published var pendingAlarms: [UNNotificationRequest] = []
+    
+    //VM for AlarmModel
+    @Published var alarmViewModels: [AlarmModel] = [] {
+        didSet{
+            saveItems()
+        }
+    }
+    
+    let itemKey = "Alarm List"
+    
+    
     func requestAuthorization() async throws{
         // requests authorization from the user to send local notifications >> 권한 요청
         // wait for the completion of the authorization request and handle any potential errors that may occur. The execution of the code will pause until the authorization request is completed or an error is thrown.
@@ -17,7 +30,7 @@ class LocalNoficationManager: NSObject, ObservableObject, UNUserNotificationCent
         // If an error is thrown, you can handle it using do-catch or propagate it further up the call stack using throws.
         try await notificationCenter.requestAuthorization(options: [
             // try await > invoke an asynchronous operation that can potentially throw an error
-                .sound, .badge, .alert
+            .sound, .badge, .alert
         ])
         await getCurrentSetting()
     }
@@ -42,6 +55,29 @@ class LocalNoficationManager: NSObject, ObservableObject, UNUserNotificationCent
         }
     }
     
-        
+    
+    // Save alarm vm
+    func saveItems() {
+        if let encodeData = try? JSONEncoder()
+            .encode(alarmViewModels){
+            UserDefaults
+                .standard
+                .set(encodeData, forKey: itemKey)
+        }
+    }
+    override init() {
+        super.init()
+        // TODO: want alarm to go off when app is also active
+        // Alarm VM - persistance
+        guard let data = UserDefaults
+            .standard
+            .data(forKey: itemKey),
+              let savedItems = try? JSONDecoder()
+            .decode([AlarmModel].self, from: data)
+        else {
+            return
+        }
+        self.alarmViewModels = savedItems
+    }
 }
 
