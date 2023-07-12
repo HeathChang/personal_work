@@ -56,9 +56,10 @@ struct ToBedWakeUpView: View {
                                 
                                 GrayedTextView(text: "End")
                             }
-                        }
+                        } 
                         GridRow{
                             Text("")
+//                            SoundMenuView(alarmModel: $alarmModel)
                             Menu(content: {
                                 //pop-up menu that appears when the user performs a long press or right-click on the view. The menu options defined within the curly braces { ... } will be displayed in the context menu
                                 ForEach(Sounds.allCases, id: \.self){ sound in
