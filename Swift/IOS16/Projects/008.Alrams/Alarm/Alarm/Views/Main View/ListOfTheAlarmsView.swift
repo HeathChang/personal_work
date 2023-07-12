@@ -25,7 +25,7 @@ struct ListOfTheAlarmsView: View {
                         }
                     }
                 }
-                
+            
             }
             .navigationTitle("Alarm LIst")
             .toolbar(){
