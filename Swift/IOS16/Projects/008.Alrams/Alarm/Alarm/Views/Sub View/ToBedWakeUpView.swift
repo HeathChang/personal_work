@@ -76,7 +76,7 @@ struct ToBedWakeUpView: View {
 struct ToBedWakeUpView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack{
-            Color.gray.opacity(0.9).ignoresSafeArea()
+            Color.gray.opacity(0.3).ignoresSafeArea()
             ToBedWakeUpView(currentIndex: nil, alarmModel: AlarmModel.DefaultAlaram())
         }
     }
