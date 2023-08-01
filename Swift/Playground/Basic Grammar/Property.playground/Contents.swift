@@ -103,3 +103,52 @@ SomeStructure.computedTypeProeprty
 SomeStructure.storedTypeProerty
 
 
+// Property (변수) >  저장 프로퍼티, 연산 프로퍼티, 타입 프로퍼티
+
+//1. 저장 프로퍼티는 가장 일반적인 프로퍼티로써, 값을 저장하는 용도로 사용됩니다.
+//let name = "Hohyeon Moon"
+//var age = 25
+
+//1.a 지연 저장 프로퍼티 > 프로퍼티가 처음으로 사용되기 전까지 초기값이 계산되지 않는 특성
+// class Position {
+//    lazy var point: CoordinatePoint = CoordinatePoint()
+// }
+
+//2. 연산 프로퍼티 > 실제로 값을 저장하지는 않고, get과 set 키워드로 값을 간접적으로 설정하거나 받는 프로퍼티
+// var wallet: Int = 10000
+//
+// var counter: Int {
+//    get {
+//        return wallet
+//    }
+//
+//    set(money) {
+//        wallet += money
+//    }
+//}
+
+//3.타입 프로퍼티 > 인스턴스의 속성이 아닌, 타입에 따른 속성을 정의 (인스턴스 생성없이 객체 프로퍼티  접근이 자유로워짐)
+// struct AudioChannel {
+//  static let level = 10
+//  static var maxLevel = 0
+// }
+//
+// print(AudioChannel.level)
+// print(AudioChannel.maxLevel)
+
+
+// 4. 프로퍼티 옵저버 > 프로퍼티의 값이 변경 될 때 지정된 코드를 실행
+// class Account {
+// var credit: Int = 0 {
+//    willSet {
+//        print("잔액이 \(credit)에서 \(newValue)원으로 변경될 예정입니다.")
+//    }
+//
+//    didSet {
+//        print("잔액이 \(oldValue)에서 \(credit)으로 변경되었습니다.")
+//    }
+// }
+// }
+//
+// let myAccount = Account()
+// myAccount.credit = 1000

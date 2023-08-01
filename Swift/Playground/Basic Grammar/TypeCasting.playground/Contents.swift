@@ -55,7 +55,7 @@ for item in library {
 print("Media library contains \(movieCount) movies and \(songCount) songs")
 // Prints "Media library contains 2 movies and 3 songs"
 
-// Down-Casting > class type may actually refer to an instance of a subclass (Type 체크후, 해당되는 하위 클래스 사용 가능)
+// Down-Casting > class type may actually refer to an instance of a subclass (Type 체크후, 해당되는  하위 클래스 사용 가능)
 for item in library {
     if let movie = item as? Movie {
         print("Movie: \(movie.name), dir. \(movie.director)")
