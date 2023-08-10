@@ -22,8 +22,7 @@ func guardTest(value: Int) {
 }
 
 
-guardTest(value: 0)
-guardTest(value: 1)
+guardTest(value: 0)2guardTest(value: 1)
 guardTest(value: 2)
 
 
