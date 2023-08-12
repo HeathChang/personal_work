@@ -28,7 +28,7 @@ struct NavigationBar: ViewModifier {
     }
 }
 
-
+// convenient way to apply NavigationBar modifier to any view
 extension View {
     func navigationBarWithButtonStyle(_ title: String) -> some View {
         return self.modifier(NavigationBar(title: title))
