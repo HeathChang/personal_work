@@ -19,7 +19,7 @@ struct ContentView: View {
         VStack{
             // 하나의 화면에 여러 개의 View를 Tab 방식
             TabView(selection: $selection){
-                Color.white
+                AssetView()
                     .edgesIgnoringSafeArea(.all)
                     .tabItem {
                         Image(systemName: "dollarsign.circle.fill")
@@ -53,7 +53,7 @@ struct ContentView: View {
                     .tag(Tab.setting)
                 
             }
-            .preferredColorScheme(.dark)
+            .preferredColorScheme(.light)
         }
     }
 }
