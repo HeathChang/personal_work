@@ -24,6 +24,53 @@ const isInside = (point, polygon) => {
 
 // 남성 후면
 
+// 여성 정면
+// const pointToCheck = [-0.0003303500632709233, 0.9756620985760516]; // 얼굴 > 최상단
+// const pointToCheck = [-0.03313764552974638, 0.9383400542401085]; // 얼굴 > 우측 관자놀이
+// const pointToCheck = [-0.04123257221813881, 0.9078143990450622]; // 얼굴 > 우측 귀
+// const pointToCheck = [-0.026684479347147017, 0.880059019009599]; // 얼굴 > 아랫머리
+// const pointToCheck = [0.015810172678904, 0.9181690748071367]; // 얼굴 > 좌측 눈
+// const pointToCheck = [-0.0016647440521117551, 0.8840940312977174]; // 얼굴 > 입술
+// const pointToCheck = [0.08147999016461638, 0.825179357520045]; // 어깨
+// const pointToCheck = [-0.08712333620250107, 0.7334659081094089]; // 상완
+// const pointToCheck = [-0.10365693814540897, 0.6287690329216536]; // 하완근
+// const pointToCheck = [-0.11606138940429733, 0.5342836031468624]; // 바닥
+// const pointToCheck = [0.09849533996869417, 0.4886598265678874]; // 손가락
+// const pointToCheck = [-0.05316952984960366, 0.5053159984376298]; // 우측 허벅지
+// const pointToCheck = [0.02581099233408707, 0.3350485192295585]; // 좌측 허벅지
+// const pointToCheck = [-0.00011872688761838113, 0.5547009535010802]; // 생식기
+// const pointToCheck = [-0.0013907162162271614, 0.8497066942824265]; // 몸체 > 목부위
+// const pointToCheck = [0.02883397979033453, 0.7855075253145882]; // 몸체 > 상체
+// const pointToCheck = [-0.002085950697262029, 0.6429511510595166]; // 몸체 > 복부
+
+// 여성 후면
+// const pointToCheck = [-0.026684479347147017, 0.880059019009599]; // 얼굴 > 아랫머리
+// const pointToCheck = [0.015810172678904, 0.9181690748071367]; // 얼굴 > 좌측 눈
+// const pointToCheck = [-0.0016647440521117551, 0.8840940312977174]; // 얼굴 > 입술
+// const pointToCheck = [0.08147999016461638, 0.825179357520045]; // 어깨
+// const pointToCheck = [-0.08712333620250107, 0.7334659081094089]; // 상완
+// const pointToCheck = [-0.10365693814540897, 0.6287690329216536]; // 하완근
+// const pointToCheck = [-0.11606138940429733, 0.5342836031468624]; // 바닥
+// const pointToCheck = [0.09849533996869417, 0.4886598265678874]; // 손가락
+// const pointToCheck = [-0.05316952984960366, 0.5053159984376298]; // 우측 허벅지
+// const pointToCheck = [0.02581099233408707, 0.3350485192295585]; // 좌측 허벅지
+// const pointToCheck = [-0.00011872688761838113, 0.5547009535010802]; // 생식기
+// const pointToCheck = [-0.0013907162162271614, 0.8497066942824265]; // 몸체 > 목부위
+// const pointToCheck = [0.02883397979033453, 0.7855075253145882]; // 몸체 > 상체
+// const pointToCheck = [-0.002085950697262029, 0.6429511510595166]; // 몸체 > 복부
+
+// 여성 후면
+// const pointToCheck = [0.00038714046233939703,0.9536420361260181 , -1]; // 머리 > 두피
+// const pointToCheck = [0.03827602586077, 0.9150884303001526 , -1]; // 머리 > 좌측귀
+// const pointToCheck = [0.04054481664172527, 0.9085696755810766, -1]; // 머리 > 우측귀
+// const pointToCheck = [0.0033573847468746365, 0.8059330198093037, -1]; // 등
+// const pointToCheck = [-0.08655755001803561, 0.7340820162438149, -1]; // 우측 팔 > 상완
+// const pointToCheck = [-0.04170008783268364, 0.5811622618969418, -1]; // 우측 발 > 엉덩이
+// const pointToCheck = [-0.08655755001803561, 0.7340820162438149, -1]; // 우측 발 > 허벅지
+// const pointToCheck = [-0.08655755001803561, 0.7340820162438149, -1]; // 우측 발 > 종아리
+// const pointToCheck = [-0.08655755001803561, 0.7340820162438149, -1]; // 우측 발 > 발바닥
+// const pointToCheck = [-0.08655755001803561, 0.7340820162438149, -1]; // 우측 발 > 발가락
+
 
 const RANGE = {
     MALE: {
@@ -276,8 +323,7 @@ const RANGE = {
 
 // 변수 설정
 // bodyParts 정의
-const isGender = "MALE"; // 성별 확인
-// const isGender = "FEMALE"; // 성별 확인
+const isGender = "FEMALE"; // 성별 확인
 
 const frontRangeEnum = {
     FACE: RANGE?.[isGender]?.A.FACE_RANGE,
@@ -290,7 +336,7 @@ const frontRangeEnum = {
     RIGHT_LOWER: RANGE?.[isGender]?.A.RIGHT_LOWER_RANGE,
     LEFT_LOWER: RANGE?.[isGender]?.A.LEFT_LOWER_RANGE,
     GENITALIA: RANGE?.[isGender]?.A.GENITALIA_RANGE,
-}; // 정면부 범위
+}; // 정면부 전체 그룹별 범위
 const backRangeEnum = {
     FACE: RANGE?.[isGender]?.P.FACE_RANGE,
     LEFT_ARM: RANGE?.[isGender]?.P.LEFT_ARM_RANGE,
@@ -298,28 +344,7 @@ const backRangeEnum = {
     BODY: RANGE?.[isGender]?.P.BODY_RANGE,
     RIGHT_LOWER: RANGE?.[isGender]?.P.RIGHT_LOWER_RANGE,
     LEFT_LOWER: RANGE?.[isGender]?.P.LEFT_LOWER_RANGE,
-}; // 후면부 범위
-let bodyPartsEnum = {};
-let isFront = pointToCheck[2] === undefined || pointToCheck[2] >= 0 ? "A" : "P"; // 앞뒤 구분
-let isLeft = pointToCheck[0] >= 0; // 좌 | 우 확인
-
-let rangePart = ""; // 범위 분류
-let bodyPart = ""; // 실제 부위
-
-
-// 부위
-let rangeEnum = isFront === "A" ? frontRangeEnum : backRangeEnum;
-Object.freeze(rangeEnum);
-
-
-// 1. 위치 분류
-for (let i = 0; i <= Object.keys(rangeEnum).length; i++) {
-    if (isInside(pointToCheck, Object.values(rangeEnum)[i])) {
-        rangePart = Object.keys(rangeEnum)[i];
-        break;
-    }
-}
-
+}; // 후면부 전체 그룹별 범위
 const BODY_PARTS = {
     MALE: {
         A: {
@@ -1093,226 +1118,166 @@ const BODY_PARTS = {
 
         },
     },
-};
+}; // 개별 신체 부위 정보
 
-// 구분
-// 1. 성별 구분 > 남자일때
-if (isGender === "MALE") {
-    if (isFront === "A") {
-        // 3. 부위 구분 > 얼굴일 경우
-        if (rangePart === "FACE") {
-            if (isLeft) {
-                bodyPartsEnum.LHSEYE = BODY_PARTS?.[isGender]?.A.LHSEYE;
-                bodyPartsEnum.LHSEAR = BODY_PARTS?.[isGender]?.A.LHSEAR;
-            } else if (!isLeft) {
-                bodyPartsEnum.RHSEYE = BODY_PARTS?.[isGender]?.A.RHSEYE;
-                bodyPartsEnum.RHSEAR = BODY_PARTS?.[isGender]?.A.RHSEAR;
-            }
-            bodyPartsEnum = {
-                ...bodyPartsEnum,
-                NOSE: BODY_PARTS?.[isGender]?.A.NOSE,
-                LIP: BODY_PARTS?.[isGender]?.A.LIP,
-                SCALP: BODY_PARTS?.[isGender]?.A.SCALP,
-                FACE: BODY_PARTS?.[isGender]?.A.FACE,
-            };
-        }
-        // 3. 부위 구분 > 팔일 경우
-        else if (rangePart.includes("_ARM")) {
-            if (isLeft) {
-                bodyPartsEnum = {
-                    LHSSHLDR: BODY_PARTS?.[isGender]?.A.LHSSHLDR,
-                    LHSARM: BODY_PARTS?.[isGender]?.A.LHSARM,
-                    LHSFA: BODY_PARTS?.[isGender]?.A.LHSFA,
-                    LHSPALM: BODY_PARTS?.[isGender]?.A.LHSPALM,
-                    LHSFNGR: BODY_PARTS?.[isGender]?.A.LHSFNGR,
-                };
-            } else if (!isLeft) {
-                bodyPartsEnum = {
-                    RHSSHLDR: BODY_PARTS?.[isGender]?.A.RHSSHLDR,
-                    RHSARM: BODY_PARTS?.[isGender]?.A.RHSARM,
-                    RHSFA: BODY_PARTS?.[isGender]?.A.RHSFA,
-                    RHSFA: BODY_PARTS?.[isGender]?.A.RHSFA,
-                    RHSFNGR: BODY_PARTS?.[isGender]?.A.RHSFNGR,
-                };
-            }
-        }
-        // 3. 부위 구분 > 하체 경우
-        else if (rangePart.includes("_LOWER")) {
-            if (rangePart === "RIGHT_LOWER") {
-                bodyPartsEnum = {
-                    RHSTHG: BODY_PARTS?.[isGender]?.A.RHSTHG,
-                    RHSLEG: BODY_PARTS?.[isGender]?.A.RHSLEG,
-                    RHSFOOT: BODY_PARTS?.[isGender]?.A.RHSFOOT,
-                    RHSTOE: BODY_PARTS?.[isGender]?.A.RHSTOE,
-                };
-            } else if (rangePart === "LEFT_LOWER") {
-                bodyPartsEnum = {
-                    LHSTHG: BODY_PARTS?.[isGender]?.A.LHSTHG,
-                    LHSLEG: BODY_PARTS?.[isGender]?.A.LHSLEG,
-                    LHSFOOT: BODY_PARTS?.[isGender]?.A.LHSFOOT,
-                    LHSTOE: BODY_PARTS?.[isGender]?.A.LHSTOE,
-                };
-            }
-        }
-        // 3. 부위 구분 > 생식기일 경우
-        else if (rangePart.includes("GENITALIA")) {
-            bodyPartsEnum = {
-                GENIT: BODY_PARTS?.[isGender]?.A.GENIT,
-            };
-        }
-        // 3. 부위 구분 > 상체 경우
-        else if (rangePart.includes("BODY")) {
-            bodyPartsEnum = {
-                NECK: BODY_PARTS?.[isGender]?.A.NECK,
-                CHEST: BODY_PARTS?.[isGender]?.A.CHEST,
-                ABDMN: BODY_PARTS?.[isGender]?.A.ABDMN,
-            };
-        }
+let bodyPartsEnum = {};
+let isFront = pointToCheck[2] === undefined || pointToCheck[2] >= 0 ? "A" : "P"; // 앞뒤 구분
+let isLeft = pointToCheck[0] >= 0; // 좌 | 우 확인
 
-    }
-    // 2. 앞뒤 구분 > 정면일Eo
-    else if (isFront === "P") {
-        // 2. 앞뒤 구분 > 후면일때
-        console.log("Hello World");
-    }
-    // 1. 성별 구분 > 여자일때
-} else if (isGender === "FEMALE") {
-    // 2. 앞뒤 구분 > 정면일때
-    if (isFront === "A") {
-        // 3. 부위 구분 > 얼굴일 경우
-        if (rangePart === "FACE") {
-            if (isLeft) {
-                bodyPartsEnum.LHSEYE = BODY_PARTS?.[isGender]?.A.LHSEYE;
-                bodyPartsEnum.LHSEAR = BODY_PARTS?.[isGender]?.A.LHSEAR;
-            } else if (!isLeft) {
-                bodyPartsEnum.RHSEYE = BODY_PARTS?.[isGender]?.A.RHSEYE;
-                bodyPartsEnum.RHSEAR = BODY_PARTS?.[isGender]?.A.RHSEAR;
-            }
-            bodyPartsEnum = {
-                ...bodyPartsEnum,
-                NOSE: BODY_PARTS?.[isGender]?.A.NOSE,
-                LIP: BODY_PARTS?.[isGender]?.A.LIP,
-                SCALP: BODY_PARTS?.[isGender]?.A.SCALP,
-                FACE: BODY_PARTS?.[isGender]?.A.FACE,
-            };
-        }
-        // 3. 부위 구분 > 팔일 경우
-        else if (rangePart.includes("_ARM")) {
-            if (isLeft) {
-                bodyPartsEnum = {
-                    LHSSHLDR: BODY_PARTS?.[isGender]?.A.LHSSHLDR,
-                    LHSARM: BODY_PARTS?.[isGender]?.A.LHSARM,
-                    LHSFA: BODY_PARTS?.[isGender]?.A.LHSFA,
-                    LHSPALM: BODY_PARTS?.[isGender]?.A.LHSPALM,
-                    LHSFNGR: BODY_PARTS?.[isGender]?.A.LHSFNGR,
-                };
-            } else if (!isLeft) {
-                bodyPartsEnum = {
-                    RHSSHLDR: BODY_PARTS?.[isGender]?.A.RHSSHLDR,
-                    RHSARM: BODY_PARTS?.[isGender]?.A.RHSARM,
-                    RHSFA: BODY_PARTS?.[isGender]?.A.RHSFA,
-                    RHSPALM: BODY_PARTS?.[isGender]?.A.RHSPALM,
-                    RHSFNGR: BODY_PARTS?.[isGender]?.A.RHSFNGR,
-                };
-            }
-        }
-        // 3. 부위 구분 > 하체 경우
-        else if (rangePart.includes("_LOWER")) {
-            if (rangePart === "RIGHT_LOWER") {
-                bodyPartsEnum = {
-                    RHSTHG: BODY_PARTS?.[isGender]?.A.RHSTHG,
-                    RHSLEG: BODY_PARTS?.[isGender]?.A.RHSLEG,
-                    RHSFOOT: BODY_PARTS?.[isGender]?.A.RHSFOOT,
-                    RHSTOE: BODY_PARTS?.[isGender]?.A.RHSTOE,
-                };
-            } else if (rangePart === "LEFT_LOWER") {
-                bodyPartsEnum = {
-                    LHSTHG: BODY_PARTS?.[isGender]?.A.LHSTHG,
-                    LHSLEG: BODY_PARTS?.[isGender]?.A.LHSLEG,
-                    LHSFOOT: BODY_PARTS?.[isGender]?.A.LHSFOOT,
-                    LHSTOE: BODY_PARTS?.[isGender]?.A.LHSTOE,
-                };
-            }
-        }
-        // 3. 부위 구분 > 생식기일 경우
-        else if (rangePart.includes("GENITALIA")) {
-            bodyPartsEnum = {
-                GENIT: BODY_PARTS?.[isGender]?.A.GENIT,
-            };
-        }
-        // 3. 부위 구분 > 상체 경우
-        else if (rangePart.includes("BODY")) {
-            bodyPartsEnum = {
-                NECK: BODY_PARTS?.[isGender]?.A.NECK,
-                CHEST: BODY_PARTS?.[isGender]?.A.CHEST,
-                ABDMN: BODY_PARTS?.[isGender]?.A.ABDMN,
-            };
-        }
+let rangePart = ""; // 범위 분류
+let bodyPart = ""; // 실제 부위
 
-    }
-    // 2. 앞뒤 구분 > 후면일때
-    else if (isFront === "P") {
-        // 3. 부위 구분 > 얼굴일 경우
-        if (rangePart === "FACE") {
-            if (isLeft) {
-                bodyPartsEnum.LHSEAR = BODY_PARTS?.[isGender]?.[isFront]?.LHSEAR;
-            } else if (!isLeft) {
-                bodyPartsEnum.RHSEAR = BODY_PARTS?.[isGender]?.[isFront]?.RHSEAR;
-            }
-            bodyPartsEnum = {
-                ...bodyPartsEnum,
-                SCALP: BODY_PARTS?.[isGender]?.[isFront]?.SCALP,
-            };
-        }
-        // 3. 부위 구분 > 좌측 팔
-        else if (rangePart === "LEFT_ARM") {
-            bodyPartsEnum = {
-                LHSSHLDR: BODY_PARTS?.[isGender]?.[isFront]?.LHSSHLDR,
-                LHSARM: BODY_PARTS?.[isGender]?.[isFront]?.LHSARM,
-                LHSFA: BODY_PARTS?.[isGender]?.[isFront]?.LHSFA,
-                LHSPALM: BODY_PARTS?.[isGender]?.[isFront]?.LHSPALM,
-                LHSFNGR: BODY_PARTS?.[isGender]?.[isFront]?.LHSFNGR,
-            };
-        }
-        // 3. 부위 구분 > 우측 팔
-        else if (rangePart === "RIGHT_ARM") {
-            bodyPartsEnum = {
-                RHSSHLDR: BODY_PARTS?.[isGender]?.[isFront]?.RHSSHLDR,
-                RHSARM: BODY_PARTS?.[isGender]?.[isFront]?.RHSARM,
-                RHSFA: BODY_PARTS?.[isGender]?.[isFront]?.RHSFA,
-                RHSPALM: BODY_PARTS?.[isGender]?.[isFront]?.RHSPALM,
-                RHSFNGR: BODY_PARTS?.[isGender]?.[isFront]?.RHSFNGR,
-            };
-        }
-        // 3. 부위 구분 > 등
-        else if (rangePart === "BODY") {
-            bodyPartsEnum = {
-                NECK: BODY_PARTS?.[isGender]?.[isFront]?.NECK,
-                BACK: BODY_PARTS?.[isGender]?.[isFront]?.BACK,
-            };
-        }
-        // 3. 부위 구분 > 우측 하체
-        else if (rangePart === "RIGHT_LOWER") {
-            bodyPartsEnum = {
-                RHSTHG: BODY_PARTS?.[isGender]?.[isFront]?.RHSTHG,
-                RHSBUT: BODY_PARTS?.[isGender]?.[isFront]?.RHSBUT,
-                RHSLEG: BODY_PARTS?.[isGender]?.[isFront]?.RHSLEG,
-                RHSSOLE: BODY_PARTS?.[isGender]?.[isFront]?.RHSSOLE,
-                RHSTOE: BODY_PARTS?.[isGender]?.[isFront]?.RHSTOE,
-            };
-        }
-        // 3. 부위 구분 > 좌측 하체
-        else if (rangePart === "LEFT_LOWER") {
-            bodyPartsEnum = {
-                LHSTHG: BODY_PARTS?.[isGender]?.[isFront]?.LHSTHG,
-                LHSBUT: BODY_PARTS?.[isGender]?.[isFront]?.LHSBUT,
-                LHSLEG: BODY_PARTS?.[isGender]?.[isFront]?.LHSLEG,
-                LHSSOLE: BODY_PARTS?.[isGender]?.[isFront]?.LHSSOLE,
-                LHSTOE: BODY_PARTS?.[isGender]?.[isFront]?.LHSTOE,
-            };
-        }
+
+// 부위
+let rangeEnum = isFront === "A" ? frontRangeEnum : backRangeEnum;
+Object.freeze(rangeEnum);
+
+
+// 1. 위치 분류
+for (let i = 0; i <= Object.keys(rangeEnum).length; i++) {
+    if (isInside(pointToCheck, Object.values(rangeEnum)[i])) {
+        rangePart = Object.keys(rangeEnum)[i];
+        break;
     }
 }
+
+
+
+if (isFront === "A") {
+    // 3. 부위 구분 > 얼굴일 경우
+    if (rangePart === "FACE") {
+        if (isLeft) {
+            bodyPartsEnum.LHSEYE = BODY_PARTS?.[isGender]?.A.LHSEYE;
+            bodyPartsEnum.LHSEAR = BODY_PARTS?.[isGender]?.A.LHSEAR;
+        } else if (!isLeft) {
+            bodyPartsEnum.RHSEYE = BODY_PARTS?.[isGender]?.A.RHSEYE;
+            bodyPartsEnum.RHSEAR = BODY_PARTS?.[isGender]?.A.RHSEAR;
+        }
+        bodyPartsEnum = {
+            ...bodyPartsEnum,
+            NOSE: BODY_PARTS?.[isGender]?.A.NOSE,
+            LIP: BODY_PARTS?.[isGender]?.A.LIP,
+            SCALP: BODY_PARTS?.[isGender]?.A.SCALP,
+            FACE: BODY_PARTS?.[isGender]?.A.FACE,
+        };
+    }
+    // 3. 부위 구분 > 팔일 경우
+    else if (rangePart.includes("_ARM")) {
+        if (isLeft) {
+            bodyPartsEnum = {
+                LHSSHLDR: BODY_PARTS?.[isGender]?.A.LHSSHLDR,
+                LHSARM: BODY_PARTS?.[isGender]?.A.LHSARM,
+                LHSFA: BODY_PARTS?.[isGender]?.A.LHSFA,
+                LHSPALM: BODY_PARTS?.[isGender]?.A.LHSPALM,
+                LHSFNGR: BODY_PARTS?.[isGender]?.A.LHSFNGR,
+            };
+        } else if (!isLeft) {
+            bodyPartsEnum = {
+                RHSSHLDR: BODY_PARTS?.[isGender]?.A.RHSSHLDR,
+                RHSARM: BODY_PARTS?.[isGender]?.A.RHSARM,
+                RHSFA: BODY_PARTS?.[isGender]?.A.RHSFA,
+                RHSPALM: BODY_PARTS?.[isGender]?.A.RHSPALM,
+                RHSFNGR: BODY_PARTS?.[isGender]?.A.RHSFNGR,
+            };
+        }
+    }
+    // 3. 부위 구분 > 하체 경우
+    else if (rangePart.includes("_LOWER")) {
+        if (rangePart === "RIGHT_LOWER") {
+            bodyPartsEnum = {
+                RHSTHG: BODY_PARTS?.[isGender]?.A.RHSTHG,
+                RHSLEG: BODY_PARTS?.[isGender]?.A.RHSLEG,
+                RHSFOOT: BODY_PARTS?.[isGender]?.A.RHSFOOT,
+                RHSTOE: BODY_PARTS?.[isGender]?.A.RHSTOE,
+            };
+        } else if (rangePart === "LEFT_LOWER") {
+            bodyPartsEnum = {
+                LHSTHG: BODY_PARTS?.[isGender]?.A.LHSTHG,
+                LHSLEG: BODY_PARTS?.[isGender]?.A.LHSLEG,
+                LHSFOOT: BODY_PARTS?.[isGender]?.A.LHSFOOT,
+                LHSTOE: BODY_PARTS?.[isGender]?.A.LHSTOE,
+            };
+        }
+    }
+    // 3. 부위 구분 > 생식기일 경우
+    else if (rangePart.includes("GENITALIA")) {
+        bodyPartsEnum = {
+            GENIT: BODY_PARTS?.[isGender]?.A.GENIT,
+        };
+    }
+    // 3. 부위 구분 > 상체 경우
+    else if (rangePart.includes("BODY")) {
+        bodyPartsEnum = {
+            NECK: BODY_PARTS?.[isGender]?.A.NECK,
+            CHEST: BODY_PARTS?.[isGender]?.A.CHEST,
+            ABDMN: BODY_PARTS?.[isGender]?.A.ABDMN,
+        };
+    }
+
+}
+else if (isFront === "P") {
+    // 3. 부위 구분 > 얼굴일 경우
+    if (rangePart === "FACE") {
+        if (isLeft) {
+            bodyPartsEnum.LHSEAR = BODY_PARTS?.[isGender]?.[isFront]?.LHSEAR;
+        } else if (!isLeft) {
+            bodyPartsEnum.RHSEAR = BODY_PARTS?.[isGender]?.[isFront]?.RHSEAR;
+        }
+        bodyPartsEnum = {
+            ...bodyPartsEnum,
+            SCALP: BODY_PARTS?.[isGender]?.[isFront]?.SCALP,
+        };
+    }
+    // 3. 부위 구분 > 좌측 팔
+    else if (rangePart === "LEFT_ARM") {
+        bodyPartsEnum = {
+            LHSSHLDR: BODY_PARTS?.[isGender]?.[isFront]?.LHSSHLDR,
+            LHSARM: BODY_PARTS?.[isGender]?.[isFront]?.LHSARM,
+            LHSFA: BODY_PARTS?.[isGender]?.[isFront]?.LHSFA,
+            LHSPALM: BODY_PARTS?.[isGender]?.[isFront]?.LHSPALM,
+            LHSFNGR: BODY_PARTS?.[isGender]?.[isFront]?.LHSFNGR,
+        };
+    }
+    // 3. 부위 구분 > 우측 팔
+    else if (rangePart === "RIGHT_ARM") {
+        bodyPartsEnum = {
+            RHSSHLDR: BODY_PARTS?.[isGender]?.[isFront]?.RHSSHLDR,
+            RHSARM: BODY_PARTS?.[isGender]?.[isFront]?.RHSARM,
+            RHSFA: BODY_PARTS?.[isGender]?.[isFront]?.RHSFA,
+            RHSPALM: BODY_PARTS?.[isGender]?.[isFront]?.RHSPALM,
+            RHSFNGR: BODY_PARTS?.[isGender]?.[isFront]?.RHSFNGR,
+        };
+    }
+    // 3. 부위 구분 > 등
+    else if (rangePart === "BODY") {
+        bodyPartsEnum = {
+            NECK: BODY_PARTS?.[isGender]?.[isFront]?.NECK,
+            BACK: BODY_PARTS?.[isGender]?.[isFront]?.BACK,
+        };
+    }
+    // 3. 부위 구분 > 우측 하체
+    else if (rangePart === "RIGHT_LOWER") {
+        bodyPartsEnum = {
+            RHSTHG: BODY_PARTS?.[isGender]?.[isFront]?.RHSTHG,
+            RHSBUT: BODY_PARTS?.[isGender]?.[isFront]?.RHSBUT,
+            RHSLEG: BODY_PARTS?.[isGender]?.[isFront]?.RHSLEG,
+            RHSSOLE: BODY_PARTS?.[isGender]?.[isFront]?.RHSSOLE,
+            RHSTOE: BODY_PARTS?.[isGender]?.[isFront]?.RHSTOE,
+        };
+    }
+    // 3. 부위 구분 > 좌측 하체
+    else if (rangePart === "LEFT_LOWER") {
+        bodyPartsEnum = {
+            LHSTHG: BODY_PARTS?.[isGender]?.[isFront]?.LHSTHG,
+            LHSBUT: BODY_PARTS?.[isGender]?.[isFront]?.LHSBUT,
+            LHSLEG: BODY_PARTS?.[isGender]?.[isFront]?.LHSLEG,
+            LHSSOLE: BODY_PARTS?.[isGender]?.[isFront]?.LHSSOLE,
+            LHSTOE: BODY_PARTS?.[isGender]?.[isFront]?.LHSTOE,
+        };
+    }
+}
+
+
 Object.freeze(bodyPartsEnum);
 
 if (Object.keys(bodyPartsEnum).length > 0) {

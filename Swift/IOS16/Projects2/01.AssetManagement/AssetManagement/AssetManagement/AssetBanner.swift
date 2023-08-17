@@ -1,20 +1,8 @@
-//
-//  AssetBanner.swift
-//  AssetManagement
-//
-//  Created by Hyunsoo Chang on 2023/08/13.
-//
+import UIKit
 
-import SwiftUI
 
-struct AssetBanner: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-struct AssetBanner_Previews: PreviewProvider {
-    static var previews: some View {
-        AssetBanner()
-    }
+struct AssetBanner {
+    let title: String
+    let description: String
+    let backgroundColor: UIColor
 }
