@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @AppStorage("onboarding") var isOnboadrdingViewActive: Bool = true // permanent phone device storage
+    @AppStorage("onboarding") var isOnboadrdingViewActive: Bool = false // permanent phone device storage
     
     
     var body: some View {
@@ -13,7 +13,7 @@ struct ContentView: View {
                 HomeView()
             }
         }
-        .padding()
+        
     }
 }
 
