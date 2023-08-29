@@ -28,8 +28,8 @@ struct OnboardingView: View {
                         .font(.system(size: 60))
                         .fontWeight(.heavy)
                         .foregroundColor(.white)
-                        .transition(.opacity)
-                        .id(textTitle)
+                        .transition(.opacity) // dealing with dynamic changes in your UI hierarchy
+                        .id(textTitle) // 텍스트만 변경될때 에러 발생할수 있다고는 하는데, apple에서 수정된듯
                     
                     Text("""
                     It's not how much we give
@@ -65,7 +65,7 @@ struct OnboardingView: View {
                                     if abs(imageOffset.width) <= 100 {
                                         imageOffset = gesture.translation
 
-                                        withAnimation(.linear(duration: 0.25)) {
+                                        withAnimation(.linear(duration: 0.25)) { // animate changes within view hierarchy
                                             textTitle = "Give."
                                             indicatorOpacity = 0
                                         }
