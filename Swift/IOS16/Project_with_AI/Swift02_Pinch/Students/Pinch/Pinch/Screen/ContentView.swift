@@ -8,11 +8,18 @@ struct ContentView: View {
     @State private var imageOffset: CGSize = CGSize(width: 0, height: 0)
     @State private var isDrawerOpen: Bool = false
     
+    let pages: [Page] = pagesData
+    @State private var pageIndex: Int = 1
+    
     func resetImageState() {
         return withAnimation(.spring()) {
             imageScale = 1
             imageOffset = .zero
         }
+    }
+    
+    func currentPage() -> String {
+        return pages[pageIndex - 1].imageName
     }
     
     
@@ -22,7 +29,7 @@ struct ContentView: View {
                 Color.clear // to make view occupies more space
                 
                 // MARK: - Page Image
-                Image("magazine-front-cover")
+                Image(currentPage())
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .cornerRadius(10)
@@ -142,8 +149,23 @@ struct ContentView: View {
                                 isDrawerOpen.toggle()
                             }
                         }
-                    Spacer()
                     // MARK: THUMBNAILS
+                    ForEach(pages) { item in
+                        Image(item.thumbnailName)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 80)
+                            .cornerRadius(8)
+                            .shadow(radius: 4)
+                            .opacity(isDrawerOpen ? 1 : 0)
+                            .animation(.easeOut(duration: 0.5), value: isDrawerOpen)
+                            .onTapGesture {
+                                withAnimation {
+                                    isAnimating = true
+                                    pageIndex = item.id
+                                }
+                            }
+                    }
                 }
                 .padding(EdgeInsets(top: 16, leading: 8, bottom: 16, trailing: 8))
                 .background(.ultraThinMaterial)
@@ -151,7 +173,7 @@ struct ContentView: View {
                 .opacity( isAnimating ? 1 : 0)
                 .frame(width: 260)
                 .padding(.top, UIScreen.main.bounds.height / 12)
-                .offset(x: isDrawerOpen ? 20: 125)
+                .offset(x: isDrawerOpen ? 20: 215)
                 
             }
         }
