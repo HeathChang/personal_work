@@ -6,13 +6,13 @@
 
 import SwiftUI
 
-struct SettingsRowView: View {
+struct OLDSettingsRowView: View {
   // MARK: - PROPERTIES
   
-  var name: String
-  var content: String? = nil
-  var linkLabel: String? = nil
-  var linkDestination: String? = nil
+  var oldname: String
+  var oldcontent: String? = nil
+  var oldlinkLabel: String? = nil
+  var oldlinkDestination: String? = nil
 
   // MARK: - BODY
 
@@ -21,12 +21,12 @@ struct SettingsRowView: View {
       Divider().padding(.vertical, 4)
       
       HStack {
-        Text(name).foregroundColor(Color.gray)
+        Text(oldname).foregroundColor(Color.gray)
         Spacer()
-        if (content != nil) {
-          Text(content!)
-        } else if (linkLabel != nil && linkDestination != nil) {
-          Link(linkLabel!, destination: URL(string: "https://\(linkDestination!)")!)
+        if (oldcontent != nil) {
+          Text(oldcontent!)
+        } else if (oldlinkLabel != nil && oldlinkDestination != nil) {
+          Link(oldlinkLabel!, destination: URL(string: "https://\(oldlinkDestination!)")!)
           Image(systemName: "arrow.up.right.square").foregroundColor(.pink)
         }
         else {
@@ -39,13 +39,13 @@ struct SettingsRowView: View {
 
 // MARK: - PREVIEW
 
-struct SettingsRowView_Previews: PreviewProvider {
+struct OLDSettingsRowView_Previews: PreviewProvider {
   static var previews: some View {
     Group {
-      SettingsRowView(name: "Developer", content: "John / Jane")
+      OLDSettingsRowView(oldname: "Developer", oldcontent: "John / Jane")
         .previewLayout(.fixed(width: 375, height: 60))
         .padding()
-      SettingsRowView(name: "Website", linkLabel: "SwiftUI Masterclass", linkDestination: "swiftuimasterclass.com")
+      OLDSettingsRowView(oldname: "Website", oldlinkLabel: "SwiftUI Masterclass", oldlinkDestination: "swiftuimasterclass.com")
         .preferredColorScheme(.dark)
         .previewLayout(.fixed(width: 375, height: 60))
         .padding()

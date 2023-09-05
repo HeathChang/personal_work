@@ -14,7 +14,7 @@ struct OnboardingView: View {
   // MARK: - BODY
   
   var body: some View {
-    TabView {
+    TabView { // Pagination
       ForEach(fruits[0...5]) { item in
         FruitCardView(fruit: item)
       } //: LOOP
