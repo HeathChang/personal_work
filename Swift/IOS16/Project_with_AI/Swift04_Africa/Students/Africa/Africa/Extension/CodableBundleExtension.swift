@@ -1,15 +1,10 @@
 //
-//  Created by Robert Petras
-//  SwiftUI Masterclass ♥ Better Apps. Less Code.
-//  https://swiftuimasterclass.com 
-//
-
 import Foundation
 
 extension Bundle {
     //<T: Codable> >
     func decode<T: Codable>(_ file: String) -> T {
-        // 1. Locate the json file >>  locates a resource (file) in a bundle
+        // 1. Locate the json file >>  locates a resource (file) in a bundle >> if not, return nil
         guard let url = self.url(forResource: file, withExtension: nil) else {
             fatalError("Failed to locate \(file) in bundle.")
         }
@@ -27,6 +22,7 @@ extension Bundle {
         guard let loaded = try? decoder.decode(T.self, from: data) else {
             fatalError("Failed to decode \(file) from bundle.")
         }
+        // T here is a generic type parameter, and T.self refers to the metatype of that generic type. It means "the type T itself."
         
         // 5. Return the ready-to-use data
         return loaded

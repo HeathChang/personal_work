@@ -5,6 +5,7 @@ struct AnimalListItemView: View {
     
     // MARK: PROPERTIES
     let animal: Animal
+    
     // MARK: BODY
     var body: some View {
         HStack(alignment: .center, spacing: 16){

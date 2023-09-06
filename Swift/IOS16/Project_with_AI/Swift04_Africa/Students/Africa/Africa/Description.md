@@ -63,9 +63,22 @@ CoverImageView()
 ````      
 
 ````      
-#### 8)  
+#### 8)  NavigationView > NavigationLink & navigationBarTitle
 ````      
-
+        NavigationView {
+            List{
+                CoverImageView()
+                    .frame(height: 300)
+                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                ForEach(animals){animal in
+                    NavigationLink(destination: // 이동하는 위치 AnimalDetailView(animal: animal), label: {
+                        AnimalListItemView(animal: animal)
+                    })
+                    
+                }
+            }// : LIST
+            .navigationBarTitle("Africa", displayMode: .large)
+        }// : NAVIGATION
 ````      
 #### 9)  
 ````      
