@@ -80,7 +80,85 @@ CoverImageView()
             .navigationBarTitle("Africa", displayMode: .large)
         }// : NAVIGATION
 ````      
-#### 9)  
+#### 9)  Computed 
+>  
+```` 
+in define >      
+struct VideoModel: Codable, Identifiable {
+    let id: String
+    let name: String
+    let headline: String
+    
+    // Computed Property
+    var thumbnail: String {
+        "video-\(id)"
+    }
+}
+///
+in use > 
+Image("video-\(video.id)") // > Without use of Computed Property
+Image(video.thumbnail) // > use of Computed Property
+````      
+#### 10)  hapticImpact > enhance UX by interact
+````      
+    let hapticImpact = UIImpactFeedbackGenerator(.medium)
+
+````      
+#### 11)  .listStyle() > determines the appearance and layout of the list.
+
+InsetGroupedListStyle() > a list style where the list's content is displayed with a group-style inset, similar to the grouped style used in tables. The list items appear indented, and there is visual separation between different groups of items.
+````      
+    .listStyle(InsetGroupedListStyle())
+````
+
+
+
+   
+#### 10)  
+````      
+
+````      
+#### 10)  
+````      
+
+````      
+#### 10)  
+````      
+
+````      
+#### 10)  
+````      
+
+````      
+#### 10)  
+````      
+
+````      
+#### 10)  
+````      
+
+````      
+#### 10)  
+````      
+
+````      
+#### 10)  
+````      
+
+````      
+#### 10)  
+````      
+
+````      
+#### 10)  
+````      
+
+````      
+#### 10)  
+````      
+
+````      
+#### 10)  
 ````      
 
 ````      

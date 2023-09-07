@@ -4,7 +4,7 @@ import SwiftUI
 struct ExternalWebLinkView: View {
     
     // MARK: PROPERTIES
-    let animal: Animal
+    let animal: AnimalModel
     
     // MARK: BODY
     
@@ -29,7 +29,7 @@ struct ExternalWebLinkView: View {
 
 // MARK: PREVIEWS
 struct ExternalWebLinkView_Previews: PreviewProvider {
-    static let animals: [Animal] = Bundle.main.decode("animals.json")
+    static let animals: [AnimalModel] = Bundle.main.decode("animals.json")
     
     static var previews: some View {
         ExternalWebLinkView(animal: animals[1])

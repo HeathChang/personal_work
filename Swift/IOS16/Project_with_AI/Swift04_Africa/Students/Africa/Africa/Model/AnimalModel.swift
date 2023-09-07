@@ -1,7 +1,7 @@
 
 import SwiftUI
 
-struct Animal: Codable, Identifiable {
+struct AnimalModel: Codable, Identifiable {
     let id: String
     let name: String
     let headline: String

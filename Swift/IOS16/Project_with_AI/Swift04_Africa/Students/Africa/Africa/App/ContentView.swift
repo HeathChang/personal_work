@@ -4,7 +4,7 @@ import SwiftUI
 struct ContentView: View {
     // MARK: PROPERTIES
     
-    let animals: [Animal] = Bundle.main.decode("animals.json")
+    let animals: [AnimalModel] = Bundle.main.decode("animals.json")
     // MARK: BODY
     
     var body: some View {
