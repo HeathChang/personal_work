@@ -114,7 +114,7 @@ InsetGroupedListStyle() > a list style where the list's content is displayed wit
 
 
    
-#### 10)  
+#### 12)  
 ````      
 
 ````      

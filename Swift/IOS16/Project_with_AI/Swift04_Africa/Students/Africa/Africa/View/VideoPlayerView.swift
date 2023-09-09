@@ -9,6 +9,9 @@ struct VideoPlayerView: View {
     @State private var timeRemains: Int = 3
     @State private var timer: Timer? = nil
     
+    
+    
+    //    The issue with the blinking view could be related to the way the playVideo function is called and how the view is updated when the video starts playing. To prevent the view from blinking every second, you can make sure that the view doesn't change during the 3-second delay before video playback starts.
     func startTimer() {
         if timer == nil {
             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
@@ -18,7 +21,7 @@ struct VideoPlayerView: View {
                     self.stopTimer()
                 }
             }
-
+            
         }
     }
     
@@ -57,7 +60,7 @@ struct VideoPlayerView: View {
         .accentColor(.accentColor)
         .navigationBarTitle(videoTitle, displayMode:.inline)
         
-
+        
         
     }
     
