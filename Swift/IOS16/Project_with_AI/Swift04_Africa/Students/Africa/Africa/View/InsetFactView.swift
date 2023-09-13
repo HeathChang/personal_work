@@ -24,6 +24,7 @@ struct InsetFactView: View {
 // MARK: PREVIEWS
 struct InsetFactView_Previews: PreviewProvider {
     static let animals: [AnimalModel] = Bundle.main.decode("animals.json")
+    
     static var previews: some View {
         InsetFactView(animal: animals[0])
             .previewLayout(.sizeThatFits)
