@@ -12,6 +12,7 @@ struct TouchdownApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(Shop()) // enviromentObject modifier allows us to create views that rely on shared data.
         }
     }
 }

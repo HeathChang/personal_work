@@ -8,6 +8,7 @@ struct FooterView: View {
                 .foregroundColor(.gray)
                 .multilineTextAlignment(.center)
                 .layoutPriority(2)
+            
             Image("logo-lineal")
                 .renderingMode(.template)
                 .foregroundColor(.gray)
@@ -21,6 +22,7 @@ struct FooterView: View {
                 .layoutPriority(1)
             
         }
+        .padding(.horizontal)
     }
 }
 

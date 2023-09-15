@@ -25,7 +25,7 @@ struct CategoryGridView: View {
 
 struct CategoryGridView_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryGridView()
+        ProductGridView()
             .previewLayout(.sizeThatFits)
             .padding()
             .background(colorBackground)
