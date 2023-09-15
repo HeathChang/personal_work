@@ -1,9 +1,3 @@
-//
-//  DevoteApp.swift
-//  Devote
-//
-//  Created by Hyunsoo Chang on 2023/09/15.
-//
 
 import SwiftUI
 
