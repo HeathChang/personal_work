@@ -4,10 +4,10 @@ import CoreData
 
 struct ContentView: View {
     // MARK: PROPERTIES
+    @AppStorage("isDarkMode") private var isDarkMode: Bool = false
     @State var task: String = ""
-    private var isButtonDisabled: Bool {
-        task.isEmpty
-    }
+    @State var showNewTaskItem: Bool = false
+    
     
     @Environment(\.managedObjectContext) private var viewContext // an enviroment where we can manipulate Core Data Objects entirely in RAM (Injected)
     // NOTE : Environment OBJ is mainly used to observe changes, while Enviroment is used for passing values.
@@ -26,25 +26,7 @@ struct ContentView: View {
     
     
     // MARK: FUNCTIONS
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-            newItem.task = task
-            newItem.completion = false
-            newItem.id = UUID()
-            
-            do {
-                try viewContext.save()
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-            
-            task = ""
-            hideKeyboard()
-        }
-    }
+    
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             offsets.map { items[$0] }.forEach(viewContext.delete)
@@ -63,67 +45,97 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
+                // MARK: MAIN VIEW
                 VStack {
-                    VStack(spacing: 16){
-                        TextField("New Task", text: $task)
-                            .padding()
-                            .background(
-                                Color(UIColor.systemGray6)
-                            )
+                    // MARK: Header
+                    HStack(spacing: 10){
+                        // Title
+                        Text("Devote")
+                            .font(.system(.largeTitle, design: .rounded))
+                            .fontWeight(.heavy)
+                            .padding(.leading, 4)
                         
+                        Spacer()
+                        // Edit
+                        EditButton().font(.system(size:16, weight: .semibold, design: .rounded))
+                            .padding(.horizontal, 10).frame(minWidth: 70, minHeight: 24).background(Capsule().stroke(Color.white, lineWidth: 2))
+                        
+                        // Appearance
                         Button {
-                            addItem()
+                            isDarkMode.toggle()
                         } label: {
-                            Spacer()
-                            Text("SAVE")
+                            Image(systemName: isDarkMode ? "moon.circle.fill" : "moon.circle")
+                                .resizable()
+                                .frame(width: 24, height: 24)
+                                .font(.system(.title, design: .rounded))
+                        }
+                        
+                    } // ; HStack
+                    .padding()
+                    .foregroundColor(.white)
+                    Spacer(minLength: 80)
+                    
+                    // MARK: New Task Button
+                    Button {
+                        showNewTaskItem = true
+                    } label: {
+                        Image(systemName: "plus.circle")
+                            .font(.system(size: 30, weight: .semibold, design: .rounded))
+                        Text("New Task")
+                            .font(.system(size: 24, weight: .semibold, design: .rounded))
+                    }
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 15)
+                    .background(
+                        LinearGradient(gradient: Gradient(colors: [Color.pink, Color.blue]), startPoint: .leading, endPoint: .trailing)
+                    )
+                    .clipShape(Capsule())
+                    .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.25), radius: 8, x: 0.0, y: 4.0)
+                    
+                    
+                    // MARK: Contents
+                    VStack{
+                        Spacer()
+                        if(items.count > 0){
+                            List {
+                                ForEach(items) { item in
+                                    ListRowItemView(item: item)
+                                }
+                                .onDelete(perform: deleteItems)
+                            } // ; LIST > Contents
+                            .listStyle(DefaultListStyle())
+                            .scrollContentBackground(.hidden) // hides the standard system background of the List
+                            .shadow(color: Color(red: 0, green: 0 , blue: 0, opacity: 0.3), radius: 12)
+                            .padding(.vertical, 0)
+                            .frame(maxWidth: 640)
+                        } else {
+                            
+//                            NoItemFound()
                             Spacer()
                         }
-                        .disabled(isButtonDisabled) // disabled
-                        .padding()
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .background(isButtonDisabled ? Color.gray : Color.pink)
-                        .cornerRadius(10)
-                        
-                    } // ; VStack
-                    .padding()
-                    List {
-                        ForEach(items) { item in
-                            NavigationLink {
-                                VStack(alignment: .leading) {
-                                    Text(item.task ?? "")
-                                        .font(.headline)
-                                        .fontWeight(.bold)
-                                    
-                                    Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                                        .font(.footnote)
-                                        .foregroundColor(.gray)
-                                }
-                            } label: {
-                                Text(item.task ?? "No Task contents")
-                                    .font(.headline)
-                                    .fontWeight(.bold)
+                    }
+                } // ; VStack
+                
+                // MARK: New Task Item
+                if showNewTaskItem {
+                    BlankView()
+                        .onTapGesture {
+                            withAnimation {
+                                showNewTaskItem = false
                             }
                         }
-                        .onDelete(perform: deleteItems)
-                        
-                    } // ; LIST > Contents
-                    .listStyle(InsetListStyle())
-                    .shadow(color: Color(red: 0, green: 0 , blue: 0, opacity: 0.3), radius: 12)
-                    .padding(.vertical, 0)
-                    .frame(maxWidth: 640)
-                } // ; VStack
+                    NewTaskItemView(isShowing: $showNewTaskItem)
+                }
+                
+                
             } // ; ZStack
             .onAppear{
                 UITableView.appearance().backgroundColor = UIColor.clear
             }
             .navigationTitle("Daily Task")
             .navigationBarTitleDisplayMode(.large) // navigationBarTitle is depreciated.
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-            }
+            .toolbar(.hidden)
             .background(
                 BackgroundImageView()
             )
